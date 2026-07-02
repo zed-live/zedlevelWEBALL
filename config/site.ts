@@ -15,6 +15,8 @@ export const site = {
       `مرحبًا! أنهيت اختبار تحديد المستوى ونتيجتي: ${level} — أبغى أعرف الدورة المناسبة لي`,
     msgNotify: (course: string) => `أبغى تنبهوني عند فتح دورة ${course} 🔔`,
     msgCourseInquiry: (course: string) => `عندي استفسار عن دورة ${course}`,
+    msgSpeakingAI: "أبغى أجرب اختبار المحادثة بالذكاء الاصطناعي 🎤",
+    msgSpeakingHuman: "أبغى أحجز جلسة تقييم محادثة مباشرة مع معلم 🎤",
   },
   salla: {
     a0: "TODO_SALLA_URL_A0",

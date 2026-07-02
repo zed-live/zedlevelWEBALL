@@ -48,7 +48,12 @@ export function CountUp({
   if (!match) return <span className={className}>{value}</span>;
 
   return (
-    <span ref={ref} className={className}>
+    <span
+      ref={ref}
+      className={className}
+      data-countup
+      data-final={`${prefix}${target.toLocaleString("en-US")}${suffix}`}
+    >
       {prefix}
       {n.toLocaleString("en-US")}
       {suffix}

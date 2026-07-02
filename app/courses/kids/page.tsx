@@ -1,20 +1,25 @@
 import type { Metadata } from "next";
-import { ComingSoonStub } from "@/components/ComingSoonStub";
+import { ComingSoonPage } from "@/components/ComingSoonPage";
 
 export const metadata: Metadata = {
   title: "دورة الأطفال — قريبًا",
   description:
-    "دورة الأطفال من زد لفل: تأسيس ممتع وآمن لأطفالك — قريبًا. سجل اهتمامك الآن.",
+    "دورة الأطفال من زد لفل: تأسيس إنجليزي ممتع وآمن لأطفالك بنفس منهجية الأكاديمية — قريبًا. سجل اهتمامك الآن.",
 };
 
-/** M2 stub — full teaser page (mother + girl characters) is milestone M5. */
 export default function KidsPage() {
   return (
-    <ComingSoonStub
+    <ComingSoonPage
       title="دورة الأطفال 👨‍👩‍👧"
-      sub="تأسيس ممتع وآمن لأطفالك مع عائلة زد لفل — قريبًا."
+      sub="عائلة زد لفل تكبر — تأسيس إنجليزي ممتع وآمن لأطفالك، بنفس المنهجية اللي وثق فيها +5,000 مستفيد."
       mascot="mother-front"
       notifyCourse="الأطفال"
+      expectations={[
+        "تأسيس إنجليزي ممتع مصمم للأعمار الصغيرة",
+        "نفس منهجية زد لفل: خطوات صغيرة ومتابعة مستمرة",
+        "تواصل وجدولة سهلة عبر الواتساب",
+        "التفاصيل الكاملة والأعمار المستهدفة عند الافتتاح",
+      ]}
     />
   );
 }

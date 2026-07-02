@@ -47,6 +47,7 @@ async function shoot(url, out, width, fullPage, scrollTo = 0) {
     });
     await page.waitForTimeout(1100);
     // capture determinism: snap any still-animating motion element to final state
+    // (headless Chrome doesn't run rAF while idle — real browsers are unaffected)
     await page.evaluate(() => {
       document.querySelectorAll("[style]").forEach((el) => {
         const s = el.getAttribute("style") ?? "";
@@ -55,6 +56,9 @@ async function shoot(url, out, width, fullPage, scrollTo = 0) {
           el.style.transform = "none";
           el.style.filter = "none";
         }
+      });
+      document.querySelectorAll("[data-countup]").forEach((el) => {
+        el.textContent = el.getAttribute("data-final") ?? el.textContent;
       });
     });
     await page.waitForTimeout(150);
