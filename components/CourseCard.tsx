@@ -7,43 +7,54 @@ import type { CourseMeta } from "@/config/courses";
 /** Course card — ready / coming-soon variants (build spec §12). */
 export function CourseCard({ course }: { course: CourseMeta }) {
   const ready = course.status === "ready";
+  const stats = course.stats?.split("·").map((s) => s.trim()) ?? [];
 
   return (
-    <article className="flex flex-col rounded-2xl border border-ink/5 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
+    <article className="card card-hover relative flex flex-col overflow-hidden p-7">
+      {/* watermark motif */}
+      <ArrowMotif
+        aria-hidden
+        className="absolute -bottom-5 -start-5 h-24 w-32 rotate-12 text-primary/[0.04]"
+      />
+
       <div className="flex items-center gap-2">
         <span
-          className={`rounded-full px-2.5 py-0.5 text-xs font-bold ${
-            ready ? "bg-primary-light text-primary" : "bg-accent/20 text-ink/70"
+          className={`rounded-full px-3 py-1 text-xs font-black ${
+            ready ? "bg-primary text-white" : "bg-section text-ink/60"
           }`}
         >
           {ready ? "متاح الآن" : "قريبًا"}
         </span>
         {course.badge && (
-          <span className="rounded-full bg-accent px-2.5 py-0.5 text-xs font-bold text-ink">
-            {course.badge}
+          <span className="rounded-full bg-accent px-3 py-1 text-xs font-black text-ink">
+            {course.badge} 🔥
           </span>
         )}
       </div>
 
-      <h3 className="mt-3 text-lg font-black">{course.title}</h3>
-      <p className="mt-1.5 flex-1 text-sm leading-7 text-ink/70">
+      <h3 className="mt-4 text-xl font-black">{course.title}</h3>
+      <p className="mt-2 flex-1 text-[15px] leading-8 text-ink/65">
         {course.tagline}
       </p>
 
-      {course.stats && (
-        <p className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-primary">
-          <ArrowMotif className="h-2.5 w-3.5 shrink-0 text-accent" />
-          {course.stats}
-        </p>
+      {stats.length > 0 && (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {stats.map((s) => (
+            <span
+              key={s}
+              className="rounded-full bg-primary-light px-3 py-1 text-xs font-bold text-primary"
+            >
+              {s}
+            </span>
+          ))}
+        </div>
       )}
 
-      <div className="mt-4 flex flex-col gap-2">
+      <div className="mt-6 flex flex-col gap-2.5">
         {ready ? (
-          <Link
-            href={course.href}
-            className="inline-flex min-h-11 items-center justify-center rounded-xl bg-primary px-5 py-2.5 font-bold text-white transition-colors hover:bg-primary-dark"
-          >
+          <Link href={course.href} className="btn btn-primary w-full">
             تفاصيل الدورة
+            <ArrowMotif className="h-2.5 w-3.5 -rotate-90" />
           </Link>
         ) : (
           <>
@@ -52,13 +63,13 @@ export function CourseCard({ course }: { course: CourseMeta }) {
               source={`course-card-${course.slug}`}
               event="notify_click"
               params={{ course: course.slug }}
-              className="w-full"
+              className="!w-full"
             >
               نبّهني عند الافتتاح 🔔
             </WhatsAppButton>
             <Link
               href={course.href}
-              className="text-center text-sm font-semibold text-primary hover:underline"
+              className="text-center text-sm font-bold text-primary hover:underline"
             >
               اعرف أكثر عن الدورة
             </Link>

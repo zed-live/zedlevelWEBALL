@@ -32,7 +32,7 @@ export function WhatsAppFloat() {
       style={{ marginBottom: "var(--sticky-bar-offset, 0px)" }}
     >
       <WhatsAppIcon className="h-7 w-7" />
-      {!href && <DevTodoBadge label="WHATSAPP_NUMBER" />}
+      {!href && <DevTodoBadge label="WHATSAPP_NUMBER" side="start" />}
     </a>
   );
 }

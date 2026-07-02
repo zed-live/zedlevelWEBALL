@@ -13,7 +13,7 @@ import { ArrowMotif } from "./ArrowMotif";
 /**
  * THE signature ZEDLEVEL visual — the A0→B2 staircase climbing
  * up-and-to-the-start (RTL: rises right → left), with the brand's orange
- * arrow ascending the steps as the user scrolls. Reduced-motion safe.
+ * arrow ascending the steps on scroll. Reduced-motion safe.
  * If a stored test result exists (M4 sets `zedlevel_level`), that step pulses.
  */
 const STEPS = [
@@ -24,13 +24,18 @@ const STEPS = [
   { code: "B2", label: "متقدم" },
 ] as const;
 
-// step heights (% of container) — ascending staircase
 const HEIGHTS = [26, 40, 54, 68, 82];
 
-export function LevelLadder() {
+export function LevelLadder({
+  variant = "dark",
+}: {
+  /** dark = on navy/blue gradient section (homepage) · light = on white */
+  variant?: "dark" | "light";
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const [storedLevel, setStoredLevel] = useState<string | null>(null);
+  const dark = variant === "dark";
 
   useEffect(() => {
     try {
@@ -42,30 +47,56 @@ export function LevelLadder() {
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.9", "center 0.45"],
+    offset: ["start 0.9", "center 0.42"],
   });
 
-  // arrow travels along the stair diagonal (inline-end grows = moves left in RTL)
   const arrowEnd = useTransform(scrollYProgress, [0, 1], ["3%", "83%"]);
-  const arrowBottom = useTransform(scrollYProgress, [0, 1], ["30%", "88%"]);
+  const arrowBottom = useTransform(scrollYProgress, [0, 1], ["30%", "90%"]);
+
+  const stepBase = dark
+    ? "border-white/15 bg-white/10 backdrop-blur-sm hover:bg-accent hover:border-accent"
+    : "border-primary/10 bg-primary-light hover:bg-primary hover:border-primary";
+  const stepCurrent = dark
+    ? "border-accent bg-accent motion-safe:animate-pulse"
+    : "border-primary bg-primary motion-safe:animate-pulse";
 
   return (
-    <div ref={ref} className="relative h-64 w-full sm:h-80" dir="rtl">
+    <div ref={ref} className="relative h-72 w-full sm:h-96" dir="rtl">
+      {/* dotted ascent path */}
+      <svg
+        aria-hidden
+        className={`absolute inset-0 h-full w-full ${dark ? "text-white/20" : "text-primary/15"}`}
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M 92 70 L 10 12"
+          stroke="currentColor"
+          strokeWidth="1"
+          strokeDasharray="0.2 4"
+          strokeLinecap="round"
+          vectorEffect="non-scaling-stroke"
+          style={{ strokeWidth: 3, strokeDasharray: "1 10" }}
+        />
+      </svg>
+
       {/* the climbing arrow */}
       <motion.div
         aria-hidden
-        className="absolute z-10 w-[10%] min-w-10 text-accent drop-shadow-sm"
-        style={
-          reduceMotion
-            ? { insetInlineEnd: "83%", bottom: "88%" }
-            : { insetInlineEnd: arrowEnd, bottom: arrowBottom }
-        }
+        className="absolute z-10 w-[11%] min-w-11 text-accent"
+        style={{
+          filter: "drop-shadow(0 6px 16px rgba(248,190,76,.55))",
+          ...(reduceMotion
+            ? { insetInlineEnd: "83%", bottom: "90%" }
+            : {}),
+          ...(reduceMotion ? {} : { insetInlineEnd: arrowEnd, bottom: arrowBottom }),
+        }}
       >
         <ArrowMotif className="w-full" />
       </motion.div>
 
       {/* the staircase */}
-      <div className="absolute inset-0 flex items-end gap-1.5 sm:gap-2">
+      <div className="absolute inset-0 flex items-end gap-2 sm:gap-2.5">
         {STEPS.map((step, i) => {
           const isCurrent = storedLevel === step.code;
           return (
@@ -73,30 +104,44 @@ export function LevelLadder() {
               key={step.code}
               href="/test"
               style={{ height: `${HEIGHTS[i]}%` }}
-              className={`group relative flex-1 rounded-t-xl border transition-colors ${
-                isCurrent
-                  ? "border-primary bg-primary text-white motion-safe:animate-pulse"
-                  : "border-primary/10 bg-primary-light hover:border-primary hover:bg-primary"
+              className={`group relative flex-1 rounded-t-2xl border transition-colors duration-200 ${
+                isCurrent ? stepCurrent : stepBase
               }`}
               aria-label={`مستوى ${step.code} — ${step.label}. اختبر مستواك`}
             >
-              <span
-                className={`absolute inset-x-0 top-2.5 flex flex-col items-center gap-0.5 sm:top-4 ${
-                  isCurrent ? "text-white" : "text-primary group-hover:text-white"
-                }`}
-              >
-                <span className="text-sm font-black sm:text-xl">
+              <span className="absolute inset-x-0 top-3 flex flex-col items-center gap-1 sm:top-5">
+                <span
+                  className={`text-base font-black sm:text-2xl ${
+                    isCurrent
+                      ? dark
+                        ? "text-ink"
+                        : "text-white"
+                      : dark
+                        ? "text-white group-hover:text-ink"
+                        : "text-primary group-hover:text-white"
+                  }`}
+                >
                   {step.code}
                 </span>
                 <span
-                  className={`hidden text-[10px] font-semibold sm:block sm:text-xs ${
-                    isCurrent ? "text-white/85" : "text-ink/50 group-hover:text-white/85"
+                  className={`hidden text-[11px] font-bold sm:block ${
+                    isCurrent
+                      ? dark
+                        ? "text-ink/70"
+                        : "text-white/85"
+                      : dark
+                        ? "text-white/55 group-hover:text-ink/70"
+                        : "text-ink/45 group-hover:text-white/85"
                   }`}
                 >
                   {step.label}
                 </span>
                 {isCurrent && (
-                  <span className="rounded-full bg-accent px-1.5 text-[9px] font-bold text-ink">
+                  <span
+                    className={`rounded-full px-2 py-0.5 text-[10px] font-black ${
+                      dark ? "bg-navy text-white" : "bg-accent text-ink"
+                    }`}
+                  >
                     مستواك
                   </span>
                 )}

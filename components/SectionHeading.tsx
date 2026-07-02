@@ -1,32 +1,48 @@
 import { ArrowMotif } from "./ArrowMotif";
 
-/** Section heading with the signature arrow eyebrow. */
+/** Section heading — pill eyebrow with the arrow motif + oversized title. */
 export function SectionHeading({
   eyebrow,
   title,
   sub,
   align = "center",
+  tone = "light",
 }: {
   eyebrow?: string;
   title: string;
   sub?: string;
   align?: "center" | "start";
+  /** dark = for use on blue/navy backgrounds */
+  tone?: "light" | "dark";
 }) {
   const centered = align === "center";
+  const dark = tone === "dark";
   return (
     <div className={centered ? "text-center" : "text-start"}>
       {eyebrow && (
-        <span className="inline-flex items-center gap-1.5 text-sm font-bold text-primary">
-          <ArrowMotif className="h-3 w-4 text-accent" />
+        <span
+          className={`inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-bold ${
+            dark
+              ? "border-white/20 bg-white/10 text-white"
+              : "border-primary/10 bg-primary-light text-primary"
+          }`}
+        >
+          <ArrowMotif className="h-2.5 w-3.5 text-accent" />
           {eyebrow}
         </span>
       )}
-      <h2 className="mt-2 text-2xl font-black sm:text-3xl lg:text-4xl">
+      <h2
+        className={`mt-4 text-3xl font-black sm:text-4xl lg:text-[2.75rem] ${
+          dark ? "text-white" : "text-ink"
+        }`}
+      >
         {title}
       </h2>
       {sub && (
         <p
-          className={`mt-3 max-w-[60ch] text-base text-ink/70 sm:text-lg ${centered ? "mx-auto" : ""}`}
+          className={`mt-4 max-w-[58ch] text-base sm:text-lg ${
+            dark ? "text-white/75" : "text-ink/65"
+          } ${centered ? "mx-auto" : ""}`}
         >
           {sub}
         </p>

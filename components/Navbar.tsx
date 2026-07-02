@@ -18,10 +18,17 @@ const links = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
-  // close the mobile menu on navigation
   useEffect(() => setOpen(false), [pathname]);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const logo = (
     manifest.brand as Record<
@@ -31,9 +38,13 @@ export function Navbar() {
   )["logo-full"];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-ink/5 bg-white/90 backdrop-blur">
+    <header
+      className={`sticky top-0 z-40 bg-white/85 backdrop-blur-md transition-shadow ${
+        scrolled ? "shadow-[0_8px_30px_-12px_rgb(2_6_23/0.15)]" : ""
+      }`}
+    >
       <nav
-        className="container-site flex h-16 items-center justify-between"
+        className="container-site flex h-[4.25rem] items-center justify-between gap-4"
         aria-label="التنقل الرئيسي"
       >
         <Link
@@ -47,7 +58,7 @@ export function Navbar() {
               width={logo.width}
               height={logo.height}
               alt="شعار زد لفل ZEDLEVEL"
-              className="h-9 w-auto"
+              className="h-9 w-auto sm:h-10"
               priority
             />
           ) : (
@@ -56,21 +67,24 @@ export function Navbar() {
         </Link>
 
         {/* Desktop */}
-        <div className="hidden items-center gap-6 lg:flex">
+        <div className="hidden items-center gap-7 lg:flex">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className={`text-sm font-semibold transition-colors hover:text-primary ${
-                pathname === l.href ? "text-primary" : "text-ink/80"
+              className={`relative py-1 text-[15px] font-bold transition-colors hover:text-primary ${
+                pathname === l.href ? "text-primary" : "text-ink/70"
               }`}
             >
               {l.label}
+              {pathname === l.href && (
+                <span className="absolute -bottom-0.5 start-0 h-0.5 w-full rounded-full bg-accent" />
+              )}
             </Link>
           ))}
           <Link
             href="/test"
-            className="rounded-xl bg-primary px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-primary-dark"
+            className="btn btn-primary !min-h-11 rounded-full !px-6 !py-2.5 text-sm"
           >
             حدد مستواك
           </Link>
@@ -93,26 +107,23 @@ export function Navbar() {
       {open && (
         <div
           id="mobile-menu"
-          className="border-t border-ink/5 bg-white shadow-sm lg:hidden"
+          className="border-t border-ink/5 bg-white shadow-lifted lg:hidden"
         >
-          <div className="container-site flex flex-col gap-1 py-4">
+          <div className="container-site flex flex-col gap-1 py-5">
             {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className={`rounded-xl px-3 py-3 font-semibold ${
+                className={`rounded-xl px-4 py-3.5 text-[15px] font-bold ${
                   pathname === l.href
                     ? "bg-primary-light text-primary"
-                    : "text-ink/80 hover:bg-section"
+                    : "text-ink/75 hover:bg-section"
                 }`}
               >
                 {l.label}
               </Link>
             ))}
-            <Link
-              href="/test"
-              className="mt-2 rounded-xl bg-primary px-5 py-3 text-center font-bold text-white"
-            >
+            <Link href="/test" className="btn btn-primary mt-3 w-full">
               حدد مستواك — ابدأ الاختبار المجاني
             </Link>
           </div>

@@ -34,7 +34,7 @@ export function WhatsAppButton({
   message: string;
   source: string;
   children: ReactNode;
-  /** inverse = white outline for use on solid blue backgrounds */
+  /** solid = WhatsApp green · inverse = white outline for blue/navy sections */
   variant?: "outline" | "solid" | "inverse";
   /** override for notify buttons: event="notify_click" params={course} */
   event?: TrackEvent;
@@ -46,17 +46,17 @@ export function WhatsAppButton({
 
   const styles =
     variant === "solid"
-      ? "bg-[#25D366] text-white hover:bg-[#1daa54]"
+      ? "btn-whatsapp"
       : variant === "inverse"
-        ? "border-2 border-white text-white hover:bg-white/10"
-        : "border-2 border-primary text-primary hover:bg-primary-light";
+        ? "btn-ghost-white"
+        : "btn-outline";
 
   return (
     <a
       href={href ?? "#"}
       target="_blank"
       rel="noopener noreferrer"
-      className={`relative inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl px-5 py-3 font-bold transition-colors sm:w-auto ${styles} ${className}`}
+      className={`btn ${styles} relative w-full sm:w-auto ${className}`}
       onClick={(e) => {
         if (!href) {
           e.preventDefault();

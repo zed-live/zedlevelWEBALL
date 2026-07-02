@@ -1,32 +1,169 @@
 @import "tailwindcss";
 
-/* ─── ZEDLEVEL brand tokens — CONTENT.md §1. Never introduce other hues. ─── */
+/* ═══ ZEDLEVEL design system — CONTENT.md §1. One blue family + scarce orange. ═══ */
 @theme {
-  --color-primary: #0047ff; /* Vivid Blue — the workhorse */
-  --color-primary-dark: #0035bf; /* hover/active */
-  --color-primary-light: #eef3ff; /* soft tint backgrounds */
-  --color-accent: #f8be4c; /* Orange — SCARCE: arrow motif, key CTAs, highlights */
-  --color-accent-dark: #d99a1b; /* orange hover */
-  --color-ink: #1e1e1e; /* text */
-  --color-section: #f5f7fa; /* alternating section background */
+  /* Blue family (single hue, full range) */
+  --color-primary: #0047ff;
+  --color-primary-dark: #0035bf;
+  --color-primary-deep: #0026a3;
+  --color-navy: #021150;
+  --color-primary-light: #eef3ff;
+  --color-primary-soft: #dbe7ff;
 
-  /* Latin glyphs → Source Sans 3, Arabic glyphs → Cairo (per-glyph fallback) */
+  /* Accent — SCARCE: arrow motif, hero CTAs, highlights only */
+  --color-accent: #f8be4c;
+  --color-accent-dark: #eba81f;
+
+  --color-ink: #1e1e1e;
+  --color-section: #f5f7fa;
+
+  /* Latin → Source Sans 3, Arabic → Cairo (per-glyph fallback) */
   --font-sans: var(--font-source-sans), var(--font-cairo), ui-sans-serif,
     system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Ambient shadows — soft, expensive-looking */
+  --shadow-soft:
+    0 1px 2px rgb(2 6 23 / 0.04), 0 16px 40px -20px rgb(2 6 23 / 0.18);
+  --shadow-lifted:
+    0 2px 4px rgb(2 6 23 / 0.05), 0 24px 48px -20px rgb(2 6 23 / 0.25);
+  --shadow-glow-blue: 0 12px 32px -10px rgb(0 71 255 / 0.55);
+  --shadow-glow-accent: 0 12px 32px -10px rgb(248 190 76 / 0.65);
+
+  --animate-float: float 5s ease-in-out infinite;
+  --animate-float-slow: float 7.5s ease-in-out infinite;
 }
 
-/* Site container: mobile-first padding, comfortable max width */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ─── Layout ─── */
 @utility container-site {
   margin-inline: auto;
   width: 100%;
-  max-width: 72rem;
-  padding-inline: 1rem;
+  max-width: 74rem;
+  padding-inline: 1.25rem;
   @media (min-width: 640px) {
-    padding-inline: 1.5rem;
-  }
-  @media (min-width: 1024px) {
     padding-inline: 2rem;
   }
+  @media (min-width: 1024px) {
+    padding-inline: 2.5rem;
+  }
+}
+
+/* ─── Buttons — one system, used everywhere ─── */
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  min-height: 3.25rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 1rem;
+  font-weight: 800;
+  line-height: 1.4;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+}
+@utility btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: var(--shadow-glow-blue);
+  &:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+  }
+}
+@utility btn-accent {
+  background: var(--color-accent);
+  color: var(--color-ink);
+  box-shadow: var(--shadow-glow-accent);
+  &:hover {
+    background: var(--color-accent-dark);
+    transform: translateY(-2px);
+  }
+}
+@utility btn-outline {
+  border: 2px solid var(--color-primary-soft);
+  color: var(--color-primary);
+  background: #fff;
+  &:hover {
+    border-color: var(--color-primary);
+    background: var(--color-primary-light);
+    transform: translateY(-2px);
+  }
+}
+@utility btn-ghost-white {
+  border: 2px solid rgb(255 255 255 / 0.7);
+  color: #fff;
+  &:hover {
+    background: rgb(255 255 255 / 0.12);
+    border-color: #fff;
+    transform: translateY(-2px);
+  }
+}
+@utility btn-whatsapp {
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 12px 32px -10px rgb(37 211 102 / 0.55);
+  &:hover {
+    background: #1daa54;
+    transform: translateY(-2px);
+  }
+}
+
+/* ─── Cards ─── */
+@utility card {
+  background: #fff;
+  border-radius: 1.5rem;
+  border: 1px solid rgb(2 6 23 / 0.04);
+  box-shadow: var(--shadow-soft);
+}
+@utility card-hover {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lifted);
+  }
+}
+
+/* Dark hero/section gradients — blue family only */
+@utility bg-brand-gradient {
+  background:
+    radial-gradient(
+      1200px 500px at 85% -10%,
+      rgb(0 71 255 / 0.55),
+      transparent 60%
+    ),
+    linear-gradient(200deg, var(--color-primary-deep) 0%, var(--color-navy) 78%);
+}
+@utility bg-hero-glow {
+  background:
+    radial-gradient(
+      900px 460px at 88% 0%,
+      var(--color-primary-soft),
+      transparent 62%
+    ),
+    radial-gradient(
+      700px 420px at 0% 100%,
+      rgb(248 190 76 / 0.12),
+      transparent 55%
+    ),
+    linear-gradient(#fff, #fff);
 }
 
 @layer base {
@@ -35,11 +172,10 @@
   }
 
   body {
-    background: var(--color-white, #ffffff);
+    background: #fff;
     color: var(--color-ink);
     font-family: var(--font-sans);
-    /* Arabic body text: generous line-height, never letter-spaced */
-    line-height: 1.8;
+    line-height: 1.8; /* Arabic body — generous, never letter-spaced */
     letter-spacing: normal;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -51,16 +187,20 @@
   h4,
   h5,
   h6 {
-    line-height: 1.4;
-    font-weight: 700;
+    line-height: 1.35;
+    font-weight: 800;
     text-wrap: balance;
   }
 
-  /* Visible focus for keyboard users */
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-ink);
+  }
+
   :focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
-    border-radius: 4px;
+    border-radius: 6px;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -75,7 +215,27 @@
   }
 }
 
-/* Skip-to-content link (accessibility) */
+/* Reveal-on-scroll (driven by components/Reveal.tsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Skip-to-content (accessibility) */
 .skip-link {
   position: fixed;
   inset-inline-start: 1rem;

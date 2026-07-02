@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <section className="container-site flex flex-col items-center gap-6 py-16 text-center">
+    <section className="container-site flex flex-col items-center gap-6 py-20 text-center">
       <Mascot name="mother-front" size="section" className="h-52 w-auto" />
       <SectionHeading
         eyebrow="تواصل معنا"
