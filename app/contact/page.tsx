@@ -46,9 +46,8 @@ export default function ContactPage() {
             <h1 className="text-[clamp(2.1rem,5.5vw,3.4rem)] font-black leading-[1.3]">
               نحن هنا — <Underline className="text-primary">وبنرد عليك</Underline>
             </h1>
-            <p className="mx-auto mt-4 max-w-[46ch] text-lg leading-9 text-ink/65">
-              أسرع طريقة هي الواتساب: استفسار عن دورة، مساعدة باختيار مستواك،
-              أو أي سؤال — تفضل.
+            <p className="mx-auto mt-4 max-w-[40ch] text-lg leading-9 text-ink/65">
+              أسرع طريقة الواتساب — أي سؤال، تفضل.
             </p>
           </StaggerItem>
           <StaggerItem>

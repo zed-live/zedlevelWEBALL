@@ -87,9 +87,8 @@ export default function HowItWorksPage() {
             <h1 className="text-[clamp(2.1rem,5.5vw,3.4rem)] font-black leading-[1.3]">
               <Underline className="text-primary">ثلاث خطوات</Underline> — وتبدأ
             </h1>
-            <p className="mx-auto mt-4 max-w-[46ch] text-lg leading-9 text-ink/65">
-              بدون تعقيد وبدون منصات غريبة — كل شي يمشي على أدوات تعرفها
-              وتستخدمها كل يوم.
+            <p className="mx-auto mt-4 max-w-[42ch] text-lg leading-9 text-ink/65">
+              كل شي على أدوات تستخدمها كل يوم — بدون تعقيد.
             </p>
           </StaggerItem>
         </Stagger>
@@ -141,7 +140,6 @@ export default function HowItWorksPage() {
             <SectionHeading
               eyebrow="وين يصير كل شي؟"
               title="ثلاث أدوات — لكل وحدة مهمة"
-              sub="بدون تطبيقات جديدة تتعلمها — أدوات تستخدمها أصلًا"
             />
           </Reveal>
           <div className="mx-auto mt-12 flex max-w-4xl flex-col items-stretch gap-4 lg:flex-row lg:items-center">

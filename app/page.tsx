@@ -162,9 +162,7 @@ export default function HomePage() {
 
             <StaggerItem>
               <p className="mt-6 text-lg font-semibold leading-9 text-ink/70">
-                اختبار مجاني يحدد مستواك بدقة خلال دقائق — وبعدها خطة واضحة
-                تمشي عليها خطوة بخطوة مع أكاديمية{" "}
-                <span className="font-black text-primary">ZEDLEVEL</span>
+                اختبار مجاني يحدد مستواك — وخطة واضحة توصلك، خطوة بخطوة.
               </p>
             </StaggerItem>
 
@@ -172,7 +170,7 @@ export default function HomePage() {
             <StaggerItem className="md:hidden">
               <div className="mt-6 flex justify-center">
                 <Mascot
-                  name="shab-front"
+                  name="grandpa-front"
                   size="section"
                   priority
                   className="h-48 w-auto animate-breathe drop-shadow-xl"
@@ -196,7 +194,7 @@ export default function HomePage() {
 
             <StaggerItem>
               <p className="mt-3.5 text-sm font-bold text-ink/60">
-                20 سؤالًا · 5 دقائق تقريبًا · بدون تسجيل · نتيجة فورية ⚡
+                5 دقائق · بدون تسجيل · نتيجة فورية ⚡
               </p>
               <p className="mt-1.5 inline-flex items-center gap-1.5 text-sm font-bold text-ink/55">
                 <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-accent" />
@@ -244,7 +242,7 @@ export default function HomePage() {
             />
             <div className="flex justify-center">
               <Mascot
-                name="shab-front"
+                name="grandpa-front"
                 size="hero"
                 priority
                 className="h-80 w-auto animate-breathe drop-shadow-2xl sm:h-[26rem] lg:h-[30rem]"
@@ -449,7 +447,7 @@ export default function HomePage() {
                   سجل الآن
                 </Link>
                 <Mascot
-                  name="shab-side"
+                  name="grandpa-side"
                   size="card"
                   className="hidden h-28 w-auto drop-shadow-xl sm:block"
                 />
@@ -478,7 +476,7 @@ export default function HomePage() {
                     اختبر نطقك ومحادثتك 🎤
                   </h2>
                   <p className="mt-2 text-ink/60 sm:text-lg">
-                    تقييم فوري بالذكاء الاصطناعي — أو جلسة مباشرة مع معلم
+                    سجّل صوتك — ونرد عليك بتقييمك على الواتساب
                   </p>
                 </div>
               </div>
@@ -560,8 +558,7 @@ export default function HomePage() {
               ابدأ رحلتك الآن
             </h2>
             <p className="mx-auto mt-4 max-w-[42ch] text-white/75 sm:text-lg">
-              خطوتك الأولى مجانية — حدد مستواك خلال دقائق وخذ توصية بالدورة
-              المناسبة لك
+              خطوتك الأولى مجانية — مستواك وتوصيتك خلال دقائق
             </p>
             <div className="mt-9 flex flex-col items-center justify-center gap-3.5 sm:flex-row">
               <Link
@@ -579,7 +576,7 @@ export default function HomePage() {
               </WhatsAppButton>
             </div>
             <p className="mt-6 text-sm font-bold text-white/75">
-              بدون تسجيل · خلال دقائق · توصية فورية بالدورة المناسبة
+              بدون تسجيل · نتيجة فورية
             </p>
           </div>
         </Reveal>

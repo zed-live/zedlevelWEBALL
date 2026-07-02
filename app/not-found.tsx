@@ -18,7 +18,7 @@ export default function NotFound() {
       <Stagger className="container-site relative flex flex-col items-center gap-6 py-20 text-center lg:py-28">
         <StaggerItem>
           <Mascot
-            name="shab-back"
+            name="grandpa-back"
             size="section"
             priority
             className="h-56 w-auto animate-breathe drop-shadow-xl"

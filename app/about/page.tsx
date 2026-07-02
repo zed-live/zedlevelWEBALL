@@ -17,12 +17,12 @@ export const metadata: Metadata = {
 };
 
 const family: { name: CharacterName; label: string; line: string }[] = [
-  { name: "shab-front", label: "الشاب", line: "طموح وما يوقف" },
-  { name: "father-front", label: "الأب", line: "يتعلم لشغله" },
-  { name: "mother-front", label: "الأم", line: "تتعلم لنفسها ولبيتها" },
-  { name: "girl-front", label: "البنت", line: "تبدأ من بدري" },
-  { name: "grandpa-front", label: "الجد", line: "ما فات الوقت أبدًا" },
+  { name: "grandpa-front", label: "الجد", line: "بطل زد لفل — ما فات الوقت" },
   { name: "grandma-front", label: "الجدة", line: "وتقدر تبدأ اليوم" },
+  { name: "father-front", label: "الأب", line: "يتعلم لشغله" },
+  { name: "mother-front", label: "الأم", line: "تتعلم لنفسها" },
+  { name: "shab-front", label: "الشاب", line: "طموح وما يوقف" },
+  { name: "girl-front", label: "البنت", line: "تبدأ من بدري" },
 ];
 
 const beliefs = [
@@ -67,10 +67,9 @@ export default function AboutPage() {
                 زد لفل صُنعت حولك أنت
               </Underline>
             </h1>
-            <p className="mx-auto mt-5 max-w-[52ch] text-lg leading-9 text-ink/65">
-              بدأنا من سؤال واحد: ليه أغلب الناس ما يكمّلون كورسات الإنجليزية؟
-              والجواب صار منهجيتنا: محتوى يختصر وقتك، ونظام يمنعك من الانسحاب،
-              ومتابعة تشجعك تستمر.
+            <p className="mx-auto mt-5 max-w-[48ch] text-lg leading-9 text-ink/65">
+              بدأنا من سؤال: ليه أحد ما يكمّل كورسات الإنجليزية؟ الجواب صار
+              منهجيتنا — محتوى يختصر، نظام يثبّت، ومتابعة تشجع.
             </p>
           </StaggerItem>
           <StaggerItem>

@@ -272,8 +272,7 @@ export default function A0Page() {
 
             <StaggerItem>
               <p className="mt-6 text-lg font-semibold leading-9 text-ink/70">
-                ابدأ من الصفر بالطريقة الصحيحة — أساس يخدمك طول رحلتك مع
-                الإنجليزية، بالعربي وخطوة بخطوة.
+                أساس صحيح يخدمك طول الرحلة — بالعربي، وخطوة بخطوة.
               </p>
             </StaggerItem>
 
@@ -306,8 +305,7 @@ export default function A0Page() {
 
             <StaggerItem>
               <p className="mt-4 text-sm font-bold text-ink/55">
-                دفعات صغيرة محدودة العدد على مدار السنة — لمن يبدأ من الصفر أو
-                يعيد التأسيس، من عمر 14+
+                دفعات صغيرة محدودة — لمن يبدأ من الصفر أو يعيد التأسيس (14+)
               </p>
             </StaggerItem>
           </Stagger>
@@ -319,7 +317,7 @@ export default function A0Page() {
             />
             <div className="flex justify-center">
               <Mascot
-                name="shab-front2"
+                name="grandpa-angle"
                 size="hero"
                 priority
                 className="h-72 w-auto animate-breathe drop-shadow-2xl sm:h-96 lg:h-[26rem]"
@@ -415,7 +413,7 @@ export default function A0Page() {
                 مقاعد الدفعة محدودة — احجز مكانك من الآن
               </h2>
               <p className="mt-1.5 text-ink/60">
-                26 درسًا · شهادة معتمدة · أسبوع مكثف بمجموعة من 1–7 فقط
+                26 درسًا · شهادة · مكثف مباشر بمجموعة 1–7
               </p>
             </div>
             <SallaButton course="a0" source="a0-mid" />
@@ -529,7 +527,7 @@ export default function A0Page() {
               />
               <div className="flex justify-center">
                 <Mascot
-                  name="shab-front"
+                  name="grandpa-front"
                   size="section"
                   className="h-48 w-auto drop-shadow-xl"
                 />
@@ -541,10 +539,9 @@ export default function A0Page() {
               <h2 className="mt-4 text-2xl font-black sm:text-3xl">
                 اختبار نهائي… وشهادة توثّق إنجازك 🎓
               </h2>
-              <p className="mx-auto mt-3 max-w-[52ch] leading-9 text-ink/65">
-                بعد الدروس الـ 26: أسبوع مراجعة ولحاق، ثم الأسبوع المكثف المباشر
-                مع مجموعتك الصغيرة، ثم الاختبار النهائي 🏆 — وتستلم شهادة
-                إتمام التأسيس.
+              <p className="mx-auto mt-3 max-w-[48ch] leading-9 text-ink/65">
+                أسبوع مراجعة، ثم المكثف المباشر مع مجموعتك، ثم الاختبار
+                النهائي 🏆 — وشهادتك.
               </p>
             </div>
           </Reveal>
@@ -582,8 +579,7 @@ export default function A0Page() {
               جاهز تأسس إنجليزيتك بالطريقة الصحيحة؟
             </h2>
             <p className="mx-auto mt-4 max-w-[44ch] text-white/75 sm:text-lg">
-              26 درسًا · 15–30 دقيقة يوميًا · نظام يوصلك للنهاية — ومقاعد الدفعة
-              محدودة
+              15–30 دقيقة يوميًا · نظام يوصلك للنهاية · المقاعد محدودة
             </p>
             <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <SallaButton course="a0" source="a0-final" hero showTrust={false} />

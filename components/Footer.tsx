@@ -59,9 +59,8 @@ export function Footer() {
               </span>
             </div>
           </div>
-          <p className="mt-5 max-w-[42ch] leading-8 text-white/70">
-            نمشي معك خطوة بخطوة — محتوى يختصر وقتك ومتابعة تشجعك تستمر، حتى
-            توصل للمستوى اللي تبيه.
+          <p className="mt-5 max-w-[38ch] leading-8 text-white/70">
+            نمشي معك خطوة بخطوة — حتى توصل للمستوى اللي تبيه.
           </p>
           <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-bold">
             ⭐ {site.stats.beneficiaries} مستفيد

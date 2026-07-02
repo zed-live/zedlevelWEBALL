@@ -125,8 +125,7 @@ export function LevelTest() {
               حدد مستواك في دقائق
             </h1>
             <p className="mx-auto mt-4 max-w-[48ch] text-lg leading-9 text-ink/65">
-              أسئلة متدرجة من التأسيس حتى المتقدم — وفي النهاية تعرف مستواك
-              بدقة، مع توصية مباشرة بالدورة المناسبة لك.
+              أسئلة متدرجة — وفي النهاية مستواك بدقة وتوصيتك المباشرة.
             </p>
           </StaggerItem>
 
@@ -261,8 +260,7 @@ export function LevelTest() {
           </AnimatePresence>
 
           <p className="mt-5 text-center text-sm font-bold text-ink/45">
-            اختر الإجابة وننتقل للسؤال التالي تلقائيًا — لا تشيل هم الغلط،
-            الاختبار مصمم يتدرج معك
+            لا تشيل هم الغلط — الاختبار يتدرج معك
           </p>
         </div>
       </section>
@@ -276,7 +274,7 @@ export function LevelTest() {
     <section className="bg-hero-glow">
       <div className="container-site flex flex-col items-center py-14 text-center lg:py-20">
         <Mascot
-          name="shab-front"
+          name="grandpa-front"
           size="section"
           priority
           className="h-44 w-auto animate-breathe drop-shadow-xl sm:h-56"

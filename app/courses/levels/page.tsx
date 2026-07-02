@@ -17,7 +17,6 @@ import { SallaButton } from "@/components/SallaButton";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { StatStrip } from "@/components/StatStrip";
 import { LevelLadder } from "@/components/LevelLadder";
-import { WeeklyRhythm } from "@/components/WeeklyRhythm";
 import { Reveal } from "@/components/Reveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { Underline } from "@/components/motion/Underline";
@@ -45,19 +44,19 @@ const streams = [
     icon: BookText,
     title: "مسار المفردات",
     points: [
-      "من قائمة Oxford 3000 — الكلمات الأكثر استخدامًا فعلًا",
-      "≈10 كلمات يوميًا داخل جمل حقيقية مترجمة",
-      "قصة يومية قصيرة تربط كلمات اليوم كلها",
-      "يوم مراجعة أسبوعي يثبّت اللي تعلمته",
+      "قائمة Oxford 3000 — الأكثر استخدامًا فعلًا",
+      "≈10 كلمات يوميًا في جمل حقيقية",
+      "قصة يومية تربط كلمات اليوم",
+      "مراجعة أسبوعية تثبّت",
     ],
   },
   {
     icon: Puzzle,
     title: "مسار القواعد",
     points: [
-      "14 مجموعة تغطي أهم قواعد الاستخدام اليومي",
-      "فيديو شرح مركّز + اختبار قصير",
-      "بوتيرتك — تقدر تكملها كاملة داخل أي دورة",
+      "14 مجموعة لأهم قواعد الاستخدام اليومي",
+      "فيديو مركّز + اختبار قصير",
+      "بوتيرتك — كمّلها داخل أي دورة",
     ],
   },
   {
@@ -66,7 +65,7 @@ const streams = [
     points: [
       "سيناريوهات من حياتك: مشوار، مقهى، مطار…",
       "حوار ثنائي تقرأ نصفه بصوتك",
-      "تدريب حر بدون نص، ثم تمرين مع الذكاء الاصطناعي يصحح لك",
+      "تدريب حر + تصحيح بالذكاء الاصطناعي",
     ],
   },
   {
@@ -185,7 +184,7 @@ export default function LevelsPage() {
             />
             <div className="flex justify-center">
               <Mascot
-                name="shab-side"
+                name="grandpa-side"
                 size="hero"
                 priority
                 className="h-72 w-auto animate-breathe drop-shadow-2xl sm:h-96"
@@ -211,7 +210,7 @@ export default function LevelsPage() {
                 align="start"
                 eyebrow="LEVEL UP"
                 title="وين توصلك الرحلة؟"
-                sub="كل مستوى = 3 دورات متسلسلة. تخلص دورة، تنفتح اللي بعدها — حتى تقف عند B2 بثقة."
+                sub="كل مستوى 3 دورات متسلسلة — تخلص وحدة، تفتح اللي بعدها."
               />
             </Reveal>
             <Reveal delay={150}>
@@ -300,8 +299,8 @@ export default function LevelsPage() {
                 </span>
                 <h3 className="mt-4 text-xl font-black">الأسابيع 1–5 · الدروس</h3>
                 <p className="mt-2 leading-8 text-ink/65">
-                  6 دروس أسبوعيًا بالمسارات الأربعة — السبت والاثنين والأربعاء
-                  يوصلك درسان، واليوم التالي لإكمالهما. والجمعة راحة دائمًا 🕌
+                  6 دروس أسبوعيًا — السبت والاثنين والأربعاء يوصلك درسان،
+                  واليوم التالي لإكمالهما. الجمعة راحة 🕌
                 </p>
               </div>
             </Reveal>
@@ -318,11 +317,6 @@ export default function LevelsPage() {
                   تركيز على الكتابة، ثم اختبار الدورة 🏆
                 </p>
               </div>
-            </Reveal>
-          </div>
-          <div className="mt-10">
-            <Reveal>
-              <WeeklyRhythm />
             </Reveal>
           </div>
         </div>
@@ -391,8 +385,7 @@ export default function LevelsPage() {
               مو متأكد من أي مستوى تبدأ؟
             </h2>
             <p className="mx-auto mt-4 max-w-[42ch] text-white/75 sm:text-lg">
-              اختبارنا المجاني يحدد مستواك خلال دقائق ويوصيك بالدورة الصح —
-              بدون تسجيل
+              مستواك وتوصيتك خلال دقائق — بدون تسجيل
             </p>
             <div className="mt-9 flex flex-col items-center justify-center gap-3.5 sm:flex-row">
               <Link href="/test" className="btn btn-accent w-full text-lg sm:w-auto">
