@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { waLink } from "@/lib/whatsapp";
-import { track } from "@/lib/track";
+import { track, type TrackEvent } from "@/lib/track";
 import { DevTodoBadge } from "./DevTodoBadge";
 
 export function WhatsAppIcon({ className = "" }: { className?: string }) {
@@ -27,12 +27,18 @@ export function WhatsAppButton({
   source,
   children,
   variant = "outline",
+  event = "whatsapp_click",
+  params,
   className = "",
 }: {
   message: string;
   source: string;
   children: ReactNode;
-  variant?: "outline" | "solid";
+  /** inverse = white outline for use on solid blue backgrounds */
+  variant?: "outline" | "solid" | "inverse";
+  /** override for notify buttons: event="notify_click" params={course} */
+  event?: TrackEvent;
+  params?: Record<string, string | number>;
   className?: string;
 }) {
   const href = waLink(message);
@@ -41,7 +47,9 @@ export function WhatsAppButton({
   const styles =
     variant === "solid"
       ? "bg-[#25D366] text-white hover:bg-[#1daa54]"
-      : "border-2 border-primary text-primary hover:bg-primary-light";
+      : variant === "inverse"
+        ? "border-2 border-white text-white hover:bg-white/10"
+        : "border-2 border-primary text-primary hover:bg-primary-light";
 
   return (
     <a
@@ -54,7 +62,7 @@ export function WhatsAppButton({
           e.preventDefault();
           return;
         }
-        track("whatsapp_click", { source });
+        track(event, { source, ...params });
       }}
     >
       <WhatsAppIcon className="h-5 w-5 shrink-0" />
