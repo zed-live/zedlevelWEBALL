@@ -17,6 +17,8 @@ const columns = [
   {
     title: "تعرّف علينا",
     links: [
+      { href: "/about", label: "ليه زد لفل؟" },
+      { href: "/teachers", label: "المعلمون" },
       { href: "/blog", label: "المدونة" },
       { href: "/contact", label: "تواصل معنا" },
     ],
