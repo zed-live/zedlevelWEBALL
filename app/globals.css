@@ -235,6 +235,16 @@
   }
 }
 
+/* WhatsApp float lifts above the mobile sticky buy bar (StickyBuyBar sets data-sticky-bar) */
+body[data-sticky-bar] .wa-float {
+  bottom: 5.75rem;
+}
+@media (min-width: 1024px) {
+  body[data-sticky-bar] .wa-float {
+    bottom: 1rem;
+  }
+}
+
 /* Skip-to-content (accessibility) */
 .skip-link {
   position: fixed;

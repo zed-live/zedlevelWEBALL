@@ -12,23 +12,38 @@ const [, , a, b, c, d] = process.argv;
 
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 
-async function shoot(url, out, width, fullPage) {
+async function shoot(url, out, width, fullPage, scrollTo = 0) {
   const page = await browser.newPage({
     viewport: { width, height: 900 },
     deviceScaleFactor: width >= 1200 ? 1 : 2,
   });
   await page.goto(url, { waitUntil: "networkidle" });
-  // let reveal-on-scroll settle for full-page captures
-  if (fullPage) {
-    await page.evaluate(() =>
-      document
-        .querySelectorAll(".reveal")
-        .forEach((el) => el.classList.add("is-visible")),
+  // force lazy images to load + reveal-on-scroll to settle
+  await page.evaluate(async () => {
+    document
+      .querySelectorAll(".reveal")
+      .forEach((el) => el.classList.add("is-visible"));
+    document.querySelectorAll("img").forEach((img) => {
+      img.loading = "eager";
+      img.decoding = "sync";
+    });
+    await Promise.all(
+      Array.from(document.images)
+        .filter((i) => !i.complete)
+        .map(
+          (i) =>
+            new Promise((r) => {
+              i.onload = i.onerror = r;
+            }),
+        ),
     );
-    await page.waitForTimeout(400);
+  });
+  if (scrollTo > 0) {
+    await page.evaluate((y) => window.scrollTo(0, y), scrollTo);
   }
+  await page.waitForTimeout(500);
   await page.screenshot({ path: out, fullPage });
-  console.log(`✓ ${out} (${width}px${fullPage ? ", full" : ""})`);
+  console.log(`✓ ${out} (${width}px${fullPage ? ", full" : ""}${scrollTo ? `, y=${scrollTo}` : ""})`);
   await page.close();
 }
 
@@ -44,7 +59,9 @@ if (a === "qa") {
   const url = a ?? "http://localhost:3000";
   const out = b ?? "screenshot.png";
   const width = Number(c ?? 390);
-  await shoot(url, out, width, d === "--full" || c === "--full");
+  const scrollArg = [c, d].find((x) => x?.startsWith?.("--scroll="));
+  const scrollTo = scrollArg ? Number(scrollArg.split("=")[1]) : 0;
+  await shoot(url, out, width, d === "--full" || c === "--full", scrollTo);
 }
 
 await browser.close();

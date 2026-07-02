@@ -28,8 +28,7 @@ export function WhatsAppFloat() {
         }
         track("whatsapp_click", { source: "float" });
       }}
-      className="fixed bottom-4 start-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-105 active:scale-95"
-      style={{ marginBottom: "var(--sticky-bar-offset, 0px)" }}
+      className="wa-float fixed bottom-4 start-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-all hover:scale-105 active:scale-95"
     >
       <WhatsAppIcon className="h-7 w-7" />
       {!href && <DevTodoBadge label="WHATSAPP_NUMBER" side="start" />}
