@@ -1,0 +1,567 @@
+{
+  "characters": {
+    "father-front": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/father-front-hero.webp",
+          "width": 761,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/father-front-section.webp",
+          "width": 507,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/father-front-card.webp",
+          "width": 254,
+          "height": 400
+        }
+      }
+    },
+    "father-angle": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/father-angle-hero.webp",
+          "width": 714,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/father-angle-section.webp",
+          "width": 476,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/father-angle-card.webp",
+          "width": 238,
+          "height": 400
+        }
+      }
+    },
+    "father-side": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/father-side-hero.webp",
+          "width": 626,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/father-side-section.webp",
+          "width": 417,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/father-side-card.webp",
+          "width": 209,
+          "height": 400
+        }
+      }
+    },
+    "father-back": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/father-back-hero.webp",
+          "width": 760,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/father-back-section.webp",
+          "width": 507,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/father-back-card.webp",
+          "width": 253,
+          "height": 400
+        }
+      }
+    },
+    "mother-angle": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/mother-angle-hero.webp",
+          "width": 691,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/mother-angle-section.webp",
+          "width": 461,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/mother-angle-card.webp",
+          "width": 230,
+          "height": 400
+        }
+      }
+    },
+    "mother-front": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/mother-front-hero.webp",
+          "width": 712,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/mother-front-section.webp",
+          "width": 475,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/mother-front-card.webp",
+          "width": 237,
+          "height": 400
+        }
+      }
+    },
+    "mother-side": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/mother-side-hero.webp",
+          "width": 632,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/mother-side-section.webp",
+          "width": 421,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/mother-side-card.webp",
+          "width": 211,
+          "height": 400
+        }
+      }
+    },
+    "mother-side2": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/mother-side2-hero.webp",
+          "width": 602,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/mother-side2-section.webp",
+          "width": 401,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/mother-side2-card.webp",
+          "width": 201,
+          "height": 400
+        }
+      }
+    },
+    "girl-front": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/girl-front-hero.webp",
+          "width": 870,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/girl-front-section.webp",
+          "width": 580,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/girl-front-card.webp",
+          "width": 290,
+          "height": 400
+        }
+      }
+    },
+    "mother-back": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/mother-back-hero.webp",
+          "width": 728,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/mother-back-section.webp",
+          "width": 485,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/mother-back-card.webp",
+          "width": 243,
+          "height": 400
+        }
+      }
+    },
+    "girl-angle": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/girl-angle-hero.webp",
+          "width": 627,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/girl-angle-section.webp",
+          "width": 418,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/girl-angle-card.webp",
+          "width": 209,
+          "height": 400
+        }
+      }
+    },
+    "girl-side": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/girl-side-hero.webp",
+          "width": 744,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/girl-side-section.webp",
+          "width": 496,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/girl-side-card.webp",
+          "width": 248,
+          "height": 400
+        }
+      }
+    },
+    "girl-back": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/girl-back-hero.webp",
+          "width": 794,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/girl-back-section.webp",
+          "width": 529,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/girl-back-card.webp",
+          "width": 265,
+          "height": 400
+        }
+      }
+    },
+    "grandpa-front": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/grandpa-front-hero.webp",
+          "width": 739,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/grandpa-front-section.webp",
+          "width": 493,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/grandpa-front-card.webp",
+          "width": 246,
+          "height": 400
+        }
+      }
+    },
+    "grandpa-angle": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/grandpa-angle-hero.webp",
+          "width": 768,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/grandpa-angle-section.webp",
+          "width": 512,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/grandpa-angle-card.webp",
+          "width": 256,
+          "height": 400
+        }
+      }
+    },
+    "grandpa-side": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/grandpa-side-hero.webp",
+          "width": 712,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/grandpa-side-section.webp",
+          "width": 475,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/grandpa-side-card.webp",
+          "width": 237,
+          "height": 400
+        }
+      }
+    },
+    "grandpa-side2": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/grandpa-side2-hero.webp",
+          "width": 712,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/grandpa-side2-section.webp",
+          "width": 475,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/grandpa-side2-card.webp",
+          "width": 237,
+          "height": 400
+        }
+      }
+    },
+    "grandpa-angle2": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/grandpa-angle2-hero.webp",
+          "width": 649,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/grandpa-angle2-section.webp",
+          "width": 433,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/grandpa-angle2-card.webp",
+          "width": 216,
+          "height": 400
+        }
+      }
+    },
+    "grandpa-back": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/grandpa-back-hero.webp",
+          "width": 773,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/grandpa-back-section.webp",
+          "width": 515,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/grandpa-back-card.webp",
+          "width": 258,
+          "height": 400
+        }
+      }
+    },
+    "grandma-front": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/grandma-front-hero.webp",
+          "width": 835,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/grandma-front-section.webp",
+          "width": 557,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/grandma-front-card.webp",
+          "width": 278,
+          "height": 400
+        }
+      }
+    },
+    "grandma-angle": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/grandma-angle-hero.webp",
+          "width": 773,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/grandma-angle-section.webp",
+          "width": 515,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/grandma-angle-card.webp",
+          "width": 258,
+          "height": 400
+        }
+      }
+    },
+    "grandma-side": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/grandma-side-hero.webp",
+          "width": 677,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/grandma-side-section.webp",
+          "width": 451,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/grandma-side-card.webp",
+          "width": 226,
+          "height": 400
+        }
+      }
+    },
+    "grandma-side2": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/grandma-side2-hero.webp",
+          "width": 707,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/grandma-side2-section.webp",
+          "width": 471,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/grandma-side2-card.webp",
+          "width": 236,
+          "height": 400
+        }
+      }
+    },
+    "grandma-back": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/grandma-back-hero.webp",
+          "width": 834,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/grandma-back-section.webp",
+          "width": 556,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/grandma-back-card.webp",
+          "width": 278,
+          "height": 400
+        }
+      }
+    },
+    "shab-front": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/shab-front-hero.webp",
+          "width": 882,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/shab-front-section.webp",
+          "width": 588,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/shab-front-card.webp",
+          "width": 294,
+          "height": 400
+        }
+      }
+    },
+    "baby-back": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/baby-back-hero.webp",
+          "width": 816,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/baby-back-section.webp",
+          "width": 544,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/baby-back-card.webp",
+          "width": 272,
+          "height": 400
+        }
+      }
+    },
+    "shab-front2": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/shab-front2-hero.webp",
+          "width": 798,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/shab-front2-section.webp",
+          "width": 532,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/shab-front2-card.webp",
+          "width": 266,
+          "height": 400
+        }
+      }
+    },
+    "shab-side": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/shab-side-hero.webp",
+          "width": 628,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/shab-side-section.webp",
+          "width": 419,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/shab-side-card.webp",
+          "width": 209,
+          "height": 400
+        }
+      }
+    },
+    "shab-back": {
+      "sizes": {
+        "hero": {
+          "src": "/characters/shab-back-hero.webp",
+          "width": 869,
+          "height": 1200
+        },
+        "section": {
+          "src": "/characters/shab-back-section.webp",
+          "width": 579,
+          "height": 800
+        },
+        "card": {
+          "src": "/characters/shab-back-card.webp",
+          "width": 290,
+          "height": 400
+        }
+      }
+    }
+  },
+  "brand": {
+    "logo-full": {
+      "src": "/brand/logo-full.png",
+      "width": 519,
+      "height": 144
+    },
+    "logo-icon": {
+      "src": "/brand/logo-icon.png",
+      "width": 512,
+      "height": 512
+    }
+  }
+}

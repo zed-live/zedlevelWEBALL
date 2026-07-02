@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+/* ─── ZEDLEVEL brand tokens — CONTENT.md §1. Never introduce other hues. ─── */
+@theme {
+  --color-primary: #0047ff; /* Vivid Blue — the workhorse */
+  --color-primary-dark: #0035bf; /* hover/active */
+  --color-primary-light: #eef3ff; /* soft tint backgrounds */
+  --color-accent: #f8be4c; /* Orange — SCARCE: arrow motif, key CTAs, highlights */
+  --color-accent-dark: #d99a1b; /* orange hover */
+  --color-ink: #1e1e1e; /* text */
+  --color-section: #f5f7fa; /* alternating section background */
+
+  /* Latin glyphs → Source Sans 3, Arabic glyphs → Cairo (per-glyph fallback) */
+  --font-sans: var(--font-source-sans), var(--font-cairo), ui-sans-serif,
+    system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* Site container: mobile-first padding, comfortable max width */
+@utility container-site {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 72rem;
+  padding-inline: 1rem;
+  @media (min-width: 640px) {
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 1024px) {
+    padding-inline: 2rem;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-white, #ffffff);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    /* Arabic body text: generous line-height, never letter-spaced */
+    line-height: 1.8;
+    letter-spacing: normal;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.4;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  /* Visible focus for keyboard users */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Skip-to-content link (accessibility) */
+.skip-link {
+  position: fixed;
+  inset-inline-start: 1rem;
+  top: -100%;
+  z-index: 100;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 1rem;
+}

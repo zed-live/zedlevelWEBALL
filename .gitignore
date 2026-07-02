@@ -1,0 +1,32 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+next-env.d.ts
+
+# production
+build/
+
+# misc
+.DS_Store
+*.pem
+.vercel
+
+# env files
+.env*
+!.env.example
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# typescript
+*.tsbuildinfo
+
+# Source character images — huge originals (~50–100MB each).
+# Optimized versions are generated into /public/characters and committed.
+صور الشخصيات المعتمدة/
+assets-source/
