@@ -21,6 +21,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { LevelLadder } from "@/components/LevelLadder";
 import { CourseCard } from "@/components/CourseCard";
 import { TestimonialCard } from "@/components/TestimonialCard";
+import { StatStrip } from "@/components/StatStrip";
 import { Reveal } from "@/components/Reveal";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
@@ -156,37 +157,67 @@ export default function HomePage() {
               </span>
             </h1>
 
-            <p className="mt-6 text-lg font-semibold text-ink/70">
-              انضم لأكثر من{" "}
-              <span className="font-black text-primary">5,000 مستفيد</span> من
-              أكاديمية زد لفل{" "}
+            <p className="mt-6 text-lg font-semibold leading-9 text-ink/70">
+              اختبار مجاني يحدد مستواك بدقة خلال دقائق — وبعدها خطة واضحة
+              تمشي عليها خطوة بخطوة مع أكاديمية{" "}
               <span className="font-black text-primary">ZEDLEVEL</span>
             </p>
 
-            <div className="mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center">
+            {/* mobile mascot — brand warmth above the fold */}
+            <div className="mt-6 flex justify-center md:hidden">
+              <Mascot
+                name="shab-front"
+                size="section"
+                priority
+                className="h-48 w-auto drop-shadow-xl"
+              />
+            </div>
+
+            <div className="mt-7 flex flex-col gap-3.5 sm:flex-row sm:items-center md:mt-8">
               <Link href="/test" className="btn btn-primary text-lg">
-                حدد مستواك — ابدأ الاختبار المجاني
+                اختبر مستواك مجانًا
               </Link>
               <WhatsAppButton message={site.whatsapp.msgGeneral} source="hero">
                 تقييم سريع بالواتساب
               </WhatsAppButton>
             </div>
 
-            <p className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-ink/55">
+            <p className="mt-3.5 text-sm font-bold text-ink/60">
+              20 سؤالًا · 5 دقائق تقريبًا · بدون تسجيل · نتيجة فورية ⚡
+            </p>
+            <p className="mt-1.5 inline-flex items-center gap-1.5 text-sm font-bold text-ink/55">
               <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-accent" />
               مجاني لفترة محدودة — احجز موعدك الآن
             </p>
 
-            <div className="mt-9 flex flex-wrap items-center gap-2.5">
+            {/* proof — visible on mobile (floating pills are md+) */}
+            <div className="mt-6 flex flex-wrap items-center gap-2 md:hidden">
+              {["⭐ +5,000 مستفيد", "⏱️ 15–30 دقيقة يوميًا", "🎓 شهادة لكل مستوى"].map(
+                (p) => (
+                  <span
+                    key={p}
+                    className="rounded-full bg-white px-3 py-1.5 text-xs font-black text-ink/70 shadow-soft"
+                  >
+                    {p}
+                  </span>
+                ),
+              )}
+            </div>
+
+            <div className="mt-7 flex snap-x items-center gap-2.5 overflow-x-auto pb-2 md:mt-9 md:flex-wrap md:overflow-visible md:pb-0">
               {LEVELS.map((l) => (
-                <LevelChip key={l} level={l} />
+                <span key={l} className="shrink-0 snap-start">
+                  <LevelChip level={l} />
+                </span>
               ))}
-              <LevelChip level="C1" soon />
+              <span className="shrink-0 snap-start">
+                <LevelChip level="C1" soon />
+              </span>
             </div>
           </div>
 
-          {/* Mascot + floating proof */}
-          <div className="relative mx-auto w-full max-w-md md:max-w-none">
+          {/* Mascot + floating proof (desktop) */}
+          <div className="relative mx-auto hidden w-full max-w-md md:block md:max-w-none">
             <div
               aria-hidden
               className="absolute left-1/2 top-1/2 -z-10 aspect-square w-[92%] max-w-lg -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-soft/60 blur-2xl"
@@ -218,22 +249,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══ Stats strip ═══ */}
-      <section className="border-y border-ink/5 bg-white">
-        <Reveal>
-          <div className="container-site grid grid-cols-2 divide-x divide-x-reverse divide-ink/5 lg:grid-cols-4">
-            {stats.map((s) => (
-              <div key={s.label} className="px-4 py-8 text-center lg:py-10">
-                <p className="text-3xl font-black text-primary lg:text-4xl">
-                  {s.value}
-                </p>
-                <p className="mt-1.5 text-sm font-bold text-ink/55">
-                  {s.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-      </section>
+      <StatStrip items={stats} />
 
       {/* ═══ كيف بتتحسّن؟ (4 pillars) ═══ */}
       <section className="bg-section py-20 lg:py-28">
@@ -351,6 +367,13 @@ export default function HomePage() {
               </Reveal>
             ))}
           </div>
+          <Reveal delay={280}>
+            <div className="mt-10 text-center">
+              <Link href="/test" className="btn btn-outline">
+                ابدأ بالاختبار المجاني — 5 دقائق ⚡
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -519,7 +542,7 @@ export default function HomePage() {
                 تقييم سريع بالواتساب
               </WhatsAppButton>
             </div>
-            <p className="mt-6 text-sm font-bold text-white/55">
+            <p className="mt-6 text-sm font-bold text-white/75">
               بدون تسجيل · خلال دقائق · توصية فورية بالدورة المناسبة
             </p>
           </div>

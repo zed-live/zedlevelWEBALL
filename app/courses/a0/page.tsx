@@ -401,6 +401,23 @@ export default function A0Page() {
         </div>
       </section>
 
+      {/* ═══ Mid-page CTA ═══ */}
+      <section className="container-site py-14">
+        <Reveal>
+          <div className="card flex flex-col items-center gap-6 p-8 text-center sm:p-9 lg:flex-row lg:justify-between lg:text-start">
+            <div>
+              <h2 className="text-xl font-black sm:text-2xl">
+                مقاعد الدفعة محدودة — احجز مكانك من الآن
+              </h2>
+              <p className="mt-1.5 text-ink/60">
+                26 درسًا · شهادة معتمدة · أسبوع مكثف بمجموعة من 1–7 فقط
+              </p>
+            </div>
+            <SallaButton course="a0" source="a0-mid" />
+          </div>
+        </Reveal>
+      </section>
+
       {/* ═══ Weekly rhythm ═══ */}
       <section className="py-20 lg:py-28">
         <div className="container-site">
@@ -573,11 +590,11 @@ export default function A0Page() {
                 اسألنا قبل تشترك
               </WhatsAppButton>
             </div>
-            <p className="mt-6 text-sm font-bold text-white/55">
+            <p className="mt-6 text-sm font-bold text-white/75">
               دفع آمن عبر منصة سلة 🔒 · بعد الدفع راسلنا على الواتساب لاستلام
               رابط الدورة والجدول
             </p>
-            <p className="mt-3 text-sm text-white/45">
+            <p className="mt-3 text-sm text-white/80">
               لسا مو متأكد من مستواك؟{" "}
               <Link href="/test" className="font-bold text-accent hover:underline">
                 اختبر مستواك مجانًا

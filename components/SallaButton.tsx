@@ -33,7 +33,9 @@ export function SallaButton({
     <div className={`w-full sm:w-auto ${className}`}>
       {todo ? (
         <span
+          role="button"
           aria-disabled="true"
+          aria-label="زر الاشتراك — التسجيل يفتح قريبًا"
           className="btn relative w-full cursor-not-allowed bg-ink/10 text-lg text-ink/45 sm:w-auto"
         >
           <ShoppingBag className="h-5 w-5" aria-hidden />

@@ -54,14 +54,15 @@ export function LevelLadder({
   const arrowBottom = useTransform(scrollYProgress, [0, 1], ["30%", "90%"]);
 
   const stepBase = dark
-    ? "border-white/15 bg-white/10 backdrop-blur-sm hover:bg-accent hover:border-accent"
+    ? "border-white/15 bg-white/10 lg:backdrop-blur-sm hover:bg-accent hover:border-accent"
     : "border-primary/10 bg-primary-light hover:bg-primary hover:border-primary";
   const stepCurrent = dark
     ? "border-accent bg-accent motion-safe:animate-pulse"
     : "border-primary bg-primary motion-safe:animate-pulse";
 
   return (
-    <div ref={ref} className="relative h-72 w-full sm:h-96" dir="rtl">
+    <div>
+      <div ref={ref} className="relative h-72 w-full sm:h-96" dir="rtl">
       {/* dotted ascent path */}
       <svg
         aria-hidden
@@ -104,7 +105,7 @@ export function LevelLadder({
               key={step.code}
               href="/test"
               style={{ height: `${HEIGHTS[i]}%` }}
-              className={`group relative flex-1 rounded-t-2xl border transition-colors duration-200 ${
+              className={`group relative flex-1 rounded-t-2xl border transition-[colors,transform] duration-200 active:scale-[0.97] ${
                 isCurrent ? stepCurrent : stepBase
               }`}
               aria-label={`مستوى ${step.code} — ${step.label}. اختبر مستواك`}
@@ -130,8 +131,8 @@ export function LevelLadder({
                         ? "text-ink/70"
                         : "text-white/85"
                       : dark
-                        ? "text-white/55 group-hover:text-ink/70"
-                        : "text-ink/45 group-hover:text-white/85"
+                        ? "text-white/70 group-hover:text-ink/70"
+                        : "text-ink/50 group-hover:text-white/85"
                   }`}
                 >
                   {step.label}
@@ -150,6 +151,14 @@ export function LevelLadder({
           );
         })}
       </div>
+      </div>
+      <p
+        className={`mt-4 text-center text-sm font-bold ${
+          dark ? "text-white/70" : "text-ink/55"
+        }`}
+      >
+        👆 اضغط على مستواك المتوقع — أو اختبر نفسك بدقة في 5 دقائق
+      </p>
     </div>
   );
 }

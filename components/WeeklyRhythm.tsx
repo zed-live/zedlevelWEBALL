@@ -58,7 +58,7 @@ export function WeeklyRhythm() {
         })}
       </div>
       <p className="mt-5 text-center text-sm font-bold text-ink/55">
-        ٦ دروس في الأسبوع — يوم يوصلك درسان، واليوم التالي لإكمالهما · والجمعة
+        6 دروس في الأسبوع — يوم يوصلك درسان، واليوم التالي لإكمالهما · والجمعة
         إجازة مهما صار 🕌
       </p>
     </div>

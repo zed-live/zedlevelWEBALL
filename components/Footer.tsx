@@ -109,7 +109,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10 py-5">
-        <p className="container-site text-center text-xs text-white/50">
+        <p className="container-site text-center text-xs font-semibold text-white/65">
           © {year} ZEDLEVEL — {site.nameAr} · جميع الحقوق محفوظة
         </p>
       </div>

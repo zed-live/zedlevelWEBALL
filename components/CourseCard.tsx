@@ -10,14 +10,23 @@ export function CourseCard({ course }: { course: CourseMeta }) {
   const stats = course.stats?.split("·").map((s) => s.trim()) ?? [];
 
   return (
-    <article className="card card-hover relative flex flex-col overflow-hidden p-7">
+    <article
+      className={`card card-hover relative flex flex-col overflow-hidden p-7 ${
+        course.featured ? "ring-2 ring-primary/25" : ""
+      }`}
+    >
       {/* watermark motif */}
       <ArrowMotif
         aria-hidden
         className="absolute -bottom-5 -start-5 h-24 w-32 rotate-12 text-primary/[0.04]"
       />
 
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
+        {course.featured && (
+          <span className="rounded-full bg-accent px-3 py-1 text-xs font-black text-ink">
+            ابدأ من هنا ⭐
+          </span>
+        )}
         <span
           className={`rounded-full px-3 py-1 text-xs font-black ${
             ready ? "bg-primary text-white" : "bg-section text-ink/60"

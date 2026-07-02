@@ -15,6 +15,8 @@ export interface CourseMeta {
   notifyName?: string;
   /** extra badge, e.g. الأقرب افتتاحًا */
   badge?: string;
+  /** featured = the "ابدأ من هنا" spotlight treatment */
+  featured?: boolean;
 }
 
 export const courses: CourseMeta[] = [
@@ -25,6 +27,7 @@ export const courses: CourseMeta[] = [
     tagline: "ابدأ من الصفر بالطريقة الصحيحة — أساس يخدمك طول رحلتك",
     stats: "3 مراحل · 26 درسًا · +460 كلمة",
     status: "ready",
+    featured: true,
   },
   {
     slug: "levels",

@@ -1,19 +1,12 @@
 import type { Metadata } from "next";
-import { ComingSoonStub } from "@/components/ComingSoonStub";
+import { LevelTest } from "@/components/test/LevelTest";
 
 export const metadata: Metadata = {
-  title: "اختبار تحديد المستوى المجاني",
+  title: "اختبار تحديد مستوى الإنجليزية — مجاني",
   description:
-    "حدد مستواك في الإنجليزية خلال دقائق — اختبار مجاني بدون تسجيل، من A0 حتى C1.",
+    "حدد مستواك في الإنجليزية خلال 5 دقائق: 20 سؤالًا متدرجًا من A0 حتى C1، بدون تسجيل، مع توصية فورية بالدورة المناسبة لك.",
 };
 
-/** M1 stub — the full Free Level Test flow is milestone M4. */
 export default function TestPage() {
-  return (
-    <ComingSoonStub
-      title="اختبار تحديد المستوى ⭐"
-      sub="نجهّز لك اختبارًا يحدد مستواك في دقائق. حاليًا تقدر تحصل على تقييم سريع مجاني عبر الواتساب."
-      mascot="girl-front"
-    />
-  );
+  return <LevelTest />;
 }
