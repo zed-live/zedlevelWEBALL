@@ -2,19 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { m, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { ArrowMotif } from "./ArrowMotif";
 
 /**
  * THE signature ZEDLEVEL visual — the A0→B2 staircase climbing
- * up-and-to-the-start (RTL: rises right → left), with the brand's orange
- * arrow ascending the steps on scroll. Reduced-motion safe.
- * If a stored test result exists (M4 sets `zedlevel_level`), that step pulses.
+ * up-and-to-the-start (RTL: rises right → left). Steps grow in with a
+ * stagger; the orange arrow ascends on scroll with a living glow.
+ * If a stored test result exists (`zedlevel_level`), that step pulses.
  */
 const STEPS = [
   { code: "A0", label: "التأسيس" },
@@ -63,94 +58,111 @@ export function LevelLadder({
   return (
     <div>
       <div ref={ref} className="relative h-72 w-full sm:h-96" dir="rtl">
-      {/* dotted ascent path */}
-      <svg
-        aria-hidden
-        className={`absolute inset-0 h-full w-full ${dark ? "text-white/20" : "text-primary/15"}`}
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="M 92 70 L 10 12"
-          stroke="currentColor"
-          strokeWidth="1"
-          strokeDasharray="0.2 4"
-          strokeLinecap="round"
-          vectorEffect="non-scaling-stroke"
-          style={{ strokeWidth: 3, strokeDasharray: "1 10" }}
-        />
-      </svg>
+        {/* dotted ascent path */}
+        <svg
+          aria-hidden
+          className={`absolute inset-0 h-full w-full ${dark ? "text-white/20" : "text-primary/15"}`}
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M 92 70 L 10 12"
+            stroke="currentColor"
+            strokeLinecap="round"
+            vectorEffect="non-scaling-stroke"
+            style={{ strokeWidth: 3, strokeDasharray: "1 10" }}
+          />
+        </svg>
 
-      {/* the climbing arrow */}
-      <motion.div
-        aria-hidden
-        className="absolute z-10 w-[11%] min-w-11 text-accent"
-        style={{
-          filter: "drop-shadow(0 6px 16px rgba(248,190,76,.55))",
-          ...(reduceMotion
-            ? { insetInlineEnd: "83%", bottom: "90%" }
-            : {}),
-          ...(reduceMotion ? {} : { insetInlineEnd: arrowEnd, bottom: arrowBottom }),
-        }}
-      >
-        <ArrowMotif className="w-full" />
-      </motion.div>
+        {/* the climbing arrow */}
+        <m.div
+          aria-hidden
+          className="animate-glow absolute z-10 w-[11%] min-w-11 text-accent"
+          style={
+            reduceMotion
+              ? { insetInlineEnd: "83%", bottom: "90%" }
+              : { insetInlineEnd: arrowEnd, bottom: arrowBottom }
+          }
+        >
+          <ArrowMotif className="w-full" />
+        </m.div>
 
-      {/* the staircase */}
-      <div className="absolute inset-0 flex items-end gap-2 sm:gap-2.5">
-        {STEPS.map((step, i) => {
-          const isCurrent = storedLevel === step.code;
-          return (
-            <Link
-              key={step.code}
-              href="/test"
-              style={{ height: `${HEIGHTS[i]}%` }}
-              className={`group relative flex-1 rounded-t-2xl border transition-[colors,transform] duration-200 active:scale-[0.97] ${
-                isCurrent ? stepCurrent : stepBase
-              }`}
-              aria-label={`مستوى ${step.code} — ${step.label}. اختبر مستواك`}
-            >
-              <span className="absolute inset-x-0 top-3 flex flex-col items-center gap-1 sm:top-5">
-                <span
-                  className={`text-base font-black sm:text-2xl ${
-                    isCurrent
-                      ? dark
-                        ? "text-ink"
-                        : "text-white"
-                      : dark
-                        ? "text-white group-hover:text-ink"
-                        : "text-primary group-hover:text-white"
+        {/* the staircase — steps grow in with a stagger */}
+        <m.div
+          className="absolute inset-0 flex items-end gap-2 sm:gap-2.5"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.1 } },
+          }}
+        >
+          {STEPS.map((step, i) => {
+            const isCurrent = storedLevel === step.code;
+            return (
+              <m.div
+                key={step.code}
+                className="relative flex-1 origin-bottom"
+                style={{ height: `${HEIGHTS[i]}%` }}
+                variants={{
+                  hidden: { scaleY: 0, opacity: 0 },
+                  show: {
+                    scaleY: 1,
+                    opacity: 1,
+                    transition: { type: "spring", stiffness: 120, damping: 16 },
+                  },
+                }}
+              >
+                <Link
+                  href="/test"
+                  className={`group absolute inset-0 block rounded-t-2xl border transition-colors duration-200 active:scale-[0.97] ${
+                    isCurrent ? stepCurrent : stepBase
                   }`}
+                  aria-label={`مستوى ${step.code} — ${step.label}. اختبر مستواك`}
                 >
-                  {step.code}
-                </span>
-                <span
-                  className={`hidden text-[11px] font-bold sm:block ${
-                    isCurrent
-                      ? dark
-                        ? "text-ink/70"
-                        : "text-white/85"
-                      : dark
-                        ? "text-white/70 group-hover:text-ink/70"
-                        : "text-ink/50 group-hover:text-white/85"
-                  }`}
-                >
-                  {step.label}
-                </span>
-                {isCurrent && (
-                  <span
-                    className={`rounded-full px-2 py-0.5 text-[10px] font-black ${
-                      dark ? "bg-navy text-white" : "bg-accent text-ink"
-                    }`}
-                  >
-                    مستواك
+                  <span className="absolute inset-x-0 top-3 flex flex-col items-center gap-1 sm:top-5">
+                    <span
+                      className={`text-base font-black sm:text-2xl ${
+                        isCurrent
+                          ? dark
+                            ? "text-ink"
+                            : "text-white"
+                          : dark
+                            ? "text-white group-hover:text-ink"
+                            : "text-primary group-hover:text-white"
+                      }`}
+                    >
+                      {step.code}
+                    </span>
+                    <span
+                      className={`hidden text-[11px] font-bold sm:block ${
+                        isCurrent
+                          ? dark
+                            ? "text-ink/70"
+                            : "text-white/85"
+                          : dark
+                            ? "text-white/70 group-hover:text-ink/70"
+                            : "text-ink/50 group-hover:text-white/85"
+                      }`}
+                    >
+                      {step.label}
+                    </span>
+                    {isCurrent && (
+                      <span
+                        className={`rounded-full px-2 py-0.5 text-[10px] font-black ${
+                          dark ? "bg-navy text-white" : "bg-accent text-ink"
+                        }`}
+                      >
+                        مستواك
+                      </span>
+                    )}
                   </span>
-                )}
-              </span>
-            </Link>
-          );
-        })}
-      </div>
+                </Link>
+              </m.div>
+            );
+          })}
+        </m.div>
       </div>
       <p
         className={`mt-4 text-center text-sm font-bold ${

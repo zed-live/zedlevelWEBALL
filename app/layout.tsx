@@ -5,6 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { Analytics } from "@/components/Analytics";
+import { MotionProvider } from "@/components/motion/MotionProvider";
 
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
@@ -44,14 +45,16 @@ export default function RootLayout({
       className={`${cairo.variable} ${sourceSans.variable}`}
     >
       <body>
-        <a href="#main" className="skip-link">
-          تجاوز إلى المحتوى
-        </a>
-        <Navbar />
-        <main id="main">{children}</main>
-        <Footer />
-        <WhatsAppFloat />
-        <Analytics />
+        <MotionProvider>
+          <a href="#main" className="skip-link">
+            تجاوز إلى المحتوى
+          </a>
+          <Navbar />
+          <main id="main">{children}</main>
+          <Footer />
+          <WhatsAppFloat />
+          <Analytics />
+        </MotionProvider>
       </body>
     </html>
   );

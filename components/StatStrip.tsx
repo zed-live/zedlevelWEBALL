@@ -1,6 +1,7 @@
 import { Reveal } from "./Reveal";
+import { CountUp } from "./motion/CountUp";
 
-/** Big-numbers proof strip (homepage stats, A0 by-numbers, levels by-numbers). */
+/** Big-numbers proof strip with count-up animation (homepage, A0, levels). */
 export function StatStrip({
   items,
   className = "",
@@ -26,7 +27,7 @@ export function StatStrip({
               }`}
             >
               <p className="text-3xl font-black text-primary lg:text-4xl">
-                {s.value}
+                <CountUp value={s.value} />
               </p>
               <p className="mt-1.5 text-sm font-bold text-ink/55">{s.label}</p>
             </div>

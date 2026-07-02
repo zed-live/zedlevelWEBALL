@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { m } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import manifest from "@/public/characters/manifest.json";
 
@@ -86,7 +87,11 @@ export function Navbar() {
             >
               {l.label}
               {pathname === l.href && (
-                <span className="absolute -bottom-0.5 start-0 h-0.5 w-full rounded-full bg-accent" />
+                <m.span
+                  layoutId="nav-active"
+                  className="absolute -bottom-0.5 start-0 h-0.5 w-full rounded-full bg-accent"
+                  transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                />
               )}
             </Link>
           ))}

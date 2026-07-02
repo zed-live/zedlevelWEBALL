@@ -25,6 +25,8 @@ import { WeeklyRhythm } from "@/components/WeeklyRhythm";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { StickyBuyBar } from "@/components/StickyBuyBar";
 import { Reveal } from "@/components/Reveal";
+import { Stagger, StaggerItem } from "@/components/motion/Stagger";
+import { Underline } from "@/components/motion/Underline";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -240,72 +242,75 @@ export default function A0Page() {
 
       {/* ═══ Hero ═══ */}
       <section className="relative overflow-hidden bg-hero-glow">
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-dots [mask-image:radial-gradient(65%_60%_at_75%_15%,black,transparent)]"
+        />
+        <div
+          aria-hidden
+          className="orb orb-blue absolute -top-24 end-[-8rem] h-96 w-96"
+        />
         <ArrowMotif
           aria-hidden
           className="absolute -top-8 start-[-3rem] h-56 w-80 -rotate-12 text-primary/[0.035]"
         />
-        <div className="container-site grid items-center gap-12 py-14 md:grid-cols-2 md:py-20">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-white px-4 py-1.5 text-sm font-black text-primary shadow-soft">
-              <ArrowMotif className="h-2.5 w-3.5 text-accent" />
-              دورة التأسيس · A0
-            </span>
+        <div className="container-site relative grid items-center gap-12 py-14 md:grid-cols-2 md:py-20">
+          <Stagger>
+            <StaggerItem>
+              <span className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-white px-4 py-1.5 text-sm font-black text-primary shadow-soft">
+                <ArrowMotif className="h-2.5 w-3.5 text-accent" />
+                دورة التأسيس · A0
+              </span>
+            </StaggerItem>
 
-            <h1 className="mt-5 text-[2.1rem] font-black leading-[1.35] sm:text-5xl">
-              التأسيس{" "}
-              <span className="relative inline-block text-primary">
-                الصحيح
-                <svg
-                  aria-hidden
-                  className="absolute -bottom-2 start-0 h-3 w-full text-accent"
-                  viewBox="0 0 200 12"
-                  preserveAspectRatio="none"
+            <StaggerItem>
+              <h1 className="mt-5 text-[clamp(2.2rem,5.5vw,3.6rem)] font-black leading-[1.3]">
+                التأسيس <Underline className="text-primary">الصحيح</Underline>{" "}
+                بالإنجليزية
+              </h1>
+            </StaggerItem>
+
+            <StaggerItem>
+              <p className="mt-6 text-lg font-semibold leading-9 text-ink/70">
+                ابدأ من الصفر بالطريقة الصحيحة — أساس يخدمك طول رحلتك مع
+                الإنجليزية، بالعربي وخطوة بخطوة.
+              </p>
+            </StaggerItem>
+
+            <StaggerItem>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {["15–30 دقيقة يوميًا", "جمعة راحة 🕌", "اختبار + شهادة 🎓"].map(
+                  (chip) => (
+                    <span
+                      key={chip}
+                      className="rounded-full bg-primary-light px-3.5 py-1.5 text-sm font-bold text-primary"
+                    >
+                      {chip}
+                    </span>
+                  ),
+                )}
+              </div>
+            </StaggerItem>
+
+            <StaggerItem>
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-start">
+                <SallaButton course="a0" source="a0-hero" hero />
+                <WhatsAppButton
+                  message={site.whatsapp.msgCourseInquiry("التأسيس الصحيح A0")}
+                  source="a0-hero"
                 >
-                  <path
-                    d="M3 9 C 60 2.5, 140 2.5, 197 7.5"
-                    stroke="currentColor"
-                    strokeWidth="6"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </span>{" "}
-              بالإنجليزية
-            </h1>
+                  عندي استفسار
+                </WhatsAppButton>
+              </div>
+            </StaggerItem>
 
-            <p className="mt-6 text-lg font-semibold leading-9 text-ink/70">
-              ابدأ من الصفر بالطريقة الصحيحة — أساس يخدمك طول رحلتك مع
-              الإنجليزية، بالعربي وخطوة بخطوة.
-            </p>
-
-            <div className="mt-4 flex flex-wrap gap-2">
-              {["15–30 دقيقة يوميًا", "جمعة راحة 🕌", "اختبار + شهادة 🎓"].map(
-                (chip) => (
-                  <span
-                    key={chip}
-                    className="rounded-full bg-primary-light px-3.5 py-1.5 text-sm font-bold text-primary"
-                  >
-                    {chip}
-                  </span>
-                ),
-              )}
-            </div>
-
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-start">
-              <SallaButton course="a0" source="a0-hero" hero />
-              <WhatsAppButton
-                message={site.whatsapp.msgCourseInquiry("التأسيس الصحيح A0")}
-                source="a0-hero"
-              >
-                عندي استفسار
-              </WhatsAppButton>
-            </div>
-
-            <p className="mt-4 text-sm font-bold text-ink/55">
-              دفعات صغيرة محدودة العدد على مدار السنة — لمن يبدأ من الصفر أو
-              يعيد التأسيس، من عمر 14+
-            </p>
-          </div>
+            <StaggerItem>
+              <p className="mt-4 text-sm font-bold text-ink/55">
+                دفعات صغيرة محدودة العدد على مدار السنة — لمن يبدأ من الصفر أو
+                يعيد التأسيس، من عمر 14+
+              </p>
+            </StaggerItem>
+          </Stagger>
 
           <div className="relative mx-auto w-full max-w-md md:max-w-none">
             <div
@@ -317,7 +322,7 @@ export default function A0Page() {
                 name="shab-front2"
                 size="hero"
                 priority
-                className="h-72 w-auto drop-shadow-2xl sm:h-96 lg:h-[26rem]"
+                className="h-72 w-auto animate-breathe drop-shadow-2xl sm:h-96 lg:h-[26rem]"
               />
             </div>
             <div

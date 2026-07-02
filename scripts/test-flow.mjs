@@ -20,10 +20,16 @@ await page.screenshot({ path: `${outDir}/flow-2-quiz.png` });
 
 // answer all questions (always the 2nd option → mixed correctness)
 for (let i = 0; i < 25; i++) {
-  const options = page.locator("[data-option]");
-  if ((await options.count()) === 0) break;
-  await options.nth(1).click();
-  await page.waitForTimeout(480);
+  try {
+    await page
+      .locator("[data-option]")
+      .first()
+      .waitFor({ state: "visible", timeout: 2500 });
+  } catch {
+    break; // no more questions — result screen reached
+  }
+  await page.locator("[data-option]").nth(1).click();
+  await page.waitForTimeout(520);
 }
 
 await page.waitForTimeout(600);

@@ -23,6 +23,9 @@ import { CourseCard } from "@/components/CourseCard";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { StatStrip } from "@/components/StatStrip";
 import { Reveal } from "@/components/Reveal";
+import { Stagger, StaggerItem } from "@/components/motion/Stagger";
+import { Underline } from "@/components/motion/Underline";
+import { Marquee } from "@/components/Marquee";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
 
@@ -125,96 +128,113 @@ export default function HomePage() {
     <>
       {/* ═══ Hero ═══ */}
       <section className="relative overflow-hidden bg-hero-glow">
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-dots [mask-image:radial-gradient(65%_60%_at_75%_15%,black,transparent)]"
+        />
+        <div
+          aria-hidden
+          className="orb orb-blue absolute -top-28 end-[-9rem] h-[26rem] w-[26rem]"
+        />
+        <div
+          aria-hidden
+          className="orb orb-accent absolute bottom-[-7rem] start-[-7rem] h-80 w-80"
+        />
         <ArrowMotif
           aria-hidden
           className="absolute -top-10 start-[-4rem] h-64 w-96 -rotate-12 text-primary/[0.035]"
         />
-        <div className="container-site grid items-center gap-12 py-14 md:grid-cols-2 md:py-20 lg:py-24">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-white px-4 py-1.5 text-sm font-bold text-primary shadow-soft">
-              <ArrowMotif className="h-2.5 w-3.5 text-accent" />
-              {site.nameAr}
-            </span>
-
-            <h1 className="mt-5 text-[2.1rem] font-black leading-[1.35] sm:text-5xl lg:text-[3.4rem]">
-              فرصتك الذهبية لإتقان الإنجليزية{" "}
-              <span className="relative inline-block text-primary">
-                مهما كان مستواك
-                <svg
-                  aria-hidden
-                  className="absolute -bottom-2 start-0 h-3 w-full text-accent"
-                  viewBox="0 0 200 12"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M3 9 C 60 2.5, 140 2.5, 197 7.5"
-                    stroke="currentColor"
-                    strokeWidth="5"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                </svg>
+        <div className="container-site relative grid items-center gap-12 py-14 md:grid-cols-2 md:py-20 lg:py-24">
+          <Stagger>
+            <StaggerItem>
+              <span className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-white px-4 py-1.5 text-sm font-bold text-primary shadow-soft">
+                <ArrowMotif className="h-2.5 w-3.5 text-accent" />
+                {site.nameAr}
               </span>
-            </h1>
+            </StaggerItem>
 
-            <p className="mt-6 text-lg font-semibold leading-9 text-ink/70">
-              اختبار مجاني يحدد مستواك بدقة خلال دقائق — وبعدها خطة واضحة
-              تمشي عليها خطوة بخطوة مع أكاديمية{" "}
-              <span className="font-black text-primary">ZEDLEVEL</span>
-            </p>
+            <StaggerItem>
+              <h1 className="mt-5 text-[clamp(2.3rem,6vw,3.9rem)] font-black leading-[1.3]">
+                فرصتك الذهبية لإتقان الإنجليزية{" "}
+                <Underline className="text-primary">مهما كان مستواك</Underline>
+              </h1>
+            </StaggerItem>
+
+            <StaggerItem>
+              <p className="mt-6 text-lg font-semibold leading-9 text-ink/70">
+                اختبار مجاني يحدد مستواك بدقة خلال دقائق — وبعدها خطة واضحة
+                تمشي عليها خطوة بخطوة مع أكاديمية{" "}
+                <span className="font-black text-primary">ZEDLEVEL</span>
+              </p>
+            </StaggerItem>
 
             {/* mobile mascot — brand warmth above the fold */}
-            <div className="mt-6 flex justify-center md:hidden">
-              <Mascot
-                name="shab-front"
-                size="section"
-                priority
-                className="h-48 w-auto drop-shadow-xl"
-              />
-            </div>
+            <StaggerItem className="md:hidden">
+              <div className="mt-6 flex justify-center">
+                <Mascot
+                  name="shab-front"
+                  size="section"
+                  priority
+                  className="h-48 w-auto animate-breathe drop-shadow-xl"
+                />
+              </div>
+            </StaggerItem>
 
-            <div className="mt-7 flex flex-col gap-3.5 sm:flex-row sm:items-center md:mt-8">
-              <Link href="/test" className="btn btn-primary text-lg">
-                اختبر مستواك مجانًا
-              </Link>
-              <WhatsAppButton message={site.whatsapp.msgGeneral} source="hero">
-                تقييم سريع بالواتساب
-              </WhatsAppButton>
-            </div>
+            <StaggerItem>
+              <div className="mt-7 flex flex-col gap-3.5 sm:flex-row sm:items-center md:mt-8">
+                <Link href="/test" className="btn btn-primary text-lg">
+                  اختبر مستواك مجانًا
+                </Link>
+                <WhatsAppButton
+                  message={site.whatsapp.msgGeneral}
+                  source="hero"
+                >
+                  تقييم سريع بالواتساب
+                </WhatsAppButton>
+              </div>
+            </StaggerItem>
 
-            <p className="mt-3.5 text-sm font-bold text-ink/60">
-              20 سؤالًا · 5 دقائق تقريبًا · بدون تسجيل · نتيجة فورية ⚡
-            </p>
-            <p className="mt-1.5 inline-flex items-center gap-1.5 text-sm font-bold text-ink/55">
-              <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-accent" />
-              مجاني لفترة محدودة — احجز موعدك الآن
-            </p>
+            <StaggerItem>
+              <p className="mt-3.5 text-sm font-bold text-ink/60">
+                20 سؤالًا · 5 دقائق تقريبًا · بدون تسجيل · نتيجة فورية ⚡
+              </p>
+              <p className="mt-1.5 inline-flex items-center gap-1.5 text-sm font-bold text-ink/55">
+                <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-accent" />
+                مجاني لفترة محدودة — احجز موعدك الآن
+              </p>
+            </StaggerItem>
 
             {/* proof — visible on mobile (floating pills are md+) */}
-            <div className="mt-6 flex flex-wrap items-center gap-2 md:hidden">
-              {["⭐ +5,000 مستفيد", "⏱️ 15–30 دقيقة يوميًا", "🎓 شهادة لكل مستوى"].map(
-                (p) => (
+            <StaggerItem className="md:hidden">
+              <div className="mt-6 flex flex-wrap items-center gap-2">
+                {[
+                  "⭐ +5,000 مستفيد",
+                  "⏱️ 15–30 دقيقة يوميًا",
+                  "🎓 شهادة لكل مستوى",
+                ].map((p) => (
                   <span
                     key={p}
                     className="rounded-full bg-white px-3 py-1.5 text-xs font-black text-ink/70 shadow-soft"
                   >
                     {p}
                   </span>
-                ),
-              )}
-            </div>
+                ))}
+              </div>
+            </StaggerItem>
 
-            <div className="mt-7 flex snap-x items-center gap-2.5 overflow-x-auto pb-2 md:mt-9 md:flex-wrap md:overflow-visible md:pb-0">
-              {LEVELS.map((l) => (
-                <span key={l} className="shrink-0 snap-start">
-                  <LevelChip level={l} />
+            <StaggerItem>
+              <div className="mt-7 flex snap-x items-center gap-2.5 overflow-x-auto pb-2 md:mt-9 md:flex-wrap md:overflow-visible md:pb-0">
+                {LEVELS.map((l) => (
+                  <span key={l} className="shrink-0 snap-start">
+                    <LevelChip level={l} />
+                  </span>
+                ))}
+                <span className="shrink-0 snap-start">
+                  <LevelChip level="C1" soon />
                 </span>
-              ))}
-              <span className="shrink-0 snap-start">
-                <LevelChip level="C1" soon />
-              </span>
-            </div>
-          </div>
+              </div>
+            </StaggerItem>
+          </Stagger>
 
           {/* Mascot + floating proof (desktop) */}
           <div className="relative mx-auto hidden w-full max-w-md md:block md:max-w-none">
@@ -227,7 +247,7 @@ export default function HomePage() {
                 name="shab-front"
                 size="hero"
                 priority
-                className="h-80 w-auto drop-shadow-2xl sm:h-[26rem] lg:h-[30rem]"
+                className="h-80 w-auto animate-breathe drop-shadow-2xl sm:h-[26rem] lg:h-[30rem]"
               />
             </div>
             <div
@@ -250,6 +270,22 @@ export default function HomePage() {
 
       {/* ═══ Stats strip ═══ */}
       <StatStrip items={stats} />
+
+      {/* ═══ Brand facts marquee ═══ */}
+      <Marquee
+        items={[
+          "تأسيس من الصفر",
+          "أهم 3,300 كلمة",
+          "قواعد عملية",
+          "محادثات من حياتك اليومية",
+          "استماع يومي مقترح",
+          "شهادة لكل مستوى 🎓",
+          "جمعة راحة 🕌",
+          "15–30 دقيقة يوميًا",
+          "متابعة حقيقية",
+          "+5,000 مستفيد ⭐",
+        ]}
+      />
 
       {/* ═══ كيف بتتحسّن؟ (4 pillars) ═══ */}
       <section className="bg-section py-20 lg:py-28">

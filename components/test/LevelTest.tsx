@@ -2,13 +2,16 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { m, AnimatePresence } from "framer-motion";
 import { RotateCcw, Timer, UserX, ListChecks } from "lucide-react";
 import { Mascot } from "@/components/Mascot";
 import { ArrowMotif } from "@/components/ArrowMotif";
 import { SallaButton } from "@/components/SallaButton";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { site } from "@/config/site";
 import { track } from "@/lib/track";
+import { celebrate } from "@/lib/confetti";
 import {
   questions,
   scoreToLevel,
@@ -69,6 +72,7 @@ export function LevelTest() {
     track("test_complete", { level: lvl });
     setPhase("result");
     window.scrollTo({ top: 0 });
+    setTimeout(celebrate, 300);
   };
 
   const choose = (i: number) => {
@@ -93,16 +97,26 @@ export function LevelTest() {
   /* ═══ Intro ═══ */
   if (phase === "intro") {
     return (
-      <section className="bg-hero-glow">
-        <div className="container-site flex flex-col items-center gap-7 py-16 text-center lg:py-20">
-          <Mascot
-            name="girl-front"
-            size="section"
-            priority
-            className="h-52 w-auto drop-shadow-xl sm:h-64"
-          />
+      <section className="relative overflow-hidden bg-hero-glow">
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-dots [mask-image:radial-gradient(60%_55%_at_50%_0%,black,transparent)]"
+        />
+        <div
+          aria-hidden
+          className="orb orb-blue absolute -top-24 start-[-8rem] h-96 w-96"
+        />
+        <Stagger className="container-site relative flex flex-col items-center gap-7 py-16 text-center lg:py-20">
+          <StaggerItem>
+            <Mascot
+              name="girl-front"
+              size="section"
+              priority
+              className="h-52 w-auto animate-breathe drop-shadow-xl sm:h-64"
+            />
+          </StaggerItem>
 
-          <div>
+          <StaggerItem>
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-white px-4 py-1.5 text-sm font-black text-primary shadow-soft">
               <ArrowMotif className="h-2.5 w-3.5 text-accent" />
               اختبار تحديد المستوى
@@ -114,9 +128,10 @@ export function LevelTest() {
               أسئلة متدرجة من التأسيس حتى المتقدم — وفي النهاية تعرف مستواك
               بدقة، مع توصية مباشرة بالدورة المناسبة لك.
             </p>
-          </div>
+          </StaggerItem>
 
-          <div className="flex flex-wrap items-center justify-center gap-2.5">
+          <StaggerItem>
+            <div className="flex flex-wrap items-center justify-center gap-2.5">
             {[
               { icon: ListChecks, text: `${questions.length} سؤالًا` },
               { icon: Timer, text: "5 دقائق تقريبًا" },
@@ -130,20 +145,24 @@ export function LevelTest() {
                 {c.text}
               </span>
             ))}
-          </div>
+            </div>
+          </StaggerItem>
 
-          <div className="flex flex-col items-center gap-3">
-            <button type="button" onClick={start} className="btn btn-primary text-lg">
-              ابدأ الاختبار الآن
-            </button>
-            <p className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/55">
-              <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-accent" />
-              مجاني لفترة محدودة
-            </p>
-          </div>
+          <StaggerItem>
+            <div className="flex flex-col items-center gap-3">
+              <button type="button" onClick={start} className="btn btn-primary text-lg">
+                ابدأ الاختبار الآن
+              </button>
+              <p className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/55">
+                <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-accent" />
+                مجاني لفترة محدودة
+              </p>
+            </div>
+          </StaggerItem>
 
           {saved && (
-            <div className="card mt-2 flex w-full max-w-md flex-col items-center gap-3 p-6">
+            <StaggerItem className="w-full max-w-md">
+            <div className="card mt-2 flex w-full flex-col items-center gap-3 p-6">
               <p className="font-bold text-ink/70">
                 عندك نتيجة محفوظة من زيارة سابقة:{" "}
                 <span className="text-xl font-black text-primary">{saved}</span>
@@ -166,8 +185,9 @@ export function LevelTest() {
                 </button>
               </div>
             </div>
+            </StaggerItem>
           )}
-        </div>
+        </Stagger>
       </section>
     );
   }
@@ -200,31 +220,45 @@ export function LevelTest() {
             </div>
           </div>
 
-          {/* question */}
-          <div className="card p-7 sm:p-9">
-            <p dir="auto" className="text-xl font-black leading-relaxed sm:text-2xl">
-              {q.prompt}
-            </p>
-            <div
-              className={`mt-7 grid gap-3 ${selected !== null ? "pointer-events-none" : ""}`}
+          {/* question — springs in from the reading direction */}
+          <AnimatePresence mode="wait">
+            <m.div
+              key={idx}
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 40 }}
+              transition={{ type: "spring", stiffness: 260, damping: 26 }}
+              className="card p-7 sm:p-9"
             >
-              {q.options.map((opt, i) => (
-                <button
-                  key={opt}
-                  type="button"
-                  data-option
-                  onClick={() => choose(i)}
-                  className={`min-h-14 rounded-2xl border-2 px-5 py-3.5 text-start text-lg font-bold transition-all ${
-                    selected === i
-                      ? "border-primary bg-primary text-white shadow-glow-blue"
-                      : "border-ink/10 bg-white hover:border-primary hover:bg-primary-light active:scale-[0.99]"
-                  }`}
-                >
-                  <bdi>{opt}</bdi>
-                </button>
-              ))}
-            </div>
-          </div>
+              <p dir="auto" className="text-xl font-black leading-relaxed sm:text-2xl">
+                {q.prompt}
+              </p>
+              <div
+                className={`mt-7 grid gap-3 ${selected !== null ? "pointer-events-none" : ""}`}
+              >
+                {q.options.map((opt, i) => (
+                  <m.button
+                    key={opt}
+                    type="button"
+                    data-option
+                    onClick={() => choose(i)}
+                    whileTap={{ scale: 0.98 }}
+                    animate={
+                      selected === i ? { scale: [1, 1.045, 1] } : { scale: 1 }
+                    }
+                    transition={{ duration: 0.3 }}
+                    className={`min-h-14 rounded-2xl border-2 px-5 py-3.5 text-start text-lg font-bold transition-colors ${
+                      selected === i
+                        ? "border-primary bg-primary text-white shadow-glow-blue"
+                        : "border-ink/10 bg-white hover:border-primary hover:bg-primary-light"
+                    }`}
+                  >
+                    <bdi>{opt}</bdi>
+                  </m.button>
+                ))}
+              </div>
+            </m.div>
+          </AnimatePresence>
 
           <p className="mt-5 text-center text-sm font-bold text-ink/45">
             اختر الإجابة وننتقل للسؤال التالي تلقائيًا — لا تشيل هم الغلط،
@@ -245,15 +279,20 @@ export function LevelTest() {
           name="shab-front"
           size="section"
           priority
-          className="h-44 w-auto drop-shadow-xl sm:h-56"
+          className="h-44 w-auto animate-breathe drop-shadow-xl sm:h-56"
         />
 
         <p className="mt-6 text-lg font-bold text-ink/60">نتيجتك جاهزة 🎉</p>
-        <div className="mt-3 flex items-center gap-4">
-          <span className="rounded-3xl bg-primary px-8 py-3 text-5xl font-black text-white shadow-glow-blue sm:text-6xl">
+        <m.div
+          className="mt-3"
+          initial={{ scale: 0.35, rotate: -8, opacity: 0 }}
+          animate={{ scale: 1, rotate: 0, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 170, damping: 12, delay: 0.12 }}
+        >
+          <span className="inline-block rounded-3xl bg-primary px-8 py-3 text-5xl font-black text-white shadow-glow-blue sm:text-6xl">
             {lvl}
           </span>
-        </div>
+        </m.div>
         <h1 className="mt-5 text-2xl font-black sm:text-3xl">
           مستواك: {lvl}
         </h1>
@@ -262,7 +301,12 @@ export function LevelTest() {
         </p>
 
         {/* recommended course */}
-        <div className="card mt-10 w-full max-w-xl p-7 text-start sm:p-9">
+        <m.div
+          className="card mt-10 w-full max-w-xl p-7 text-start sm:p-9"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 100, damping: 18, delay: 0.35 }}
+        >
           <span className="inline-flex items-center gap-2 rounded-full bg-primary-light px-3.5 py-1 text-sm font-black text-primary">
             <ArrowMotif className="h-2.5 w-3.5 text-accent" />
             الدورة المناسبة لمستواك
@@ -314,7 +358,7 @@ export function LevelTest() {
               </Link>
             )}
           </div>
-        </div>
+        </m.div>
 
         <button
           type="button"

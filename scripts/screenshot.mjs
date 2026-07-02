@@ -18,11 +18,8 @@ async function shoot(url, out, width, fullPage, scrollTo = 0) {
     deviceScaleFactor: width >= 1200 ? 1 : 2,
   });
   await page.goto(url, { waitUntil: "networkidle" });
-  // force lazy images to load + reveal-on-scroll to settle
+  // force lazy images to load
   await page.evaluate(async () => {
-    document
-      .querySelectorAll(".reveal")
-      .forEach((el) => el.classList.add("is-visible"));
     document.querySelectorAll("img").forEach((img) => {
       img.loading = "eager";
       img.decoding = "sync";
@@ -38,10 +35,34 @@ async function shoot(url, out, width, fullPage, scrollTo = 0) {
         ),
     );
   });
+  // sweep-scroll so whileInView animations fire everywhere, then settle
+  if (fullPage) {
+    await page.evaluate(async () => {
+      const h = document.body.scrollHeight;
+      for (let y = 0; y <= h; y += 650) {
+        window.scrollTo(0, y);
+        await new Promise((r) => setTimeout(r, 120));
+      }
+      window.scrollTo(0, 0);
+    });
+    await page.waitForTimeout(1100);
+    // capture determinism: snap any still-animating motion element to final state
+    await page.evaluate(() => {
+      document.querySelectorAll("[style]").forEach((el) => {
+        const s = el.getAttribute("style") ?? "";
+        if (/opacity:\s*0(?!\.?[1-9])/.test(s) || /blur\(/.test(s) || /scale(Y|X)?\(0/.test(s)) {
+          el.style.opacity = "1";
+          el.style.transform = "none";
+          el.style.filter = "none";
+        }
+      });
+    });
+    await page.waitForTimeout(150);
+  }
   if (scrollTo > 0) {
     await page.evaluate((y) => window.scrollTo(0, y), scrollTo);
   }
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(950); // let springs settle
   await page.screenshot({ path: out, fullPage });
   console.log(`✓ ${out} (${width}px${fullPage ? ", full" : ""}${scrollTo ? `, y=${scrollTo}` : ""})`);
   await page.close();
