@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function AccentPage() {
   return (
     <ComingSoonPage
-      title="اللهجة الأمريكية 🇺🇸"
+      title="اللهجة الأمريكية"
       sub="اضبط نطقك من المصدر — مع معلم لغته الأم الإنجليزية."
       mascot="shab-side"
       notifyCourse="اللهجة الأمريكية"

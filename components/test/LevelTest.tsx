@@ -152,9 +152,8 @@ export function LevelTest() {
               <button type="button" onClick={start} className="btn btn-primary text-lg">
                 ابدأ الاختبار الآن
               </button>
-              <p className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/55">
-                <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-accent" />
-                مجاني لفترة محدودة
+              <p className="text-sm font-bold text-ink/55">
+                مجاني — وما نطلب منك أي بيانات
               </p>
             </div>
           </StaggerItem>
@@ -296,6 +295,9 @@ export function LevelTest() {
         </h1>
         <p className="mx-auto mt-3 max-w-[50ch] text-lg leading-9 text-ink/65">
           {info.meaning}
+        </p>
+        <p className="mx-auto mt-2 max-w-[46ch] text-sm font-semibold text-ink/45">
+          النتيجة تقديرية بناءً على إجاباتك — وتتأكد معنا في أول أسبوع دروس
         </p>
 
         {/* recommended course */}

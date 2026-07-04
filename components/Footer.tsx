@@ -63,7 +63,7 @@ export function Footer() {
             نمشي معك خطوة بخطوة — حتى توصل للمستوى اللي تبيه.
           </p>
           <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-bold">
-            ⭐ {site.stats.beneficiaries} مستفيد
+            <span dir="ltr" className="inline-block">+5,000</span> متعلم مع زد لفل
           </p>
         </div>
 

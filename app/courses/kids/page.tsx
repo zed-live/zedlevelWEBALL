@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function KidsPage() {
   return (
     <ComingSoonPage
-      title="دورة الأطفال 👨‍👩‍👧"
+      title="دورة الأطفال"
       sub="عائلة زد لفل تكبر — تأسيس إنجليزي ممتع وآمن لأطفالك، بنفس المنهجية اللي وثق فيها +5,000 مستفيد."
       mascot="mother-front"
       notifyCourse="الأطفال"

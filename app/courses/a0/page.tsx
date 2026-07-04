@@ -132,7 +132,7 @@ const rules = [
   {
     num: "٤",
     title: "أقصى سرعة ×3",
-    desc: "متحمس؟ أنجزها بثلاثة دروس يوميًا وخلّصها في 9 أيام.",
+    desc: "متحمس؟ تقدر تمشي بسرعة ثلاثة دروس في اليوم.",
   },
 ];
 
@@ -292,19 +292,21 @@ export default function A0Page() {
             </StaggerItem>
 
             <StaggerItem>
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-start">
+              <div className="mt-8">
                 <SallaButton course="a0" source="a0-hero" hero />
-                <WhatsAppButton
-                  message={site.whatsapp.msgCourseInquiry("التأسيس الصحيح A0")}
-                  source="a0-hero"
-                >
-                  عندي استفسار
-                </WhatsAppButton>
               </div>
             </StaggerItem>
 
             <StaggerItem>
-              <p className="mt-4 text-sm font-bold text-ink/55">
+              <WhatsAppButton
+                message={site.whatsapp.msgCourseInquiry("التأسيس الصحيح A0")}
+                source="a0-hero"
+                variant="link"
+                className="mt-2"
+              >
+                عندك سؤال قبل؟ كلمنا على واتساب
+              </WhatsAppButton>
+              <p className="mt-3 text-sm font-bold text-ink/55">
                 دفعات صغيرة محدودة — لمن يبدأ من الصفر أو يعيد التأسيس (14+)
               </p>
             </StaggerItem>

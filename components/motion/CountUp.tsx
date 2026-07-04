@@ -48,9 +48,12 @@ export function CountUp({
   if (!match) return <span className={className}>{value}</span>;
 
   return (
+    // deliberate mixed-direction rule: numeric values render as isolated LTR runs
     <span
       ref={ref}
-      className={className}
+      dir="ltr"
+      style={{ unicodeBidi: "isolate" }}
+      className={`inline-block ${className}`}
       data-countup
       data-final={`${prefix}${target.toLocaleString("en-US")}${suffix}`}
     >

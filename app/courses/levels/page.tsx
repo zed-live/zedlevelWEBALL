@@ -10,7 +10,6 @@ import {
   CalendarDays,
   Mic2,
 } from "lucide-react";
-import { Mascot } from "@/components/Mascot";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ArrowMotif } from "@/components/ArrowMotif";
 import { SallaButton } from "@/components/SallaButton";
@@ -144,96 +143,52 @@ export default function LevelsPage() {
             </StaggerItem>
 
             <StaggerItem>
-              <p className="mt-6 text-lg font-semibold leading-9 text-ink/70">
-                12 دورة متسلسلة بأربعة مسارات متوازية: مفردات، قواعد، محادثة،
-                واستماع — نعلّمك الأكثر استخدامًا، مو كل شي.
+              <p className="mt-6 max-w-[44ch] text-lg font-semibold leading-9 text-ink/70">
+                12 دورة متسلسلة بأربعة مسارات: مفردات، قواعد، محادثة، واستماع
+                — نعلّمك الأكثر استخدامًا، مو كل شي.
               </p>
             </StaggerItem>
 
             <StaggerItem>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {["6 أسابيع للدورة", "جمعة راحة 🕌", "شهادة لكل مستوى 🎓"].map(
-                  (chip) => (
-                    <span
-                      key={chip}
-                      className="rounded-full bg-primary-light px-3.5 py-1.5 text-sm font-bold text-primary"
-                    >
-                      {chip}
-                    </span>
-                  ),
-                )}
-              </div>
+              <ul className="mt-5 space-y-2.5">
+                {[
+                  "كل مستوى 3 دورات — تخلص وحدة، تفتح اللي بعدها",
+                  "6 أسابيع للدورة، والجمعة راحة",
+                  "اختبار لكل دورة، وشهادة لكل مستوى",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2.5 font-bold">
+                    <ArrowMotif className="h-2.5 w-3.5 shrink-0 text-accent" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </StaggerItem>
 
             <StaggerItem>
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <div className="mt-8">
                 <Link href="#tiers" className="btn btn-accent text-lg">
                   اختر مستواك واشترك
                 </Link>
-                <Link href="/test" className="btn btn-outline">
-                  ما أعرف مستواي — اختبرني
-                </Link>
               </div>
+              <Link
+                href="/test"
+                className="mt-3 inline-flex min-h-11 items-center gap-1.5 py-2 font-bold text-primary hover:underline"
+              >
+                ما أعرف مستواي — الاختبار المجاني
+                <ArrowMotif className="h-2.5 w-3.5 -rotate-90 text-accent" />
+              </Link>
             </StaggerItem>
           </Stagger>
 
-          <div className="relative mx-auto w-full max-w-md md:max-w-none">
-            <div
-              aria-hidden
-              className="absolute left-1/2 top-1/2 -z-10 aspect-square w-[88%] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-soft/60 blur-2xl"
-            />
-            <div className="flex justify-center">
-              <Mascot
-                name="grandpa-side"
-                size="hero"
-                priority
-                className="h-72 w-auto animate-breathe drop-shadow-2xl sm:h-96"
-              />
-            </div>
-            <div
-              aria-hidden
-              className="mx-auto -mt-3 h-5 w-3/5 rounded-[100%] bg-navy/10 blur-md"
-            />
+          {/* the ladder IS this page's hero visual */}
+          <div className="w-full">
+            <LevelLadder variant="light" />
           </div>
         </div>
       </section>
 
       {/* ═══ By the numbers ═══ */}
       <StatStrip items={numbers} />
-
-      {/* ═══ The ladder (light) ═══ */}
-      <section className="py-20 lg:py-28">
-        <div className="container-site grid items-center gap-12 lg:grid-cols-2">
-          <div>
-            <Reveal>
-              <SectionHeading
-                align="start"
-                eyebrow="LEVEL UP"
-                title="وين توصلك الرحلة؟"
-                sub="كل مستوى 3 دورات متسلسلة — تخلص وحدة، تفتح اللي بعدها."
-              />
-            </Reveal>
-            <Reveal delay={150}>
-              <ul className="mt-7 space-y-3.5">
-                {[
-                  "الدورات متسلسلة داخل المستوى — ما فيه قفز عشوائي",
-                  "اختبار في نهاية كل دورة",
-                  "شهادة رسمية عند إتمام كل مستوى",
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-center gap-2.5 font-bold"
-                  >
-                    <ArrowMotif className="h-2.5 w-3.5 shrink-0 text-accent" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          </div>
-          <LevelLadder variant="light" />
-        </div>
-      </section>
 
       {/* ═══ The 4 streams — dark signature ═══ */}
       <section className="relative overflow-hidden bg-brand-gradient py-20 lg:py-28">

@@ -33,7 +33,7 @@ export default function TeachersPage() {
               فريقنا
             </span>
             <h1 className="mt-4 text-[clamp(2.1rem,5.5vw,3.4rem)] font-black leading-[1.3]">
-              المعلمون 👨‍🏫
+              المعلمون
             </h1>
             <p className="mx-auto mt-4 max-w-[44ch] text-lg leading-9 text-ink/65">
               يشرحون بالعربي ويعرفون وش يصعّب علينا — تعرّف عليهم قريبًا.

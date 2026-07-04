@@ -88,10 +88,10 @@ export default function AboutPage() {
       {/* ═══ Stats ═══ */}
       <StatStrip
         items={[
-          { value: "+5,000", label: "مستفيد من الأكاديمية" },
+          { value: "+5,000", label: "متعلم مع زد لفل" },
           { value: "+3,700", label: "كلمة في مناهجنا" },
-          { value: "13", label: "دورة مدرجة A0→B2" },
-          { value: "🎓", label: "شهادة لكل مستوى" },
+          { value: "13", label: "دورة مدرجة A0–B2" },
+          { value: "A0–B2", label: "شهادة لكل مستوى" },
         ]}
       />
 

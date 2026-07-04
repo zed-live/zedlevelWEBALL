@@ -78,7 +78,7 @@ export function ComingSoonPage({
                 variant="solid"
                 className="text-lg"
               >
-                نبّهني عند الافتتاح 🔔
+                نبّهني عند الافتتاح
               </WhatsAppButton>
               <p className="text-sm font-bold text-ink/50">
                 أول ما يفتح التسجيل — رسالتنا توصلك مباشرة

@@ -74,7 +74,7 @@ export function CourseCard({ course }: { course: CourseMeta }) {
               params={{ course: course.slug }}
               className="!w-full"
             >
-              نبّهني عند الافتتاح 🔔
+              نبّهني عند الافتتاح
             </WhatsAppButton>
             <Link
               href={course.href}

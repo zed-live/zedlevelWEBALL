@@ -80,7 +80,7 @@ export default function HowItWorksPage() {
           <StaggerItem>
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-white px-4 py-1.5 text-sm font-black text-primary shadow-soft">
               <ArrowMotif className="h-2.5 w-3.5 text-accent" />
-              كيف نعمل ⚙️
+              كيف نعمل
             </span>
           </StaggerItem>
           <StaggerItem>

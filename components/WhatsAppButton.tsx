@@ -34,8 +34,11 @@ export function WhatsAppButton({
   message: string;
   source: string;
   children: ReactNode;
-  /** solid = WhatsApp green · inverse = white outline for blue/navy sections */
-  variant?: "outline" | "solid" | "inverse";
+  /**
+   * solid = WhatsApp green · inverse = white outline (dark sections) ·
+   * link / link-inverse = quiet text fallback (CTA ladder: one button + one link)
+   */
+  variant?: "outline" | "solid" | "inverse" | "link" | "link-inverse";
   /** override for notify buttons: event="notify_click" params={course} */
   event?: TrackEvent;
   params?: Record<string, string | number>;
@@ -44,19 +47,24 @@ export function WhatsAppButton({
   const href = waLink(message);
   if (!href && process.env.NODE_ENV === "production") return null;
 
+  const isLink = variant === "link" || variant === "link-inverse";
   const styles =
     variant === "solid"
-      ? "btn-whatsapp"
+      ? "btn btn-whatsapp w-full sm:w-auto"
       : variant === "inverse"
-        ? "btn-ghost-white"
-        : "btn-outline";
+        ? "btn btn-ghost-white w-full sm:w-auto"
+        : variant === "link"
+          ? "inline-flex min-h-11 items-center gap-2 py-2 font-bold text-primary hover:underline"
+          : variant === "link-inverse"
+            ? "inline-flex min-h-11 items-center gap-2 py-2 font-bold text-white/85 hover:text-white hover:underline"
+            : "btn btn-outline w-full sm:w-auto";
 
   return (
     <a
       href={href ?? "#"}
       target="_blank"
       rel="noopener noreferrer"
-      className={`btn ${styles} relative w-full sm:w-auto ${className}`}
+      className={`${styles} relative ${className}`}
       onClick={(e) => {
         if (!href) {
           e.preventDefault();
@@ -65,7 +73,7 @@ export function WhatsAppButton({
         track(event, { source, ...params });
       }}
     >
-      <WhatsAppIcon className="h-5 w-5 shrink-0" />
+      <WhatsAppIcon className={`${isLink ? "h-4 w-4" : "h-5 w-5"} shrink-0`} />
       <span>{children}</span>
       {!href && <DevTodoBadge label="WHATSAPP_NUMBER" />}
     </a>

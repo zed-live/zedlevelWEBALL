@@ -11,7 +11,7 @@ export default function ConversationPage() {
   return (
     <ComingSoonPage
       badge="الأقرب افتتاحًا 🔥"
-      title="دورة المحادثة 🗣️"
+      title="دورة المحادثة"
       sub="من أول أسبوع وأنت تتكلم — محادثات من حياتك اليومية، مو جمل كتب قديمة."
       mascot="girl-angle"
       notifyCourse="المحادثة"

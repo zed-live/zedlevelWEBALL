@@ -15,7 +15,6 @@ import {
 } from "lucide-react";
 import { Mascot } from "@/components/Mascot";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { LevelChip, type Level } from "@/components/LevelChip";
 import { ArrowMotif } from "@/components/ArrowMotif";
 import { SectionHeading } from "@/components/SectionHeading";
 import { LevelLadder } from "@/components/LevelLadder";
@@ -28,8 +27,6 @@ import { Underline } from "@/components/motion/Underline";
 import { Marquee } from "@/components/Marquee";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
-
-const LEVELS: Level[] = ["A0", "A1", "A2", "B1", "B2"];
 
 /* CONTENT.md §12 — كيف بتتحسّن؟ (4 pillars) */
 const pillars = [
@@ -95,17 +92,17 @@ const testimonials = [
 ];
 
 const stats = [
-  { value: "+5,000", label: "مستفيد من الأكاديمية" },
+  { value: "+5,000", label: "متعلم مع زد لفل" },
   { value: "26", label: "درسًا في التأسيس" },
   { value: "+3,300", label: "كلمة من الأكثر استخدامًا" },
-  { value: "🎓", label: "شهادة لكل مستوى" },
+  { value: "A0–B2", label: "شهادة لكل مستوى" },
 ];
 
 /* floating hero proof pills — all true claims from CONTENT.md */
 const heroFloats = [
   {
     icon: Star,
-    text: "+5,000 مستفيد",
+    text: "+5,000 متعلم",
     pos: { top: "8%", insetInlineEnd: "72%" },
     delay: "0s",
   },
@@ -147,22 +144,16 @@ export default function HomePage() {
         <div className="container-site relative grid items-center gap-12 py-14 md:grid-cols-2 md:py-20 lg:py-24">
           <Stagger>
             <StaggerItem>
-              <span className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-white px-4 py-1.5 text-sm font-bold text-primary shadow-soft">
-                <ArrowMotif className="h-2.5 w-3.5 text-accent" />
-                {site.nameAr}
-              </span>
-            </StaggerItem>
-
-            <StaggerItem>
-              <h1 className="mt-5 text-[clamp(2.3rem,6vw,3.9rem)] font-black leading-[1.3]">
-                فرصتك الذهبية لإتقان الإنجليزية{" "}
-                <Underline className="text-primary">مهما كان مستواك</Underline>
+              <h1 className="text-[clamp(2.3rem,6vw,3.9rem)] font-black leading-[1.3]">
+                هالمرة…{" "}
+                <Underline className="text-primary">بتكمّل الإنجليزية</Underline>
               </h1>
             </StaggerItem>
 
             <StaggerItem>
-              <p className="mt-6 text-lg font-semibold leading-9 text-ink/70">
-                اختبار مجاني يحدد مستواك — وخطة واضحة توصلك، خطوة بخطوة.
+              <p className="mt-6 max-w-[42ch] text-lg font-semibold leading-9 text-ink/70">
+                محتوى يختصر وقتك، ومتابعة تشجعك تستمر — بالعربي، من
+                التأسيس&nbsp;إلى&nbsp;B2.
               </p>
             </StaggerItem>
 
@@ -178,58 +169,42 @@ export default function HomePage() {
               </div>
             </StaggerItem>
 
+            {/* CTA ladder: one action, one quiet fallback */}
             <StaggerItem>
-              <div className="mt-7 flex flex-col gap-3.5 sm:flex-row sm:items-center md:mt-8">
+              <div className="mt-7 md:mt-8">
                 <Link href="/test" className="btn btn-primary text-lg">
                   اختبر مستواك مجانًا
                 </Link>
-                <WhatsAppButton
-                  message={site.whatsapp.msgGeneral}
-                  source="hero"
-                >
-                  تقييم سريع بالواتساب
-                </WhatsAppButton>
+                <p className="mt-3 text-sm font-bold text-ink/60">
+                  5 دقائق · بدون تسجيل · نتيجة فورية
+                </p>
               </div>
             </StaggerItem>
 
             <StaggerItem>
-              <p className="mt-3.5 text-sm font-bold text-ink/60">
-                5 دقائق · بدون تسجيل · نتيجة فورية ⚡
-              </p>
-              <p className="mt-1.5 inline-flex items-center gap-1.5 text-sm font-bold text-ink/55">
-                <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-accent" />
-                مجاني لفترة محدودة — احجز موعدك الآن
-              </p>
+              <WhatsAppButton
+                message={site.whatsapp.msgGeneral}
+                source="hero"
+                variant="link"
+                className="mt-2"
+              >
+                أو كلمنا مباشرة على واتساب
+              </WhatsAppButton>
             </StaggerItem>
 
             {/* proof — visible on mobile (floating pills are md+) */}
             <StaggerItem className="md:hidden">
-              <div className="mt-6 flex flex-wrap items-center gap-2">
-                {[
-                  "⭐ +5,000 مستفيد",
-                  "⏱️ 15–30 دقيقة يوميًا",
-                  "🎓 شهادة لكل مستوى",
-                ].map((p) => (
-                  <span
-                    key={p}
-                    className="rounded-full bg-white px-3 py-1.5 text-xs font-black text-ink/70 shadow-soft"
-                  >
-                    {p}
-                  </span>
-                ))}
-              </div>
-            </StaggerItem>
-
-            <StaggerItem>
-              <div className="mt-7 flex snap-x items-center gap-2.5 overflow-x-auto pb-2 md:mt-9 md:flex-wrap md:overflow-visible md:pb-0">
-                {LEVELS.map((l) => (
-                  <span key={l} className="shrink-0 snap-start">
-                    <LevelChip level={l} />
-                  </span>
-                ))}
-                <span className="shrink-0 snap-start">
-                  <LevelChip level="C1" soon />
-                </span>
+              <div className="mt-5 flex flex-wrap items-center gap-2">
+                {["+5,000 متعلم", "15–30 دقيقة يوميًا", "شهادة لكل مستوى"].map(
+                  (p) => (
+                    <span
+                      key={p}
+                      className="rounded-full bg-white px-3 py-1.5 text-xs font-black text-ink/70 shadow-soft"
+                    >
+                      {p}
+                    </span>
+                  ),
+                )}
               </div>
             </StaggerItem>
           </Stagger>
@@ -404,7 +379,7 @@ export default function HomePage() {
           <Reveal delay={280}>
             <div className="mt-10 text-center">
               <Link href="/test" className="btn btn-outline">
-                ابدأ بالاختبار المجاني — 5 دقائق ⚡
+                ابدأ بالاختبار المجاني — 5 دقائق
               </Link>
             </div>
           </Reveal>
@@ -458,33 +433,30 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ Speaking test teaser ═══ */}
-      <section className="py-20 lg:py-24">
+      {/* ═══ Speaking test — the step AFTER the placement test ═══ */}
+      <section className="py-12 lg:py-16">
         <div className="container-site">
           <Reveal>
-            <div className="flex flex-col items-center justify-between gap-8 rounded-[2rem] border border-primary/10 bg-gradient-to-l from-primary-light via-white to-white p-8 text-center shadow-soft sm:p-10 lg:flex-row lg:text-start">
-              <div className="flex flex-col items-center gap-5 lg:flex-row">
-                <span className="relative flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-glow-blue">
-                  <Mic className="h-9 w-9" aria-hidden />
-                  <span
-                    aria-hidden
-                    className="absolute inset-0 -z-10 animate-ping rounded-full bg-primary/20 [animation-duration:2.5s]"
-                  />
+            <div className="mx-auto flex max-w-3xl flex-col items-center justify-between gap-5 rounded-3xl border border-primary/10 bg-primary-light/50 px-7 py-6 text-center sm:flex-row sm:text-start">
+              <div className="flex items-center gap-4">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary text-white">
+                  <Mic className="h-6 w-6" aria-hidden />
                 </span>
                 <div>
-                  <h2 className="text-2xl font-black sm:text-[1.75rem]">
-                    اختبر نطقك ومحادثتك 🎤
-                  </h2>
-                  <p className="mt-2 text-ink/60 sm:text-lg">
-                    سجّل صوتك — ونرد عليك بتقييمك على الواتساب
+                  <p className="font-black">
+                    الخطوة الثانية: اختبر نطقك ومحادثتك
+                  </p>
+                  <p className="text-sm text-ink/60">
+                    سجّل صوتك — ونرد عليك بالتقييم على واتساب
                   </p>
                 </div>
               </div>
               <Link
                 href="/speaking-test"
-                className="btn btn-primary shrink-0 text-lg"
+                className="inline-flex min-h-11 shrink-0 items-center gap-1.5 font-black text-primary hover:underline"
               >
-                جرّب اختبار المحادثة
+                جرّبه بعد اختبار المستوى
+                <ArrowMotif className="h-2.5 w-3.5 -rotate-90 text-accent" />
               </Link>
             </div>
           </Reveal>
@@ -525,9 +497,9 @@ export default function HomePage() {
             <Reveal delay={100}>
               <div className="mt-5">
                 <SectionHeading
-                  eyebrow="آراء العملاء"
-                  title="قصص حقيقية من مستفيدينا"
-                  sub="رسائل وصلتنا فعلًا — مثل ما تشوفها"
+                  eyebrow="آراء المتعلمين"
+                  title="رسائل وصلتنا فعلًا"
+                  sub="مثل ما تشوفها — بدون تعديل"
                 />
               </div>
             </Reveal>
@@ -560,24 +532,24 @@ export default function HomePage() {
             <p className="mx-auto mt-4 max-w-[42ch] text-white/75 sm:text-lg">
               خطوتك الأولى مجانية — مستواك وتوصيتك خلال دقائق
             </p>
-            <div className="mt-9 flex flex-col items-center justify-center gap-3.5 sm:flex-row">
+            <div className="mt-9 flex flex-col items-center justify-center gap-2">
               <Link
                 href="/test"
                 className="btn btn-accent w-full text-lg sm:w-auto"
               >
                 ابدأ الاختبار المجاني
               </Link>
+              <p className="text-sm font-bold text-white/75">
+                بدون تسجيل · نتيجة فورية
+              </p>
               <WhatsAppButton
                 message={site.whatsapp.msgGeneral}
                 source="final-cta"
-                variant="inverse"
+                variant="link-inverse"
               >
-                تقييم سريع بالواتساب
+                أو كلمنا مباشرة على واتساب
               </WhatsAppButton>
             </div>
-            <p className="mt-6 text-sm font-bold text-white/75">
-              بدون تسجيل · نتيجة فورية
-            </p>
           </div>
         </Reveal>
       </section>

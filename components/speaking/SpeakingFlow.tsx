@@ -357,27 +357,40 @@ export function SpeakingFlow() {
                 أرسل قراءتك كرسالة صوتية — يستمع لها مقيّمنا ويرد عليك
                 بمستواك وتوصيتك.
               </p>
-              <a
-                href={href ?? "#"}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => {
-                  if (!href) {
-                    e.preventDefault();
-                    return;
-                  }
-                  onWhatsApp();
-                }}
-                className="btn btn-whatsapp relative mt-5 w-full text-[17px]"
-              >
-                <WhatsAppIcon className="h-5 w-5" />
-                أرسل عبر واتساب
-                {!href && <DevTodoBadge label="WHATSAPP_NUMBER" />}
-              </a>
-              <p className="mt-3.5 text-[13px] font-semibold text-white/45">
-                سجّل صوتك داخل{" "}
-                <b className="text-[#25D366]">واتساب</b> — أسهل وأسرع
-              </p>
+              {href || process.env.NODE_ENV !== "production" ? (
+                <>
+                  <a
+                    href={href ?? "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => {
+                      if (!href) {
+                        e.preventDefault();
+                        return;
+                      }
+                      onWhatsApp();
+                    }}
+                    className="btn btn-whatsapp relative mt-5 w-full text-[17px]"
+                  >
+                    <WhatsAppIcon className="h-5 w-5" />
+                    أرسل عبر واتساب
+                    {!href && <DevTodoBadge label="WHATSAPP_NUMBER" />}
+                  </a>
+                  <p className="mt-3.5 text-[13px] font-semibold text-white/45">
+                    سجّل صوتك داخل{" "}
+                    <b className="text-[#25D366]">واتساب</b> — أسهل وأسرع
+                  </p>
+                </>
+              ) : (
+                /* graceful state if the number is ever misconfigured in prod */
+                <p className="mt-5 rounded-2xl border border-white/15 bg-white/5 p-4 text-sm font-bold leading-7 text-white/70">
+                  استقبال التسجيلات يفتح قريبًا — جرّب{" "}
+                  <a href="/test" className="text-accent hover:underline">
+                    اختبار المستوى المجاني
+                  </a>{" "}
+                  الآن
+                </p>
+              )}
             </m.div>
           </m.div>
         )}

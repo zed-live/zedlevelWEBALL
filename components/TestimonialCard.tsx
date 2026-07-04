@@ -47,7 +47,8 @@ export function TestimonialCard({
         </span>
       </figcaption>
 
-      <blockquote className="mt-4 flex-1 leading-8 text-ink/85">
+      {/* consistent card shape: quotes capped at 5 lines */}
+      <blockquote className="mt-4 line-clamp-5 flex-1 leading-8 text-ink/85">
         {quote}
       </blockquote>
 
