@@ -23,7 +23,7 @@ const AVAILABLE: CourseItem[] = [
   {
     cover: "a0",
     title: "التأسيس الصحيح — A0",
-    desc: "ابدأ من الصفر وابنِ أساسًا يثبت معك",
+    desc: "ابدأ من الصفر وابنِ أساس يثبت معك",
     href: "/courses/a0",
     salla: "a0",
   },

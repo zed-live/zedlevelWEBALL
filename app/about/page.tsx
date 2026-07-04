@@ -17,12 +17,12 @@ export const metadata: Metadata = {
 };
 
 const family: { name: CharacterName; label: string; line: string }[] = [
-  { name: "grandpa-front", label: "الجد", line: "بطل زد لفل — ما فات الوقت" },
-  { name: "grandma-front", label: "الجدة", line: "وتقدر تبدأ اليوم" },
+  { name: "shab-front", label: "الشاب", line: "بطل زد لفل — طموح وما يوقف" },
   { name: "father-front", label: "الأب", line: "يتعلم لشغله" },
   { name: "mother-front", label: "الأم", line: "تتعلم لنفسها" },
-  { name: "shab-front", label: "الشاب", line: "طموح وما يوقف" },
   { name: "girl-front", label: "البنت", line: "تبدأ من بدري" },
+  { name: "grandpa-front", label: "الجد", line: "ما فات الوقت أبدًا" },
+  { name: "grandma-front", label: "الجدة", line: "وتقدر تبدأ اليوم" },
 ];
 
 const beliefs = [

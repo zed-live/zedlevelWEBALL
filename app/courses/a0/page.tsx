@@ -319,7 +319,7 @@ export default function A0Page() {
             />
             <div className="flex justify-center">
               <Mascot
-                name="grandpa-angle"
+                name="shab-front2"
                 size="hero"
                 priority
                 className="h-72 w-auto animate-breathe drop-shadow-2xl sm:h-96 lg:h-[26rem]"
@@ -529,7 +529,7 @@ export default function A0Page() {
               />
               <div className="flex justify-center">
                 <Mascot
-                  name="grandpa-front"
+                  name="shab-front"
                   size="section"
                   className="h-48 w-auto drop-shadow-xl"
                 />

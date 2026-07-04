@@ -94,6 +94,12 @@ export function LevelLadder({
           ? "border-white/10 bg-white/[0.05]"
           : "border-ink/10 bg-ink/[0.05]";
     }
+    // C1 is قريبًا — visibly not-yet-open
+    if (code === "C1") {
+      return dark
+        ? "border-dashed border-white/20 bg-white/[0.04]"
+        : "border-dashed border-ink/15 bg-ink/[0.03] hover:border-primary/40";
+    }
     return dark
       ? "border-white/15 bg-white/10 hover:border-accent hover:bg-accent/90"
       : "border-primary/10 bg-primary-light hover:border-primary hover:bg-primary";
@@ -106,6 +112,9 @@ export function LevelLadder({
         : dark
           ? "text-white/45"
           : "text-ink/40";
+    }
+    if (code === "C1") {
+      return dark ? "text-white/50" : "text-ink/35";
     }
     return dark
       ? "text-white group-hover:text-ink"
@@ -187,7 +196,7 @@ export function LevelLadder({
               : { insetInlineEnd: climbEnd, bottom: climbBottom }
           }
         >
-          <Mascot name="grandpa-side" size="card" className="h-auto w-full" />
+          <Mascot name="shab-side" size="card" className="h-auto w-full" />
         </m.div>
 
         {/* orange arrows between steps */}

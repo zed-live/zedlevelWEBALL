@@ -273,7 +273,7 @@ export function LevelTest() {
     <section className="bg-hero-glow">
       <div className="container-site flex flex-col items-center py-14 text-center lg:py-20">
         <Mascot
-          name="grandpa-front"
+          name="shab-front"
           size="section"
           priority
           className="h-44 w-auto animate-breathe drop-shadow-xl sm:h-56"
