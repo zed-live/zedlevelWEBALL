@@ -3,11 +3,9 @@ import {
   BookOpen,
   Target,
   Mic,
-  Mic2,
   Briefcase,
   GraduationCap,
   Sparkles,
-  Bot,
   ShoppingBag,
   CalendarClock,
   SlidersHorizontal,
@@ -408,64 +406,6 @@ export default function HomePage() {
               >
                 حدّد مستواك عبر الواتساب
               </WhatsAppButton>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ═══ §8 اختبار المحادثة ═══ */}
-      <section className="py-20 lg:py-28">
-        <div className="container-site">
-          <Reveal>
-            <div className="flex justify-center">
-              <Mascot
-                name="mother-angle"
-                size="card"
-                className="h-32 w-auto animate-breathe drop-shadow-xl"
-              />
-            </div>
-          </Reveal>
-          <Reveal delay={100}>
-            <div className="mt-4">
-              <SectionHeading
-                eyebrow="اختبار المحادثة"
-                title="اختبر نطقك ومحادثتك"
-                sub="عندك مستوى بالإنجليزي وتبي تتأكد من نطقك ومحادثتك؟ سوِّ اختبار المحادثة واعرف مستواك الحقيقي في الكلام."
-              />
-            </div>
-          </Reveal>
-          <div className="mx-auto mt-12 grid max-w-3xl gap-5 sm:grid-cols-2">
-            <Reveal className="h-full">
-              <div className="card h-full p-7 text-center">
-                <span className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-white shadow-glow-blue">
-                  <Bot className="h-7 w-7" aria-hidden />
-                </span>
-                <h3 className="mt-4 text-lg font-black">
-                  اختبار فوري بالذكاء الاصطناعي
-                </h3>
-                <p className="mt-1.5 text-[15px] leading-8 text-ink/65">
-                  تقييم مباشر لنطقك، في أي وقت
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={120} className="h-full">
-              <div className="card h-full p-7 text-center">
-                <span className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-accent text-ink shadow-glow-accent">
-                  <Mic2 className="h-7 w-7" aria-hidden />
-                </span>
-                <h3 className="mt-4 text-lg font-black">جلسة مباشرة مع معلم</h3>
-                <p className="mt-1.5 text-[15px] leading-8 text-ink/65">
-                  للمتقدمين اللي يبون تقييمًا بشريًا دقيقًا
-                </p>
-              </div>
-            </Reveal>
-          </div>
-          <Reveal delay={220}>
-            <div className="mt-9 text-center">
-              <Link href="/speaking-test" className="btn btn-accent text-lg">
-                <Target className="h-5 w-5" aria-hidden />
-                ابدأ اختبار المحادثة
-              </Link>
             </div>
           </Reveal>
         </div>

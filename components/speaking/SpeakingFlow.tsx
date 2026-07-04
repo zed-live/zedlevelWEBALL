@@ -163,7 +163,7 @@ export function SpeakingFlow() {
                         <span className="block font-black text-white">
                           {v.name}
                         </span>
-                        <span className="block text-[13px] font-semibold text-white/45">
+                        <span className="block text-[13px] font-semibold text-white/60">
                           {v.hint}
                         </span>
                       </span>
@@ -376,7 +376,7 @@ export function SpeakingFlow() {
                     أرسل عبر واتساب
                     {!href && <DevTodoBadge label="WHATSAPP_NUMBER" />}
                   </a>
-                  <p className="mt-3.5 text-[13px] font-semibold text-white/45">
+                  <p className="mt-3.5 text-[13px] font-semibold text-white/60">
                     سجّل صوتك داخل{" "}
                     <b className="text-[#25D366]">واتساب</b> — أسهل وأسرع
                   </p>

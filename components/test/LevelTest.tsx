@@ -258,7 +258,7 @@ export function LevelTest() {
             </m.div>
           </AnimatePresence>
 
-          <p className="mt-5 text-center text-sm font-bold text-ink/45">
+          <p className="mt-5 text-center text-sm font-bold text-ink/55">
             لا تشيل هم الغلط — الاختبار يتدرج معك
           </p>
         </div>
@@ -296,7 +296,7 @@ export function LevelTest() {
         <p className="mx-auto mt-3 max-w-[50ch] text-lg leading-9 text-ink/65">
           {info.meaning}
         </p>
-        <p className="mx-auto mt-2 max-w-[46ch] text-sm font-semibold text-ink/45">
+        <p className="mx-auto mt-2 max-w-[46ch] text-sm font-semibold text-ink/55">
           النتيجة تقديرية بناءً على إجاباتك — وتتأكد معنا في أول أسبوع دروس
         </p>
 

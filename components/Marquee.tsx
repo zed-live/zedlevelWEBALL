@@ -13,7 +13,7 @@ export function Marquee({ items }: { items: string[] }) {
       {items.map((it) => (
         <span
           key={it}
-          className="flex items-center gap-3 whitespace-nowrap text-lg font-black text-ink/45"
+          className="flex items-center gap-3 whitespace-nowrap text-lg font-black text-ink/55"
         >
           <ArrowMotif className="h-2.5 w-3.5 shrink-0 text-accent" />
           {it}

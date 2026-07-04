@@ -190,7 +190,7 @@ export function CoursesTabs() {
                           >
                             ابدأ بالواتساب
                           </WhatsAppButton>
-                          <p className="relative inline-flex items-center justify-center gap-1.5 py-1 text-center text-[13px] font-bold text-ink/45">
+                          <p className="relative inline-flex items-center justify-center gap-1.5 py-1 text-center text-[13px] font-bold text-ink/55">
                             <ShoppingBag className="h-3.5 w-3.5" aria-hidden />
                             الشراء المباشر من المتجر — يفتح قريبًا
                             <DevTodoBadge label={`SALLA_${c.salla.toUpperCase()}`} />

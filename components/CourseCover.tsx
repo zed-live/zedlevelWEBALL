@@ -8,7 +8,11 @@ export type CoverVariant = "a0" | "levels" | "conversation" | "accent" | "kids";
 
 export function CourseCover({ variant }: { variant: CoverVariant }) {
   return (
-    <div className="relative h-36 w-full overflow-hidden rounded-t-3xl bg-gradient-to-b from-primary-light to-white">
+    <div className="relative h-40 w-full overflow-hidden rounded-t-3xl bg-gradient-to-b from-primary-light via-primary-light/60 to-white">
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-dots opacity-60 [mask-image:radial-gradient(70%_80%_at_50%_0%,black,transparent)]"
+      />
       <svg
         viewBox="0 0 320 144"
         className="h-full w-full"

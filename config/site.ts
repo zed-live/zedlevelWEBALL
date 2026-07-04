@@ -8,8 +8,8 @@ export const site = {
   nameAr: "أكاديمية زد لفل لتعليم الإنجليزية",
   shortAr: "زد لفل",
   whatsapp: {
-    /** Digits only, with country code, no plus — e.g. "9665XXXXXXXX" */
-    number: "TODO_WHATSAPP_NUMBER",
+    /** Digits only, with country code, no plus */
+    number: "966567086238",
     msgGeneral: "مرحبًا، عندي استفسار عن دورات زد لفل 👋",
     msgAfterTest: (level: string) =>
       `مرحبًا! أنهيت اختبار تحديد المستوى ونتيجتي: ${level} — أبغى أعرف الدورة المناسبة لي`,
@@ -20,12 +20,13 @@ export const site = {
     /** the unified level-check mechanism — every حدّد مستواك button */
     msgLevel: "مرحبًا! أبغى أحدد مستواي في الإنجليزية وتقترحون لي الدورة المناسبة 👋",
   },
+  /** Store link for all courses for now — swap to per-product URLs when ready */
   salla: {
-    a0: "TODO_SALLA_URL_A0",
-    a1: "TODO_SALLA_URL_A1",
-    a2: "TODO_SALLA_URL_A2",
-    b1: "TODO_SALLA_URL_B1",
-    b2: "TODO_SALLA_URL_B2",
+    a0: "https://salla.sa/zedlevel",
+    a1: "https://salla.sa/zedlevel",
+    a2: "https://salla.sa/zedlevel",
+    b1: "https://salla.sa/zedlevel",
+    b2: "https://salla.sa/zedlevel",
   },
   /** Prices in SAR (digits only, e.g. "299"). TODO_ = "يُعلن مع فتح الدفعة". */
   pricing: {

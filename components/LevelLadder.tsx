@@ -19,8 +19,8 @@ import { site } from "@/config/site";
 const STEPS = [
   {
     code: "A0",
-    label: "التأسيس",
-    learn: "تقرأ وتنطق صح وتبني جملك الأولى",
+    label: "التأسيسي",
+    learn: "تقرأ وتنطق صح وتبني جملك الأولى — ويغطي أجزاء من A1 وA2",
     course: { title: "دورة التأسيس A0", href: "/courses/a0" },
   },
   {
@@ -57,6 +57,11 @@ const STEPS = [
 
 const HEIGHTS = [22, 34, 46, 58, 70, 82];
 
+/* التأسيس (A0) covers all of A0 + parts of A1 and A2 (CONTENT.md §7) */
+const FOUNDATION_STRIPES =
+  "repeating-linear-gradient(45deg, rgba(248,190,76,0.55) 0px, rgba(248,190,76,0.55) 8px, rgba(248,190,76,0.22) 8px, rgba(248,190,76,0.22) 16px)";
+const FOUNDATION_COVERAGE: Record<string, number> = { A1: 42, A2: 22 };
+
 export function LevelLadder({
   variant = "light",
   cta = false,
@@ -88,12 +93,17 @@ export function LevelLadder({
   const climbBottom = useTransform(scrollYProgress, [0, 1], ["16%", "42%"]);
 
   const stepClasses = (code: string) => {
+    if (storedLevel && storedLevel === code) {
+      return "border-primary bg-primary shadow-glow-blue";
+    }
+    // A0 = the foundation course itself (fully striped, dashed)
+    if (code === "A0") {
+      return "border-2 border-dashed border-accent-dark/60 hover:brightness-105";
+    }
     if (storedLevel) {
-      return storedLevel === code
-        ? "border-primary bg-primary shadow-glow-blue"
-        : dark
-          ? "border-white/10 bg-white/[0.05]"
-          : "border-ink/10 bg-ink/[0.05]";
+      return dark
+        ? "border-white/10 bg-white/[0.05]"
+        : "border-ink/10 bg-ink/[0.05]";
     }
     // C1 is قريبًا — visibly not-yet-open
     if (code === "C1") {
@@ -107,15 +117,13 @@ export function LevelLadder({
   };
 
   const codeClasses = (code: string) => {
+    if (storedLevel && storedLevel === code) return "text-white";
+    if (code === "A0") return "text-ink";
     if (storedLevel) {
-      return storedLevel === code
-        ? "text-white"
-        : dark
-          ? "text-white/45"
-          : "text-ink/40";
+      return dark ? "text-white/50" : "text-ink/45";
     }
     if (code === "C1") {
-      return dark ? "text-white/50" : "text-ink/35";
+      return dark ? "text-white/55" : "text-ink/40";
     }
     return dark
       ? "text-white group-hover:text-ink"
@@ -242,7 +250,12 @@ export function LevelLadder({
                   onClick={() => setOpen(open === i ? null : i)}
                   aria-expanded={open === i}
                   aria-label={`مستوى ${step.code} — ${step.learn}`}
-                  className={`group absolute inset-0 block w-full rounded-t-2xl border transition-[colors,transform] duration-200 active:scale-[0.97] ${stepClasses(step.code)}`}
+                  style={
+                    step.code === "A0"
+                      ? { backgroundImage: FOUNDATION_STRIPES }
+                      : undefined
+                  }
+                  className={`group absolute inset-0 block w-full overflow-hidden rounded-2xl border transition-[colors,transform] duration-200 active:scale-[0.97] ${stepClasses(step.code)}`}
                 >
                   <span className="absolute inset-x-0 top-2.5 flex flex-col items-center gap-0.5 sm:top-4">
                     <span
@@ -267,6 +280,24 @@ export function LevelLadder({
                       </span>
                     )}
                   </span>
+
+                  {/* the foundation course's reach into A1/A2 */}
+                  {FOUNDATION_COVERAGE[step.code] && (
+                    <span
+                      aria-hidden
+                      className="absolute inset-x-0 bottom-0 border-t-2 border-dashed border-accent-dark/50"
+                      style={{
+                        height: `${FOUNDATION_COVERAGE[step.code]}%`,
+                        backgroundImage: FOUNDATION_STRIPES,
+                      }}
+                    >
+                      <span className="absolute inset-0 grid place-items-center p-1">
+                        <span className="max-w-full rounded-md bg-white/90 px-1.5 py-0.5 text-center text-[9px] font-black leading-[1.3] text-ink shadow-sm">
+                          جزء متعلق بدورة التأسيس
+                        </span>
+                      </span>
+                    </span>
+                  )}
                 </button>
               </m.div>
             );
@@ -274,11 +305,24 @@ export function LevelLadder({
         </m.div>
       </div>
 
-      <p
-        className={`mt-4 text-center text-sm font-bold ${dark ? "text-white/70" : "text-ink/55"}`}
-      >
-        اضغط أي درجة وشوف وش تتعلم فيها
-      </p>
+      <div className="mt-4 flex flex-col items-center gap-2">
+        <p
+          className={`text-center text-sm font-bold ${dark ? "text-white/70" : "text-ink/60"}`}
+        >
+          اضغط أي درجة وشوف وش تتعلم فيها
+        </p>
+        {/* legend: foundation coverage */}
+        <p
+          className={`inline-flex items-center gap-2 text-xs font-bold ${dark ? "text-white/60" : "text-ink/55"}`}
+        >
+          <span
+            aria-hidden
+            className="inline-block h-3.5 w-6 rounded border border-dashed border-accent-dark/60"
+            style={{ backgroundImage: FOUNDATION_STRIPES }}
+          />
+          المناطق المخططة تغطيها دورة التأسيس A0
+        </p>
+      </div>
 
       {cta && (
         <div className="mt-6 flex flex-col items-center gap-3 text-center">
