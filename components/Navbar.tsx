@@ -15,7 +15,6 @@ const links = [
   { href: "/", label: "الرئيسية" },
   { href: "/courses", label: "الدورات" },
   { href: "/test", label: "اختبار المستوى" },
-  { href: "/how-it-works", label: "كيف نعمل" },
   { href: "/blog", label: "المدونة" },
   { href: "/contact", label: "تواصل معنا" },
 ];
