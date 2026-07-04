@@ -104,13 +104,16 @@
 }
 .marquee-track {
   animation: marquee-rtl 60s linear infinite;
+  will-change: transform;
 }
-/* the marquee is ambient signage: keep it drifting (extra slow) even under
-   reduced motion, per owner's directive — everything else still freezes */
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation-duration: 120s !important;
-    animation-iteration-count: infinite !important;
+/* testimonials: swipeable on mobile, auto-marquee from md up */
+@media (min-width: 768px) {
+  .marquee-md {
+    animation: marquee-rtl 70s linear infinite;
+    will-change: transform;
+  }
+  .marquee-md:hover {
+    animation-play-state: paused;
   }
 }
 
@@ -336,6 +339,14 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
+    }
+    /* owner directive: the marquees keep drifting (extra slow) even here —
+       must live in THIS layer to outrank the freeze above */
+    .marquee-track,
+    .marquee-md {
+      animation-duration: 140s !important;
+      animation-iteration-count: infinite !important;
+      animation-play-state: running !important;
     }
   }
 }

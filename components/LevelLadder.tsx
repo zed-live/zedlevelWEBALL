@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { m, AnimatePresence, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { X } from "lucide-react";
@@ -10,11 +10,11 @@ import { WhatsAppButton } from "./WhatsAppButton";
 import { site } from "@/config/site";
 
 /**
- * THE signature ZEDLEVEL visual — v3 per the homepage prompt:
- * ascending steps A0 → C1 (RTL: rises right → left) with orange arrows
- * between them, the character climbing on scroll, tappable steps that
- * open a "what you learn + linked course" tooltip, and the visitor's
- * stored level highlighted blue (others grey).
+ * THE signature ZEDLEVEL visual — clean v4:
+ * ascending steps A0 → C1 (RTL: rises right → left), one precise dotted
+ * ascent path with a single arrow at its summit, the character climbing
+ * on scroll, tappable steps opening a "what you learn + course" tooltip,
+ * and the foundation course's striped coverage over A0 + parts of A1/A2.
  */
 const STEPS = [
   {
@@ -59,7 +59,7 @@ const HEIGHTS = [22, 34, 46, 58, 70, 82];
 
 /* التأسيس (A0) covers all of A0 + parts of A1 and A2 (CONTENT.md §7) */
 const FOUNDATION_STRIPES =
-  "repeating-linear-gradient(45deg, rgba(248,190,76,0.55) 0px, rgba(248,190,76,0.55) 8px, rgba(248,190,76,0.22) 8px, rgba(248,190,76,0.22) 16px)";
+  "repeating-linear-gradient(45deg, rgba(248,190,76,0.5) 0px, rgba(248,190,76,0.5) 8px, rgba(248,190,76,0.18) 8px, rgba(248,190,76,0.18) 16px)";
 const FOUNDATION_COVERAGE: Record<string, number> = { A1: 42, A2: 22 };
 
 export function LevelLadder({
@@ -72,17 +72,8 @@ export function LevelLadder({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
-  const [storedLevel, setStoredLevel] = useState<string | null>(null);
   const [open, setOpen] = useState<number | null>(null);
   const dark = variant === "dark";
-
-  useEffect(() => {
-    try {
-      setStoredLevel(localStorage.getItem("zedlevel_level"));
-    } catch {
-      /* private mode */
-    }
-  }, []);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -93,23 +84,13 @@ export function LevelLadder({
   const climbBottom = useTransform(scrollYProgress, [0, 1], ["16%", "42%"]);
 
   const stepClasses = (code: string) => {
-    if (storedLevel && storedLevel === code) {
-      return "border-primary bg-primary shadow-glow-blue";
-    }
-    // A0 = the foundation course itself (fully striped, dashed)
     if (code === "A0") {
       return "border-2 border-dashed border-accent-dark/60 hover:brightness-105";
     }
-    if (storedLevel) {
-      return dark
-        ? "border-white/10 bg-white/[0.05]"
-        : "border-ink/10 bg-ink/[0.05]";
-    }
-    // C1 is قريبًا — visibly not-yet-open
     if (code === "C1") {
       return dark
-        ? "border-dashed border-white/20 bg-white/[0.04]"
-        : "border-dashed border-ink/15 bg-ink/[0.03] hover:border-primary/40";
+        ? "border-dashed border-white/25 bg-white/[0.05]"
+        : "border-dashed border-ink/15 bg-white hover:border-primary/40";
     }
     return dark
       ? "border-white/15 bg-white/10 hover:border-accent hover:bg-accent/90"
@@ -117,14 +98,8 @@ export function LevelLadder({
   };
 
   const codeClasses = (code: string) => {
-    if (storedLevel && storedLevel === code) return "text-white";
     if (code === "A0") return "text-ink";
-    if (storedLevel) {
-      return dark ? "text-white/50" : "text-ink/45";
-    }
-    if (code === "C1") {
-      return dark ? "text-white/55" : "text-ink/40";
-    }
+    if (code === "C1") return dark ? "text-white/55" : "text-ink/45";
     return dark
       ? "text-white group-hover:text-ink"
       : "text-primary group-hover:text-white";
@@ -161,7 +136,7 @@ export function LevelLadder({
                       <ArrowMotif className="h-2 w-3 -rotate-90 text-accent" />
                     </Link>
                   ) : (
-                    <p className="mt-1 text-sm font-bold text-ink/45">
+                    <p className="mt-1 text-sm font-bold text-ink/50">
                       نبّهك عند الافتتاح من صفحة الدورات
                     </p>
                   )}
@@ -179,21 +154,27 @@ export function LevelLadder({
           )}
         </AnimatePresence>
 
-        {/* dotted ascent path */}
+        {/* one precise ascent path connecting the step tops */}
         <svg
           aria-hidden
-          className={`absolute inset-0 h-full w-full ${dark ? "text-white/20" : "text-primary/15"}`}
+          className={`absolute inset-0 h-full w-full ${dark ? "text-white/25" : "text-primary/20"}`}
           viewBox="0 0 100 100"
           preserveAspectRatio="none"
         >
           <path
-            d="M 94 74 L 8 12"
+            d="M 91.7 74 L 8.3 15"
             stroke="currentColor"
             strokeLinecap="round"
             vectorEffect="non-scaling-stroke"
-            style={{ strokeWidth: 3, strokeDasharray: "1 10" }}
+            style={{ strokeWidth: 3, strokeDasharray: "1 9" }}
           />
         </svg>
+        {/* single summit arrow at the path's end */}
+        <ArrowMotif
+          aria-hidden
+          className="absolute z-[5] h-4 w-6 -rotate-45 text-accent drop-shadow-sm"
+          style={{ insetInlineEnd: "88%", top: "7%" }}
+        />
 
         {/* the climbing character */}
         <m.div
@@ -208,19 +189,6 @@ export function LevelLadder({
           <Mascot name="shab-side" size="card" className="h-auto w-full" />
         </m.div>
 
-        {/* orange arrows between steps */}
-        {HEIGHTS.slice(0, -1).map((h, i) => (
-          <ArrowMotif
-            key={i}
-            aria-hidden
-            className="absolute z-[5] hidden h-3 w-4 -rotate-45 text-accent sm:block"
-            style={{
-              insetInlineEnd: `calc(${((i + 1) / 6) * 100}% - 0.5rem)`,
-              bottom: `${(h + HEIGHTS[i + 1]) / 2 + 2}%`,
-            }}
-          />
-        ))}
-
         {/* the staircase */}
         <m.div
           className="absolute inset-0 flex items-end gap-2 sm:gap-2.5"
@@ -229,79 +197,73 @@ export function LevelLadder({
           viewport={{ once: true, margin: "0px 0px -80px 0px" }}
           variants={{ hidden: {}, show: { transition: { staggerChildren: 0.09 } } }}
         >
-          {STEPS.map((step, i) => {
-            const isStored = storedLevel === step.code;
-            return (
-              <m.div
-                key={step.code}
-                className="relative flex-1 origin-bottom"
-                style={{ height: `${HEIGHTS[i]}%` }}
-                variants={{
-                  hidden: { scaleY: 0, opacity: 0 },
-                  show: {
-                    scaleY: 1,
-                    opacity: 1,
-                    transition: { type: "spring", stiffness: 120, damping: 16 },
-                  },
-                }}
+          {STEPS.map((step, i) => (
+            <m.div
+              key={step.code}
+              className="relative flex-1 origin-bottom"
+              style={{ height: `${HEIGHTS[i]}%` }}
+              variants={{
+                hidden: { scaleY: 0, opacity: 0 },
+                show: {
+                  scaleY: 1,
+                  opacity: 1,
+                  transition: { type: "spring", stiffness: 120, damping: 16 },
+                },
+              }}
+            >
+              <button
+                type="button"
+                onClick={() => setOpen(open === i ? null : i)}
+                aria-expanded={open === i}
+                aria-label={`مستوى ${step.code} — ${step.learn}`}
+                style={
+                  step.code === "A0"
+                    ? { backgroundImage: FOUNDATION_STRIPES }
+                    : undefined
+                }
+                className={`group absolute inset-0 block w-full overflow-hidden rounded-2xl border transition-[colors,transform] duration-200 active:scale-[0.97] ${stepClasses(step.code)}`}
               >
-                <button
-                  type="button"
-                  onClick={() => setOpen(open === i ? null : i)}
-                  aria-expanded={open === i}
-                  aria-label={`مستوى ${step.code} — ${step.learn}`}
-                  style={
-                    step.code === "A0"
-                      ? { backgroundImage: FOUNDATION_STRIPES }
-                      : undefined
-                  }
-                  className={`group absolute inset-0 block w-full overflow-hidden rounded-2xl border transition-[colors,transform] duration-200 active:scale-[0.97] ${stepClasses(step.code)}`}
-                >
-                  <span className="absolute inset-x-0 top-2.5 flex flex-col items-center gap-0.5 sm:top-4">
-                    <span
-                      className={`text-sm font-black sm:text-xl ${codeClasses(step.code)}`}
-                    >
-                      {step.code}
-                    </span>
-                    <span
-                      className={`hidden text-xs font-bold sm:block ${
-                        isStored
-                          ? "text-white/85"
-                          : dark
-                            ? "text-white/60 group-hover:text-ink/70"
-                            : "text-ink/45 group-hover:text-white/85"
-                      }`}
-                    >
-                      {step.label}
-                    </span>
-                    {isStored && (
-                      <span className="rounded-full bg-accent px-1.5 py-px text-[9px] font-black text-ink">
-                        مستواك
-                      </span>
-                    )}
+                <span className="absolute inset-x-0 top-2.5 flex flex-col items-center gap-0.5 sm:top-4">
+                  <span
+                    className={`text-sm font-black sm:text-xl ${codeClasses(step.code)}`}
+                  >
+                    {step.code}
                   </span>
+                  <span
+                    className={`hidden text-xs font-bold sm:block ${
+                      step.code === "A0"
+                        ? "text-ink/70"
+                        : dark
+                          ? "text-white/60 group-hover:text-ink/70"
+                          : "text-ink/50 group-hover:text-white/85"
+                    }`}
+                  >
+                    {step.label}
+                  </span>
+                </span>
 
-                  {/* the foundation course's reach into A1/A2 */}
-                  {FOUNDATION_COVERAGE[step.code] && (
-                    <span
-                      aria-hidden
-                      className="absolute inset-x-0 bottom-0 border-t-2 border-dashed border-accent-dark/50"
-                      style={{
-                        height: `${FOUNDATION_COVERAGE[step.code]}%`,
-                        backgroundImage: FOUNDATION_STRIPES,
-                      }}
-                    >
-                      <span className="absolute inset-0 grid place-items-center p-1">
-                        <span className="max-w-full rounded-md bg-white/90 px-1.5 py-0.5 text-center text-[9px] font-black leading-[1.3] text-ink shadow-sm">
-                          جزء متعلق بدورة التأسيس
-                        </span>
+                {/* the foundation course's reach into A1/A2 */}
+                {FOUNDATION_COVERAGE[step.code] && (
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 bottom-0 border-t-2 border-dashed border-accent-dark/50"
+                    style={{
+                      height: `${FOUNDATION_COVERAGE[step.code]}%`,
+                      backgroundImage: FOUNDATION_STRIPES,
+                    }}
+                  >
+                    <span className="absolute inset-0 hidden place-items-center p-1 sm:grid">
+                      <span className="max-w-full rounded-lg bg-white/95 px-2 py-0.5 text-center text-[9px] font-black leading-[1.35] text-ink shadow-sm">
+                        جزء متعلق
+                        <br />
+                        بدورة التأسيس
                       </span>
                     </span>
-                  )}
-                </button>
-              </m.div>
-            );
-          })}
+                  </span>
+                )}
+              </button>
+            </m.div>
+          ))}
         </m.div>
       </div>
 
@@ -311,7 +273,6 @@ export function LevelLadder({
         >
           اضغط أي درجة وشوف وش تتعلم فيها
         </p>
-        {/* legend: foundation coverage */}
         <p
           className={`inline-flex items-center gap-2 text-xs font-bold ${dark ? "text-white/60" : "text-ink/55"}`}
         >

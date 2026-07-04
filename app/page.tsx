@@ -411,6 +411,27 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ═══ §8 اختبار المحادثة ═══ */}
+      <section className="py-20 lg:py-24">
+        <div className="container-site text-center">
+          <Reveal>
+            <SectionHeading
+              eyebrow="اختبار المحادثة"
+              title="اختبر نطقك ومحادثتك"
+              sub="عندك مستوى بالإنجليزي وتبي تتأكد من نطقك ومحادثتك؟ سوِّ اختبار المحادثة واعرف مستواك الحقيقي في الكلام."
+            />
+          </Reveal>
+          <Reveal delay={150}>
+            <div className="mt-8">
+              <Link href="/speaking-test" className="btn btn-accent text-lg">
+                <Target className="h-5 w-5" aria-hidden />
+                ابدأ اختبار المحادثة
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ═══ §9 آراء العملاء (كاروسيل) ═══ */}
       <section className="bg-section py-20 lg:py-28">
         <div className="container-site">
