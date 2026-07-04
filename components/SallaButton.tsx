@@ -18,12 +18,14 @@ export function SallaButton({
   source,
   hero = false,
   showTrust = true,
+  label = "اشترك الآن",
   className = "",
 }: {
   course: SallaCourse;
   source: string;
   hero?: boolean;
   showTrust?: boolean;
+  label?: string;
   className?: string;
 }) {
   const url = site.salla[course];
@@ -53,7 +55,7 @@ export function SallaButton({
           }`}
         >
           <ShoppingBag className="h-5 w-5" aria-hidden />
-          اشترك الآن
+          {label}
         </a>
       )}
       {showTrust && (

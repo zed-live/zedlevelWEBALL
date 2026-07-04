@@ -17,6 +17,8 @@ export const site = {
     msgCourseInquiry: (course: string) => `عندي استفسار عن دورة ${course}`,
     msgSpeakingAI: "أبغى أجرب اختبار المحادثة بالذكاء الاصطناعي 🎤",
     msgSpeakingHuman: "أبغى أحجز جلسة تقييم محادثة مباشرة مع معلم 🎤",
+    /** the unified level-check mechanism — every حدّد مستواك button */
+    msgLevel: "مرحبًا! أبغى أحدد مستواي في الإنجليزية وتقترحون لي الدورة المناسبة 👋",
   },
   salla: {
     a0: "TODO_SALLA_URL_A0",
