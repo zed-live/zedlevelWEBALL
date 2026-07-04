@@ -17,8 +17,9 @@
   --color-ink: #1e1e1e;
   --color-section: #f5f7fa;
 
-  /* Latin → Source Sans 3, Arabic → Cairo (per-glyph fallback) */
-  --font-sans: var(--font-source-sans), var(--font-cairo), ui-sans-serif,
+  /* Cairo leads everything (user directive: العناوين والنصوص بـ Cairo);
+     Source Sans 3 stays as fallback for any glyph Cairo lacks */
+  --font-sans: var(--font-cairo), var(--font-source-sans), ui-sans-serif,
     system-ui, -apple-system, "Segoe UI", sans-serif;
 
   /* Ambient shadows — soft, expensive-looking */

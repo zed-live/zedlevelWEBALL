@@ -27,6 +27,14 @@ export const site = {
     b1: "TODO_SALLA_URL_B1",
     b2: "TODO_SALLA_URL_B2",
   },
+  /** Prices in SAR (digits only, e.g. "299"). TODO_ = "يُعلن مع فتح الدفعة". */
+  pricing: {
+    a0: "TODO_PRICE_A0",
+    a1: "TODO_PRICE_A1",
+    a2: "TODO_PRICE_A2",
+    b1: "TODO_PRICE_B1",
+    b2: "TODO_PRICE_B2",
+  },
   social: {
     instagram: "TODO_INSTAGRAM_URL",
     tiktok: "TODO_TIKTOK_URL",

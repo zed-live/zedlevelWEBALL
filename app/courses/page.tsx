@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CourseCard } from "@/components/CourseCard";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { courses } from "@/config/courses";
+import { site } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "الدورات",
@@ -22,6 +24,23 @@ export default function CoursesPage() {
         {courses.map((c) => (
           <CourseCard key={c.slug} course={c} />
         ))}
+      </div>
+
+      {/* final CTA */}
+      <div className="mt-16 rounded-[2rem] bg-brand-gradient px-6 py-10 text-center">
+        <h2 className="text-2xl font-black text-white">محتار وش يناسبك؟</h2>
+        <p className="mt-2 text-white/75">
+          حدّد مستواك وبنقترح عليك الدورة الصح
+        </p>
+        <div className="mt-6 flex justify-center">
+          <WhatsAppButton
+            message={site.whatsapp.msgLevel}
+            source="courses-final"
+            variant="solid"
+          >
+            حدّد مستواك عبر الواتساب
+          </WhatsAppButton>
+        </div>
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { m, AnimatePresence } from "framer-motion";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { SallaButton } from "./SallaButton";
+import { PriceTag } from "./PriceTag";
 import { CourseCover, type CoverVariant } from "./CourseCover";
 import { ArrowMotif } from "./ArrowMotif";
 import { site, type SallaCourse } from "@/config/site";
@@ -14,8 +15,11 @@ interface CourseItem {
   cover: CoverVariant;
   title: string;
   desc: string;
+  details?: string;
   href: string;
   salla?: SallaCourse;
+  /** "تبدأ من" for multi-tier pricing */
+  pricePrefix?: string;
   notify?: string;
 }
 
@@ -24,6 +28,7 @@ const AVAILABLE: CourseItem[] = [
     cover: "a0",
     title: "التأسيس الصحيح — A0",
     desc: "ابدأ من الصفر وابنِ أساس يثبت معك",
+    details: "26 درس · 4 أسابيع + أسبوع تطبيق · شهادة",
     href: "/courses/a0",
     salla: "a0",
   },
@@ -31,8 +36,10 @@ const AVAILABLE: CourseItem[] = [
     cover: "levels",
     title: "دورة المستويات — A1 إلى B2",
     desc: "اطلع مستوى بعد مستوى عبر 4 مسارات",
+    details: "12 دورة · 6 أسابيع للدورة · شهادة لكل مستوى",
     href: "/courses/levels",
     salla: "a1",
+    pricePrefix: "تبدأ من",
   },
 ];
 
@@ -118,10 +125,21 @@ export function CoursesTabs() {
                     {c.title}
                   </h3>
                 </Link>
-                <p className="mt-1.5 flex-1 text-[15px] leading-8 text-ink/65">
+                <p className="mt-1.5 text-[15px] leading-8 text-ink/65">
                   {c.desc}
                 </p>
-                <div className="mt-5 flex flex-col gap-2.5">
+                {c.details && (
+                  <p className="mt-2.5 inline-flex items-center gap-1.5 text-[13px] font-bold text-ink/50">
+                    <ArrowMotif className="h-2 w-3 shrink-0 text-accent" />
+                    {c.details}
+                  </p>
+                )}
+                <div className="mt-3 flex-1">
+                  {c.salla && (
+                    <PriceTag course={c.salla} prefix={c.pricePrefix} />
+                  )}
+                </div>
+                <div className="mt-4 flex flex-col gap-2.5">
                   {c.salla ? (
                     <>
                       <WhatsAppButton

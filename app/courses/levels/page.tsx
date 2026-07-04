@@ -14,6 +14,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { ArrowMotif } from "@/components/ArrowMotif";
 import { SallaButton } from "@/components/SallaButton";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { PriceTag } from "@/components/PriceTag";
 import { StatStrip } from "@/components/StatStrip";
 import { LevelLadder } from "@/components/LevelLadder";
 import { Reveal } from "@/components/Reveal";
@@ -237,6 +238,20 @@ export default function LevelsPage() {
         </div>
       </section>
 
+      {/* ═══ mid CTA — after the streams ═══ */}
+      <section className="container-site py-12">
+        <Reveal>
+          <div className="flex flex-col items-center gap-3 text-center">
+            <p className="font-bold text-ink/60">
+              أربعة مسارات تشتغل لك كل يوم — اختر مستواك وابدأ
+            </p>
+            <Link href="#tiers" className="btn btn-primary">
+              اختر مستواك واشترك
+            </Link>
+          </div>
+        </Reveal>
+      </section>
+
       {/* ═══ 6-week structure ═══ */}
       <section className="py-20 lg:py-28">
         <div className="container-site">
@@ -299,6 +314,9 @@ export default function LevelsPage() {
                     <CountUp value={t.words} />
                     <span className="text-sm font-bold text-ink/50"> كلمة</span>
                   </p>
+                  <div className="mt-3 flex justify-center">
+                    <PriceTag course={t.salla} prefix="للدورة" />
+                  </div>
                   <div className="mt-3 space-y-1.5 text-sm font-bold text-ink/55">
                     <p>3 دورات متسلسلة</p>
                     <p>{t.duration} للمستوى كاملًا</p>

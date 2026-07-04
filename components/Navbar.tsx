@@ -7,6 +7,9 @@ import { usePathname } from "next/navigation";
 import { m } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import manifest from "@/public/characters/manifest.json";
+import { site } from "@/config/site";
+import { waLink } from "@/lib/whatsapp";
+import { track } from "@/lib/track";
 
 const links = [
   { href: "/", label: "الرئيسية" },
@@ -95,12 +98,28 @@ export function Navbar() {
               )}
             </Link>
           ))}
-          <Link
-            href="/test"
-            className="btn btn-primary !min-h-11 rounded-full !px-6 !py-2.5 text-sm"
-          >
-            حدد مستواك
-          </Link>
+          {(() => {
+            const wa = waLink(site.whatsapp.msgLevel);
+            // unified mechanism: حدّد مستواك → WhatsApp (graceful /test fallback)
+            return wa ? (
+              <a
+                href={wa}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => track("whatsapp_click", { source: "navbar" })}
+                className="btn btn-primary !min-h-11 rounded-full !px-6 !py-2.5 text-sm"
+              >
+                حدّد مستواك
+              </a>
+            ) : (
+              <Link
+                href="/test"
+                className="btn btn-primary !min-h-11 rounded-full !px-6 !py-2.5 text-sm"
+              >
+                حدّد مستواك
+              </Link>
+            );
+          })()}
         </div>
 
         {/* Mobile toggle */}
@@ -136,9 +155,26 @@ export function Navbar() {
                 {l.label}
               </Link>
             ))}
-            <Link href="/test" className="btn btn-primary mt-3 w-full">
-              حدد مستواك — ابدأ الاختبار المجاني
-            </Link>
+            {(() => {
+              const wa = waLink(site.whatsapp.msgLevel);
+              return wa ? (
+                <a
+                  href={wa}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() =>
+                    track("whatsapp_click", { source: "navbar-mobile" })
+                  }
+                  className="btn btn-primary mt-3 w-full"
+                >
+                  حدّد مستواك عبر الواتساب
+                </a>
+              ) : (
+                <Link href="/test" className="btn btn-primary mt-3 w-full">
+                  حدّد مستواك — ابدأ الاختبار المجاني
+                </Link>
+              );
+            })()}
           </div>
         </div>
       )}
