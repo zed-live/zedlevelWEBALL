@@ -1,28 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import {
-  CheckCircle2,
-  XCircle,
-  Award,
-  BookOpen,
-  FileText,
-  Layers,
-  Mic2,
-  MessageCircle,
-  Video,
-  FileDown,
-  Users,
-} from "lucide-react";
 import { Mascot } from "@/components/Mascot";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ArrowMotif } from "@/components/ArrowMotif";
 import { SallaButton } from "@/components/SallaButton";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { StatStrip } from "@/components/StatStrip";
-import { StageCard } from "@/components/StageCard";
-import { RuleCard } from "@/components/RuleCard";
-import { WeeklyRhythm } from "@/components/WeeklyRhythm";
-import { FAQAccordion } from "@/components/FAQAccordion";
 import { StickyBuyBar } from "@/components/StickyBuyBar";
 import { Reveal } from "@/components/Reveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
@@ -32,204 +13,211 @@ import { site } from "@/config/site";
 export const metadata: Metadata = {
   title: "دورة التأسيس الصحيح A0 — الإنجليزية من الصفر",
   description:
-    "3 مراحل · 26 درسًا · +460 كلمة · 15 قاعدة — أسّس إنجليزيتك بالطريقة الصحيحة مع شهادة واختبار نهائي، بـ 15–30 دقيقة يوميًا فقط.",
+    "3 مراحل · 26 درس · +460 كلمة · +36 موضوع — ابدأ من الصفر وابنِ أساسًا يثبت معك، مع تطبيق مباشر واختبار نهائي وشهادة.",
 };
 
-/* ─── CONTENT.md §7 — exact curriculum data ─── */
+/* ─── A0 page — the user's authoritative 10-section prompt (2026-07-04) ─── */
 
-const numbers = [
-  { value: "3", label: "مراحل متدرجة" },
-  { value: "26", label: "درسًا مسجلًا" },
-  { value: "+460", label: "كلمة أساسية" },
-  { value: "15", label: "قاعدة قواعد" },
-  { value: "14", label: "قاعدة نطق" },
+/* §2 لمن هذه الدورة؟ */
+const audience = [
+  {
+    title: "بادئ من الصفر",
+    desc: "ما عندك خلفية بالإنجليزي، وتبي بداية صحيحة وقوية من الأساس",
+  },
+  {
+    title: "بدأت وتعثّرت",
+    desc: "جرّبت تطبيقات ودورات، وكل مرة توقف ولا تستمر",
+  },
+  {
+    title: "أساسك ضعيف",
+    desc: "تعرف شوي هنا وشوي هناك، بس ما عندك أساس تبني عليه وتثق فيه",
+  },
 ];
 
-const outcomes = [
-  "تقرأ أي كلمة إنجليزية بشكل صحيح",
-  "تحيي وتودّع وتقدّم نفسك بثقة",
-  "تبني جملك الأولى الصحيحة",
-  "تسأل وتجاوب — نعم/لا وأسئلة Wh",
-  "تتكلم عن عائلتك ومشاعرك ويومك",
-  "تصف بيتك وأكلك وملابسك وتنقلاتك",
+/* §3 تخيّل بعد الدورة */
+const imagine = [
+  "بتكون تعلّمت أهم الصوتيات، فتحل مشكلة القراءة والنطق الصحيح للأصوات.",
+  "بتصير قادر تقدّم نفسك وتتكلم عن عائلتك، منطقتك، لبسك، وحياتك — وتسأل بشكل صحيح، وتجاوب، وتنفي صح.",
+  "بتعدّ إلى المليون، وتوصف الوقت والطقس والأكل والأماكن… وغيرها الكثير.",
+  "وبتكون بنيت لك أساسًا متينًا يبنيك صح ويسرّع تعلّمك.",
 ];
 
+/* §4 رحلتك في ٣ مراحل */
 const stages = [
   {
     emoji: "🌱",
-    stage: "المرحلة الأولى",
-    lessons: "الدروس 1–10",
-    title: "الأساسيات",
-    promise: "تقرأ الإنجليزية. تحيي أي شخص. تبني أول جملة لك.",
-    covers: [
-      "الحروف ونطقها",
-      "قواعد النطق (oo، ee، ch، th…)",
-      "التحيات والوداع",
-      "بناء الجملة الإنجليزية",
-      "أدوات التعريف a / an / the",
-      "فعل الكينونة to be",
-      "هذا وذاك",
-      "الأرقام والأعداد الترتيبية",
-      "الضمائر",
-      "الحياة والمشاعر",
-    ],
+    title: "الانطلاق",
+    desc: "تقرأ وتنطق صح — من الحروف والأصوات إلى أول جملة تكوّنها بنفسك.",
   },
   {
     emoji: "🏗️",
-    stage: "المرحلة الثانية",
-    lessons: "الدروس 11–18",
-    title: "نفسك وعالمك",
-    promise: "قدّم نفسك، اسأل أسئلة حقيقية، وتكلم عن عائلتك ومدرستك.",
-    covers: [
-      "ضمائر وصفات الملكية",
-      "المدرسة",
-      "صيغ الأسئلة (نعم/لا، Wh، كم، هل تستطيع)",
-      "أفراد العائلة",
-      "ترتيب الصفات والألوان",
-      "الطقس والفصول",
-      "أهم 100 كلمة",
-      "حروف الجر",
-      "المفرد والجمع",
-    ],
+    title: "التعبير",
+    desc: "تعرّف عن نفسك وتسأل — وتتكلم عن عائلتك ودراستك.",
   },
   {
     emoji: "🎯",
-    stage: "المرحلة الثالثة",
-    lessons: "الدروس 19–26",
-    title: "صِف وطبّق",
-    promise: "صِف الوقت والأماكن والبيت — ثم استلم شهادتك.",
-    covers: [
-      "الأيام والشهور والوقت",
-      "الأماكن",
-      "البيت — الغرف والأثاث",
-      "الفعل to do",
-      "الفعل to have والأفعال الناقصة",
-      "الأكل والشرب",
-      "الملابس وأجزاء الجسم",
-      "المواصلات",
+    title: "الإتقان",
+    desc: "توصف وتطبّق كل شي — الوقت والأماكن والبيت، وتختم بشهادتك.",
+  },
+];
+
+/* §5 اللي يفرّقنا */
+const differentiators = [
+  {
+    emoji: "🔔",
+    title: "متابعة وتذكير مستمر",
+    desc: "نذكّرك على الواتساب باستمرار، فما تتراكم عليك الدروس وما تنسى. في كل مرة تحتاج دفعة، تلقانا معك.",
+  },
+  {
+    emoji: "✅",
+    title: "منهجية سهلة التنفيذ",
+    desc: "دروس قصيرة، مرتّبة خطوة خطوة، ١٥–٣٠ دقيقة باليوم. ما فيه تعقيد ولا «من وين أبدأ؟» — بس تفتح وتنفّذ.",
+  },
+  {
+    emoji: "🔥",
+    title: "تحفيز يخليك تبي تكمّل",
+    desc: "نظام يشجّعك ويخليك متحمّس تنجز درسك اليومي، وتوصل لخط النهاية وأنت فخور بنفسك.",
+  },
+  {
+    emoji: "🎤",
+    title: "تطبيق عملي مباشر وتفاعلي",
+    desc: "في نهاية الدورة تتمرّن مع معلمك في مجموعة صغيرة — تطبّق اللي تعلمته بشكل مباشر، مع فيدباك فوري.",
+  },
+];
+
+/* §6 الإيقاع الأسبوعي */
+const rhythm = [
+  { emoji: "📤", text: "سبت · اثنين · أربعاء — يوصلك درسين جديدين" },
+  { emoji: "✏️", text: "بينهم — تدرّس وتطبّق على راحتك، كل يوم بيومه" },
+  { emoji: "🕌", text: "الجمعة يوم الراحة" },
+];
+
+/* §7 وش يشمل اشتراكك؟ */
+const included = [
+  {
+    emoji: "📹",
+    title: "دروس فيديو مسجّلة",
+    desc: "٢٦ درسًا مرتّبة خطوة خطوة، توصلك أثناء الدورة، وترجع لها وتعيدها متى ما احتجت.",
+  },
+  {
+    emoji: "📘",
+    title: "كتيّب تمارين",
+    desc: "تدريبات تساعدك تثبّت بعض اللي تعلمته وتطبّقه بيدك.",
+  },
+  {
+    emoji: "📄",
+    title: "ملخص شامل",
+    desc: "ورقة مراجعة سريعة، ترجع لها في أي وقت.",
+  },
+  {
+    emoji: "🃏",
+    title: "بطاقات مراجعة (فلاش كاردز)",
+    desc: "تراجع المفردات وتحفظها بسهولة عبر Quizlet.",
+  },
+  {
+    emoji: "🎤",
+    title: "تطبيق عملي مباشر وتفاعلي",
+    desc: "تطبّق مع معلمك في مجموعة صغيرة (١–٧)، مع اختبارك المباشر وفيدباك فوري.",
+  },
+  {
+    emoji: "🏆",
+    title: "اختبار نهائي + شهادة",
+    desc: "إثبات حقيقي لتعلّم حقيقي.",
+  },
+  {
+    emoji: "💬",
+    title: "متابعة على الواتساب",
+    desc: "مجموعة للأسئلة والدعم، ما تمشي وحدك.",
+  },
+];
+
+/* §8 المنهج بالتفصيل — accordion (closed by default) */
+const curriculum = [
+  {
+    emoji: "🔵",
+    title: "القواعد الأساسية (١٥ قاعدة)",
+    items: [
+      "المفرد والجمع",
+      "قواعد الجمع الثمانية",
+      "أدوات التعريف (a/an/the)",
+      "أقسام الكلام",
+      "عناصر الجملة",
+      "أنواع الجمل",
+      "أنواع الأسئلة",
+      "ضمائر الفاعل",
+      "ضمائر المفعول",
+      "الصفات الملكية",
+      "الضمائر الملكية",
+      "Its vs It's",
+      "الأفعال المساعدة",
+      "الاختصارات الشائعة",
+      "أسماء الإشارة",
+    ],
+  },
+  {
+    emoji: "🟢",
+    title: "قواعد النطق (١٤ نمط صوتي)",
+    items: [
+      "ch",
+      "sh",
+      "th",
+      "ph",
+      "wh",
+      "ck",
+      "tion",
+      "ough",
+      "augh",
+      "gh",
+      "ea",
+      "wr",
+      "kn",
+      "qu",
+    ],
+    note: "بالإضافة إلى نطق كل حرف من A إلى Z بكل حالاته.",
+  },
+  {
+    emoji: "📚",
+    title: "المفردات (+٤٦٠ كلمة في ٢٣ فئة)",
+    items: [
+      "الحروف",
+      "الأرقام والترتيب",
+      "الضمائر",
+      "الملكية",
+      "أسماء الإشارة",
+      "الأفعال المساعدة",
+      "المشاعر",
+      "العائلة",
+      "أيام الأسبوع",
+      "الشهور",
+      "الفصول والطقس",
+      "الوقت",
+      "الألوان",
       "الدول والجنسيات",
-      "الاختبار النهائي والشهادة 🎓",
+      "الأماكن",
+      "البيت",
+      "الدراسة",
+      "الأكل والشرب",
+      "اللبس",
+      "أعضاء الجسم",
+      "المواصلات",
+      "التحية والوداع",
+      "أهم ١٠٠ كلمة",
     ],
   },
 ];
 
-const rules = [
-  {
-    num: "١",
-    title: "بتخلّص",
-    desc: "أقصى مدة للدورة 40 يومًا — مستحيل تطول وتتعلق بالنص.",
-  },
-  {
-    num: "٢",
-    title: "ما بتتخطى",
-    desc: "الدروس تنفتح بالتسلسل، درس ورا درس — ما فيه قفز ولا فوضى.",
-  },
-  {
-    num: "٣",
-    title: "بترتاح",
-    desc: "الجمعة إجازة دائمًا 🕌 — راحة مضمونة كل أسبوع.",
-  },
-  {
-    num: "٤",
-    title: "أقصى سرعة ×3",
-    desc: "متحمس؟ تقدر تمشي بسرعة ثلاثة دروس في اليوم.",
-  },
-];
-
-const included = [
-  {
-    icon: BookOpen,
-    title: "كراسة تمارين",
-    desc: "تدريب عملي أكثر على كل درس",
-  },
-  {
-    icon: FileText,
-    title: "ملخص نهائي",
-    desc: "ورقة مراجعة سريعة ترجع لها في أي وقت",
-  },
-  {
-    icon: Layers,
-    title: "بطاقات مراجعة",
-    desc: "فلاش كاردز جاهزة على Quizlet",
-  },
-  {
-    icon: Mic2,
-    title: "أسبوع مكثف مباشر",
-    desc: "مجموعة صغيرة 1–7 · تركيز على الكتابة · اختبار مباشر",
-  },
-];
-
-const delivery = [
-  { icon: MessageCircle, text: "كل شي يوصلك عبر الواتساب" },
-  { icon: FileDown, text: "PDF يومي فيه رابط الدرس" },
-  { icon: Video, text: "فيديو الدرس على Notion" },
-  { icon: Users, text: "قروب للأسئلة والدعم" },
-];
-
-const notIncluded = [
-  "طلاقة في المحادثة",
-  "استماع بسرعة الناطقين",
-  "كتابة المقالات",
-  "إتقان التعابير الاصطلاحية",
-  "سرد القصص بصيغة الماضي",
-];
-
-const faq = [
-  {
-    q: "كم أحتاج وقت كل يوم؟",
-    a: "من 15 إلى 30 دقيقة فقط — نفس الوقت اللي تقضيه على الواتساب. والدروس مسجلة، تقدر ترجع لها وتعيدها في أي وقت.",
-  },
-  {
-    q: "كم مدة الدورة؟",
-    a: "المتوسط 26 يومًا: 4 أسابيع دروس + أسبوع مراجعة ومكثف. أقصى مدة 40 يومًا، وأسرع إنجاز ممكن 9 أيام بسرعة ×3.",
-  },
-  {
-    q: "وين وكيف توصلني الدروس؟",
-    a: "كل شي عبر الواتساب: يوصلك PDF يومي فيه رابط درس الفيديو على Notion، ومعك قروب للأسئلة والدعم طول الدورة.",
-  },
-  {
-    q: "هل فيه شهادة؟",
-    a: "نعم — تختم الدورة باختبار نهائي، وبعد اجتيازه تستلم شهادتك 🎓.",
-  },
-  {
-    q: "هل الدورة مناسبة لي؟",
-    a: "إذا كنت تبدأ من الصفر، أو رجعت للإنجليزية بعد أساس ضعيف — فهي مصممة لك بالضبط. لعمر 14 سنة وما فوق، والشرح كله بالعربي.",
-  },
-  {
-    q: "وش أسبوع المكثف المباشر؟",
-    a: "أسبوع في نهاية الدورة مع مجموعة صغيرة (1 إلى 7 متعلمين): تركيز على الكتابة، تطبيق مباشر مع المعلم، ثم الاختبار النهائي.",
-  },
-  {
-    q: "متى أقدر أبدأ؟",
-    a: "التسجيل بدفعات صغيرة محدودة العدد على مدار السنة. بعد الدفع عبر سلة، راسلنا على الواتساب لاستلام رابط الدورة والجدول.",
-  },
-];
-
-/* JSON-LD: Course + FAQPage (SEO) */
 const jsonLd = {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Course",
-      name: "التأسيس الصحيح بالإنجليزية — A0",
-      description:
-        "دورة تأسيس اللغة الإنجليزية من الصفر: 3 مراحل، 26 درسًا، أكثر من 460 كلمة، 15 قاعدة قواعد و14 قاعدة نطق، مع اختبار نهائي وشهادة.",
-      provider: {
-        "@type": "Organization",
-        name: "ZEDLEVEL — أكاديمية زد لفل لتعليم الإنجليزية",
-      },
-      inLanguage: "ar",
-      teaches: "أساسيات اللغة الإنجليزية للمبتدئين (CEFR A0)",
-    },
-    {
-      "@type": "FAQPage",
-      mainEntity: faq.map((f) => ({
-        "@type": "Question",
-        name: f.q,
-        acceptedAnswer: { "@type": "Answer", text: f.a },
-      })),
-    },
-  ],
+  "@type": "Course",
+  name: "التأسيس الصحيح بالإنجليزية — A0",
+  description:
+    "دورة تأسيس اللغة الإنجليزية من الصفر: 3 مراحل، 26 درسًا، أكثر من 460 كلمة و36 موضوعًا، مع تطبيق مباشر واختبار نهائي وشهادة.",
+  provider: {
+    "@type": "Organization",
+    name: "ZEDLEVEL — أكاديمية زد لفل لتعليم الإنجليزية",
+  },
+  inLanguage: "ar",
+  teaches: "أساسيات اللغة الإنجليزية للمبتدئين (CEFR A0)",
 };
 
 export default function A0Page() {
@@ -240,7 +228,7 @@ export default function A0Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* ═══ Hero ═══ */}
+      {/* ═══ §1 الهيرو ═══ */}
       <section className="relative overflow-hidden bg-hero-glow">
         <div
           aria-hidden
@@ -271,44 +259,31 @@ export default function A0Page() {
             </StaggerItem>
 
             <StaggerItem>
-              <p className="mt-6 text-lg font-semibold leading-9 text-ink/70">
-                أساس صحيح يخدمك طول الرحلة — بالعربي، وخطوة بخطوة.
+              <p className="mt-6 max-w-[46ch] text-lg font-semibold leading-9 text-ink/70">
+                ابدأ من الصفر، وابنِ أساسًا يثبت معك طوال رحلتك مع الإنجليزي.
+                <br />
+                من الحروف الأولى… إلى حوار وجمل تكوّنها بثقة.
               </p>
             </StaggerItem>
 
             <StaggerItem>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {["15–30 دقيقة يوميًا", "جمعة راحة 🕌", "اختبار + شهادة 🎓"].map(
-                  (chip) => (
-                    <span
-                      key={chip}
-                      className="rounded-full bg-primary-light px-3.5 py-1.5 text-sm font-bold text-primary"
-                    >
-                      {chip}
-                    </span>
-                  ),
-                )}
-              </div>
+              <p className="mt-5 inline-flex flex-wrap items-center gap-x-2 rounded-2xl bg-primary-light px-4 py-2.5 font-black text-primary">
+                <span aria-hidden>🎯</span> 3 مراحل · 26 درس · +460 كلمة · +36
+                موضوع
+              </p>
             </StaggerItem>
 
             <StaggerItem>
-              <div className="mt-8">
+              <div className="mt-7 flex flex-col gap-3.5 sm:flex-row sm:items-start">
                 <SallaButton course="a0" source="a0-hero" hero />
+                <WhatsAppButton
+                  message={site.whatsapp.msgCourseInquiry("التأسيس الصحيح A0")}
+                  source="a0-hero"
+                  variant="solid"
+                >
+                  استفسر بالواتساب
+                </WhatsAppButton>
               </div>
-            </StaggerItem>
-
-            <StaggerItem>
-              <WhatsAppButton
-                message={site.whatsapp.msgCourseInquiry("التأسيس الصحيح A0")}
-                source="a0-hero"
-                variant="link"
-                className="mt-2"
-              >
-                عندك سؤال قبل؟ كلمنا على واتساب
-              </WhatsAppButton>
-              <p className="mt-3 text-sm font-bold text-ink/55">
-                دفعات صغيرة محدودة — لمن يبدأ من الصفر أو يعيد التأسيس (14+)
-              </p>
             </StaggerItem>
           </Stagger>
 
@@ -333,131 +308,188 @@ export default function A0Page() {
         </div>
       </section>
 
-      {/* ═══ By the numbers ═══ */}
-      <StatStrip items={numbers} />
-
-      {/* ═══ Outcomes ═══ */}
-      <section className="bg-section py-20 lg:py-28">
+      {/* ═══ §2 لمن هذه الدورة؟ ═══ */}
+      <section className="py-20 lg:py-28">
         <div className="container-site">
           <Reveal>
-            <SectionHeading
-              eyebrow="وش بتحقق؟"
-              title="تخيل نفسك بعد 26 درسًا"
-              sub="هذا اللي بتقدر تسويه فعليًا بعد إتمام التأسيس"
-            />
+            <SectionHeading title="هذه الدورة لك… إذا كنت" />
           </Reveal>
-          <ul className="mx-auto mt-12 grid max-w-4xl gap-3.5 sm:grid-cols-2">
-            {outcomes.map((o, i) => (
-              <Reveal key={o} delay={i * 70}>
-                <li className="card flex items-center gap-3.5 px-5 py-4 font-bold">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary-light">
-                    <CheckCircle2 className="h-5 w-5 text-primary" aria-hidden />
+          <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-3">
+            {audience.map((a, i) => (
+              <Reveal key={a.title} delay={i * 100} className="h-full">
+                <div className="card card-hover h-full p-7">
+                  <span className="text-2xl" aria-hidden>
+                    🔹
                   </span>
-                  {o}
-                </li>
-              </Reveal>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* ═══ The 3 stages ═══ */}
-      <section className="py-20 lg:py-28">
-        <div className="container-site">
-          <Reveal>
-            <SectionHeading
-              eyebrow="رحلة الدورة"
-              title="ثلاث مراحل — من الحروف إلى شهادتك"
-              sub="كل مرحلة تبني على اللي قبلها، بدون قفز وبدون حشو"
-            />
-          </Reveal>
-          <div className="mt-12 grid gap-5 lg:grid-cols-3">
-            {stages.map((s, i) => (
-              <Reveal key={s.title} delay={i * 100} className="h-full">
-                <StageCard {...s} />
+                  <h3 className="mt-3 text-lg font-black">{a.title}</h3>
+                  <p className="mt-2 text-[15px] leading-8 text-ink/65">
+                    {a.desc}
+                  </p>
+                </div>
               </Reveal>
             ))}
           </div>
+          <Reveal delay={300}>
+            <p className="mt-10 text-center text-lg font-black text-primary">
+              هذه الدورة تبني لك أساسًا قويًا يسرّع اكتسابك للغة.
+            </p>
+          </Reveal>
         </div>
       </section>
 
-      {/* ═══ The 4 rules — dark ═══ */}
-      <section className="relative overflow-hidden bg-brand-gradient py-20 lg:py-28">
-        <ArrowMotif
+      {/* ═══ §3 تخيّل بعد الدورة ═══ */}
+      <section className="relative overflow-hidden bg-section py-20 lg:py-28">
+        <div
           aria-hidden
-          className="absolute -bottom-10 start-[-3rem] h-56 w-80 rotate-12 text-white/[0.04]"
+          className="absolute inset-0 bg-dots [mask-image:radial-gradient(50%_50%_at_50%_20%,black,transparent)]"
         />
-        <div className="container-site">
-          <Reveal>
-            <SectionHeading
-              tone="dark"
-              eyebrow="نظام يحميك من الانسحاب"
-              title="القواعد الأربع"
-              sub="مو مجرد دورة — نظام مصمم عشان توصل للنهاية"
-            />
-          </Reveal>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {rules.map((r, i) => (
-              <Reveal key={r.num} delay={i * 90} className="h-full">
-                <RuleCard {...r} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ Mid-page CTA ═══ */}
-      <section className="container-site py-14">
-        <Reveal>
-          <div className="card flex flex-col items-center gap-6 p-8 text-center sm:p-9 lg:flex-row lg:justify-between lg:text-start">
-            <div>
-              <h2 className="text-xl font-black sm:text-2xl">
-                مقاعد الدفعة محدودة — احجز مكانك من الآن
-              </h2>
-              <p className="mt-1.5 text-ink/60">
-                26 درسًا · شهادة · مكثف مباشر بمجموعة 1–7
-              </p>
-            </div>
-            <SallaButton course="a0" source="a0-mid" />
-          </div>
-        </Reveal>
-      </section>
-
-      {/* ═══ Weekly rhythm ═══ */}
-      <section className="py-20 lg:py-28">
-        <div className="container-site">
-          <Reveal>
-            <SectionHeading
-              eyebrow="إيقاعك الأسبوعي"
-              title="أسبوعك مع زد لفل"
-              sub="واضح من أول يوم — بدون مفاجآت وبدون تكديس دروس"
-            />
-          </Reveal>
-          <div className="mt-12">
+        <div className="container-site relative grid items-center gap-12 lg:grid-cols-[1fr_auto]">
+          <div>
             <Reveal>
-              <WeeklyRhythm />
+              <SectionHeading align="start" title="تخيّل بعد الدورة…" />
+            </Reveal>
+            <div className="mt-8 space-y-4">
+              {imagine.map((line, i) => (
+                <Reveal key={line} delay={i * 90}>
+                  <p className="card flex items-start gap-3.5 px-5 py-4 font-semibold leading-8 text-ink/80">
+                    <ArrowMotif className="mt-2.5 h-2.5 w-3.5 shrink-0 text-accent" />
+                    {line}
+                  </p>
+                </Reveal>
+              ))}
+            </div>
+            <Reveal delay={400}>
+              <p className="mt-8 text-2xl font-black text-primary">
+                هنا نقطة بدايتك.
+              </p>
             </Reveal>
           </div>
+          <Reveal delay={200}>
+            <div className="hidden justify-center lg:flex">
+              <Mascot
+                name="shab-front"
+                size="section"
+                className="h-80 w-auto animate-breathe drop-shadow-xl"
+              />
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* ═══ What's included + delivery ═══ */}
+      {/* ═══ §4 رحلتك في ٣ مراحل ═══ */}
+      <section className="py-20 lg:py-28">
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading title="رحلتك في ٣ مراحل" />
+          </Reveal>
+          <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-3">
+            {stages.map((s, i) => (
+              <Reveal key={s.title} delay={i * 110} className="h-full">
+                <div
+                  className="card card-hover relative h-full p-7 text-center"
+                  style={{ marginTop: `${(2 - i) * 0}px` }}
+                >
+                  <span
+                    aria-hidden
+                    className="absolute -top-4 end-4 text-[3.5rem] font-black leading-none text-primary/[0.06]"
+                  >
+                    {i + 1}
+                  </span>
+                  <span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-primary-light text-3xl">
+                    {s.emoji}
+                  </span>
+                  <h3 className="mt-4 text-xl font-black">{s.title}</h3>
+                  <p className="mt-2 text-[15px] leading-8 text-ink/65">
+                    {s.desc}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* ↓ زر الشراء الثاني */}
+          <Reveal delay={300}>
+            <div className="mt-12 flex flex-col items-center gap-3">
+              <SallaButton course="a0" source="a0-mid" showTrust={false} />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ═══ §5 اللي يفرّقنا عن أي دورة ثانية؟ ═══ */}
       <section className="bg-section py-20 lg:py-28">
         <div className="container-site">
           <Reveal>
+            <SectionHeading title="اللي يفرّقنا عن أي دورة ثانية؟" />
+          </Reveal>
+          <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-2">
+            {differentiators.map((d, i) => (
+              <Reveal key={d.title} delay={i * 90} className="h-full">
+                <div className="card card-hover h-full p-7">
+                  <span className="grid h-14 w-14 place-items-center rounded-2xl bg-primary-light text-2xl">
+                    {d.emoji}
+                  </span>
+                  <h3 className="mt-4 text-lg font-black">{d.title}</h3>
+                  <p className="mt-2 text-[15px] leading-8 text-ink/65">
+                    {d.desc}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ §6 إيقاعك الأسبوعي ═══ */}
+      <section className="py-20 lg:py-28">
+        <div className="container-site">
+          <Reveal>
             <SectionHeading
-              eyebrow="وش يشمل اشتراكك؟"
-              title="كل اللي تحتاجه — جاهز لك"
+              title="إيقاع مرن… تدرس بجدية مع أريحية"
+              sub="كل يومين نرسل لك درسين جديدين، ونذكّرك باستمرار عشان ما تتراكم. وأنت حر — تحلّهم بيوم واحد، أو توزّعهم على يومين. تدرس بجدية، مع مرونة وأريحية."
             />
           </Reveal>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {included.map((item, i) => (
-              <Reveal key={item.title} delay={i * 80} className="h-full">
-                <div className="card card-hover h-full p-7">
-                  <span className="inline-flex h-13 w-13 items-center justify-center rounded-2xl bg-primary p-3 text-white shadow-glow-blue">
-                    <item.icon className="h-6 w-6" aria-hidden />
+          <div className="mx-auto mt-12 grid max-w-3xl gap-4">
+            {rhythm.map((r, i) => (
+              <Reveal key={r.text} delay={i * 100}>
+                <div
+                  className={`flex items-center gap-4 rounded-2xl p-5 font-bold ${
+                    i === 2
+                      ? "bg-accent/15 text-ink"
+                      : "card"
+                  }`}
+                >
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-primary-light text-2xl">
+                    {r.emoji}
                   </span>
-                  <h3 className="mt-4 font-black">{item.title}</h3>
+                  {r.text}
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={350}>
+            <p className="mt-8 text-center font-black text-ink/70">
+              ٦ دروس بالأسبوع · ١٥–٣٠ دقيقة باليوم · إيقاع يمشي مع حياتك، مو
+              ضدها.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ═══ §7 وش يشمل اشتراكك؟ ═══ */}
+      <section className="bg-section py-20 lg:py-28">
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading title="وش يشمل اشتراكك؟" />
+          </Reveal>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {included.map((item, i) => (
+              <Reveal key={item.title} delay={(i % 3) * 80} className="h-full">
+                <div className="card card-hover h-full p-6">
+                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary-light text-2xl">
+                    {item.emoji}
+                  </span>
+                  <h3 className="mt-3.5 font-black">{item.title}</h3>
                   <p className="mt-1.5 text-sm leading-7 text-ink/65">
                     {item.desc}
                   </p>
@@ -465,108 +497,90 @@ export default function A0Page() {
               </Reveal>
             ))}
           </div>
-
-          <Reveal delay={200}>
-            <div className="mt-8 grid gap-3 rounded-3xl border border-primary/10 bg-white p-6 sm:grid-cols-2 lg:grid-cols-4">
-              {delivery.map((d) => (
-                <p
-                  key={d.text}
-                  className="flex items-center gap-2.5 text-sm font-bold text-ink/70"
-                >
-                  <d.icon className="h-5 w-5 shrink-0 text-primary" aria-hidden />
-                  {d.text}
-                </p>
-              ))}
-            </div>
-          </Reveal>
         </div>
       </section>
 
-      {/* ═══ Honest: what this is NOT ═══ */}
+      {/* ═══ §8 المنهج بالتفصيل (أكورديون) ═══ */}
       <section className="py-20 lg:py-28">
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading
+              title="تبي تشوف المنهج بالتفصيل؟"
+              sub="كل شي بتتعلمه في A0 — مرتّب وواضح. اضغط على أي قسم تشوف تفاصيله."
+            />
+          </Reveal>
+          <div className="mx-auto mt-12 max-w-3xl space-y-3">
+            {curriculum.map((c) => (
+              <Reveal key={c.title}>
+                <details className="card group px-6">
+                  <summary className="flex min-h-14 cursor-pointer list-none items-center gap-3 py-4 text-start font-black [&::-webkit-details-marker]:hidden">
+                    <span className="text-xl" aria-hidden>
+                      {c.emoji}
+                    </span>
+                    {c.title}
+                    <span className="ms-auto grid h-9 w-9 shrink-0 place-items-center rounded-full bg-primary-light text-primary transition-transform duration-200 group-open:rotate-45">
+                      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden>
+                        <path d="M12 5v14M5 12h14" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <div className="pb-6">
+                    <div className="flex flex-wrap gap-2">
+                      {c.items.map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full bg-section px-3.5 py-1.5 text-sm font-bold text-ink/70"
+                        >
+                          <bdi>{item}</bdi>
+                        </span>
+                      ))}
+                    </div>
+                    {"note" in c && c.note && (
+                      <p className="mt-4 text-sm font-bold text-ink/55">
+                        {c.note}
+                      </p>
+                    )}
+                  </div>
+                </details>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ §9 وعشان نضبط التوقعات ═══ */}
+      <section className="bg-section py-20 lg:py-28">
         <div className="container-site grid items-center gap-12 lg:grid-cols-[1fr_auto]">
           <Reveal>
-            <div className="rounded-[2rem] border-2 border-primary/10 bg-primary-light/40 p-8 sm:p-10">
-              <SectionHeading
-                align="start"
-                eyebrow="بكل صراحة"
-                title="هذي دورة تأسيس — مو كل شي"
-                sub="نقولها لك قبل ما تدفع: التأسيس هو الخطوة الأولى الأساسية، مو الرحلة كلها. هذي الدورة لا تعدك بـ:"
-              />
-              <ul className="mt-7 grid gap-3 sm:grid-cols-2">
-                {notIncluded.map((n) => (
-                  <li
-                    key={n}
-                    className="flex items-center gap-2.5 font-bold text-ink/60"
-                  >
-                    <XCircle className="h-5 w-5 shrink-0 text-ink/30" aria-hidden />
-                    {n}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-7 flex items-center gap-2 font-black text-primary">
-                <ArrowMotif className="h-3 w-4 text-accent" />
-                لكن بعد A0 بتكون جاهز تمامًا لمستوى A1 وA2 وما بعدها
+            <div className="rounded-[2rem] border-2 border-primary/10 bg-white p-8 sm:p-10">
+              <SectionHeading align="start" title="وعشان نضبط التوقعات" />
+              <p className="mt-6 text-lg font-black leading-9">
+                هذي الدورة تأسيس — هي أول خطوة صحيحة في رحلة التعلّم، مو نهاية
+                الطريق.
+              </p>
+              <p className="mt-4 leading-9 text-ink/70">
+                ما بنوعدك إنك بتتكلم بطلاقة أو تكتب مقالات بعدها مباشرة — هذي
+                المهارات تجي عبر التراكم والتقدّم بالمستويات الأعلى.{" "}
+                <span className="font-black text-primary">
+                  اللي بنعطيك إياه هنا أهم: أساس متين يسرّع اكتسابك للغة.
+                </span>
               </p>
             </div>
           </Reveal>
           <Reveal delay={150}>
             <div className="hidden justify-center lg:flex">
-              <Mascot name="father-front" size="section" className="h-72 w-auto drop-shadow-xl" />
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ═══ Exam + certificate ═══ */}
-      <section className="bg-section py-20 lg:py-28">
-        <div className="container-site">
-          <Reveal>
-            <div className="card relative overflow-hidden p-8 text-center sm:p-12">
-              <ArrowMotif
-                aria-hidden
-                className="absolute -bottom-6 -end-8 h-32 w-44 rotate-12 text-primary/[0.04]"
+              <Mascot
+                name="father-front"
+                size="section"
+                className="h-72 w-auto animate-breathe drop-shadow-xl"
               />
-              <div className="flex justify-center">
-                <Mascot
-                  name="shab-front"
-                  size="section"
-                  className="h-48 w-auto drop-shadow-xl"
-                />
-              </div>
-              <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-1.5 text-sm font-black text-ink">
-                <Award className="h-4 w-4" aria-hidden />
-                الأسبوع الخامس — أسبوع الختام
-              </span>
-              <h2 className="mt-4 text-2xl font-black sm:text-3xl">
-                اختبار نهائي… وشهادة توثّق إنجازك 🎓
-              </h2>
-              <p className="mx-auto mt-3 max-w-[48ch] leading-9 text-ink/65">
-                أسبوع مراجعة، ثم المكثف المباشر مع مجموعتك، ثم الاختبار
-                النهائي 🏆 — وشهادتك.
-              </p>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* ═══ FAQ ═══ */}
-      <section className="py-20 lg:py-28">
-        <div className="container-site">
-          <Reveal>
-            <SectionHeading
-              eyebrow="أسئلة تدور ببالك؟"
-              title="الأسئلة الشائعة"
-            />
-          </Reveal>
-          <div className="mt-12">
-            <FAQAccordion items={faq} />
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ Final CTA ═══ */}
-      <section className="container-site pb-4">
+      {/* ═══ §10 الدعوة الأخيرة ═══ */}
+      <section className="container-site pb-4 pt-16">
         <Reveal>
           <div className="relative overflow-hidden rounded-[2.5rem] bg-brand-gradient px-6 py-14 text-center sm:px-12 lg:py-18">
             <ArrowMotif
@@ -578,30 +592,25 @@ export default function A0Page() {
               className="absolute -bottom-8 end-10 h-28 w-40 rotate-6 text-accent/10"
             />
             <h2 className="text-3xl font-black text-white sm:text-4xl">
-              جاهز تأسس إنجليزيتك بالطريقة الصحيحة؟
+              جاهز تبني أساسك الصحيح؟
             </h2>
-            <p className="mx-auto mt-4 max-w-[44ch] text-white/75 sm:text-lg">
-              15–30 دقيقة يوميًا · نظام يوصلك للنهاية · المقاعد محدودة
+            <p className="mx-auto mt-4 max-w-[42ch] text-white/80 sm:text-lg">
+              ابدأ اليوم، وخلّ إنجليزيتك تنطلق من أساس يثبت معك.
             </p>
             <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <SallaButton course="a0" source="a0-final" hero showTrust={false} />
               <WhatsAppButton
                 message={site.whatsapp.msgCourseInquiry("التأسيس الصحيح A0")}
                 source="a0-final"
-                variant="inverse"
+                variant="solid"
               >
-                اسألنا قبل تشترك
+                استفسر بالواتساب
               </WhatsAppButton>
             </div>
             <p className="mt-6 text-sm font-bold text-white/75">
-              دفع آمن عبر منصة سلة 🔒 · بعد الدفع راسلنا على الواتساب لاستلام
-              رابط الدورة والجدول
-            </p>
-            <p className="mt-3 text-sm text-white/80">
-              لسا مو متأكد من مستواك؟{" "}
-              <Link href="/test" className="font-bold text-accent hover:underline">
-                اختبر مستواك مجانًا
-              </Link>
+              متاحة الآن — بادر بالتسجيل.
+              <br />
+              الأماكن محدودة، والدورة تُفتح بدفعات خلال السنة.
             </p>
           </div>
         </Reveal>
