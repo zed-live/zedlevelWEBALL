@@ -25,7 +25,7 @@ export function TestimonialCarousel({
 
   return (
     <div className="overflow-hidden py-2 [mask-image:linear-gradient(to_left,transparent,black_6%,black_94%,transparent)]">
-      <div className="marquee-track flex w-max pt-2 [animation-duration:48s] hover:[animation-play-state:paused]">
+      <div className="marquee-track flex w-max pt-2 [animation-duration:70s] hover:[animation-play-state:paused]">
         {row(false)}
         {row(true)}
       </div>

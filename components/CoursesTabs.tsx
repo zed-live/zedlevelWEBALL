@@ -3,12 +3,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import { m, AnimatePresence } from "framer-motion";
+import { ShoppingBag } from "lucide-react";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { SallaButton } from "./SallaButton";
 import { PriceTag } from "./PriceTag";
+import { DevTodoBadge } from "./DevTodoBadge";
 import { CourseCover, type CoverVariant } from "./CourseCover";
 import { ArrowMotif } from "./ArrowMotif";
-import { site, type SallaCourse } from "@/config/site";
+import { site, isTodo, type SallaCourse } from "@/config/site";
 
 /** Homepage courses — tabs: available now / coming soon (homepage prompt §5). */
 interface CourseItem {
@@ -114,65 +116,103 @@ export function CoursesTabs() {
             items.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-3"
           }`}
         >
-          {items.map((c) => (
-            <article key={c.title} className="card card-hover flex flex-col overflow-hidden">
-              <Link href={c.href} aria-label={c.title}>
-                <CourseCover variant={c.cover} />
-              </Link>
-              <div className="flex flex-1 flex-col p-6">
-                <Link href={c.href}>
-                  <h3 className="text-lg font-black transition-colors hover:text-primary">
-                    {c.title}
-                  </h3>
+          {items.map((c) => {
+            const sallaLive = c.salla && !isTodo(site.salla[c.salla]);
+            return (
+              <article
+                key={c.title}
+                className="card card-hover group flex flex-col overflow-hidden"
+              >
+                <Link href={c.href} aria-label={c.title} className="relative block">
+                  <CourseCover variant={c.cover} />
+                  <span
+                    className={`absolute start-4 top-4 rounded-full px-3 py-1 text-xs font-black shadow-soft ${
+                      c.salla ? "bg-primary text-white" : "bg-white text-ink/70"
+                    }`}
+                  >
+                    {c.salla ? "متوفرة الآن" : "قريبًا"}
+                  </span>
                 </Link>
-                <p className="mt-1.5 text-[15px] leading-8 text-ink/65">
-                  {c.desc}
-                </p>
-                {c.details && (
-                  <p className="mt-2.5 inline-flex items-center gap-1.5 text-[13px] font-bold text-ink/50">
-                    <ArrowMotif className="h-2 w-3 shrink-0 text-accent" />
-                    {c.details}
+
+                <div className="flex flex-1 flex-col border-t border-ink/5 p-6">
+                  <Link href={c.href}>
+                    <h3 className="text-xl font-black transition-colors group-hover:text-primary">
+                      {c.title}
+                    </h3>
+                  </Link>
+                  <p className="mt-1.5 text-[15px] leading-8 text-ink/65">
+                    {c.desc}
                   </p>
-                )}
-                <div className="mt-3 flex-1">
-                  {c.salla && (
-                    <PriceTag course={c.salla} prefix={c.pricePrefix} />
+                  {c.details && (
+                    <p className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-ink/55">
+                      <ArrowMotif className="h-2.5 w-3.5 shrink-0 text-accent" />
+                      {c.details}
+                    </p>
                   )}
-                </div>
-                <div className="mt-4 flex flex-col gap-2.5">
-                  {c.salla ? (
-                    <>
+
+                  <div className="flex-1" />
+
+                  {c.salla && (
+                    <div className="mt-4 flex items-center justify-between gap-3 border-t border-dashed border-ink/10 pt-4">
+                      <span className="text-sm font-black text-ink/50">
+                        الاشتراك
+                      </span>
+                      <PriceTag course={c.salla} prefix={c.pricePrefix} />
+                    </div>
+                  )}
+
+                  <div className="mt-4 flex flex-col gap-2">
+                    {c.salla ? (
+                      sallaLive ? (
+                        <>
+                          <SallaButton
+                            course={c.salla}
+                            source={`home-course-${c.cover}`}
+                            showTrust={false}
+                            label="اشترك من المتجر"
+                            className="[&_a]:w-full"
+                          />
+                          <WhatsAppButton
+                            message={site.whatsapp.msgCourseInquiry(c.title)}
+                            source={`home-course-${c.cover}`}
+                            className="!w-full"
+                          >
+                            ابدأ بالواتساب
+                          </WhatsAppButton>
+                        </>
+                      ) : (
+                        <>
+                          <WhatsAppButton
+                            message={site.whatsapp.msgCourseInquiry(c.title)}
+                            source={`home-course-${c.cover}`}
+                            variant="solid"
+                            className="!w-full"
+                          >
+                            ابدأ بالواتساب
+                          </WhatsAppButton>
+                          <p className="relative inline-flex items-center justify-center gap-1.5 py-1 text-center text-[13px] font-bold text-ink/45">
+                            <ShoppingBag className="h-3.5 w-3.5" aria-hidden />
+                            الشراء المباشر من المتجر — يفتح قريبًا
+                            <DevTodoBadge label={`SALLA_${c.salla.toUpperCase()}`} />
+                          </p>
+                        </>
+                      )
+                    ) : (
                       <WhatsAppButton
-                        message={site.whatsapp.msgCourseInquiry(c.title)}
+                        message={site.whatsapp.msgNotify(c.notify ?? c.title)}
                         source={`home-course-${c.cover}`}
-                        variant="solid"
+                        event="notify_click"
+                        params={{ course: c.notify ?? c.title }}
                         className="!w-full"
                       >
-                        ابدأ بالواتساب
+                        نبّهني على الواتساب
                       </WhatsAppButton>
-                      <SallaButton
-                        course={c.salla}
-                        source={`home-course-${c.cover}`}
-                        showTrust={false}
-                        label="اشترك من المتجر"
-                        className="[&_a]:w-full [&_span]:w-full"
-                      />
-                    </>
-                  ) : (
-                    <WhatsAppButton
-                      message={site.whatsapp.msgNotify(c.notify ?? c.title)}
-                      source={`home-course-${c.cover}`}
-                      event="notify_click"
-                      params={{ course: c.notify ?? c.title }}
-                      className="!w-full"
-                    >
-                      نبّهني على الواتساب
-                    </WhatsAppButton>
-                  )}
+                    )}
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </m.div>
       </AnimatePresence>
 

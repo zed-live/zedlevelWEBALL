@@ -9,7 +9,7 @@ export function SectionHeading({
   tone = "light",
 }: {
   eyebrow?: string;
-  title: string;
+  title: React.ReactNode;
   sub?: string;
   align?: "center" | "start";
   /** dark = for use on blue/navy backgrounds */

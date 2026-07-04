@@ -83,8 +83,9 @@ export function LevelLadder({
     target: ref,
     offset: ["start 0.9", "center 0.42"],
   });
-  const climbEnd = useTransform(scrollYProgress, [0, 1], ["1%", "84%"]);
-  const climbBottom = useTransform(scrollYProgress, [0, 1], ["24%", "86%"]);
+  // path capped so the character always stays INSIDE the ladder box
+  const climbEnd = useTransform(scrollYProgress, [0, 1], ["2%", "78%"]);
+  const climbBottom = useTransform(scrollYProgress, [0, 1], ["16%", "42%"]);
 
   const stepClasses = (code: string) => {
     if (storedLevel) {
@@ -189,10 +190,10 @@ export function LevelLadder({
         {/* the climbing character */}
         <m.div
           aria-hidden
-          className="absolute z-10 w-[13%] min-w-14 drop-shadow-lg"
+          className="absolute z-10 w-[11%] min-w-12 max-w-24 drop-shadow-lg"
           style={
             reduceMotion
-              ? { insetInlineEnd: "84%", bottom: "86%" }
+              ? { insetInlineEnd: "78%", bottom: "42%" }
               : { insetInlineEnd: climbEnd, bottom: climbBottom }
           }
         >
@@ -250,7 +251,7 @@ export function LevelLadder({
                       {step.code}
                     </span>
                     <span
-                      className={`hidden text-[10px] font-bold sm:block ${
+                      className={`hidden text-xs font-bold sm:block ${
                         isStored
                           ? "text-white/85"
                           : dark

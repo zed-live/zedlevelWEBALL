@@ -96,14 +96,22 @@
   animation-delay: -9s;
 }
 
-/* brand-facts marquee */
+/* brand-facts marquee — slow, continuous, never static */
 @keyframes marquee-rtl {
   to {
     transform: translateX(50%);
   }
 }
 .marquee-track {
-  animation: marquee-rtl 38s linear infinite;
+  animation: marquee-rtl 60s linear infinite;
+}
+/* the marquee is ambient signage: keep it drifting (extra slow) even under
+   reduced motion, per owner's directive — everything else still freezes */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation-duration: 120s !important;
+    animation-iteration-count: infinite !important;
+  }
 }
 
 /* ─── Layout ─── */

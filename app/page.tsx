@@ -7,9 +7,11 @@ import {
   Briefcase,
   GraduationCap,
   Sparkles,
-  CheckCircle2,
   Bot,
   ShoppingBag,
+  CalendarClock,
+  SlidersHorizontal,
+  BadgeCheck,
 } from "lucide-react";
 import { Mascot } from "@/components/Mascot";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -49,12 +51,28 @@ const improve = [
   },
 ];
 
-/* §6 ليش تنضم لدوراتنا؟ — vertical checklist */
+/* §6 ليش تنضم لدوراتنا؟ */
 const whyJoin = [
-  "روتين لغوي يناسب وقتك",
-  "دورات مبنية على احتياجك",
-  "دروس مباشرة تمارس فيها اللي تعلمته",
-  "اختبارات وشهادات تثبت نجاحك",
+  {
+    icon: CalendarClock,
+    color: "bg-primary text-white shadow-glow-blue",
+    text: "روتين لغوي يناسب وقتك",
+  },
+  {
+    icon: SlidersHorizontal,
+    color: "bg-accent text-ink shadow-glow-accent",
+    text: "دورات مبنية على احتياجك",
+  },
+  {
+    icon: Mic,
+    color: "bg-navy text-white",
+    text: "دروس مباشرة تمارس فيها اللي تعلمته",
+  },
+  {
+    icon: BadgeCheck,
+    color: "bg-primary text-white shadow-glow-blue",
+    text: "اختبارات وشهادات تثبت نجاحك",
+  },
 ];
 
 /* §7 لا تفوّت الفرص */
@@ -214,7 +232,12 @@ export default function HomePage() {
           <Reveal>
             <SectionHeading
               eyebrow="سُلّم المستويات"
-              title="ابدأ من مستواك… ونوصلك للي بعده 🔼"
+              title={
+                <>
+                  ابدأ من مستواك… ونوصلك للي بعده{" "}
+                  <ArrowMotif className="inline-block h-5 w-7 align-middle text-accent" />
+                </>
+              }
             />
           </Reveal>
           <div className="mx-auto mt-12 max-w-3xl">
@@ -297,32 +320,47 @@ export default function HomePage() {
       </section>
 
       {/* ═══ §6 ليش تنضم لدوراتنا؟ ═══ */}
-      <section className="bg-section py-20 lg:py-28">
-        <div className="container-site grid items-center gap-12 lg:grid-cols-2">
+      <section className="relative overflow-hidden bg-section py-20 lg:py-28">
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-dots [mask-image:radial-gradient(50%_55%_at_25%_50%,black,transparent)]"
+        />
+        <div className="container-site relative grid items-center gap-14 lg:grid-cols-2">
           <div>
             <Reveal>
               <SectionHeading align="start" title="ليش تنضم لدوراتنا؟" />
             </Reveal>
-            <ul className="mt-8 space-y-3.5">
+            <div className="mt-9 grid gap-4 sm:grid-cols-2">
               {whyJoin.map((item, i) => (
-                <Reveal key={item} delay={i * 80}>
-                  <li className="card flex items-center gap-3.5 px-5 py-4 font-bold">
-                    <CheckCircle2
-                      className="h-6 w-6 shrink-0 text-primary"
-                      aria-hidden
-                    />
-                    {item}
-                  </li>
+                <Reveal key={item.text} delay={i * 90} className="h-full">
+                  <div className="card card-hover flex h-full flex-col gap-4 p-6">
+                    <span
+                      className={`inline-flex h-13 w-13 items-center justify-center rounded-2xl p-3 ${item.color}`}
+                    >
+                      <item.icon className="h-6 w-6" aria-hidden />
+                    </span>
+                    <p className="text-[17px] font-black leading-8">
+                      {item.text}
+                    </p>
+                  </div>
                 </Reveal>
               ))}
-            </ul>
+            </div>
           </div>
-          <Reveal delay={150}>
-            <div className="flex justify-center">
+          <Reveal delay={180}>
+            <div className="relative mx-auto w-fit">
+              <div
+                aria-hidden
+                className="absolute left-1/2 top-1/2 -z-10 aspect-square w-[115%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-soft/70 blur-2xl"
+              />
               <Mascot
                 name="girl-front"
                 size="section"
-                className="h-72 w-auto animate-breathe drop-shadow-xl sm:h-80"
+                className="h-72 w-auto animate-breathe drop-shadow-2xl sm:h-96"
+              />
+              <div
+                aria-hidden
+                className="mx-auto -mt-3 h-5 w-3/5 rounded-[100%] bg-navy/10 blur-md"
               />
             </div>
           </Reveal>
