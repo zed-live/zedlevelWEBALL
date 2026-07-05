@@ -103,13 +103,13 @@
   }
 }
 .marquee-track {
-  animation: marquee-rtl 60s linear infinite;
+  animation: marquee-rtl 32s linear infinite;
   will-change: transform;
 }
 /* testimonials: swipeable on mobile, auto-marquee from md up */
 @media (min-width: 768px) {
   .marquee-md {
-    animation: marquee-rtl 70s linear infinite;
+    animation: marquee-rtl 48s linear infinite;
     will-change: transform;
   }
   .marquee-md:hover {
@@ -344,7 +344,7 @@
        must live in THIS layer to outrank the freeze above */
     .marquee-track,
     .marquee-md {
-      animation-duration: 140s !important;
+      animation-duration: 70s !important;
       animation-iteration-count: infinite !important;
       animation-play-state: running !important;
     }

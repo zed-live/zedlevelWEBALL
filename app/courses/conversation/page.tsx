@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function ConversationPage() {
   return (
     <ComingSoonPage
-      badge="الأقرب افتتاحًا 🔥"
+      badge="ستبدأ قريبًا 🔥"
       title="دورة المحادثة"
       sub="من أول أسبوع وأنت تتكلم — محادثات من حياتك اليومية، مو جمل كتب قديمة."
       mascot="girl-angle"

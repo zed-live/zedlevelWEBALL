@@ -21,7 +21,7 @@ const STEPS = [
     code: "A0",
     label: "التأسيسي",
     learn: "تقرأ وتنطق صح وتبني جملك الأولى — ويغطي أجزاء من A1 وA2",
-    course: { title: "دورة التأسيس A0", href: "/courses/a0" },
+    course: { title: "دورة التأسيس الصحيح", href: "/courses/a0" },
   },
   {
     code: "A1",
@@ -83,6 +83,7 @@ export function LevelLadder({
   const climbEnd = useTransform(scrollYProgress, [0, 1], ["2%", "78%"]);
   const climbBottom = useTransform(scrollYProgress, [0, 1], ["16%", "42%"]);
 
+  /* ascending blue ramp — the higher the level, the deeper the blue */
   const stepClasses = (code: string) => {
     if (code === "A0") {
       return "border-2 border-dashed border-accent-dark/60 hover:brightness-105";
@@ -90,19 +91,36 @@ export function LevelLadder({
     if (code === "C1") {
       return dark
         ? "border-dashed border-white/25 bg-white/[0.05]"
-        : "border-dashed border-ink/15 bg-white hover:border-primary/40";
+        : "border-dashed border-primary/20 bg-primary/[0.04] hover:border-primary/40";
     }
-    return dark
-      ? "border-white/15 bg-white/10 hover:border-accent hover:bg-accent/90"
-      : "border-primary/10 bg-primary-light hover:border-primary hover:bg-primary";
+    if (dark) {
+      return "border-white/15 bg-white/10 hover:border-accent hover:bg-accent/90";
+    }
+    const ramp: Record<string, string> = {
+      A1: "bg-gradient-to-t from-primary/30 to-primary/10 border-primary/20",
+      A2: "bg-gradient-to-t from-primary/50 to-primary/25 border-primary/30",
+      B1: "bg-gradient-to-t from-primary/75 to-primary/50 border-primary/40",
+      B2: "bg-gradient-to-t from-primary to-primary/70 border-primary/60",
+    };
+    return `${ramp[code]} hover:brightness-110 hover:ring-2 hover:ring-primary/30`;
   };
 
   const codeClasses = (code: string) => {
     if (code === "A0") return "text-ink";
-    if (code === "C1") return dark ? "text-white/55" : "text-ink/45";
-    return dark
-      ? "text-white group-hover:text-ink"
-      : "text-primary group-hover:text-white";
+    if (code === "C1") return dark ? "text-white/55" : "text-primary/60";
+    if (dark) return "text-white group-hover:text-ink";
+    return code === "A1" || code === "A2"
+      ? "text-primary-deep"
+      : "text-white drop-shadow-sm";
+  };
+
+  const labelClasses = (code: string) => {
+    if (code === "A0") return "text-ink/70";
+    if (code === "C1") return dark ? "text-white/45" : "text-primary/45";
+    if (dark) return "text-white/60 group-hover:text-ink/70";
+    return code === "A1" || code === "A2"
+      ? "text-primary-deep/70"
+      : "text-white/80";
   };
 
   const openStep = open !== null ? STEPS[open] : null;
@@ -132,7 +150,7 @@ export function LevelLadder({
                       href={openStep.course.href}
                       className="mt-1 inline-flex items-center gap-1.5 text-sm font-black text-primary hover:underline"
                     >
-                      {openStep.course.title}
+                      انقر هنا لمزيد عن {openStep.course.title}
                       <ArrowMotif className="h-2 w-3 -rotate-90 text-accent" />
                     </Link>
                   ) : (
@@ -191,7 +209,7 @@ export function LevelLadder({
 
         {/* the staircase */}
         <m.div
-          className="absolute inset-0 flex items-end gap-2 sm:gap-2.5"
+          className="absolute inset-0 flex items-end gap-1.5 sm:gap-2.5"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "0px 0px -80px 0px" }}
@@ -221,7 +239,7 @@ export function LevelLadder({
                     ? { backgroundImage: FOUNDATION_STRIPES }
                     : undefined
                 }
-                className={`group absolute inset-0 block w-full overflow-hidden rounded-2xl border transition-[colors,transform] duration-200 active:scale-[0.97] ${stepClasses(step.code)}`}
+                className={`group absolute inset-0 block w-full overflow-hidden rounded-xl border transition-all duration-200 active:scale-[0.97] sm:rounded-2xl ${stepClasses(step.code)}`}
               >
                 <span className="absolute inset-x-0 top-2.5 flex flex-col items-center gap-0.5 sm:top-4">
                   <span
@@ -230,13 +248,7 @@ export function LevelLadder({
                     {step.code}
                   </span>
                   <span
-                    className={`hidden text-xs font-bold sm:block ${
-                      step.code === "A0"
-                        ? "text-ink/70"
-                        : dark
-                          ? "text-white/60 group-hover:text-ink/70"
-                          : "text-ink/50 group-hover:text-white/85"
-                    }`}
+                    className={`hidden text-xs font-bold sm:block ${labelClasses(step.code)}`}
                   >
                     {step.label}
                   </span>

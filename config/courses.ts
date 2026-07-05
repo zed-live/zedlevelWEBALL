@@ -23,7 +23,7 @@ export const courses: CourseMeta[] = [
   {
     slug: "a0",
     href: "/courses/a0",
-    title: "التأسيس الصحيح A0",
+    title: "دورة التأسيس الصحيح",
     tagline: "ابدأ من الصفر بالطريقة الصحيحة — أساس يخدمك طول رحلتك",
     stats: "3 مراحل · 26 درسًا · +460 كلمة",
     status: "ready",
@@ -44,7 +44,7 @@ export const courses: CourseMeta[] = [
     tagline: "محادثات من حياتك اليومية — تتدرب وتتكلم من أول أسبوع",
     status: "soon",
     notifyName: "المحادثة",
-    badge: "الأقرب افتتاحًا",
+    badge: "ستبدأ قريبًا",
   },
   {
     slug: "accent",

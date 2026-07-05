@@ -28,7 +28,7 @@ interface CourseItem {
 const AVAILABLE: CourseItem[] = [
   {
     cover: "a0",
-    title: "التأسيس الصحيح — A0",
+    title: "دورة التأسيس الصحيح",
     desc: "ابدأ من الصفر وابنِ أساس يثبت معك",
     details: "26 درس · 4 أسابيع + أسبوع تطبيق · شهادة",
     href: "/courses/a0",
