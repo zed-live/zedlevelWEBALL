@@ -8,9 +8,11 @@ import { WhatsAppButton } from "./WhatsAppButton";
 import { SallaButton } from "./SallaButton";
 import { PriceTag } from "./PriceTag";
 import { DevTodoBadge } from "./DevTodoBadge";
-import { CourseCover, type CoverVariant } from "./CourseCover";
+import { CourseCardBanner } from "./CourseCardBanner";
+import { type CoverVariant } from "./CourseCover";
 import { ArrowMotif } from "./ArrowMotif";
 import { site, isTodo, type SallaCourse } from "@/config/site";
+import { courses } from "@/config/courses";
 
 /** Homepage courses — tabs: available now / coming soon (homepage prompt §5). */
 interface CourseItem {
@@ -118,23 +120,20 @@ export function CoursesTabs() {
         >
           {items.map((c) => {
             const sallaLive = c.salla && !isTodo(site.salla[c.salla]);
+            const course = courses.find((x) => x.slug === c.cover);
             return (
               <article
                 key={c.title}
                 className="card card-hover group flex flex-col overflow-hidden"
               >
-                <Link href={c.href} aria-label={c.title} className="relative block">
-                  <CourseCover variant={c.cover} />
-                  <span
-                    className={`absolute start-4 top-4 rounded-full px-3 py-1 text-xs font-black shadow-soft ${
-                      c.salla ? "bg-primary text-white" : "bg-white text-ink/70"
-                    }`}
-                  >
-                    {c.salla ? "متوفرة الآن" : "قريبًا"}
-                  </span>
-                </Link>
+                {/* shared card top: banner + hanging circle + badges */}
+                {course && (
+                  <Link href={c.href} aria-label={c.title} className="block">
+                    <CourseCardBanner course={course} />
+                  </Link>
+                )}
 
-                <div className="flex flex-1 flex-col border-t border-ink/5 p-6">
+                <div className="flex flex-1 flex-col p-6">
                   <Link href={c.href}>
                     <h3 className="text-xl font-black transition-colors group-hover:text-primary">
                       {c.title}
