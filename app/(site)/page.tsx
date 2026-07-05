@@ -373,10 +373,21 @@ export default function HomePage() {
           <Reveal>
             <SectionHeading tone="dark" title="لا تفوّت الفرص بسبب لغتك" />
           </Reveal>
-          <div className="mx-auto mt-12 grid max-w-4xl gap-8 sm:grid-cols-3">
+          {/* mobile: swipeable slider · sm+: 3-column grid */}
+          <div
+            className="mx-auto mt-12 flex max-w-4xl snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-3 sm:gap-8 sm:overflow-visible sm:pb-0"
+            role="list"
+          >
             {opportunities.map((o, i) => (
-              <Reveal key={o.text} delay={i * 100}>
-                <div className="flex flex-col items-center gap-4">
+              <Reveal
+                key={o.text}
+                delay={i * 100}
+                className="w-full shrink-0 basis-full snap-center sm:w-auto sm:basis-auto"
+              >
+                <div
+                  role="listitem"
+                  className="flex flex-col items-center gap-4 px-2"
+                >
                   <span className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-accent text-ink shadow-glow-accent">
                     <o.icon className="h-8 w-8" aria-hidden />
                   </span>
@@ -385,6 +396,16 @@ export default function HomePage() {
                   </p>
                 </div>
               </Reveal>
+            ))}
+          </div>
+
+          {/* dot indicators — mobile only (decorative cue that it's swipeable) */}
+          <div
+            aria-hidden
+            className="mt-1 flex justify-center gap-2 sm:hidden"
+          >
+            {opportunities.map((o) => (
+              <span key={o.text} className="h-2 w-2 rounded-full bg-white/35" />
             ))}
           </div>
           <Reveal delay={300}>
