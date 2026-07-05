@@ -134,16 +134,15 @@ export function CoursesTabs() {
                 )}
 
                 <div className="flex flex-1 flex-col p-6">
+                  {/* title lives in the circle above — show the description as
+                      the lead line here instead of repeating the title */}
                   <Link href={c.href}>
-                    <h3 className="text-xl font-black transition-colors group-hover:text-primary">
-                      {c.title}
-                    </h3>
+                    <p className="text-[15px] font-bold leading-8 text-ink/70 transition-colors group-hover:text-primary">
+                      {c.desc}
+                    </p>
                   </Link>
-                  <p className="mt-1.5 text-[15px] leading-8 text-ink/65">
-                    {c.desc}
-                  </p>
                   {c.details && (
-                    <p className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-ink/55">
+                    <p className="mt-2.5 inline-flex items-center gap-2 text-sm font-bold text-ink/55">
                       <ArrowMotif className="h-2.5 w-3.5 shrink-0 text-accent" />
                       {c.details}
                     </p>
