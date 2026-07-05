@@ -2,6 +2,14 @@
  * Course catalog metadata — shared by the homepage grid and /courses.
  * Copy per CONTENT.md §6/§9. Detailed sales pages: /courses/a0 (M3), /courses/levels (M5).
  */
+import {
+  BANNER_BRAND,
+  BANNER_LEVELS,
+  BANNER_CONVERSATION,
+  BANNER_KIDS,
+  BANNER_US_FLAG,
+} from "./banners";
+
 export type CourseStatus = "ready" | "soon";
 
 export interface CourseMeta {
@@ -49,6 +57,7 @@ export const courses: CourseMeta[] = [
     stats: "3 مراحل · 26 درسًا · +460 كلمة",
     status: "ready",
     featured: true,
+    banner: BANNER_BRAND,
     circleEyebrow: "دورة",
     circleTitle: "التأسيس الصحيح",
     circleMeta: "+460 كلمة · 26 درس",
@@ -70,6 +79,7 @@ export const courses: CourseMeta[] = [
     tagline: "أربعة مسارات متوازية: مفردات، قواعد، محادثة، واستماع — درجة درجة حتى B2",
     stats: "12 دورة · 4 مسارات · +3,310 كلمة",
     status: "ready",
+    banner: BANNER_LEVELS,
     circleEyebrow: "برنامج",
     circleTitle: "المستويات A1–B2",
     circleMeta: "12 دورة · 4 مسارات",
@@ -90,6 +100,7 @@ export const courses: CourseMeta[] = [
     status: "soon",
     notifyName: "المحادثة",
     badge: "ستبدأ قريبًا",
+    banner: BANNER_CONVERSATION,
     circleEyebrow: "دورة",
     circleTitle: "المحادثة",
     circleMeta: "مواقف من حياتك اليومية",
@@ -107,6 +118,7 @@ export const courses: CourseMeta[] = [
     tagline: "اضبط نطقك مع معلم لغته الأم الإنجليزية",
     status: "soon",
     notifyName: "اللهجة الأمريكية",
+    banner: BANNER_US_FLAG,
     circleEyebrow: "دورة",
     circleTitle: "اللهجة الأمريكية",
     circleMeta: "نطق مع معلم لغته الأم",
@@ -124,6 +136,7 @@ export const courses: CourseMeta[] = [
     tagline: "تأسيس ممتع وآمن لأطفالك",
     status: "soon",
     notifyName: "الأطفال",
+    banner: BANNER_KIDS,
     circleEyebrow: "دورة",
     circleTitle: "الأطفال",
     circleMeta: "تأسيس ممتع وآمن",
