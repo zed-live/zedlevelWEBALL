@@ -7,9 +7,6 @@ import {
   GraduationCap,
   Sparkles,
   ShoppingBag,
-  CalendarClock,
-  SlidersHorizontal,
-  BadgeCheck,
 } from "lucide-react";
 import { Mascot } from "@/components/Mascot";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -17,6 +14,8 @@ import { ArrowMotif } from "@/components/ArrowMotif";
 import { SectionHeading } from "@/components/SectionHeading";
 import { LevelLadder } from "@/components/LevelLadder";
 import { CoursesTabs } from "@/components/CoursesTabs";
+import { WhyJoinTimeline } from "@/components/WhyJoinTimeline";
+import { SallaButton } from "@/components/SallaButton";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { Marquee } from "@/components/Marquee";
 import { Reveal } from "@/components/Reveal";
@@ -49,29 +48,6 @@ const improve = [
   },
 ];
 
-/* §6 ليش تنضم لدوراتنا؟ */
-const whyJoin = [
-  {
-    icon: CalendarClock,
-    color: "bg-primary text-white shadow-glow-blue",
-    text: "روتين لغوي يناسب وقتك",
-  },
-  {
-    icon: SlidersHorizontal,
-    color: "bg-accent text-ink shadow-glow-accent",
-    text: "دورات مبنية على احتياجك",
-  },
-  {
-    icon: Mic,
-    color: "bg-navy text-white",
-    text: "دروس مباشرة تمارس فيها اللي تعلمته",
-  },
-  {
-    icon: BadgeCheck,
-    color: "bg-primary text-white shadow-glow-blue",
-    text: "اختبارات وشهادات تثبت نجاحك",
-  },
-];
 
 /* §7 لا تفوّت الفرص */
 const opportunities = [
@@ -315,51 +291,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ §6 ليش تنضم لدوراتنا؟ ═══ */}
+      {/* ═══ §6 ليش تنضم لدوراتنا؟ — vertical timeline ═══ */}
       <section className="relative overflow-hidden bg-section py-20 lg:py-28">
         <div
           aria-hidden
-          className="absolute inset-0 bg-dots [mask-image:radial-gradient(50%_55%_at_25%_50%,black,transparent)]"
+          className="absolute inset-0 bg-dots [mask-image:radial-gradient(55%_50%_at_50%_0%,black,transparent)]"
         />
-        <div className="container-site relative grid items-center gap-14 lg:grid-cols-2">
-          <div>
-            <Reveal>
-              <SectionHeading align="start" title="ليش تنضم لدوراتنا؟" />
-            </Reveal>
-            <div className="mt-9 grid gap-4 sm:grid-cols-2">
-              {whyJoin.map((item, i) => (
-                <Reveal key={item.text} delay={i * 90} className="h-full">
-                  <div className="card card-hover flex h-full flex-col gap-4 p-6">
-                    <span
-                      className={`inline-flex h-13 w-13 items-center justify-center rounded-2xl p-3 ${item.color}`}
-                    >
-                      <item.icon className="h-6 w-6" aria-hidden />
-                    </span>
-                    <p className="text-[17px] font-black leading-8">
-                      {item.text}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-          <Reveal delay={180}>
-            <div className="relative mx-auto w-fit">
-              <div
-                aria-hidden
-                className="absolute left-1/2 top-1/2 -z-10 aspect-square w-[115%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-soft/70 blur-2xl"
-              />
-              <Mascot
-                name="girl-front"
-                size="section"
-                className="h-72 w-auto animate-breathe drop-shadow-2xl sm:h-96"
-              />
-              <div
-                aria-hidden
-                className="mx-auto -mt-3 h-5 w-3/5 rounded-[100%] bg-navy/10 blur-md"
-              />
-            </div>
+        <div className="container-site relative">
+          <Reveal>
+            <SectionHeading title="ليش تنضم لدوراتنا؟" />
           </Reveal>
+          <div className="mt-14">
+            <WhyJoinTimeline
+              cta={
+                <SallaButton course="a0" source="why-join" label="اشترك الآن" />
+              }
+            />
+          </div>
         </div>
       </section>
 
