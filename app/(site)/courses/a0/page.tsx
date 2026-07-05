@@ -7,6 +7,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { PriceTag } from "@/components/PriceTag";
 import { StickyBuyBar } from "@/components/StickyBuyBar";
 import { Reveal } from "@/components/Reveal";
+import { CurriculumOrbit } from "@/components/course/CurriculumOrbit";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { Underline } from "@/components/motion/Underline";
 import { site } from "@/config/site";
@@ -499,6 +500,23 @@ export default function A0Page() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══ المنهج كامل — دائرة الأركان الأربعة ═══ */}
+      <section className="relative overflow-hidden bg-section py-20 lg:py-28">
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading
+              title="تبي تشوف المنهج كامل؟"
+              sub="أربع دوائر معرفة حول أساس واحد ثابت — كل ركن يعرض شيئاً مما بداخله."
+            />
+          </Reveal>
+          <Reveal delay={150}>
+            <div className="mt-12">
+              <CurriculumOrbit />
+            </div>
+          </Reveal>
         </div>
       </section>
 
