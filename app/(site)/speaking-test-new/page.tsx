@@ -1,22 +1,10 @@
-import type { Metadata } from "next";
-import { SpeakingTest } from "@/components/speaking/SpeakingTest";
+import { redirect } from "next/navigation";
 
 /**
- * /speaking-test-new — the speaking test, rebuilt natively in the site's
- * design system and laid out directly in the page (inside the shared header +
- * footer template). No standalone snapshot, no floating card.
+ * /speaking-test-new was the scratch page used to build the native speaking
+ * test. The native flow now lives at the canonical /speaking-test, so this
+ * route permanently redirects there.
  */
-
-export const metadata: Metadata = {
-  title: "اختبار المحادثة — سجّل صوتك واستلم تقييمك",
-  description:
-    "اختبار المحادثة من أكاديمية زد لفل لتعليم الإنجليزية — اختر مستواك، اقرأ النص بصوتك، وأرسل تسجيلك عبر الواتساب ليستمع له مقيّمنا ويرد عليك بمستواك.",
-};
-
 export default function SpeakingTestNewPage() {
-  return (
-    <section className="container-site py-12 sm:py-16">
-      <SpeakingTest />
-    </section>
-  );
+  redirect("/speaking-test");
 }

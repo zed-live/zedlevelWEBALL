@@ -236,38 +236,38 @@ function LevelBadge({ label }: { label: string }) {
 function PickLevel({ onPick }: { onPick: (l: SpeakingLevel) => void }) {
   return (
     <div className="text-center">
-      <div className="mb-6 flex justify-center">
+      <div className="mb-7 flex justify-center">
         <LevelBadge label="اللغة الإنجليزية" />
       </div>
-      <h1 className="text-3xl font-black text-ink sm:text-4xl">
+      <h1 className="text-[2.15rem] font-black leading-[1.15] tracking-tight text-ink sm:text-5xl">
         تقييم <span className="text-primary">مستوى المحادثة</span>
       </h1>
-      <p className="mt-3 text-base font-bold text-ink/55">
+      <p className="mx-auto mt-4 max-w-sm text-lg font-bold leading-relaxed text-ink/55">
         اختر الصعوبة المناسبة للبدء.
       </p>
 
-      <Stagger className="mt-8 flex flex-col gap-4">
+      <Stagger className="mt-9 flex flex-col gap-4">
         {SPEAKING_LEVELS.map((lvl) => (
           <StaggerItem key={lvl.code}>
             <button
               type="button"
               onClick={() => onPick(lvl.code)}
-              className="group flex w-full items-center gap-4 rounded-2xl border border-ink/10 bg-section/60 p-4 text-start transition-all hover:border-primary/40 hover:bg-primary-light/60 hover:shadow-lifted"
+              className="group flex w-full items-center gap-4 rounded-2xl border border-ink/10 bg-section/60 p-4 text-start transition-all hover:border-primary/40 hover:bg-primary-light/60 hover:shadow-lifted sm:gap-5 sm:p-5"
             >
               <span
-                className={`grid h-16 w-20 shrink-0 place-items-center rounded-xl bg-gradient-to-br ${lvl.tag} text-lg font-black text-white shadow-md`}
+                className={`grid h-16 w-20 shrink-0 place-items-center rounded-xl bg-gradient-to-br ${lvl.tag} text-lg font-black tracking-tight text-white shadow-md sm:h-[4.5rem] sm:w-[5.5rem] sm:text-xl`}
               >
                 {lvl.label}
               </span>
               <span className="flex-1">
-                <span className="block text-lg font-black text-ink">
+                <span className="block text-xl font-black text-ink sm:text-[1.35rem]">
                   {lvl.title}
                 </span>
-                <span className="block text-sm font-bold text-ink/50">
+                <span className="mt-0.5 block text-[0.95rem] font-bold text-ink/50">
                   {lvl.blurb}
                 </span>
               </span>
-              <ChevronLeft className="h-6 w-6 text-ink/30 transition-transform group-hover:-translate-x-1 group-hover:text-primary" />
+              <ChevronLeft className="h-6 w-6 shrink-0 text-ink/30 transition-transform group-hover:-translate-x-1 group-hover:text-primary" />
             </button>
           </StaggerItem>
         ))}
@@ -322,20 +322,26 @@ function Recorder({
 
       {/* prompt box */}
       <div
-        className={`relative mx-auto max-w-md rounded-2xl border p-5 text-start shadow-sm ${
+        className={`relative mx-auto max-w-md overflow-hidden rounded-2xl border p-5 text-start shadow-sm sm:p-6 ${
           part.type === "read"
             ? "border-primary/20 bg-primary-light/50"
             : "border-accent/40 bg-section/70"
         }`}
       >
         <span
-          className={`absolute inset-y-0 end-0 w-1.5 rounded-e-2xl ${
+          className={`absolute inset-y-0 end-0 w-1.5 ${
             part.type === "read" ? "bg-primary/60" : "bg-accent"
           }`}
         />
-        <p className="text-xs font-black text-accent-dark">{part.kind}</p>
+        <p className="text-[0.8rem] font-black uppercase tracking-wide text-accent-dark">
+          {part.kind}
+        </p>
         <p
-          className="mt-2 text-lg font-black leading-relaxed text-ink"
+          className={`mt-2.5 font-black text-ink ${
+            part.type === "read"
+              ? "text-[1.05rem] leading-[1.85]"
+              : "text-xl leading-snug sm:text-[1.4rem]"
+          }`}
           dir="ltr"
           style={{ textAlign: part.type === "read" ? "start" : "center" }}
         >
@@ -388,14 +394,14 @@ function Recorder({
       </div>
 
       <p
-        className={`mt-4 text-base font-black ${
+        className={`mt-4 text-[1.05rem] font-black ${
           recording ? "text-rose-500" : "text-ink/50"
         }`}
       >
         {recording ? "جارٍ التسجيل…" : "انقر للبدء"}
       </p>
       <p
-        className={`mt-1 text-3xl font-black tabular-nums ${
+        className={`mt-1 text-4xl font-black tabular-nums tracking-tight ${
           recording ? "text-primary" : "text-ink/25"
         }`}
       >
@@ -422,10 +428,10 @@ function Success({ onRestart }: { onRestart: () => void }) {
       <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-emerald-100 text-emerald-600">
         <Check className="h-8 w-8" strokeWidth={3} />
       </div>
-      <h1 className="mt-5 text-3xl font-black text-ink">
+      <h1 className="mt-5 text-3xl font-black tracking-tight text-ink sm:text-4xl">
         تم <span className="text-accent-dark">التحويل لواتساب</span>
       </h1>
-      <p className="mx-auto mt-3 max-w-md text-base font-bold text-ink/60">
+      <p className="mx-auto mt-3 max-w-md text-[1.05rem] font-bold leading-relaxed text-ink/60">
         إن لم يُفتح واتساب تلقائياً، عد وحاول مرة أخرى.
         <br />
         <span className="text-ink/80">
@@ -498,8 +504,10 @@ function ChooseEvaluation({
       <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-primary-light text-primary">
         <Bot className="h-7 w-7" />
       </div>
-      <h2 className="mt-4 text-2xl font-black text-ink">اختر طريقة التقييم</h2>
-      <p className="mt-2 text-sm font-bold text-ink/50">
+      <h2 className="mt-4 text-2xl font-black tracking-tight text-ink sm:text-[1.7rem]">
+        اختر طريقة التقييم
+      </h2>
+      <p className="mt-2 text-[0.95rem] font-bold text-ink/50">
         اختر طريقة التقييم المناسبة لك قبل البدء.
       </p>
 
@@ -513,7 +521,7 @@ function ChooseEvaluation({
           <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-primary to-purple-500 text-white">
             <Bot className="h-5 w-5" />
           </span>
-          <span className="flex-1 font-black text-ink">
+          <span className="flex-1 text-[1.05rem] font-black text-ink">
             <span className="align-middle">تقييم بالذكاء الاصطناعي</span>{" "}
             <span className="ms-1 inline-block whitespace-nowrap rounded-full bg-accent/20 px-2 py-0.5 align-middle text-xs font-bold text-accent-dark">
               قريباً
@@ -538,7 +546,7 @@ function ChooseEvaluation({
           <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-500 text-white">
             <WhatsAppIcon className="h-5 w-5" />
           </span>
-          <span className="flex-1 font-black text-ink">
+          <span className="flex-1 text-[1.05rem] font-black text-ink">
             <span className="align-middle">تقييم بشري عبر واتساب</span>{" "}
             <span className="ms-1 inline-block whitespace-nowrap rounded-full bg-emerald-500/15 px-2 py-0.5 align-middle text-xs font-bold text-emerald-600">
               متاح الآن
@@ -563,7 +571,7 @@ function WhatsAppSteps({
       <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-emerald-100 text-emerald-600">
         <MessageCircle className="h-7 w-7" />
       </div>
-      <h2 className="mt-4 text-2xl font-black text-ink">
+      <h2 className="mt-4 text-2xl font-black tracking-tight text-ink sm:text-[1.7rem]">
         خطوات بسيطة عبر واتساب
       </h2>
 
@@ -574,10 +582,10 @@ function WhatsAppSteps({
           <>انتظر <b>التقييم</b>.</>,
         ].map((txt, i) => (
           <div key={i} className="flex items-center gap-3">
-            <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-primary-light text-sm font-black text-primary">
+            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary-light text-sm font-black text-primary">
               {i + 1}
             </span>
-            <span className="text-sm font-bold text-ink/80">{txt}</span>
+            <span className="text-[0.95rem] font-bold text-ink/80">{txt}</span>
           </div>
         ))}
       </div>
