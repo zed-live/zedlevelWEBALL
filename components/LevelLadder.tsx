@@ -260,8 +260,8 @@ export function LevelLadder({
                       background: FOUNDATION_FILL,
                     }}
                   >
-                    <span className="absolute inset-0 hidden place-items-center p-1 sm:grid">
-                      <span className="max-w-full rounded-lg bg-white/95 px-2 py-0.5 text-center text-[9px] font-black leading-[1.35] text-ink shadow-sm">
+                    <span className="absolute inset-0 grid place-items-center p-0.5 sm:p-1">
+                      <span className="max-w-full rounded-md bg-white/95 px-1 py-0.5 text-center text-[7px] font-black leading-[1.3] text-ink shadow-sm sm:rounded-lg sm:px-2 sm:text-[9px] sm:leading-[1.35]">
                         جزء متعلق
                         <br />
                         بدورة التأسيس
