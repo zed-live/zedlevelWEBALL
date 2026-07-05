@@ -133,80 +133,6 @@ const included = [
   },
 ];
 
-/* §8 المنهج بالتفصيل — accordion (closed by default) */
-const curriculum = [
-  {
-    emoji: "🔵",
-    title: "القواعد الأساسية (١٥ قاعدة)",
-    items: [
-      "المفرد والجمع",
-      "قواعد الجمع الثمانية",
-      "أدوات التعريف (a/an/the)",
-      "أقسام الكلام",
-      "عناصر الجملة",
-      "أنواع الجمل",
-      "أنواع الأسئلة",
-      "ضمائر الفاعل",
-      "ضمائر المفعول",
-      "الصفات الملكية",
-      "الضمائر الملكية",
-      "Its vs It's",
-      "الأفعال المساعدة",
-      "الاختصارات الشائعة",
-      "أسماء الإشارة",
-    ],
-  },
-  {
-    emoji: "🟢",
-    title: "قواعد النطق (١٤ نمط صوتي)",
-    items: [
-      "ch",
-      "sh",
-      "th",
-      "ph",
-      "wh",
-      "ck",
-      "tion",
-      "ough",
-      "augh",
-      "gh",
-      "ea",
-      "wr",
-      "kn",
-      "qu",
-    ],
-    note: "بالإضافة إلى نطق كل حرف من A إلى Z بكل حالاته.",
-  },
-  {
-    emoji: "📚",
-    title: "المفردات (+٤٦٠ كلمة في ٢٣ فئة)",
-    items: [
-      "الحروف",
-      "الأرقام والترتيب",
-      "الضمائر",
-      "الملكية",
-      "أسماء الإشارة",
-      "الأفعال المساعدة",
-      "المشاعر",
-      "العائلة",
-      "أيام الأسبوع",
-      "الشهور",
-      "الفصول والطقس",
-      "الوقت",
-      "الألوان",
-      "الدول والجنسيات",
-      "الأماكن",
-      "البيت",
-      "الدراسة",
-      "الأكل والشرب",
-      "اللبس",
-      "أعضاء الجسم",
-      "المواصلات",
-      "التحية والوداع",
-      "أهم ١٠٠ كلمة",
-    ],
-  },
-];
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -520,55 +446,11 @@ export default function A0Page() {
         </div>
       </section>
 
-      {/* ═══ §8 المنهج بالتفصيل (أكورديون) ═══ */}
+      {/* ═══ CTA at curriculum-intent peak (accordion removed) ═══ */}
       <section className="py-20 lg:py-28">
         <div className="container-site">
-          <Reveal>
-            <SectionHeading
-              title="تبي تشوف المنهج بالتفصيل؟"
-              sub="كل شي بتتعلمه في A0 — مرتّب وواضح. اضغط على أي قسم تشوف تفاصيله."
-            />
-          </Reveal>
-          <div className="mx-auto mt-12 max-w-3xl space-y-3">
-            {curriculum.map((c) => (
-              <Reveal key={c.title}>
-                <details className="card group px-6">
-                  <summary className="flex min-h-14 cursor-pointer list-none items-center gap-3 py-4 text-start font-black [&::-webkit-details-marker]:hidden">
-                    <span className="text-xl" aria-hidden>
-                      {c.emoji}
-                    </span>
-                    {c.title}
-                    <span className="ms-auto grid h-9 w-9 shrink-0 place-items-center rounded-full bg-primary-light text-primary transition-transform duration-200 group-open:rotate-45">
-                      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden>
-                        <path d="M12 5v14M5 12h14" />
-                      </svg>
-                    </span>
-                  </summary>
-                  <div className="pb-6">
-                    <div className="flex flex-wrap gap-2">
-                      {c.items.map((item) => (
-                        <span
-                          key={item}
-                          className="rounded-full bg-section px-3.5 py-1.5 text-sm font-bold text-ink/70"
-                        >
-                          <bdi>{item}</bdi>
-                        </span>
-                      ))}
-                    </div>
-                    {"note" in c && c.note && (
-                      <p className="mt-4 text-sm font-bold text-ink/55">
-                        {c.note}
-                      </p>
-                    )}
-                  </div>
-                </details>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* CTA at curriculum-intent peak */}
           <Reveal delay={200}>
-            <div className="mt-10 flex flex-col items-center gap-2.5">
+            <div className="flex flex-col items-center gap-2.5">
               <p className="font-bold text-ink/60">
                 شفت المنهج كامل؟ خذ خطوتك.
               </p>
