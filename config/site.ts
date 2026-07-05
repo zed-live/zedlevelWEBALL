@@ -10,6 +10,12 @@ export const site = {
   whatsapp: {
     /** Digits only, with country code, no plus */
     number: "966567086238",
+    /**
+     * Dedicated line for the speaking test ONLY (+966 56 135 0651).
+     * Every speaking-test WhatsApp handoff goes here; the rest of the site
+     * uses `number` above.
+     */
+    speakingNumber: "966561350651",
     msgGeneral: "مرحبًا، عندي استفسار عن دورات زد لفل 👋",
     msgAfterTest: (level: string) =>
       `مرحبًا! أنهيت اختبار تحديد المستوى ونتيجتي: ${level} — أبغى أعرف الدورة المناسبة لي`,

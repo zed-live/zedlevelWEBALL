@@ -14,12 +14,11 @@ import {
 } from "lucide-react";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { WhatsAppIcon } from "@/components/WhatsAppButton";
-import { waLink } from "@/lib/whatsapp";
 import { track } from "@/lib/track";
 import {
   SPEAKING_LEVELS,
   partsFor,
-  speakingMessage,
+  speakingWaLink,
   readSource,
   type SpeakingLevel,
 } from "@/content/speaking-test";
@@ -51,7 +50,7 @@ export function SpeakingTest() {
 
   const parts = partsFor(level);
   const part = parts[partIdx];
-  const waHref = waLink(speakingMessage(level, source));
+  const waHref = speakingWaLink(level, source);
 
   useEffect(() => setSource(readSource()), []);
 

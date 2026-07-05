@@ -4,6 +4,8 @@
  * ported verbatim from the approved speaking.zedlevel.app flow.
  */
 
+import { site, isTodo } from "@/config/site";
+
 export type SpeakingLevel = "A1-A2" | "B1-B2" | "C1-C2";
 
 export const SPEAKING_LEVELS: {
@@ -88,6 +90,21 @@ export function speakingMessage(level: SpeakingLevel, source: string): string {
     "\n\n" +
     "🎤 سأرسل الآن تسجيلاتي الصوتية (إجابة السؤالين + قراءة النص)."
   );
+}
+
+/**
+ * Build the WhatsApp deep link for the speaking test — uses the DEDICATED
+ * speaking number (site.whatsapp.speakingNumber), not the site's main number,
+ * so every speaking-test lead lands on that line. Returns null while the
+ * number is still a TODO_ placeholder (caller hides the button).
+ */
+export function speakingWaLink(
+  level: SpeakingLevel,
+  source: string,
+): string | null {
+  const num = site.whatsapp.speakingNumber;
+  if (isTodo(num)) return null;
+  return `https://wa.me/${num}?text=${encodeURIComponent(speakingMessage(level, source))}`;
 }
 
 /**
