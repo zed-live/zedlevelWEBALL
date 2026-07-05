@@ -12,25 +12,28 @@
     --line:rgba(17,22,52,.08); --line-2:rgba(17,22,52,.14);
   }
   * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
-  .speaking-root { min-height:100dvh; }
+  /* --nav-h = the site's sticky navbar height (4.25rem). The speaking screen
+     fills the viewport BELOW the navbar and paints its own themed background,
+     scoped to this container so it never covers the site header/footer. */
+  .speaking-root { --nav-h:4.25rem; min-height:calc(100dvh - var(--nav-h)); }
   .speaking-root {
     font-family:"Cairo",system-ui,sans-serif; color:var(--ink);
-    min-height:100dvh; display:flex; align-items:center; justify-content:center;
+    min-height:calc(100dvh - var(--nav-h)); display:flex; align-items:center; justify-content:center;
     padding:20px 14px calc(20px + env(safe-area-inset-bottom));
-    position:relative;
+    position:relative; overflow:hidden;
     background:
       radial-gradient(120% 80% at 50% -10%, #ffffff 0%, transparent 60%),
       linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
     -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:optimizeLegibility;
   }
-  .mesh { position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+  .mesh { position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
   .blob { position:absolute; border-radius:50%; filter:blur(90px); }
   .b1 { width:420px; height:420px; background:var(--brand); opacity:.12; top:-150px; right:-120px; animation:float1 20s ease-in-out infinite; }
   .b2 { width:360px; height:360px; background:#7c8bff; opacity:.14; bottom:-160px; left:-110px; animation:float2 26s ease-in-out infinite; }
   .b3 { width:260px; height:260px; background:var(--gold); opacity:.14; top:42%; left:-90px; animation:float1 24s ease-in-out infinite; }
   @keyframes float1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-28px,26px) scale(1.06)} }
   @keyframes float2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(30px,-24px) scale(1.04)} }
-  .grid-ov { position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.6;
+  .grid-ov { position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.6;
     background-image:linear-gradient(rgba(27,70,245,.035) 1px, transparent 1px),linear-gradient(90deg, rgba(27,70,245,.035) 1px, transparent 1px);
     background-size:46px 46px; mask-image:radial-gradient(circle at 50% 34%, #000, transparent 70%);
     -webkit-mask-image:radial-gradient(circle at 50% 34%, #000, transparent 70%); }
