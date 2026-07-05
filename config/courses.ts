@@ -17,6 +17,27 @@ export interface CourseMeta {
   badge?: string;
   /** featured = the "ابدأ من هنا" spotlight treatment */
   featured?: boolean;
+
+  /* ── rich course-card template (banner + circle + details) ── */
+  /**
+   * Banner background behind the circle. Any CSS background value:
+   * a gradient (default), a color, or `url('/path.jpg') center/cover`
+   * — e.g. an American flag for the accent course. Falls back to the
+   * brand blue gradient when omitted.
+   */
+  banner?: string;
+  /** small word above the circle title, e.g. "دورة" */
+  circleEyebrow?: string;
+  /** the big gradient title inside the circle (defaults to `title`) */
+  circleTitle?: string;
+  /** meta line under the circle title, e.g. "+460 كلمة · 26 درس" */
+  circleMeta?: string;
+  /** price pill text, e.g. "السعر يُعلن مع فتح الدفعة" */
+  price?: string;
+  /** detail rows (label → value) shown under the card */
+  details?: { label: string; value: string }[];
+  /** how many detail rows stay visible before "عرض المزيد" (default 3) */
+  detailsVisible?: number;
 }
 
 export const courses: CourseMeta[] = [
@@ -28,6 +49,19 @@ export const courses: CourseMeta[] = [
     stats: "3 مراحل · 26 درسًا · +460 كلمة",
     status: "ready",
     featured: true,
+    circleEyebrow: "دورة",
+    circleTitle: "التأسيس الصحيح",
+    circleMeta: "+460 كلمة · 26 درس",
+    price: "السعر يُعلن مع فتح الدفعة",
+    details: [
+      { label: "المدة", value: "4 أسابيع دروس + أسبوع تطبيق مباشر" },
+      { label: "الدروس", value: "26 درس فيديو مسجّل" },
+      { label: "وقتك اليومي", value: "١٥–٣٠ دقيقة" },
+      { label: "المجموعة المباشرة", value: "من 1 إلى 7 متعلمين" },
+      { label: "الشهادة", value: "بعد اجتياز الاختبار النهائي 🏆" },
+      { label: "اللغة", value: "العربية" },
+      { label: "الوصول", value: "مدى الحياة" },
+    ],
   },
   {
     slug: "levels",
@@ -36,6 +70,17 @@ export const courses: CourseMeta[] = [
     tagline: "أربعة مسارات متوازية: مفردات، قواعد، محادثة، واستماع — درجة درجة حتى B2",
     stats: "12 دورة · 4 مسارات · +3,310 كلمة",
     status: "ready",
+    circleEyebrow: "برنامج",
+    circleTitle: "المستويات A1–B2",
+    circleMeta: "12 دورة · 4 مسارات",
+    price: "السعر يُعلن مع فتح الدفعة",
+    details: [
+      { label: "المسارات", value: "مفردات · قواعد · محادثة · استماع" },
+      { label: "الدورات", value: "12 دورة متدرّجة" },
+      { label: "المفردات", value: "+3,310 كلمة" },
+      { label: "اللغة", value: "العربية والإنجليزية" },
+      { label: "الوصول", value: "مدى الحياة" },
+    ],
   },
   {
     slug: "conversation",
@@ -45,6 +90,15 @@ export const courses: CourseMeta[] = [
     status: "soon",
     notifyName: "المحادثة",
     badge: "ستبدأ قريبًا",
+    circleEyebrow: "دورة",
+    circleTitle: "المحادثة",
+    circleMeta: "مواقف من حياتك اليومية",
+    price: "السعر يُعلن مع فتح الدفعة",
+    details: [
+      { label: "التركيز", value: "التحدث والطلاقة" },
+      { label: "الأسلوب", value: "مواقف يومية عملية" },
+      { label: "اللغة", value: "العربية والإنجليزية" },
+    ],
   },
   {
     slug: "accent",
@@ -53,6 +107,15 @@ export const courses: CourseMeta[] = [
     tagline: "اضبط نطقك مع معلم لغته الأم الإنجليزية",
     status: "soon",
     notifyName: "اللهجة الأمريكية",
+    circleEyebrow: "دورة",
+    circleTitle: "اللهجة الأمريكية",
+    circleMeta: "نطق مع معلم لغته الأم",
+    price: "السعر يُعلن مع فتح الدفعة",
+    details: [
+      { label: "التركيز", value: "النطق واللهجة الأمريكية" },
+      { label: "المعلم", value: "لغته الأم الإنجليزية" },
+      { label: "اللغة", value: "الإنجليزية" },
+    ],
   },
   {
     slug: "kids",
@@ -61,5 +124,14 @@ export const courses: CourseMeta[] = [
     tagline: "تأسيس ممتع وآمن لأطفالك",
     status: "soon",
     notifyName: "الأطفال",
+    circleEyebrow: "دورة",
+    circleTitle: "الأطفال",
+    circleMeta: "تأسيس ممتع وآمن",
+    price: "السعر يُعلن مع فتح الدفعة",
+    details: [
+      { label: "الفئة", value: "الأطفال المبتدئون" },
+      { label: "الأسلوب", value: "تعلّم ممتع بالألعاب" },
+      { label: "اللغة", value: "العربية والإنجليزية" },
+    ],
   },
 ];

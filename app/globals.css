@@ -102,6 +102,17 @@
     transform: translateX(50%);
   }
 }
+/* course-card: extra detail rows fade in on "عرض المزيد" */
+@keyframes fadeInRow {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .marquee-track {
   animation: marquee-rtl 24s linear infinite;
   will-change: transform;
