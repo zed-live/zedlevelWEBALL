@@ -86,7 +86,8 @@ export function LevelLadder({
   /* ascending blue ramp — the higher the level, the deeper the blue */
   const stepClasses = (code: string) => {
     if (code === "A0") {
-      return "border-2 border-dashed border-accent-dark/60 hover:brightness-105";
+      // solid logo-yellow fill (brand accent), not the pale hatch
+      return "border-2 border-accent-dark/70 bg-accent hover:brightness-105";
     }
     if (code === "C1") {
       return dark
@@ -234,11 +235,6 @@ export function LevelLadder({
                 onClick={() => setOpen(open === i ? null : i)}
                 aria-expanded={open === i}
                 aria-label={`مستوى ${step.code} — ${step.learn}`}
-                style={
-                  step.code === "A0"
-                    ? { backgroundImage: FOUNDATION_STRIPES }
-                    : undefined
-                }
                 className={`group absolute inset-0 block w-full overflow-hidden rounded-xl border transition-all duration-200 active:scale-[0.97] sm:rounded-2xl ${stepClasses(step.code)}`}
               >
                 <span className="absolute inset-x-0 top-2.5 flex flex-col items-center gap-0.5 sm:top-4">
