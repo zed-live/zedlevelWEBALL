@@ -302,3 +302,48 @@
 
   @media (max-width:380px){ h1{font-size:24px} .inner{padding:22px} .read-box p{font-size:16.5px} .brandbar img{height:46px} }
   @media (prefers-reduced-motion:reduce){ .ring,.wave span,.blob,.btn::after,.badge .pip::after{animation:none!important} }
+
+  /* ============================================================
+     TEMPLATE-INTEGRATION OVERRIDES
+     The approved flow above is untouched; here we only UNWRAP its
+     standalone shell so the screens sit as normal page content
+     between the site's own header and footer — no floating card,
+     no full-screen takeover, no duplicated brand header/footer.
+     ============================================================ */
+
+  /* section flows in the page (no viewport-height centering / own bg) */
+  .speaking-root {
+    min-height:0;
+    display:block;
+    padding:clamp(28px,6vw,64px) 0 clamp(40px,7vw,80px);
+    background:none;
+    overflow:visible;
+  }
+
+  /* drop the decorative full-screen background layers */
+  .speaking-root .mesh,
+  .speaking-root .grid-ov { display:none; }
+
+  /* the white "app card" becomes a plain, full-width content column */
+  .speaking-root .card {
+    max-width:560px;
+    max-height:none;
+    margin:0 auto;
+    background:none;
+    border:0;
+    border-radius:0;
+    box-shadow:none;
+    overflow:visible;
+  }
+  .speaking-root .card::before { display:none; }        /* top gradient bar */
+
+  /* the site header already shows the ZEDLEVEL logo; the site footer
+     already carries the academy line — hide the snapshot's duplicates */
+  .speaking-root .brandbar,
+  .speaking-root .foot { display:none; }
+
+  /* inner content: no inner scroll — let the page scroll naturally */
+  .speaking-root .inner {
+    padding:0 clamp(4px,3vw,12px);
+    overflow:visible;
+  }
