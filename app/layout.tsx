@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import { Cairo, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-import { WhatsAppFloat } from "@/components/WhatsAppFloat";
-import { Analytics } from "@/components/Analytics";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 
 const cairo = Cairo({
@@ -45,16 +41,7 @@ export default function RootLayout({
       className={`${cairo.variable} ${sourceSans.variable}`}
     >
       <body>
-        <MotionProvider>
-          <a href="#main" className="skip-link">
-            تجاوز إلى المحتوى
-          </a>
-          <Navbar />
-          <main id="main">{children}</main>
-          <Footer />
-          <WhatsAppFloat />
-          <Analytics />
-        </MotionProvider>
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );
