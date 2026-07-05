@@ -58,8 +58,8 @@ const STEPS = [
 const HEIGHTS = [22, 34, 46, 58, 70, 82];
 
 /* التأسيس (A0) covers all of A0 + parts of A1 and A2 (CONTENT.md §7) */
-const FOUNDATION_STRIPES =
-  "repeating-linear-gradient(45deg, rgba(248,190,76,0.5) 0px, rgba(248,190,76,0.5) 8px, rgba(248,190,76,0.18) 8px, rgba(248,190,76,0.18) 16px)";
+/* solid logo-yellow fill (was a diagonal hatch) */
+const FOUNDATION_FILL = "rgba(248,190,76,0.85)";
 const FOUNDATION_COVERAGE: Record<string, number> = { A1: 42, A2: 22 };
 
 export function LevelLadder({
@@ -254,10 +254,10 @@ export function LevelLadder({
                 {FOUNDATION_COVERAGE[step.code] && (
                   <span
                     aria-hidden
-                    className="absolute inset-x-0 bottom-0 border-t-2 border-dashed border-accent-dark/50"
+                    className="absolute inset-x-0 bottom-0 border-t-2 border-accent-dark/60"
                     style={{
                       height: `${FOUNDATION_COVERAGE[step.code]}%`,
-                      backgroundImage: FOUNDATION_STRIPES,
+                      background: FOUNDATION_FILL,
                     }}
                   >
                     <span className="absolute inset-0 hidden place-items-center p-1 sm:grid">
@@ -286,10 +286,10 @@ export function LevelLadder({
         >
           <span
             aria-hidden
-            className="inline-block h-3.5 w-6 rounded border border-dashed border-accent-dark/60"
-            style={{ backgroundImage: FOUNDATION_STRIPES }}
+            className="inline-block h-3.5 w-6 rounded border border-accent-dark/60"
+            style={{ background: FOUNDATION_FILL }}
           />
-          المناطق المخططة تغطيها دورة التأسيس A0
+          المناطق الصفراء تغطيها دورة التأسيس A0
         </p>
       </div>
 
