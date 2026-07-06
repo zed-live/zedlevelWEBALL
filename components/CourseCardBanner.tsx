@@ -1,43 +1,54 @@
 import type { CourseMeta } from "@/config/courses";
+import { CourseCover, type CoverVariant } from "./CourseCover";
 
 /** default brand-blue banner when a course doesn't set its own */
 export const DEFAULT_BANNER = "linear-gradient(160deg, #2f4fd8 0%, #1a237e 100%)";
 
+const COVER_VARIANTS: CoverVariant[] = ["a0", "levels", "conversation", "accent", "kids"];
+
 /**
- * The top of a course card: the per-course banner (gradient / color / flag)
- * with the status/featured badges and the course circle hanging off its
- * bottom edge. Shared by the /courses grid card and the homepage cards so both
- * look identical up top. Leaves ~mb-16 room for the circle to overhang.
+ * The top of a course card: a light illustrated banner (the course's old cover
+ * art — mic+flag, chat bubbles, foundation blocks, …) with the status/featured
+ * badges and the course circle hanging off its bottom edge. Shared by the
+ * /courses grid card and the homepage cards so both look identical up top.
+ * Leaves ~mb-16 room for the circle to overhang. (A course may still override
+ * with a plain `banner` background.)
  */
 export function CourseCardBanner({ course }: { course: CourseMeta }) {
   const ready = course.status === "ready";
+  const cover = COVER_VARIANTS.includes(course.slug as CoverVariant)
+    ? (course.slug as CoverVariant)
+    : null;
+
   return (
     <div
-      className="relative mb-16 px-5 pb-20 pt-16 text-center"
-      style={{ background: course.banner ?? DEFAULT_BANNER }}
+      className="relative mb-16 px-5 pb-24 pt-5 text-center"
+      style={course.banner ? { background: course.banner } : undefined}
     >
-      {/* darken overlay for text legibility over images */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0f1446]/15 to-[#0f1446]/35"
-      />
+      {/* light illustrated background (old course cover art). The center circle
+          overhangs the bottom, so we anchor the scene to the TOP of the banner
+          — the art sits above/around the circle instead of behind it. */}
+      {cover && (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-[150px] [&>div]:h-full [&>div]:rounded-none [&_svg]:[object-position:top]"
+        >
+          <CourseCover variant={cover} />
+        </div>
+      )}
 
       {/* status / featured badges */}
       <div className="relative z-[2] mb-3 flex flex-wrap items-center justify-center gap-2">
         {course.featured && (
-          <span className="rounded-full bg-accent px-3 py-1 text-xs font-black text-ink">
+          <span className="rounded-full bg-accent px-3 py-1 text-xs font-black text-ink shadow-sm">
             ابدأ من هنا ⭐
           </span>
         )}
-        <span
-          className={`rounded-full px-3 py-1 text-xs font-black ${
-            ready ? "bg-white text-primary" : "bg-white/20 text-white"
-          }`}
-        >
+        <span className="rounded-full bg-white px-3 py-1 text-xs font-black text-primary shadow-sm">
           {ready ? "متاح الآن" : "قريبًا"}
         </span>
         {course.badge && (
-          <span className="rounded-full bg-accent px-3 py-1 text-xs font-black text-ink">
+          <span className="rounded-full bg-accent px-3 py-1 text-xs font-black text-ink shadow-sm">
             {course.badge} 🔥
           </span>
         )}
