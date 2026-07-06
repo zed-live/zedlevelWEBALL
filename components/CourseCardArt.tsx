@@ -103,17 +103,22 @@ export function CourseCardArt({ variant }: { variant: CoverVariant }) {
 
         {variant === "conversation" && (
           <g>
-            {/* LEFT: typing bubble */}
-            <rect x="16" y="34" width="80" height="44" rx="15" fill={BRAND} />
-            <path d="M34 78 v12 l14 -12 z" fill={BRAND} />
-            <circle cx="40" cy="56" r="4" fill="#fff" opacity="0.95" />
-            <circle cx="56" cy="56" r="4" fill="#fff" opacity="0.7" />
-            <circle cx="72" cy="56" r="4" fill="#fff" opacity="0.45" />
-            {/* RIGHT: reply bubble */}
-            <rect x="286" y="30" width="78" height="42" rx="14" fill={GOLD} />
-            <path d="M340 72 v11 l-12 -11 z" fill={GOLD} />
-            <rect x="298" y="44" width="50" height="5" rx="2.5" fill={INK} opacity="0.55" />
-            <rect x="298" y="55" width="32" height="5" rx="2.5" fill={INK} opacity="0.35" />
+            {/* SPEAKING (not typing): a speech bubble with voice/sound waves. */}
+            {/* LEFT: speech bubble */}
+            <rect x="16" y="34" width="76" height="46" rx="16" fill={BRAND} />
+            <path d="M34 80 v13 l15 -13 z" fill={BRAND} />
+            {/* mic/voice glyph inside the bubble */}
+            <rect x="47" y="46" width="14" height="20" rx="7" fill="#fff" />
+            <path d="M42 60 a12 12 0 0 0 24 0" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" />
+            <line x1="54" y1="70" x2="54" y2="74" stroke="#fff" strokeWidth="3" strokeLinecap="round" />
+            {/* voice / sound waves radiating out (the "speaking" cue) */}
+            <path d="M104 44 a14 14 0 0 1 0 24" fill="none" stroke={GOLD} strokeWidth="4" strokeLinecap="round" />
+            <path d="M116 36 a26 26 0 0 1 0 40" fill="none" stroke={GOLD} strokeWidth="4" strokeLinecap="round" opacity="0.6" />
+            {/* RIGHT: a small reply speech bubble with waves */}
+            <rect x="292" y="40" width="60" height="38" rx="14" fill={GOLD} />
+            <path d="M338 78 v10 l-11 -10 z" fill={GOLD} />
+            <circle cx="322" cy="59" r="4" fill={INK} opacity="0.5" />
+            <path d="M282 48 a12 12 0 0 0 0 22" fill="none" stroke={BRAND} strokeWidth="3.5" strokeLinecap="round" opacity="0.7" />
             {/* TOP sparkle */}
             <path d="M190 16 l2.5 5.5 5.5 2.5 -5.5 2.5 -2.5 5.5 -2.5 -5.5 -5.5 -2.5 5.5 -2.5 z" fill={GOLD} opacity="0.7" />
           </g>

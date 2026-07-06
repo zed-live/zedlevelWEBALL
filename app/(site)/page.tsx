@@ -262,14 +262,6 @@ export default function HomePage() {
                 />
               </h2>
             </StaggerItem>
-            <StaggerItem>
-              <p className="mt-6 max-w-[44ch] text-lg font-semibold leading-9 text-white/85 sm:text-xl">
-                مو مجرد دورة تخلّصها وتنساها.
-                <br />
-                هنا تطلع مستوى بعد مستوى، من «ما أفهم شي» إلى إنك تقرأ وتسأل
-                وترد بثقة.
-              </p>
-            </StaggerItem>
           </Stagger>
           <Reveal delay={150}>
             <Mascot
