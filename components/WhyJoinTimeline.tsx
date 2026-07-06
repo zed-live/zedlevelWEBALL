@@ -88,10 +88,11 @@ export function WhyJoinTimeline({
 
             {/* card */}
             <div className="group relative flex-1 overflow-hidden rounded-2xl border border-ink/[0.07] bg-white p-4 shadow-[0_8px_24px_-14px_rgba(15,23,41,.25)] transition-shadow hover:shadow-[0_14px_30px_-14px_rgba(15,23,41,.3)] sm:p-5">
-              {/* ghost step number */}
+              {/* ghost step number — kept on the end (RTL: left) so it never
+                  sits behind the right-aligned Arabic text */}
               <span
                 aria-hidden
-                className="pointer-events-none absolute -bottom-3 start-3 select-none text-[4.5rem] font-black leading-none text-primary/[0.06]"
+                className="pointer-events-none absolute -bottom-3 end-3 select-none text-[4.5rem] font-black leading-none text-primary/[0.06]"
               >
                 {i + 1}
               </span>

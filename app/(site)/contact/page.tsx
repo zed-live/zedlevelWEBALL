@@ -29,12 +29,25 @@ export default function ContactPage() {
         />
         <Stagger className="container-site relative flex flex-col items-center gap-6 py-16 text-center lg:py-20">
           <StaggerItem>
-            <Mascot
-              name="mother-front"
-              size="section"
-              priority
-              className="h-52 w-auto animate-breathe drop-shadow-xl sm:h-60"
-            />
+            {/* the team — the guy (shab) centered & larger, flanked by others */}
+            <div className="flex items-end justify-center gap-1 sm:gap-3">
+              <Mascot
+                name="grandma-front"
+                size="section"
+                className="h-28 w-auto animate-breathe drop-shadow-xl sm:h-36"
+              />
+              <Mascot
+                name="shab-front"
+                size="section"
+                priority
+                className="z-10 h-44 w-auto animate-breathe drop-shadow-2xl sm:h-56"
+              />
+              <Mascot
+                name="grandpa-front"
+                size="section"
+                className="h-28 w-auto animate-breathe drop-shadow-xl sm:h-36"
+              />
+            </div>
           </StaggerItem>
           <StaggerItem>
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-white px-4 py-1.5 text-sm font-black text-primary shadow-soft">
@@ -44,10 +57,11 @@ export default function ContactPage() {
           </StaggerItem>
           <StaggerItem>
             <h1 className="text-[clamp(2.1rem,5.5vw,3.4rem)] font-black leading-[1.3]">
-              نحن هنا — <Underline className="text-primary">وبنرد عليك</Underline>
+              نحن هنا بانتظارك{" "}
+              <Underline className="text-primary">وبنرد عليك</Underline>
             </h1>
             <p className="mx-auto mt-4 max-w-[40ch] text-lg leading-9 text-ink/65">
-              أسرع طريقة الواتساب — أي سؤال، تفضل.
+              فريقنا كله ينتظر سؤالك، لا تردد أرسل الآن.
             </p>
           </StaggerItem>
           <StaggerItem>
