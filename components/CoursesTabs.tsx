@@ -137,12 +137,12 @@ export function CoursesTabs() {
                   {/* title lives in the circle above — show the description as
                       the lead line here instead of repeating the title */}
                   <Link href={c.href}>
-                    <p className="text-[15px] font-bold leading-8 text-ink/70 transition-colors group-hover:text-primary">
+                    <p className="text-[17px] font-black leading-8 text-ink transition-colors group-hover:text-primary">
                       {c.desc}
                     </p>
                   </Link>
                   {c.details && (
-                    <p className="mt-2.5 inline-flex items-center gap-2 text-sm font-bold text-ink/55">
+                    <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-primary-light px-3.5 py-1.5 text-[13.5px] font-bold text-primary">
                       <ArrowMotif className="h-2.5 w-3.5 shrink-0 text-accent" />
                       {c.details}
                     </p>

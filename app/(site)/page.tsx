@@ -245,22 +245,24 @@ export default function HomePage() {
           className="absolute -top-6 start-[-2rem] h-32 w-48 -rotate-12 text-white/[0.06]"
         />
         <div className="container-site relative flex flex-col items-center gap-8 lg:flex-row lg:justify-center lg:gap-14">
-          <Reveal>
-            <div className="text-center lg:text-start">
+          <Stagger className="text-center lg:text-start">
+            <StaggerItem>
               <h2 className="text-[clamp(2rem,5vw,3.2rem)] font-black text-white">
                 زد لفل… عشان{" "}
                 <span className="relative inline-block text-accent">
                   تزيد لِفِل
                 </span>
               </h2>
+            </StaggerItem>
+            <StaggerItem>
               <p className="mt-6 max-w-[44ch] text-lg font-semibold leading-9 text-white/85 sm:text-xl">
                 مو مجرد دورة تخلّصها وتنساها.
                 <br />
-                هنا تطلع مستوى بعد مستوى — من «ما أفهم شي» إلى إنك تقرأ وتسأل
+                هنا تطلع مستوى بعد مستوى، من «ما أفهم شي» إلى إنك تقرأ وتسأل
                 وترد بثقة.
               </p>
-            </div>
-          </Reveal>
+            </StaggerItem>
+          </Stagger>
           <Reveal delay={150}>
             <Mascot
               name="father-front"
