@@ -1,5 +1,6 @@
 import type { CourseMeta } from "@/config/courses";
-import { CourseCover, type CoverVariant } from "./CourseCover";
+import { type CoverVariant } from "./CourseCover";
+import { CourseCardArt } from "./CourseCardArt";
 
 /** default brand-blue banner when a course doesn't set its own */
 export const DEFAULT_BANNER = "linear-gradient(160deg, #2f4fd8 0%, #1a237e 100%)";
@@ -25,15 +26,12 @@ export function CourseCardBanner({ course }: { course: CourseMeta }) {
       className="relative mb-16 px-5 pb-24 pt-5 text-center"
       style={course.banner ? { background: course.banner } : undefined}
     >
-      {/* light illustrated background (old course cover art). The center circle
-          overhangs the bottom, so we anchor the scene to the TOP of the banner
-          — the art sits above/around the circle instead of behind it. */}
+      {/* light illustrated background — art laid out AROUND the center circle
+          (top strip + left/right sides), keeping the bottom-center dead zone
+          clear where the white circle overhangs. */}
       {cover && (
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-[150px] [&>div]:h-full [&>div]:rounded-none [&_svg]:[object-position:top]"
-        >
-          <CourseCover variant={cover} />
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <CourseCardArt variant={cover} />
         </div>
       )}
 
