@@ -20,7 +20,6 @@ import { LevelLadder } from "@/components/LevelLadder";
 import { Reveal } from "@/components/Reveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { Underline } from "@/components/motion/Underline";
-import { CountUp } from "@/components/motion/CountUp";
 import { site, type SallaCourse } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -243,7 +242,7 @@ export default function LevelsPage() {
         <Reveal>
           <div className="flex flex-col items-center gap-3 text-center">
             <p className="font-bold text-ink/60">
-              زد لفلك، درجة درجة — اختر مستواك وابدأ
+              اشترك مرة واحدة، ونحن نحدّد مستواك ونبدأك من مكانك
             </p>
             <Link href="#tiers" className="btn btn-primary">
               زد لفلك وابدأ معنا الآن
@@ -297,51 +296,83 @@ export default function LevelsPage() {
         <div className="container-site">
           <Reveal>
             <SectionHeading
-              eyebrow="اختر مستواك"
-              title="أربعة مستويات — لكل واحد رحلته"
-              sub="كل مستوى: 3 دورات متسلسلة، اختبار لكل دورة، وشهادة عند إتمام المستوى"
+              eyebrow="اشتراك واحد لكل المستويات"
+              title="ما تختار مستواك… إحنا نحدّده لك"
+              sub="اشترك مرة واحدة، ثم نقيّم مستواك ونضعك على المسار الصحيح ونبدأك من الدورة المناسبة، وتتقدّم درجة درجة."
             />
           </Reveal>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {tiers.map((t, i) => (
-              <Reveal key={t.code} delay={i * 90} className="h-full">
-                <div className="card card-hover flex h-full flex-col p-7 text-center">
-                  <span className="mx-auto inline-flex h-16 w-20 items-center justify-center rounded-2xl bg-primary text-2xl font-black text-white shadow-glow-blue">
-                    {t.code}
+
+          {/* 3 steps of the guided flow */}
+          <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-3">
+            {[
+              {
+                n: "١",
+                t: "اشترك",
+                d: "دفعة واحدة تفتح لك البرنامج، بدون ما تحتار أي مستوى تختار.",
+              },
+              {
+                n: "٢",
+                t: "نقيّم مستواك",
+                d: "بعد الدفع نحدّد مستواك بدقّة ونضعك على المسار الصحيح.",
+              },
+              {
+                n: "٣",
+                t: "تبدأ من مكانك",
+                d: "نبدأك من الدورة المناسبة، وتتقدّم بالتسلسل حتى تختم كل مستوى.",
+              },
+            ].map((s, i) => (
+              <Reveal key={s.t} delay={i * 90} className="h-full">
+                <div className="card flex h-full flex-col gap-3 p-7 text-center">
+                  <span className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-primary text-xl font-black text-white shadow-glow-blue">
+                    {s.n}
                   </span>
-                  <h3 className="mt-3 text-lg font-black">{t.name}</h3>
-                  <p className="mt-3 text-3xl font-black text-primary">
-                    <CountUp value={t.words} />
-                    <span className="text-sm font-bold text-ink/50"> كلمة</span>
-                  </p>
-                  <div className="mt-3 flex justify-center">
-                    <PriceTag course={t.salla} prefix="للدورة" />
-                  </div>
-                  <div className="mt-3 space-y-1.5 text-sm font-bold text-ink/55">
-                    <p>3 دورات متسلسلة</p>
-                    <p>{t.duration} للمستوى كاملًا</p>
-                    <p className="inline-flex items-center gap-1.5 text-ink/70">
-                      <Award className="h-4 w-4 text-accent" aria-hidden />
-                      شهادة المستوى
-                    </p>
-                  </div>
-                  <div className="mt-5 flex-1" />
-                  <SallaButton
-                    course={t.salla}
-                    source="levels-tier"
-                    showTrust={false}
-                    className="[&_a]:w-full [&_span]:w-full"
-                  />
+                  <h3 className="text-lg font-black">{s.t}</h3>
+                  <p className="text-[15px] leading-7 text-ink/60">{s.d}</p>
                 </div>
               </Reveal>
             ))}
           </div>
-          <Reveal delay={200}>
-            <p className="mt-8 flex items-center justify-center gap-2 text-center text-sm font-bold text-ink/55">
-              <Lock className="h-4 w-4" aria-hidden />
-              دفع آمن عبر منصة سلة · Apple Pay · مدى · Visa — وبعد الدفع راسلنا
-              على الواتساب لاستلام رابط الدورة والجدول
+
+          {/* the 4 levels — an info ladder (NOT selectable) */}
+          <Reveal delay={150}>
+            <p className="mt-12 text-center text-sm font-black text-ink/55">
+              رحلتك تمرّ بأربعة مستويات، نوصلك لها درجة درجة
             </p>
+            <div className="mx-auto mt-4 flex max-w-2xl flex-wrap items-center justify-center gap-2.5">
+              {tiers.map((t) => (
+                <span
+                  key={t.code}
+                  className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white px-4 py-2 text-sm font-black text-primary shadow-soft"
+                >
+                  {t.code}
+                  <span className="font-bold text-ink/55">{t.name}</span>
+                </span>
+              ))}
+            </div>
+          </Reveal>
+
+          {/* single price + single purchase CTA */}
+          <Reveal delay={200}>
+            <div className="mx-auto mt-12 flex max-w-md flex-col items-center gap-4 rounded-3xl border border-primary/10 bg-white p-8 text-center shadow-lifted">
+              <div className="flex items-center justify-center gap-2">
+                <PriceTag course="a1" />
+              </div>
+              <p className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/70">
+                <Award className="h-4 w-4 text-accent" aria-hidden />
+                اختبار لكل دورة، وشهادة لكل مستوى
+              </p>
+              <SallaButton
+                course="a1"
+                source="levels-single-flow"
+                label="اشترك الآن"
+                showTrust={false}
+                className="w-full [&_a]:w-full [&_span]:w-full"
+              />
+              <p className="flex items-center justify-center gap-2 text-xs font-bold text-ink/55">
+                <Lock className="h-4 w-4" aria-hidden />
+                دفع آمن عبر منصة سلة · Apple Pay · مدى · Visa
+              </p>
+            </div>
           </Reveal>
         </div>
       </section>
