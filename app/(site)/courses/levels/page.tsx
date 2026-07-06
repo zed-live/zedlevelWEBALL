@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
+  BookText,
+  Puzzle,
+  MessagesSquare,
+  Headphones,
   Award,
   Lock,
   CalendarDays,
@@ -32,6 +36,47 @@ const numbers = [
   { value: "12", label: "دورة متسلسلة" },
   { value: "+3,310", label: "كلمة من Oxford 3000" },
   { value: "5", label: "أسابيع لكل دورة" },
+];
+
+/* ما تغطيه الدورات — المسارات داخل كل دورة */
+const streams = [
+  {
+    icon: BookText,
+    title: "مسار المفردات",
+    points: [
+      "تبني حصيلتك من المفردات بمناهج معتمدة عالميًا (Oxford)",
+      "رحلة تتعلم فيها +3000 كلمة تطوّر مستواك بسرعة",
+      "١٠ كلمات بجمل مختصرة وصوتيات واضحة",
+      "تمارين ومحادثات مختلفة",
+      "مراجعات دورية وفلاش كارد عملية",
+    ],
+  },
+  {
+    icon: Puzzle,
+    title: "مسار القواعد",
+    points: [
+      "دروس لأهم القواعد للاستخدام اليومي",
+      "فيديوهات مركّزة + اختبارات قياس للفهم",
+      "تقدر تنجز المسار كامل في دورة واحدة فقط",
+    ],
+  },
+  {
+    icon: MessagesSquare,
+    title: "مسار المحادثة",
+    points: [
+      "سيناريوهات من حياتك: مشوار، مقهى، مطار…",
+      "حوار ثنائي تقرأ نصفه بصوتك",
+      "تدريب حر مع تصحيح فوري",
+    ],
+  },
+  {
+    icon: Headphones,
+    title: "مسار الاستماع",
+    points: [
+      "مقترح استماع يومي يتجدّد كل يوم",
+      "محتوى مختار على قدّ مستواك بالضبط",
+    ],
+  },
 ];
 
 
@@ -147,7 +192,52 @@ export default function LevelsPage() {
       {/* ═══ By the numbers ═══ */}
       <StatStrip items={numbers} />
 
-      {/* ═══ The 4 streams — dark signature ═══ */}
+      {/* ═══ ايش تغطي الدورات؟ — المسارات ═══ */}
+      <section className="relative overflow-hidden bg-brand-gradient py-20 lg:py-28">
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-dots-light [mask-image:radial-gradient(60%_50%_at_50%_0%,black,transparent)]"
+        />
+        <ArrowMotif
+          aria-hidden
+          className="absolute -bottom-10 end-[-3rem] h-56 w-80 rotate-12 text-white/[0.04]"
+        />
+        <div className="container-site relative">
+          <Reveal>
+            <SectionHeading
+              tone="dark"
+              eyebrow="ايش تغطي الدورات؟"
+              title="الدورات تشمل عدة مسارات في اللغة"
+            />
+          </Reveal>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2">
+            {streams.map((s, i) => (
+              <Reveal key={s.title} delay={i * 90} className="h-full">
+                <div className="h-full rounded-3xl border border-white/15 bg-white/[0.07] p-7 lg:backdrop-blur-sm">
+                  <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-accent text-ink shadow-glow-accent">
+                    <s.icon className="h-7 w-7" aria-hidden />
+                  </span>
+                  <h3 className="mt-4 text-xl font-black text-white">
+                    {s.title}
+                  </h3>
+                  <ul className="mt-3 space-y-2.5">
+                    {s.points.map((p) => (
+                      <li
+                        key={p}
+                        className="flex items-start gap-2 text-[15px] leading-7 text-white/80"
+                      >
+                        <ArrowMotif className="mt-2 h-2 w-3 shrink-0 text-accent" />
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ═══ mid CTA ═══ */}
       <section className="container-site py-12">
         <Reveal>
