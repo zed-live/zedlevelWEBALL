@@ -13,6 +13,7 @@ import { LevelLadder } from "@/components/LevelLadder";
 import { CoursesTabs } from "@/components/CoursesTabs";
 import { WhyJoinTimeline } from "@/components/WhyJoinTimeline";
 import { OpportunitiesSlider } from "@/components/OpportunitiesSlider";
+import { TypedPhrases } from "@/components/TypedPhrases";
 import { SallaButton } from "@/components/SallaButton";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { Marquee } from "@/components/Marquee";
@@ -247,11 +248,18 @@ export default function HomePage() {
         <div className="container-site relative flex flex-col items-center gap-8 lg:flex-row lg:justify-center lg:gap-14">
           <Stagger className="text-center lg:text-start">
             <StaggerItem>
-              <h2 className="text-[clamp(2rem,5vw,3.2rem)] font-black text-white">
-                زد لفل… عشان{" "}
-                <span className="relative inline-block text-accent">
-                  تزيد لِفِل
-                </span>
+              <h2 className="text-[clamp(2rem,5vw,3.2rem)] font-black leading-[1.35] text-white">
+                زد لِفِل…{" "}
+                <TypedPhrases
+                  phrases={[
+                    "عشان تزيد لِفِل",
+                    "نحو الثقة والطلاقة",
+                    "والفرص الحقيقية",
+                    "أسلوب تعليمي يستحق التجربة",
+                    "وش تنتظر؟ اشترك الآن",
+                  ]}
+                  className="text-accent"
+                />
               </h2>
             </StaggerItem>
             <StaggerItem>
