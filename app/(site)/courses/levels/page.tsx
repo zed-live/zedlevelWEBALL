@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  BookText,
-  Puzzle,
-  MessagesSquare,
-  Headphones,
   Award,
   Lock,
   CalendarDays,
@@ -24,9 +20,9 @@ import { CountUp } from "@/components/motion/CountUp";
 import { site, type SallaCourse } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "برنامج المستويات A1–B2 — أربعة مسارات متوازية",
+  title: "برنامج المستويات — من A1 إلى C1",
   description:
-    "12 دورة مدرجة من A1 حتى B2: مفردات Oxford 3000، قواعد عملية، محادثة من حياتك، واستماع يومي — 6 أسابيع للدورة وشهادة لكل مستوى.",
+    "12 دورة متسلسلة تاخذك من بداية رحلة المستويات إلى أعلى اللفات، بروتين سهل الإنجاز حدود 20 دقيقة، مع اختبار لكل دورة وشهادة لكل مستوى.",
 };
 
 /* ─── CONTENT.md §8 — exact program data ─── */
@@ -34,49 +30,10 @@ export const metadata: Metadata = {
 const numbers = [
   { value: "4", label: "مستويات CEFR" },
   { value: "12", label: "دورة متسلسلة" },
-  { value: "4", label: "مسارات متوازية" },
   { value: "+3,310", label: "كلمة من Oxford 3000" },
-  { value: "6", label: "أسابيع لكل دورة" },
+  { value: "5", label: "أسابيع لكل دورة" },
 ];
 
-const streams = [
-  {
-    icon: BookText,
-    title: "مسار المفردات",
-    points: [
-      "قائمة Oxford 3000 — الأكثر استخدامًا فعلًا",
-      "≈10 كلمات يوميًا في جمل حقيقية",
-      "قصة يومية تربط كلمات اليوم",
-      "مراجعة أسبوعية تثبّت",
-    ],
-  },
-  {
-    icon: Puzzle,
-    title: "مسار القواعد",
-    points: [
-      "14 مجموعة لأهم قواعد الاستخدام اليومي",
-      "فيديو مركّز + اختبار قصير",
-      "بوتيرتك — كمّلها داخل أي دورة",
-    ],
-  },
-  {
-    icon: MessagesSquare,
-    title: "مسار المحادثة",
-    points: [
-      "سيناريوهات من حياتك: مشوار، مقهى، مطار…",
-      "حوار ثنائي تقرأ نصفه بصوتك",
-      "تدريب حر + تصحيح بالذكاء الاصطناعي",
-    ],
-  },
-  {
-    icon: Headphones,
-    title: "مسار الاستماع",
-    points: [
-      "مقترح استماع يومي يتجدد كل يوم",
-      "محتوى مختار على قد مستواك بالضبط",
-    ],
-  },
-];
 
 const tiers: {
   code: string;
@@ -94,15 +51,15 @@ const tiers: {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Course",
-  name: "برنامج المستويات A1–B2 — زد لفل",
+  name: "برنامج المستويات — من A1 إلى C1 — زد لفل",
   description:
-    "12 دورة إنجليزية مدرجة من A1 حتى B2 بأربعة مسارات متوازية: مفردات، قواعد، محادثة، واستماع — بشهادة لكل مستوى.",
+    "12 دورة إنجليزية متسلسلة تاخذك من بداية رحلة المستويات إلى أعلى اللفات، مع اختبار لكل دورة وشهادة لكل مستوى.",
   provider: {
     "@type": "Organization",
     name: "ZEDLEVEL — أكاديمية زد لفل لتعليم الإنجليزية",
   },
   inLanguage: "ar",
-  teaches: "اللغة الإنجليزية من مستوى A1 إلى B2 (CEFR)",
+  teaches: "اللغة الإنجليزية من مستوى A1 إلى C1 (CEFR)",
 };
 
 export default function LevelsPage() {
@@ -132,29 +89,28 @@ export default function LevelsPage() {
             <StaggerItem>
               <span className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-white px-4 py-1.5 text-sm font-black text-primary shadow-soft">
                 <ArrowMotif className="h-2.5 w-3.5 text-accent" />
-                برنامج المستويات · A1–B2
+                برنامج المستويات · A1–C1
               </span>
             </StaggerItem>
 
             <StaggerItem>
               <h1 className="mt-5 text-[clamp(2.2rem,5.5vw,3.6rem)] font-black leading-[1.3]">
-                من A1 إلى B2 —{" "}
+                من A1 إلى C1،{" "}
                 <Underline className="text-primary">درجة درجة</Underline>
               </h1>
             </StaggerItem>
 
             <StaggerItem>
               <p className="mt-6 max-w-[44ch] text-lg font-semibold leading-9 text-ink/70">
-                12 دورة متسلسلة بأربعة مسارات: مفردات، قواعد، محادثة، واستماع
-                — نعلّمك الأكثر استخدامًا، مو كل شي.
+                12 دورة متسلسلة تاخذك من بداية رحلة المستويات إلى أعلى اللفات.
               </p>
             </StaggerItem>
 
             <StaggerItem>
               <ul className="mt-5 space-y-2.5">
                 {[
-                  "كل مستوى 3 دورات — تخلص وحدة، تفتح اللي بعدها",
-                  "6 أسابيع للدورة، والجمعة راحة",
+                  "٥ أسابيع من الإنجاز بروتين سهل الإنجاز، حدود ٢٠ دقيقة",
+                  "تختم الدورة بالممارسة الحقيقية في أسبوع مكثف بالحصص",
                   "اختبار لكل دورة، وشهادة لكل مستوى",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-2.5 font-bold">
@@ -168,14 +124,14 @@ export default function LevelsPage() {
             <StaggerItem>
               <div className="mt-8">
                 <Link href="#tiers" className="btn btn-accent text-lg">
-                  اختر مستواك واشترك
+                  زد لفلك وابدأ معنا الآن
                 </Link>
               </div>
               <Link
                 href="/test"
                 className="mt-3 inline-flex min-h-11 items-center gap-1.5 py-2 font-bold text-primary hover:underline"
               >
-                ما أعرف مستواي — الاختبار المجاني
+                ما أعرف مستواي — حدّده الآن
                 <ArrowMotif className="h-2.5 w-3.5 -rotate-90 text-accent" />
               </Link>
             </StaggerItem>
@@ -192,61 +148,15 @@ export default function LevelsPage() {
       <StatStrip items={numbers} />
 
       {/* ═══ The 4 streams — dark signature ═══ */}
-      <section className="relative overflow-hidden bg-brand-gradient py-20 lg:py-28">
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-dots-light [mask-image:radial-gradient(60%_50%_at_50%_0%,black,transparent)]"
-        />
-        <ArrowMotif
-          aria-hidden
-          className="absolute -bottom-10 end-[-3rem] h-56 w-80 rotate-12 text-white/[0.04]"
-        />
-        <div className="container-site relative">
-          <Reveal>
-            <SectionHeading
-              tone="dark"
-              eyebrow="كيف تتعلم كل يوم؟"
-              title="أربعة مسارات تشتغل مع بعض"
-              sub="كل يوم تلمس اللغة من أربع جهات — عشان تثبت فعلًا"
-            />
-          </Reveal>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {streams.map((s, i) => (
-              <Reveal key={s.title} delay={i * 90} className="h-full">
-                <div className="h-full rounded-3xl border border-white/15 bg-white/[0.07] p-7 lg:backdrop-blur-sm">
-                  <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-accent text-ink shadow-glow-accent">
-                    <s.icon className="h-7 w-7" aria-hidden />
-                  </span>
-                  <h3 className="mt-4 text-lg font-black text-white">
-                    {s.title}
-                  </h3>
-                  <ul className="mt-3 space-y-2.5">
-                    {s.points.map((p) => (
-                      <li
-                        key={p}
-                        className="flex items-start gap-2 text-sm leading-7 text-white/75"
-                      >
-                        <ArrowMotif className="mt-2 h-2 w-3 shrink-0 text-accent" />
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ mid CTA — after the streams ═══ */}
+      {/* ═══ mid CTA ═══ */}
       <section className="container-site py-12">
         <Reveal>
           <div className="flex flex-col items-center gap-3 text-center">
             <p className="font-bold text-ink/60">
-              أربعة مسارات تشتغل لك كل يوم — اختر مستواك وابدأ
+              زد لفلك، درجة درجة — اختر مستواك وابدأ
             </p>
             <Link href="#tiers" className="btn btn-primary">
-              اختر مستواك واشترك
+              زد لفلك وابدأ معنا الآن
             </Link>
           </div>
         </Reveal>
@@ -258,7 +168,7 @@ export default function LevelsPage() {
           <Reveal>
             <SectionHeading
               eyebrow="شكل الدورة الواحدة"
-              title="6 أسابيع — واضحة من أول يوم"
+              title="٥ أسابيع دروس + أسبوع مكثف"
             />
           </Reveal>
           <div className="mt-12 grid gap-5 lg:grid-cols-2">
@@ -365,7 +275,7 @@ export default function LevelsPage() {
                 اختبر مستواك مجانًا
               </Link>
               <WhatsAppButton
-                message={site.whatsapp.msgCourseInquiry("برنامج المستويات A1–B2")}
+                message={site.whatsapp.msgCourseInquiry("برنامج المستويات A1–C1")}
                 source="levels-final"
                 variant="inverse"
               >
