@@ -14,8 +14,10 @@ import type { LucideIcon } from "lucide-react";
 type Step = {
   icon: LucideIcon;
   title: string;
-  /** node gradient (rounded-square icon) */
+  /** node gradient (rounded-square icon) — brand colors only */
   node: string;
+  /** icon color on the node (dark on the gold node, white otherwise) */
+  iconColor: string;
 };
 
 const STEPS: Step[] = [
@@ -23,21 +25,25 @@ const STEPS: Step[] = [
     icon: CalendarClock,
     title: "روتين يناسب وقتك",
     node: "from-primary to-primary-dark",
+    iconColor: "text-white",
   },
   {
     icon: SlidersHorizontal,
     title: "دورات مبنية على احتياجك",
     node: "from-accent to-accent-dark",
+    iconColor: "text-ink",
   },
   {
     icon: Mic,
     title: "دروس مباشرة تمارس فيها",
     node: "from-navy to-primary-deep",
+    iconColor: "text-white",
   },
   {
     icon: BadgeCheck,
     title: "اختبار وشهادة تثبّت نجاحك",
-    node: "from-emerald-400 to-emerald-600",
+    node: "from-primary to-navy",
+    iconColor: "text-white",
   },
 ];
 
@@ -52,7 +58,7 @@ export function WhyJoinTimeline({
       {/* the vertical gradient line, centered */}
       <span
         aria-hidden
-        className="absolute inset-y-2 left-1/2 w-1 -translate-x-1/2 rounded-full bg-gradient-to-b from-primary via-accent to-emerald-500 opacity-90"
+        className="absolute inset-y-2 left-1/2 w-1 -translate-x-1/2 rounded-full bg-gradient-to-b from-primary via-accent to-navy opacity-90"
       />
 
       <ol className="relative flex flex-col gap-10 sm:gap-12">
@@ -80,7 +86,7 @@ export function WhyJoinTimeline({
                   delay: i * 0.12,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className={`relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br ${step.node} text-white shadow-lg ring-4 ring-section sm:h-16 sm:w-16`}
+                className={`relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br ${step.node} ${step.iconColor} shadow-lg ring-4 ring-section sm:h-16 sm:w-16`}
               >
                 <step.icon className="h-6 w-6 sm:h-7 sm:w-7" aria-hidden />
                 {/* number badge */}

@@ -3,9 +3,6 @@ import {
   BookOpen,
   Target,
   Mic,
-  Briefcase,
-  GraduationCap,
-  Sparkles,
   ShoppingBag,
 } from "lucide-react";
 import { Mascot } from "@/components/Mascot";
@@ -15,6 +12,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { LevelLadder } from "@/components/LevelLadder";
 import { CoursesTabs } from "@/components/CoursesTabs";
 import { WhyJoinTimeline } from "@/components/WhyJoinTimeline";
+import { OpportunitiesSlider } from "@/components/OpportunitiesSlider";
 import { SallaButton } from "@/components/SallaButton";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { Marquee } from "@/components/Marquee";
@@ -49,30 +47,24 @@ const improve = [
 ];
 
 
-/* §7 لا تفوّت الفرص */
-const opportunities = [
-  { icon: Briefcase, text: "فرص وظيفية وترقيات توصلك أسرع" },
-  { icon: GraduationCap, text: "قبول جامعي ونجاح في الاختبارات" },
-  { icon: Sparkles, text: "حضور وثقة وعلاقات أوسع" },
-];
 
-/* §9 آراء العملاء — the 3 real testimonials (CONTENT.md §13) */
+/* §9 آراء العملاء — دورة التأسيس / المحادثة (⭐⭐⭐⭐⭐ لكل رأي) */
 const testimonials = [
+  {
+    name: "بروج الزهراني",
+    role: "مهتمة بالتعلم وتطوير النفس",
+    quote: "ماتقصرون يعطيكم العافية 😌",
+  },
   {
     name: "منيرة الشبيبي",
     role: "موظفة",
     quote:
-      "كان عندي meeting… للأمانة ملاحظة التطور فيني بصراحة. شكرًا لكم على اهتمامكم فينا وحرصكم. الحمدلله صرت أحسن. مره مبسوطة.",
+      "دروس المحادثة مره مفيده .. من حياتنا اليومية وحلوه عجبتني مره — ماقصرتوا كفيتوا ووفيتوا 😌 كان عندي meeting للأمانة ملاحظه التطور فيني بصراحه، شكراً لكم على اهتمامكم فينا وحرصكم .. الحمدلله صرت أحسن .. مرره مبسوطه",
   },
   {
     name: "أماني محمد",
     role: "طالبة",
-    quote: "يعطيكم العافية ما قصرتم، ساعدتوني كثير.",
-  },
-  {
-    name: "من دورة المحادثة",
-    quote:
-      "دروس المحادثة مره مفيدة.. من حياتنا اليومية وحلوة عجبتني مره. ما قصرتوا كفيتوا ووفيتوا.",
+    quote: "يعطيكم العافية ماقصرتم ساعدتوني كثير",
   },
 ];
 
@@ -321,41 +313,8 @@ export default function HomePage() {
           <Reveal>
             <SectionHeading tone="dark" title="لا تفوّت الفرص بسبب لغتك" />
           </Reveal>
-          {/* mobile: swipeable slider · sm+: 3-column grid */}
-          <div
-            className="mx-auto mt-12 flex max-w-4xl snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-3 sm:gap-8 sm:overflow-visible sm:pb-0"
-            role="list"
-          >
-            {opportunities.map((o, i) => (
-              <Reveal
-                key={o.text}
-                delay={i * 100}
-                className="w-full shrink-0 basis-full snap-center sm:w-auto sm:basis-auto"
-              >
-                <div
-                  role="listitem"
-                  className="flex flex-col items-center gap-4 px-2"
-                >
-                  <span className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-accent text-ink shadow-glow-accent">
-                    <o.icon className="h-8 w-8" aria-hidden />
-                  </span>
-                  <p className="max-w-[24ch] text-lg font-black text-white">
-                    {o.text}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* dot indicators — mobile only (decorative cue that it's swipeable) */}
-          <div
-            aria-hidden
-            className="mt-1 flex justify-center gap-2 sm:hidden"
-          >
-            {opportunities.map((o) => (
-              <span key={o.text} className="h-2 w-2 rounded-full bg-white/35" />
-            ))}
-          </div>
+          {/* mobile: auto-advancing swipeable slider · sm+: 3-column grid */}
+          <OpportunitiesSlider />
           <Reveal delay={300}>
             <div className="mt-12 flex flex-col items-center gap-4">
               <Mascot
