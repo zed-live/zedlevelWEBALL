@@ -32,17 +32,56 @@ export function CourseCardArt({ variant }: { variant: CoverVariant }) {
       >
         {variant === "a0" && (
           <g>
-            {/* LEFT: foundation blocks */}
-            <rect x="16" y="70" width="70" height="20" rx="7" fill={BRAND_SOFT} />
-            <rect x="26" y="46" width="50" height="20" rx="7" fill={BRAND} />
-            <text x="51" y="61" textAnchor="middle" fontSize="13" fontWeight="900" fill="#fff">0</text>
-            <rect x="34" y="22" width="34" height="20" rx="7" fill={GOLD} />
-            <text x="51" y="37" textAnchor="middle" fontSize="13" fontWeight="900" fill={INK}>A</text>
-            {/* RIGHT: sparkles + block */}
-            <path d="M320 34 l3 6.5 6.5 3 -6.5 3 -3 6.5 -3 -6.5 -6.5 -3 6.5 -3 z" fill={BRAND} opacity="0.55" />
-            <circle cx="352" cy="60" r="4" fill={GOLD} opacity="0.8" />
-            <circle cx="300" cy="26" r="3" fill={BRAND} opacity="0.35" />
-            <rect x="322" y="70" width="26" height="26" rx="7" fill={GOLD} opacity="0.9" />
+            {/* building a solid foundation — staggered brick "running bond".
+                Brickwork on the LEFT (completed wall) and RIGHT sides; the
+                bottom-center circle dead-zone is left clear. A hand places a
+                brick into a gap on the top-right row. */}
+
+            {/* LEFT wall — two neat, completed rows */}
+            {/* bottom row */}
+            <rect x="10" y="98" width="30" height="15" rx="3" fill={BRAND} />
+            <rect x="44" y="98" width="30" height="15" rx="3" fill={BRAND} opacity="0.85" />
+            <rect x="78" y="98" width="24" height="15" rx="3" fill={BRAND} opacity="0.7" />
+            {/* top row — offset half a brick (staggered bond) */}
+            <rect x="10" y="79" width="22" height="15" rx="3" fill={BRAND} opacity="0.55" />
+            <rect x="36" y="79" width="30" height="15" rx="3" fill={GOLD} />
+            <rect x="70" y="79" width="30" height="15" rx="3" fill={BRAND} opacity="0.4" />
+
+            {/* RIGHT wall — completed bottom row */}
+            <rect x="300" y="98" width="30" height="15" rx="3" fill={BRAND} opacity="0.85" />
+            <rect x="334" y="98" width="30" height="15" rx="3" fill={BRAND} />
+            {/* top-right row with a GAP being filled */}
+            <rect x="300" y="79" width="24" height="15" rx="3" fill={BRAND} opacity="0.5" />
+            {/* the empty gap (outline) */}
+            <rect
+              x="330"
+              y="79"
+              width="30"
+              height="15"
+              rx="3"
+              fill="none"
+              stroke={BRAND}
+              strokeWidth="1.5"
+              strokeDasharray="3 3"
+              opacity="0.6"
+            />
+            {/* the brick being placed into the gap (gold, lifted just above) */}
+            <rect x="330" y="60" width="30" height="15" rx="3" fill={GOLD} />
+            {/* simple hand/tool placing it (a clean rounded gripper above the brick) */}
+            <path
+              d="M338 52 q7 -10 14 0"
+              fill="none"
+              stroke={BRAND}
+              strokeWidth="4"
+              strokeLinecap="round"
+            />
+            <circle cx="345" cy="55" r="3.5" fill={BRAND} />
+
+            {/* small motion cue: drop guides from the brick to the gap */}
+            <line x1="345" y1="76" x2="345" y2="79" stroke={GOLD} strokeWidth="2" strokeLinecap="round" opacity="0.7" />
+
+            {/* TOP: a subtle sparkle to keep it lively */}
+            <path d="M190 20 l2.5 5.5 5.5 2.5 -5.5 2.5 -2.5 5.5 -2.5 -5.5 -5.5 -2.5 5.5 -2.5 z" fill={GOLD} opacity="0.6" />
           </g>
         )}
 
