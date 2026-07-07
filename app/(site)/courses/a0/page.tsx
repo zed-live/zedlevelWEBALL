@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ShoppingBag, MessageCircle } from "lucide-react";
 import { Mascot } from "@/components/Mascot";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ArrowMotif } from "@/components/ArrowMotif";
@@ -49,12 +50,12 @@ const stages = [
   {
     emoji: "🌱",
     title: "الانطلاق",
-    desc: "تقرأ وتنطق صح — من الحروف والأصوات إلى أول جملة تكوّنها بنفسك.",
+    desc: "تقرأ وتنطق صح، من الحروف والأصوات إلى أول جملة تكوّنها بنفسك.",
   },
   {
     emoji: "🏗️",
     title: "التعبير",
-    desc: "تعرّف عن نفسك وتسأل — وتتكلم عن عائلتك ودراستك.",
+    desc: "تعرّف عن نفسك وتسأل، وتتكلم عن عائلتك ودراستك وغيرها الكثير.",
   },
   {
     emoji: "🎯",
@@ -92,7 +93,7 @@ const included = [
   {
     emoji: "📹",
     title: "دروس فيديو مسجّلة",
-    desc: "٢٦ درسًا مرتّبة خطوة خطوة، توصلك أثناء الدورة، وترجع لها وتعيدها متى ما احتجت.",
+    desc: "٢٦ درسًا مرتّبة خطوة خطوة، وترجع لها وتعيدها متى ما احتجت خلال فترة الاشتراك.",
   },
   {
     emoji: "📘",
@@ -101,18 +102,18 @@ const included = [
   },
   {
     emoji: "📄",
-    title: "ملخص شامل",
-    desc: "ورقة مراجعة سريعة، ترجع لها في أي وقت.",
+    title: "ملخص يبقى معك",
+    desc: "أوراق مراجعة سريعة، ترجع لها في أي وقت.",
   },
   {
     emoji: "🃏",
     title: "بطاقات مراجعة (فلاش كاردز)",
-    desc: "تراجع المفردات وتحفظها بسهولة عبر Quizlet.",
+    desc: "تراجع المفردات وتحفظها بسهولة.",
   },
   {
     emoji: "🎤",
-    title: "تطبيق عملي مباشر وتفاعلي",
-    desc: "تطبّق مع معلمك في مجموعة صغيرة (١–٧)، مع اختبارك المباشر وفيدباك فوري.",
+    title: "دروس مباشرة وتفاعلية",
+    desc: "تطبّق مع معلمك في مجموعة صغيرة (١–٧) تمارس وتأخذ فيدباك مباشر.",
   },
   {
     emoji: "🏆",
@@ -574,6 +575,55 @@ export default function A0Page() {
             </p>
           </div>
         </Reveal>
+      </section>
+
+      {/* ═══ نقطة البداية — طريقتَي الاشتراك ═══ */}
+      <section className="container-site pb-20 pt-14 lg:pb-28">
+        <Reveal>
+          <h2 className="text-center text-[clamp(1.9rem,4.5vw,2.9rem)] font-black leading-[1.4]">
+            هنا نقطة{" "}
+            <Underline className="text-primary">بدايتك</Underline>
+          </h2>
+        </Reveal>
+        <div className="mx-auto mt-10 grid max-w-3xl gap-5 sm:grid-cols-2">
+          {/* box 1 — سلة */}
+          <Reveal>
+            <div className="card card-hover flex h-full flex-col items-center gap-4 p-8 text-center">
+              <span className="grid h-14 w-14 place-items-center rounded-2xl bg-primary text-white shadow-glow-blue">
+                <ShoppingBag className="h-7 w-7" aria-hidden />
+              </span>
+              <p className="text-lg font-black">اشترك مباشرة من خلال سلة</p>
+              <div className="mt-auto w-full">
+                <SallaButton
+                  course="a0"
+                  source="a0-start"
+                  label="اشترك عبر سلة"
+                  showTrust={false}
+                  className="!w-full [&_a]:!w-full [&_span]:!w-full [&_a]:justify-center"
+                />
+              </div>
+            </div>
+          </Reveal>
+          {/* box 2 — واتساب */}
+          <Reveal delay={120}>
+            <div className="card card-hover flex h-full flex-col items-center gap-4 p-8 text-center">
+              <span className="grid h-14 w-14 place-items-center rounded-2xl bg-accent text-ink shadow-glow-accent">
+                <MessageCircle className="h-7 w-7" aria-hidden />
+              </span>
+              <p className="text-lg font-black">اشترك من خلال الواتساب</p>
+              <div className="mt-auto w-full">
+                <WhatsAppButton
+                  message={site.whatsapp.msgCourseInquiry("التأسيس الصحيح A0")}
+                  source="a0-start"
+                  variant="solid"
+                  className="w-full justify-center sm:!w-full"
+                >
+                  اشترك عبر الواتساب
+                </WhatsAppButton>
+              </div>
+            </div>
+          </Reveal>
+        </div>
       </section>
 
       <StickyBuyBar course="a0" courseLabel="التأسيس الصحيح A0" />
