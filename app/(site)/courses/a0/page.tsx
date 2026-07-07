@@ -59,7 +59,7 @@ const stages = [
   {
     emoji: "🎯",
     title: "الإتقان",
-    desc: "توصف وتطبّق كل شي — الوقت والأماكن والبيت، وتختم بشهادتك.",
+    desc: "تبدأ تستخدم وتمارس وتعبّر وتختمها بإختبار وشهادة.",
   },
 ];
 
@@ -359,20 +359,38 @@ export default function A0Page() {
       </section>
 
       {/* ═══ §6 إيقاعك الأسبوعي ═══ */}
-      <section className="py-20 lg:py-28">
-        <div className="container-site">
-          <Reveal>
-            <h2 className="mx-auto max-w-4xl text-center text-[clamp(1.7rem,4.2vw,2.8rem)] font-black leading-[1.5]">
-              تدرس بجدية وبمرونة تساعدك تستمر
-            </h2>
-          </Reveal>
-          <Reveal delay={120}>
-            <p className="mx-auto mt-6 max-w-3xl text-center text-[clamp(1.05rem,2.4vw,1.4rem)] font-bold leading-loose text-ink/65">
-              درس يومي سهل الإنجاز وأكيد راحة أسبوعية
-              <br />
-              وتذكير مستمر عشان ما تتراكم عليك الدروس
-            </p>
-          </Reveal>
+      <section className="relative overflow-hidden py-20 lg:py-28">
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-dots opacity-40 [mask-image:radial-gradient(70%_60%_at_50%_40%,black,transparent)]"
+        />
+        <div className="container-site relative">
+          <div className="mx-auto flex max-w-4xl flex-col items-center gap-8 lg:flex-row-reverse lg:items-center lg:justify-center lg:gap-14">
+            {/* the character */}
+            <Reveal className="shrink-0">
+              <Mascot
+                name="shab-front2"
+                size="section"
+                className="h-40 w-auto animate-breathe drop-shadow-2xl sm:h-52 lg:h-64"
+              />
+            </Reveal>
+            {/* the message */}
+            <div className="text-center lg:text-start">
+              <Reveal>
+                <h2 className="text-[clamp(1.7rem,4.2vw,2.8rem)] font-black leading-[1.5] text-ink">
+                  تدرس بجدية وبمرونة{" "}
+                  <Underline className="text-primary">تساعدك تستمر</Underline>
+                </h2>
+              </Reveal>
+              <Reveal delay={120}>
+                <p className="mt-6 text-[clamp(1.1rem,2.4vw,1.45rem)] font-bold leading-[2] text-ink/80">
+                  درس يومي سهل الإنجاز وأكيد راحة أسبوعية
+                  <br />
+                  وتذكير مستمر عشان ما تتراكم عليك الدروس
+                </p>
+              </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -408,10 +426,7 @@ export default function A0Page() {
       <section className="relative overflow-hidden bg-section py-20 lg:py-28">
         <div className="container-site">
           <Reveal>
-            <SectionHeading
-              title="تبي تشوف المنهج كامل؟"
-              sub="أربع دوائر معرفة حول أساس واحد ثابت — كل ركن يعرض شيئاً مما بداخله."
-            />
+            <SectionHeading title="ودّك تشوف عن المنهج؟" />
           </Reveal>
           <Reveal delay={150}>
             <div className="mt-12">
@@ -427,7 +442,7 @@ export default function A0Page() {
           <Reveal delay={200}>
             <div className="flex flex-col items-center gap-2.5">
               <p className="font-bold text-ink/60">
-                شفت المنهج كامل؟ خذ خطوتك.
+                لا تتردد خذ خطوة الآن
               </p>
               <SallaButton course="a0" source="a0-curriculum" showTrust={false} />
             </div>
