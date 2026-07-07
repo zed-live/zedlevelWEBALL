@@ -9,6 +9,7 @@ import { SallaButton } from "./SallaButton";
 import { PriceTag } from "./PriceTag";
 import { DevTodoBadge } from "./DevTodoBadge";
 import { CourseCardBanner } from "./CourseCardBanner";
+import { A0Card } from "./A0Card";
 import { type CoverVariant } from "./CourseCover";
 import { ArrowMotif } from "./ArrowMotif";
 import { site, isTodo, type SallaCourse } from "@/config/site";
@@ -119,6 +120,10 @@ export function CoursesTabs() {
           }`}
         >
           {items.map((c) => {
+            // A0 uses the dedicated checklist card (full list, no toggle)
+            if (c.cover === "a0") {
+              return <A0Card key={c.title} variant="home" />;
+            }
             const sallaLive = c.salla && !isTodo(site.salla[c.salla]);
             const course = courses.find((x) => x.slug === c.cover);
             return (

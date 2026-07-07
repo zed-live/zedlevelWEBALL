@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { ArrowMotif } from "@/components/ArrowMotif";
 import { SallaButton } from "@/components/SallaButton";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { PriceTag } from "@/components/PriceTag";
+import { A0Card } from "@/components/A0Card";
 import { StickyBuyBar } from "@/components/StickyBuyBar";
 import { Reveal } from "@/components/Reveal";
 import { CurriculumOrbit } from "@/components/course/CurriculumOrbit";
@@ -455,55 +455,11 @@ export default function A0Page() {
       <section className="py-20 lg:py-28">
         <div className="container-site">
           <Reveal>
-            <div className="card mx-auto max-w-xl overflow-hidden">
-              <div className="bg-brand-gradient p-7 text-center">
-                <p className="text-sm font-black uppercase tracking-wide text-white/70">
-                  الاشتراك في دورة A0
-                </p>
-                <div className="mt-3 flex justify-center [&_.bg-section]:bg-white/10 [&_.text-ink\/55]:text-white/80">
-                  <PriceTag course="a0" size="lg" />
-                </div>
-                <p className="mt-2 text-sm font-bold text-white/70">
-                  دفعة واحدة — تشمل كل اللي فوق
-                </p>
-              </div>
-              <div className="p-7">
-                <ul className="space-y-3">
-                  {[
-                    ["المدة", "4 أسابيع دروس + أسبوع تطبيق مباشر"],
-                    ["الدروس", "26 درس فيديو مسجّل"],
-                    ["وقتك اليومي", "١٥–٣٠ دقيقة"],
-                    ["المجموعة المباشرة", "من 1 إلى 7 متعلمين"],
-                    ["الشهادة", "بعد اجتياز الاختبار النهائي 🏆"],
-                  ].map(([k, v]) => (
-                    <li
-                      key={k}
-                      className="flex items-start justify-between gap-4 border-b border-ink/5 pb-3 last:border-0 last:pb-0"
-                    >
-                      <span className="shrink-0 font-black text-ink/50">
-                        {k}
-                      </span>
-                      <span className="text-end font-bold">{v}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-6 flex flex-col gap-3">
-                  <SallaButton
-                    course="a0"
-                    source="a0-pricing"
-                    hero
-                    className="[&_a]:w-full [&_span]:w-full"
-                  />
-                  <WhatsAppButton
-                    message={site.whatsapp.msgCourseInquiry("التأسيس الصحيح A0")}
-                    source="a0-pricing"
-                    variant="link"
-                    className="justify-center"
-                  >
-                    عندك سؤال عن السعر أو الدفعات؟ كلمنا
-                  </WhatsAppButton>
-                </div>
-              </div>
+            <SectionHeading title="الاشتراك في دورة التأسيس" />
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="mt-10">
+              <A0Card variant="details" />
             </div>
           </Reveal>
         </div>
