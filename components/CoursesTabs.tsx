@@ -47,16 +47,17 @@ const AVAILABLE: CourseItem[] = [
     salla: "a1",
     pricePrefix: "تبدأ من",
   },
-];
-
-const SOON: CourseItem[] = [
   {
     cover: "conversation",
     title: "دورة المحادثة",
-    desc: "حصص مباشرة لممارسة الكلام في مجموعة صغيرة",
+    desc: "ممارسة مباشرة مع مدرسين أجانب في مجموعة صغيرة",
+    details: "حصتان مباشرتان أسبوعيًا · مجموعة ٢–٨ · نطق وطلاقة",
     href: "/courses/conversation",
-    notify: "المحادثة",
+    salla: "conversation",
   },
+];
+
+const SOON: CourseItem[] = [
   {
     cover: "accent",
     title: "اللهجة الأمريكية",

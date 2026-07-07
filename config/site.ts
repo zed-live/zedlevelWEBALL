@@ -33,6 +33,7 @@ export const site = {
     a2: "https://salla.sa/zedlevel",
     b1: "https://salla.sa/zedlevel",
     b2: "https://salla.sa/zedlevel",
+    conversation: "https://salla.sa/zedlevel",
   },
   /** Prices in SAR (digits only, e.g. "299"). TODO_ = "يُعلن مع فتح الدفعة". */
   pricing: {
@@ -41,6 +42,7 @@ export const site = {
     a2: "TODO_PRICE_A2",
     b1: "TODO_PRICE_B1",
     b2: "TODO_PRICE_B2",
+    conversation: "249",
   },
   social: {
     instagram: "TODO_INSTAGRAM_URL",
