@@ -5,18 +5,15 @@ import {
   Puzzle,
   MessagesSquare,
   Headphones,
-  Award,
-  Lock,
   CalendarDays,
   Mic2,
 } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ArrowMotif } from "@/components/ArrowMotif";
-import { SallaButton } from "@/components/SallaButton";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { PriceTag } from "@/components/PriceTag";
 import { StatStrip } from "@/components/StatStrip";
 import { LevelLadder } from "@/components/LevelLadder";
+import { LevelsCard } from "@/components/LevelsCard";
 import { Reveal } from "@/components/Reveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { Underline } from "@/components/motion/Underline";
@@ -351,27 +348,10 @@ export default function LevelsPage() {
             </div>
           </Reveal>
 
-          {/* single price + single purchase CTA */}
+          {/* the full details card — tracks + course shape + two-tier pricing */}
           <Reveal delay={200}>
-            <div className="mx-auto mt-12 flex max-w-md flex-col items-center gap-4 rounded-3xl border border-primary/10 bg-white p-8 text-center shadow-lifted">
-              <div className="flex items-center justify-center gap-2">
-                <PriceTag course="a1" />
-              </div>
-              <p className="inline-flex items-center gap-1.5 text-sm font-bold text-ink/70">
-                <Award className="h-4 w-4 text-accent" aria-hidden />
-                اختبار لكل دورة، وشهادة لكل مستوى
-              </p>
-              <SallaButton
-                course="a1"
-                source="levels-single-flow"
-                label="اشترك الآن"
-                showTrust={false}
-                className="w-full [&_a]:w-full [&_span]:w-full"
-              />
-              <p className="flex items-center justify-center gap-2 text-xs font-bold text-ink/55">
-                <Lock className="h-4 w-4" aria-hidden />
-                دفع آمن عبر منصة سلة · Apple Pay · مدى · Visa
-              </p>
+            <div className="mt-12">
+              <LevelsCard variant="details" />
             </div>
           </Reveal>
         </div>
