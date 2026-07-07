@@ -79,9 +79,13 @@ export function LevelLadder({
     target: ref,
     offset: ["start 0.9", "center 0.42"],
   });
-  // path capped so the character always stays INSIDE the ladder box
-  const climbEnd = useTransform(scrollYProgress, [0, 1], ["2%", "78%"]);
-  const climbBottom = useTransform(scrollYProgress, [0, 1], ["16%", "42%"]);
+  // the character walks the whole ascent: from the A0 edge (bottom-right,
+  // short) up to the C1 edge (top-left, tall). `insetInlineEnd` runs from the
+  // start (right) edge, so it grows as the mascot moves left toward C1;
+  // `bottom` rises with the step heights. Values keep it perched just above
+  // each step's top rather than overlapping the labels.
+  const climbEnd = useTransform(scrollYProgress, [0, 1], ["4%", "80%"]);
+  const climbBottom = useTransform(scrollYProgress, [0, 1], ["20%", "76%"]);
 
   /* ascending blue ramp — the higher the level, the deeper the blue */
   const stepClasses = (code: string) => {
@@ -201,7 +205,7 @@ export function LevelLadder({
           className="absolute z-10 w-[11%] min-w-12 max-w-24 drop-shadow-lg"
           style={
             reduceMotion
-              ? { insetInlineEnd: "78%", bottom: "42%" }
+              ? { insetInlineEnd: "80%", bottom: "76%" }
               : { insetInlineEnd: climbEnd, bottom: climbBottom }
           }
         >
@@ -261,10 +265,8 @@ export function LevelLadder({
                     }}
                   >
                     <span className="absolute inset-0 grid place-items-center p-0.5 sm:p-1">
-                      <span className="max-w-full rounded-md bg-white/95 px-1 py-0.5 text-center text-[7px] font-black leading-[1.3] text-ink shadow-sm sm:rounded-lg sm:px-2 sm:text-[9px] sm:leading-[1.35]">
-                        جزء متعلق
-                        <br />
-                        بدورة التأسيس
+                      <span className="max-w-full rounded-md bg-white/95 px-1.5 py-0.5 text-center text-[8px] font-black leading-[1.3] text-ink shadow-sm sm:rounded-lg sm:px-2.5 sm:text-[11px] sm:leading-[1.35]">
+                        التأسيس
                       </span>
                     </span>
                   </span>
