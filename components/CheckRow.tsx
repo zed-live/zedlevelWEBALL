@@ -44,10 +44,10 @@ export function CheckRow({
 }
 
 /**
- * The "result line" callout used above the checklist — a clean white card with
- * a soft shadow and a small gold triangle on the START (right, RTL) edge that
- * points INTO the text, like a quote marker. An optional `note` renders below
- * the body in the primary color.
+ * The "result line" callout used above the checklist — a clean white rounded
+ * card with a soft shadow and a thick rounded GOLD accent bar hugging the
+ * START (right, RTL) edge. An optional `note` renders below the body in the
+ * primary color.
  */
 export function ResultLine({
   children,
@@ -57,26 +57,21 @@ export function ResultLine({
   note?: React.ReactNode;
 }) {
   return (
-    <div className="relative mt-5 rounded-2xl bg-white px-5 py-4 text-center shadow-[0_8px_24px_-12px_rgba(15,23,41,0.25)] ring-1 ring-ink/[0.06]">
-      {/* gold triangle on the right (start) edge, pointing left toward the
-          text — a quote marker. `start` = right in RTL. */}
+    <div className="relative mt-5">
+      {/* gold rounded backing peeking out on the right (start) edge */}
       <span
         aria-hidden
-        className="absolute top-1/2 -start-2 -translate-y-1/2"
-        style={{
-          width: 0,
-          height: 0,
-          borderTop: "8px solid transparent",
-          borderBottom: "8px solid transparent",
-          borderRight: "11px solid #f8be4c",
-        }}
+        className="absolute inset-0 -start-1.5 rounded-[20px] bg-accent"
       />
-      <p className="text-[14px] font-black leading-7 text-ink">{children}</p>
-      {note && (
-        <p className="mt-1.5 text-[13px] font-black leading-6 text-primary">
-          {note}
-        </p>
-      )}
+      {/* white card on top */}
+      <div className="relative rounded-[20px] bg-white px-5 py-4 text-center shadow-[0_8px_24px_-12px_rgba(15,23,41,0.25)]">
+        <p className="text-[14px] font-black leading-7 text-ink">{children}</p>
+        {note && (
+          <p className="mt-1.5 text-[13px] font-black leading-6 text-primary">
+            {note}
+          </p>
+        )}
+      </div>
     </div>
   );
 }
