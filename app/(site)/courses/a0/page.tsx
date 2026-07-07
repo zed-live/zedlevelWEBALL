@@ -87,13 +87,6 @@ const differentiators = [
   },
 ];
 
-/* §6 الإيقاع الأسبوعي */
-const rhythm = [
-  { emoji: "📤", text: "سبت · اثنين · أربعاء — يوصلك درسين جديدين" },
-  { emoji: "✏️", text: "بينهم — تدرّس وتطبّق على راحتك، كل يوم بيومه" },
-  { emoji: "🕌", text: "الجمعة يوم الراحة" },
-];
-
 /* §7 وش يشمل اشتراكك؟ */
 const included = [
   {
@@ -369,33 +362,15 @@ export default function A0Page() {
       <section className="py-20 lg:py-28">
         <div className="container-site">
           <Reveal>
-            <SectionHeading
-              title="إيقاع مرن… تدرس بجدية مع أريحية"
-              sub="كل يومين نرسل لك درسين جديدين، ونذكّرك باستمرار عشان ما تتراكم. وأنت حر — تحلّهم بيوم واحد، أو توزّعهم على يومين. تدرس بجدية، مع مرونة وأريحية."
-            />
+            <h2 className="mx-auto max-w-4xl text-center text-[clamp(1.7rem,4.2vw,2.8rem)] font-black leading-[1.5]">
+              تدرس بجدية وبمرونة تساعدك تستمر
+            </h2>
           </Reveal>
-          <div className="mx-auto mt-12 grid max-w-3xl gap-4">
-            {rhythm.map((r, i) => (
-              <Reveal key={r.text} delay={i * 100}>
-                <div
-                  className={`flex items-center gap-4 rounded-2xl p-5 font-bold ${
-                    i === 2
-                      ? "bg-accent/15 text-ink"
-                      : "card"
-                  }`}
-                >
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-primary-light text-2xl">
-                    {r.emoji}
-                  </span>
-                  {r.text}
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal delay={350}>
-            <p className="mt-8 text-center font-black text-ink/70">
-              ٦ دروس بالأسبوع · ١٥–٣٠ دقيقة باليوم · إيقاع يمشي مع حياتك، مو
-              ضدها.
+          <Reveal delay={120}>
+            <p className="mx-auto mt-6 max-w-3xl text-center text-[clamp(1.05rem,2.4vw,1.4rem)] font-bold leading-loose text-ink/65">
+              درس يومي سهل الإنجاز وأكيد راحة أسبوعية
+              <br />
+              وتذكير مستمر عشان ما تتراكم عليك الدروس
             </p>
           </Reveal>
         </div>

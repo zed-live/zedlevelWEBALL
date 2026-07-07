@@ -247,12 +247,25 @@ export function LevelLadder({
                   >
                     {step.code}
                   </span>
-                  <span
-                    className={`hidden text-xs font-bold sm:block ${labelClasses(step.code)}`}
-                  >
-                    {step.label}
-                  </span>
+                  {step.code !== "A0" && (
+                    <span
+                      className={`hidden text-xs font-bold sm:block ${labelClasses(step.code)}`}
+                    >
+                      {step.label}
+                    </span>
+                  )}
                 </span>
+
+                {/* A0 carries the same white "التأسيس" pill box as the
+                    A1/A2 coverage bands — one consistent badge across the
+                    whole foundation reach. */}
+                {step.code === "A0" && (
+                  <span className="absolute inset-x-0 bottom-2.5 grid place-items-center p-0.5 sm:bottom-4 sm:p-1">
+                    <span className="max-w-full rounded-md bg-white/95 px-1.5 py-0.5 text-center text-[8px] font-black leading-[1.3] text-ink shadow-sm sm:rounded-lg sm:px-2.5 sm:text-[11px] sm:leading-[1.35]">
+                      التأسيس
+                    </span>
+                  </span>
+                )}
 
                 {/* the foundation course's reach into A1/A2 */}
                 {FOUNDATION_COVERAGE[step.code] && (
@@ -281,7 +294,7 @@ export function LevelLadder({
         <p
           className={`text-center text-sm font-bold ${dark ? "text-white/70" : "text-ink/60"}`}
         >
-          اضغط أي درجة وشوف وش تتعلم فيها
+          اضغط أي مستوى وشوف وش تتعلم فيها
         </p>
         <p
           className={`inline-flex items-center gap-2 text-xs font-bold ${dark ? "text-white/60" : "text-ink/55"}`}
