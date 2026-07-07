@@ -3,11 +3,12 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { WhatsAppButton } from "./WhatsAppButton";
-import { SallaButton } from "./SallaButton";
+import { StoreCtaButton } from "./StoreCtaButton";
 import { CourseCardBanner } from "./CourseCardBanner";
 import { CheckRow, ResultLine } from "./CheckRow";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
+import { A0_PLANS, A0_PICKER_TITLE, A0_PICKER_SUB } from "@/config/plans";
 
 /**
  * The A0 "التأسيس الصحيح" product card — a checklist card built on the shared
@@ -102,13 +103,11 @@ export function A0Card({ variant = "home" }: { variant?: "home" | "details" }) {
 
         {/* CTAs */}
         <div className="mt-4 flex flex-col gap-2.5">
-          <SallaButton
-            course="a0"
+          <StoreCtaButton
+            title={A0_PICKER_TITLE}
+            sub={A0_PICKER_SUB}
+            plans={A0_PLANS}
             source={`a0-card-${variant}`}
-            hero
-            showTrust={false}
-            label="اشترك من المتجر 🛒"
-            className="!w-full [&_a]:!w-full [&_span]:!w-full [&_a]:justify-center"
           />
           <WhatsAppButton
             message={site.whatsapp.msgCourseInquiry("التأسيس الصحيح A0")}

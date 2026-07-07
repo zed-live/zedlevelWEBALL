@@ -1,11 +1,12 @@
 "use client";
 
 import { WhatsAppButton } from "./WhatsAppButton";
-import { SallaButton } from "./SallaButton";
+import { StoreCtaButton } from "./StoreCtaButton";
 import { CourseCardBanner } from "./CourseCardBanner";
 import { CheckRow } from "./CheckRow";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
+import { LEVELS_PLANS, PLAN_PICKER_TITLE, PLAN_PICKER_SUB } from "@/config/plans";
 
 /**
  * The "المستويات A1–A2–B1–B2" product card — a checklist card on the shared
@@ -68,13 +69,11 @@ function GroupHeading({ children }: { children: React.ReactNode }) {
 function Ctas({ variant }: { variant: "home" | "details" }) {
   return (
     <div className="mt-4 flex flex-col gap-2.5">
-      <SallaButton
-        course="a1"
+      <StoreCtaButton
+        title={PLAN_PICKER_TITLE}
+        sub={PLAN_PICKER_SUB}
+        plans={LEVELS_PLANS}
         source={`levels-card-${variant}`}
-        hero
-        showTrust={false}
-        label="اشترك من المتجر 🛒"
-        className="!w-full [&_a]:!w-full [&_span]:!w-full [&_a]:justify-center"
       />
       <WhatsAppButton
         message={site.whatsapp.msgCourseInquiry("برنامج المستويات A1–B2")}
