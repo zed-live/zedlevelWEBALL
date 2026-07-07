@@ -185,7 +185,7 @@ export function LevelsCard({ variant = "home" }: { variant?: "home" | "details" 
             <p className="mt-4 text-center text-[13.5px] font-bold leading-7 text-ink/65">
               برنامج من ١٢ دورة يوصلك لأعلى المستويات عبر ٤ مسارات:
             </p>
-            <div className="mt-3 space-y-2 rounded-2xl bg-primary-light/60 p-4">
+            <div className="mt-3 space-y-2.5">
               {TRACKS_INTRO.map((t) => (
                 <p
                   key={t.label}
