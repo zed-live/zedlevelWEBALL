@@ -3,6 +3,7 @@
 import { WhatsAppButton } from "./WhatsAppButton";
 import { SallaButton } from "./SallaButton";
 import { CourseCardBanner } from "./CourseCardBanner";
+import { CheckRow } from "./CheckRow";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
 
@@ -57,17 +58,6 @@ const DETAILS_SHAPE = [
 ];
 
 const HOME_PRICE = "يبدأ من 199 ريال / دورة، أو الباقة الكاملة بالحصص المباشرة 499";
-
-function CheckRow({ text }: { text: string }) {
-  return (
-    <div className="flex items-start gap-2.5 py-[11px]">
-      <span aria-hidden className="mt-0.5 shrink-0 text-[15px] leading-6">
-        ✅
-      </span>
-      <span className="text-[14px] font-bold leading-7 text-ink">{text}</span>
-    </div>
-  );
-}
 
 function GroupHeading({ children }: { children: React.ReactNode }) {
   return (

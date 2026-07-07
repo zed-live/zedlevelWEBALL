@@ -5,6 +5,7 @@ import { ChevronDown } from "lucide-react";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { SallaButton } from "./SallaButton";
 import { CourseCardBanner } from "./CourseCardBanner";
+import { CheckRow, ResultLine } from "./CheckRow";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
 
@@ -20,9 +21,10 @@ import { site } from "@/config/site";
  *                        "عرض أقل ^" / "عرض المزيد ▾" (site pattern).
  */
 
-/** result line under the header */
+/** result line under the header (note rendered in primary below the body) */
 const RESULT_LINE =
-  "بعد الدورة: تقرأ وتنطق صح، تعرّف عن نفسك، وتتكلم عن عائلتك وحياتك، وتكوّن جملك بثقة. (الدورة تغطي أجزاء من A1 و A2)";
+  "بعد الدورة: تقرأ وتنطق صح، تعرّف عن نفسك، وتتكلم عن عائلتك وحياتك، وتكوّن جملك بثقة.";
+const RESULT_NOTE = "(الدورة تغطي أجزاء من A1 و A2)";
 
 /** the 6 checklist items — first 4 = Group A, last 2 = Group B (details only) */
 const CHECKLIST = [
@@ -37,21 +39,6 @@ const CHECKLIST = [
 const GROUP_A_COUNT = 4;
 const SUBTITLE = "إنجليزي من الصفر… تبنيه صح وتسدّ ثغراتك";
 const PRICE_LINE = "يبدأ من 199 ريال / أو الباقة الكاملة بالحصص المباشرة 499";
-
-function CheckRow({ text, isNew = false }: { text: string; isNew?: boolean }) {
-  return (
-    <div
-      className={`flex items-start gap-2.5 py-[11px] ${
-        isNew ? "animate-[fadeInRow_0.3s_ease]" : ""
-      }`}
-    >
-      <span aria-hidden className="mt-0.5 shrink-0 text-[15px] leading-6">
-        ✅
-      </span>
-      <span className="text-[14px] font-bold leading-7 text-ink">{text}</span>
-    </div>
-  );
-}
 
 export function A0Card({ variant = "home" }: { variant?: "home" | "details" }) {
   const course = courses.find((c) => c.slug === "a0")!;
@@ -74,9 +61,7 @@ export function A0Card({ variant = "home" }: { variant?: "home" | "details" }) {
         </p>
 
         {/* result line */}
-        <p className="mt-4 rounded-2xl bg-primary-light px-4 py-3 text-center text-[13.5px] font-bold leading-7 text-primary">
-          {RESULT_LINE}
-        </p>
+        <ResultLine note={RESULT_NOTE}>{RESULT_LINE}</ResultLine>
 
         {/* checklist */}
         <div className="mt-4 divide-y divide-[#eceef5]">

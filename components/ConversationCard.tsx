@@ -3,6 +3,7 @@
 import { WhatsAppButton } from "./WhatsAppButton";
 import { SallaButton } from "./SallaButton";
 import { CourseCardBanner } from "./CourseCardBanner";
+import { CheckRow } from "./CheckRow";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
 
@@ -33,13 +34,18 @@ const TEACHERS = [
   },
 ];
 
-function Row({ icon = "✅", text }: { icon?: string; text: string }) {
+/** an emoji-badge row (used for the 🎟️ availability note) — badge on the LEFT,
+ *  matching the checklist style */
+function EmojiRow({ icon, text }: { icon: string; text: string }) {
   return (
-    <div className="flex items-start gap-2.5 py-[11px]">
-      <span aria-hidden className="mt-0.5 shrink-0 text-[15px] leading-6">
+    <div className="flex items-start justify-between gap-3 py-3">
+      <span className="text-[14px] font-bold leading-7 text-ink">{text}</span>
+      <span
+        aria-hidden
+        className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center text-[15px] leading-6"
+      >
         {icon}
       </span>
-      <span className="text-[14px] font-bold leading-7 text-ink">{text}</span>
     </div>
   );
 }
@@ -71,16 +77,20 @@ export function ConversationCard() {
         <GroupHeading>كيف تمارس؟</GroupHeading>
         <div className="divide-y divide-[#eceef5]">
           {HOW.map((t) => (
-            <Row key={t} text={t} />
+            <CheckRow key={t} text={t} />
           ))}
         </div>
 
         {/* Group B — المعلمون والمستويات */}
         <GroupHeading>المعلمون والمستويات</GroupHeading>
         <div className="divide-y divide-[#eceef5]">
-          {TEACHERS.map((t) => (
-            <Row key={t.text} icon={t.icon} text={t.text} />
-          ))}
+          {TEACHERS.map((t) =>
+            t.icon === "✅" ? (
+              <CheckRow key={t.text} text={t.text} />
+            ) : (
+              <EmojiRow key={t.text} icon={t.icon} text={t.text} />
+            ),
+          )}
         </div>
 
         {/* price */}
