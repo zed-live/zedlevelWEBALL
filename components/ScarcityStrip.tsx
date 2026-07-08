@@ -5,12 +5,8 @@
  */
 export function ScarcityStrip({ text }: { text: string }) {
   return (
-    <p className="flex items-center justify-center gap-2 text-center text-[12px] font-bold text-ink/55">
-      <span
-        aria-hidden
-        className="h-[7px] w-[7px] shrink-0 rounded-full bg-[#e0342b]"
-        style={{ animation: "scarcity-pulse 1.6s infinite" }}
-      />
+    <p className="flex items-center justify-center gap-2.5 text-center text-[12px] font-bold text-ink/55">
+      <span aria-hidden className="pulse-dot" />
       {text}
     </p>
   );
