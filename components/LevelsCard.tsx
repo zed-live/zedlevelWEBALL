@@ -5,7 +5,7 @@ import type { LucideIcon } from "lucide-react";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { StoreCtaButton } from "./StoreCtaButton";
 import { CourseCardBanner } from "./CourseCardBanner";
-import { CheckRow, QuoteBox } from "./CheckRow";
+import { CheckRow, QuoteBox, ResultLine } from "./CheckRow";
 import { ScarcityStrip } from "./ScarcityStrip";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
@@ -18,7 +18,8 @@ import { LEVELS_PLANS, PLAN_PICKER_TITLE, PLAN_PICKER_SUB } from "@/config/plans
  * The two-tier pricing lives in the plan-picker popup, not stacked here.
  */
 
-const SUBTITLE = "نبدأك من مستواك ونوصلك للي بعده، خطوة خطوة حتى الاحتراف";
+const HEADLINE = "اطلع بمستواك من A1 إلى الاحتراف";
+const SUBTITLE = "من مستواك الحالي إلى الطلاقة، مستوى بعد مستوى";
 
 const TRACKS: { icon: LucideIcon; label: string; tail: string }[] = [
   { icon: BookText, label: "مفردات", tail: "تطوّر حصيلتك فتفهم أكثر" },
@@ -35,6 +36,9 @@ const CHECKLIST = [
   "اختبار لكل دورة + شهادة لكل مستوى (بالباقة الكاملة)",
 ];
 
+const RESULT_LINE =
+  "ترتفع مستوى بعد مستوى حتى تفهم وتتكلم وتكتب بثقة، وتوصل للطلاقة اللي تبيها.";
+
 const PRICE_LINE = "يبدأ من 199 ريال / دورة، أو الباقة الكاملة بالحصص المباشرة 499";
 
 export function LevelsCard() {
@@ -45,12 +49,18 @@ export function LevelsCard() {
       <CourseCardBanner course={course} />
 
       <div className="flex flex-1 flex-col px-6 pb-6 pt-2">
-        <p className="text-center text-[14px] font-bold leading-7 text-ink/65">
+        <h3 className="text-center text-[17px] font-black leading-7 text-ink">
+          {HEADLINE}
+        </h3>
+        <p className="mt-1.5 text-center text-[13.5px] font-bold leading-6 text-ink/55">
           {SUBTITLE}
         </p>
 
+        {/* course outcome */}
+        <ResultLine>{RESULT_LINE}</ResultLine>
+
         {/* the four tracks — one quiet box, line icons in a single ink color */}
-        <QuoteBox className="mt-5">
+        <QuoteBox className="mt-4">
           <p className="text-[12.5px] font-bold text-primary/70">
             ٤ مسارات متكاملة في ١٢ دورة متدرّجة
           </p>

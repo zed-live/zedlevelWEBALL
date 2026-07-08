@@ -65,8 +65,8 @@ export function QuoteBox({
 }
 
 /**
- * The outcome / result lead statement above the checklist. Start-aligned for a
- * calm reading entry, with an optional muted `note`.
+ * The course-outcome callout above the checklist — a titled "مخرجات الدورة"
+ * block, start-aligned, with an optional muted `note`.
  */
 export function ResultLine({
   children,
@@ -77,9 +77,12 @@ export function ResultLine({
 }) {
   return (
     <QuoteBox className="mt-5">
+      <p className="mb-1.5 text-[12px] font-black text-accent-dark">
+        مخرجات الدورة
+      </p>
       <p className="text-[13.5px] font-bold leading-7 text-ink">{children}</p>
       {note && (
-        <p className="mt-1 text-[12.5px] font-bold leading-6 text-primary/70">
+        <p className="mt-1.5 text-[12.5px] font-bold leading-6 text-primary/70">
           {note}
         </p>
       )}

@@ -16,11 +16,10 @@ import { track } from "@/lib/track";
  * Monthly subscription (249/شهر), direct to Salla (single package).
  */
 
-const SUBTITLE =
-  "جلسات مباشرة مع معلم ومجموعة صغيرة، تتكلم بصوتك من أول حصة";
+const SUBTITLE = "حصص مباشرة بمجموعة صغيرة، تتكلم بصوتك من أول يوم";
 
 const RESULT_LINE =
-  "بعد الدورة: تتكلم في مواقف يومك بطلاقة وثقة، وتفهم وترد بسرعة، بنطق أقرب للأصلي.";
+  "تتكلم في مواقف يومك بطلاقة وثقة، وتفهم وترد بسرعة، بنطق أقرب للأصلي.";
 
 const CHECKLIST = [
   "حصتان مباشرتان أسبوعيًا (~ساعة)، مجموعة صغيرة تبدأ من ٢-٨",
@@ -42,7 +41,7 @@ export function ConversationCard() {
         <h3 className="text-center text-[17px] font-black leading-7 text-ink">
           ممارسة مباشرة مع مدرسين أجانب
         </h3>
-        <p className="mt-1.5 text-center text-[14px] font-bold leading-7 text-ink/65">
+        <p className="mt-1.5 text-center text-[13.5px] font-bold leading-6 text-ink/55">
           {SUBTITLE}
         </p>
 

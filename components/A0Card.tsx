@@ -16,9 +16,10 @@ import { A0_PLANS, A0_PICKER_TITLE, A0_PICKER_SUB } from "@/config/plans";
  * Equal-height via h-full + mt-auto so columns align.
  */
 
-const SUBTITLE = "تبدأ من الصفر وتبني أساس إنجليزي متين، بدون ثغرات";
+const HEADLINE = "ابنِ إنجليزيتك من الصفر بالطريقة الصحيحة";
+const SUBTITLE = "أساس متين بلا ثغرات، يخدمك طول رحلتك";
 const RESULT_LINE =
-  "بعد الدورة: تقرأ وتنطق صح، تعرّف عن نفسك، وتتكلم عن عائلتك وحياتك، وتكوّن جملك بثقة.";
+  "تقرأ وتنطق صح، تعرّف عن نفسك، وتتكلم عن عائلتك وحياتك، وتكوّن جملك بثقة.";
 const RESULT_NOTE = "الدورة تغطي أجزاء من A1 و A2";
 
 const CHECKLIST = [
@@ -40,8 +41,11 @@ export function A0Card() {
       <CourseCardBanner course={course} />
 
       <div className="flex flex-1 flex-col px-6 pb-6 pt-2">
-        {/* subtitle */}
-        <p className="text-center text-[14px] font-bold leading-7 text-ink/65">
+        {/* headline + subtitle */}
+        <h3 className="text-center text-[17px] font-black leading-7 text-ink">
+          {HEADLINE}
+        </h3>
+        <p className="mt-1.5 text-center text-[13.5px] font-bold leading-6 text-ink/55">
           {SUBTITLE}
         </p>
 
