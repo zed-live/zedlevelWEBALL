@@ -4,6 +4,7 @@ import { WhatsAppButton } from "./WhatsAppButton";
 import { StoreCtaButton } from "./StoreCtaButton";
 import { CourseCardBanner } from "./CourseCardBanner";
 import { CheckRow, ResultLine } from "./CheckRow";
+import { PriceBlock } from "./PriceBlock";
 import { ScarcityStrip } from "./ScarcityStrip";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
@@ -31,7 +32,6 @@ const CHECKLIST = [
   "اختبار نهائي + شهادة (بالباقة الكاملة)",
 ];
 
-const PRICE_LINE = "يبدأ من 199 ريال، أو الباقة الكاملة بالحصص المباشرة 499";
 
 export function A0Card() {
   const course = courses.find((c) => c.slug === "a0")!;
@@ -61,9 +61,11 @@ export function A0Card() {
 
         {/* everything below sits at the card's foot so columns align */}
         <div className="mt-auto pt-6">
-          <p className="text-center text-[13.5px] font-black leading-7 text-ink">
-            {PRICE_LINE}
-          </p>
+          <PriceBlock
+            amount="199"
+            unit="ريال / دورة"
+            detail="أو الباقة الكاملة بالحصص المباشرة 499"
+          />
 
           <div className="mt-4">
             <ScarcityStrip text="الأماكن محدودة، الدورة تُفتح بدفعات خلال السنة" />
@@ -82,7 +84,7 @@ export function A0Card() {
               variant="solid"
               className="w-full justify-center sm:!w-full"
             >
-              استفسر عن الدورة واحجز مقعدك
+              استفسر الآن واحجز مقعدك
             </WhatsAppButton>
           </div>
         </div>

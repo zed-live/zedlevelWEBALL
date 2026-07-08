@@ -6,6 +6,7 @@ import { WhatsAppButton } from "./WhatsAppButton";
 import { StoreCtaButton } from "./StoreCtaButton";
 import { CourseCardBanner } from "./CourseCardBanner";
 import { CheckRow, QuoteBox, ResultLine } from "./CheckRow";
+import { PriceBlock } from "./PriceBlock";
 import { ScarcityStrip } from "./ScarcityStrip";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
@@ -40,7 +41,6 @@ const CHECKLIST = [
 const RESULT_LINE =
   "ترتفع مستوى بعد مستوى حتى تفهم وتتكلم وتكتب بثقة، وتوصل للطلاقة اللي تبيها.";
 
-const PRICE_LINE = "يبدأ من 199 ريال / دورة، أو الباقة الكاملة بالحصص المباشرة 499";
 
 export function LevelsCard() {
   const course = courses.find((c) => c.slug === "levels")!;
@@ -95,12 +95,14 @@ export function LevelsCard() {
 
         {/* foot — aligned across columns */}
         <div className="mt-auto pt-6">
-          <p className="text-center text-[13.5px] font-black leading-7 text-ink">
-            {PRICE_LINE}
-          </p>
+          <PriceBlock
+            amount="199"
+            unit="ريال / دورة"
+            detail="أو الباقة الكاملة بالحصص المباشرة 499"
+          />
 
           <div className="mt-4">
-            <ScarcityStrip text="الدورات تُفتح بدفعات محدودة، احجز مكانك الآن" />
+            <ScarcityStrip text="الدورات تُفتح بدفعات محدودة خلال السنة" />
           </div>
 
           <div className="mt-3 flex flex-col gap-2.5">
@@ -116,7 +118,7 @@ export function LevelsCard() {
               variant="solid"
               className="w-full justify-center sm:!w-full"
             >
-              استفسر عن الدورة واحجز مقعدك
+              استفسر الآن واحجز مقعدك
             </WhatsAppButton>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { WhatsAppButton } from "./WhatsAppButton";
 import { StoreButtonLink } from "./StoreButton";
 import { CourseCardBanner } from "./CourseCardBanner";
 import { CheckRow, ResultLine } from "./CheckRow";
+import { PriceBlock } from "./PriceBlock";
 import { ScarcityStrip } from "./ScarcityStrip";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
@@ -19,7 +20,7 @@ import { track } from "@/lib/track";
 const SUBTITLE = "رحلتك من «أخاف أغلط» إلى «أتكلم بثقة»";
 
 const RESULT_LINE =
-  "أقدر في التواصل والحديث وأكثر ثقة في الكلام مع الأجانب.";
+  "تزيد قدرتك على التواصل وثقتك لما تتكلم مع الأجانب.";
 
 const CHECKLIST = [
   "حصتان مباشرتان أسبوعيًا (~ساعة)",
@@ -58,13 +59,10 @@ export function ConversationCard() {
 
         {/* foot — aligned across columns */}
         <div className="mt-auto pt-6">
-          <p className="text-center text-[15px] font-black leading-7 text-ink">
-            اشترك — 249 ريال{" "}
-            <span className="text-[13px] font-bold text-ink/55">/ شهر</span>
-          </p>
+          <PriceBlock amount="249" unit="ريال / شهر" />
 
           <div className="mt-4">
-            <ScarcityStrip text="المجموعات تُفتح بأعداد محدودة، احجز مكانك الآن" />
+            <ScarcityStrip text="المجموعات تُفتح بأعداد محدودة خلال السنة" />
           </div>
 
           <div className="mt-3 flex flex-col gap-2.5">
@@ -83,7 +81,7 @@ export function ConversationCard() {
               variant="solid"
               className="w-full justify-center sm:!w-full"
             >
-              استفسر عن الدورة واحجز مقعدك
+              استفسر الآن واحجز مقعدك
             </WhatsAppButton>
           </div>
         </div>
