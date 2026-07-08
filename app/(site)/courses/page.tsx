@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { SectionHeading } from "@/components/SectionHeading";
-import { CourseCard } from "@/components/CourseCard";
+import { A0Card } from "@/components/A0Card";
+import { LevelsCard } from "@/components/LevelsCard";
+import { ConversationCard } from "@/components/ConversationCard";
+import { ComingSoonCard } from "@/components/ComingSoonCard";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
@@ -20,10 +23,16 @@ export default function CoursesPage() {
         sub="ما تعرف مستواك؟ ابدأ بالاختبار المجاني وخذ توصية مباشرة بالدورة الصح."
       />
 
-      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {courses.map((c) => (
-          <CourseCard key={c.slug} course={c} />
-        ))}
+      <div className="mt-10 grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {courses.map((c) => {
+          // the three live courses use the dedicated checklist cards;
+          // coming-soon courses use the matching coming-soon card
+          if (c.slug === "a0") return <A0Card key={c.slug} />;
+          if (c.slug === "levels") return <LevelsCard key={c.slug} />;
+          if (c.slug === "conversation")
+            return <ConversationCard key={c.slug} />;
+          return <ComingSoonCard key={c.slug} course={c} />;
+        })}
       </div>
 
       {/* final CTA */}
