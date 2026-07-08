@@ -47,6 +47,7 @@ export const site = {
   social: {
     instagram: "TODO_INSTAGRAM_URL",
     tiktok: "TODO_TIKTOK_URL",
+    snapchat: "TODO_SNAPCHAT_URL",
     x: "TODO_X_URL",
     email: "TODO_EMAIL",
   },

@@ -1,12 +1,13 @@
 "use client";
 
 import { WhatsAppButton } from "./WhatsAppButton";
-import { SallaButton } from "./SallaButton";
+import { StoreButtonLink } from "./StoreButton";
 import { CourseCardBanner } from "./CourseCardBanner";
 import { CheckRow } from "./CheckRow";
 import { ScarcityStrip } from "./ScarcityStrip";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
+import { track } from "@/lib/track";
 
 /**
  * The "دورة المحادثة" details card — live speaking practice with foreign
@@ -107,13 +108,14 @@ export function ConversationCard() {
 
         {/* CTAs */}
         <div className="mt-3 flex flex-col gap-2.5">
-          <SallaButton
-            course="conversation"
-            source="conversation-card-details"
-            hero
-            showTrust={false}
-            label="اشترك من المتجر 🛒"
-            className="!w-full [&_a]:!w-full [&_span]:!w-full [&_a]:justify-center"
+          <StoreButtonLink
+            href={site.salla.conversation}
+            onClick={() =>
+              track("salla_click", {
+                course: "conversation",
+                source: "conversation-card",
+              })
+            }
           />
           <WhatsAppButton
             message={site.whatsapp.msgCourseInquiry("المحادثة")}

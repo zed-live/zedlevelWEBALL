@@ -3,7 +3,8 @@ import { ShoppingBag, MessageCircle } from "lucide-react";
 import { Mascot } from "@/components/Mascot";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ArrowMotif } from "@/components/ArrowMotif";
-import { SallaButton } from "@/components/SallaButton";
+import { StoreCtaButton } from "@/components/StoreCtaButton";
+import { A0_PLANS, A0_PICKER_TITLE, A0_PICKER_SUB } from "@/config/plans";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { A0Card } from "@/components/A0Card";
 import { StickyBuyBar } from "@/components/StickyBuyBar";
@@ -196,12 +197,18 @@ export default function A0Page() {
             </StaggerItem>
 
             <StaggerItem>
-              <div className="mt-7 flex flex-col gap-3.5 sm:flex-row sm:items-start">
-                <SallaButton course="a0" source="a0-hero" hero />
+              <div className="mt-7 flex w-full max-w-sm flex-col gap-3">
+                <StoreCtaButton
+                  title={A0_PICKER_TITLE}
+                  sub={A0_PICKER_SUB}
+                  plans={A0_PLANS}
+                  source="a0-hero"
+                />
                 <WhatsAppButton
                   message={site.whatsapp.msgCourseInquiry("التأسيس الصحيح A0")}
                   source="a0-hero"
                   variant="solid"
+                  className="!w-full"
                 >
                   استفسر بالواتساب
                 </WhatsAppButton>
@@ -328,8 +335,13 @@ export default function A0Page() {
 
           {/* ↓ زر الشراء الثاني */}
           <Reveal delay={300}>
-            <div className="mt-12 flex flex-col items-center gap-3">
-              <SallaButton course="a0" source="a0-mid" showTrust={false} />
+            <div className="mx-auto mt-12 w-full max-w-sm">
+              <StoreCtaButton
+                title={A0_PICKER_TITLE}
+                sub={A0_PICKER_SUB}
+                plans={A0_PLANS}
+                source="a0-mid"
+              />
             </div>
           </Reveal>
         </div>
@@ -441,11 +453,18 @@ export default function A0Page() {
       <section className="py-20 lg:py-28">
         <div className="container-site">
           <Reveal delay={200}>
-            <div className="flex flex-col items-center gap-2.5">
+            <div className="mx-auto flex w-full max-w-sm flex-col items-center gap-2.5">
               <p className="font-bold text-ink/60">
                 لا تتردد خذ خطوة الآن
               </p>
-              <SallaButton course="a0" source="a0-curriculum" showTrust={false} />
+              <div className="w-full">
+                <StoreCtaButton
+                  title={A0_PICKER_TITLE}
+                  sub={A0_PICKER_SUB}
+                  plans={A0_PLANS}
+                  source="a0-curriculum"
+                />
+              </div>
             </div>
           </Reveal>
         </div>
@@ -514,12 +533,18 @@ export default function A0Page() {
             <p className="mx-auto mt-4 max-w-[42ch] text-white/80 sm:text-lg">
               ابدأ اليوم، وخلّ إنجليزيتك تنطلق من أساس يثبت معك.
             </p>
-            <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <SallaButton course="a0" source="a0-final" hero showTrust={false} />
+            <div className="mx-auto mt-9 flex w-full max-w-sm flex-col gap-3">
+              <StoreCtaButton
+                title={A0_PICKER_TITLE}
+                sub={A0_PICKER_SUB}
+                plans={A0_PLANS}
+                source="a0-final"
+              />
               <WhatsAppButton
                 message={site.whatsapp.msgCourseInquiry("التأسيس الصحيح A0")}
                 source="a0-final"
-                variant="solid"
+                variant="inverse"
+                className="!w-full"
               >
                 استفسر بالواتساب
               </WhatsAppButton>
@@ -550,12 +575,11 @@ export default function A0Page() {
               </span>
               <p className="text-lg font-black">اشترك مباشرة من خلال سلة</p>
               <div className="mt-auto w-full">
-                <SallaButton
-                  course="a0"
+                <StoreCtaButton
+                  title={A0_PICKER_TITLE}
+                  sub={A0_PICKER_SUB}
+                  plans={A0_PLANS}
                   source="a0-start"
-                  label="اشترك عبر سلة"
-                  showTrust={false}
-                  className="!w-full [&_a]:!w-full [&_span]:!w-full [&_a]:justify-center"
                 />
               </div>
             </div>

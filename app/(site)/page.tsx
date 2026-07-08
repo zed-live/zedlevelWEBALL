@@ -14,7 +14,8 @@ import { CoursesTabs } from "@/components/CoursesTabs";
 import { WhyJoinTimeline } from "@/components/WhyJoinTimeline";
 import { OpportunitiesSlider } from "@/components/OpportunitiesSlider";
 import { TypedPhrases } from "@/components/TypedPhrases";
-import { SallaButton } from "@/components/SallaButton";
+import { StoreCtaButton } from "@/components/StoreCtaButton";
+import { A0_PLANS, A0_PICKER_TITLE, A0_PICKER_SUB } from "@/config/plans";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { Marquee } from "@/components/Marquee";
 import { Reveal } from "@/components/Reveal";
@@ -298,7 +299,14 @@ export default function HomePage() {
           <div className="mt-14">
             <WhyJoinTimeline
               cta={
-                <SallaButton course="a0" source="why-join" label="اشترك الآن" />
+                <div className="w-full max-w-sm">
+                  <StoreCtaButton
+                    title={A0_PICKER_TITLE}
+                    sub={A0_PICKER_SUB}
+                    plans={A0_PLANS}
+                    source="why-join"
+                  />
+                </div>
               }
             />
           </div>

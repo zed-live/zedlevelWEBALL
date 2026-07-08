@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { site, isTodo } from "@/config/site";
+import { site } from "@/config/site";
+import { PaymentMethods } from "./PaymentMethods";
+import { SocialLinks } from "./SocialLinks";
 import manifest from "@/public/characters/manifest.json";
 
 /** Footer per the homepage prompt §10 — brand + tagline + 5 links + social + © */
@@ -62,29 +64,19 @@ export function Footer() {
           </ul>
         </nav>
 
-        {/* social — renders when the accounts are provided in config/site.ts */}
-        {(!isTodo(site.social.instagram) ||
-          !isTodo(site.social.tiktok) ||
-          !isTodo(site.social.x)) && (
-          <div className="flex items-center gap-4 text-sm font-bold text-white/60">
-            تابعنا:
-            {!isTodo(site.social.instagram) && (
-              <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
-                إنستقرام
-              </a>
-            )}
-            {!isTodo(site.social.tiktok) && (
-              <a href={site.social.tiktok} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
-                تيك توك
-              </a>
-            )}
-            {!isTodo(site.social.x) && (
-              <a href={site.social.x} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
-                X
-              </a>
-            )}
-          </div>
-        )}
+        {/* social + whatsapp icons */}
+        <div className="flex flex-col items-center gap-3">
+          <span className="text-sm font-bold text-white/60">تابعنا وتواصل معنا</span>
+          <SocialLinks />
+        </div>
+
+        {/* accepted payment methods */}
+        <div className="flex flex-col items-center gap-3 pt-2">
+          <span className="text-sm font-bold text-white/60">
+            طرق دفع آمنة ومضمونة
+          </span>
+          <PaymentMethods />
+        </div>
       </div>
 
       <div className="border-t border-white/10 py-5">
