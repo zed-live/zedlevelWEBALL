@@ -3,13 +3,13 @@ import { Check } from "lucide-react";
 const FULL_PACKAGE_TAG = "(بالباقة الكاملة)";
 
 /**
- * A single checklist row — shared by the course product cards
- * (A0Card / LevelsCard / ConversationCard).
+ * A single checklist row — shared by the course product cards.
  *
- * Style: text on the right (RTL), a green ✓ badge on the LEFT (end side).
- * Every row is fully legible (dark text + green check). When a row carries the
- * «(بالباقة الكاملة)» tag, that tag is pulled out and shown as a distinct gold
- * pill so it clearly reads as a full-package feature — without dimming the row.
+ * Discipline (design system: one blue family, gold scarce):
+ *  - text on the right (RTL); a single PRIMARY line-check on the left, no badge,
+ *    no green (green isn't in the palette).
+ *  - the «(بالباقة الكاملة)» tag is pulled onto its own quiet second line in a
+ *    muted primary tone — never a cramped inline pill.
  */
 export function CheckRow({
   text,
@@ -23,32 +23,31 @@ export function CheckRow({
 
   return (
     <div
-      className={`flex items-start justify-between gap-3 py-3 ${
+      className={`flex items-start gap-3 py-2.5 ${
         isNew ? "animate-[fadeInRow_0.3s_ease]" : ""
       }`}
     >
-      <span className="text-[14px] font-bold leading-7 text-ink">
+      <Check
+        aria-hidden
+        className="mt-1 h-[18px] w-[18px] shrink-0 text-primary"
+        strokeWidth={2.5}
+      />
+      <span className="text-[14px] font-semibold leading-7 text-ink">
         {body}
         {hasTag && (
-          <span className="ms-1.5 inline-block whitespace-nowrap rounded-md bg-[#fff2d6] px-1.5 py-0.5 text-[11px] font-black text-[#8a5a10] align-[1px]">
-            بالباقة الكاملة
+          <span className="mt-0.5 block text-[11.5px] font-bold text-primary/60">
+            ضمن الباقة الكاملة
           </span>
         )}
-      </span>
-      <span
-        aria-hidden
-        className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-emerald-100 text-emerald-600"
-      >
-        <Check className="h-3.5 w-3.5" strokeWidth={3} />
       </span>
     </div>
   );
 }
 
 /**
- * A quote-style callout — a clean white rounded card sitting on a rounded GOLD
- * backing that peeks out on the START (right, RTL) edge. Reused by the result
- * line and the tracks intro.
+ * A quiet lead-statement block — a subtle primary-tinted panel with a thin
+ * primary hairline on the START (right, RTL) edge. No gold, no heavy shadow;
+ * one calm box, not a stack of them.
  */
 export function QuoteBox({
   children,
@@ -58,23 +57,17 @@ export function QuoteBox({
   className?: string;
 }) {
   return (
-    <div className={`relative ${className}`}>
-      {/* gold rounded backing peeking out on the right (start) edge */}
-      <span
-        aria-hidden
-        className="absolute inset-0 -start-1.5 rounded-[20px] bg-accent"
-      />
-      {/* white card on top */}
-      <div className="relative rounded-[20px] bg-white px-5 py-4 shadow-[0_8px_24px_-12px_rgba(15,23,41,0.25)]">
-        {children}
-      </div>
+    <div
+      className={`rounded-xl border-e-[3px] border-primary/70 bg-primary-light px-4 py-3.5 ${className}`}
+    >
+      {children}
     </div>
   );
 }
 
 /**
- * The "result line" callout used above the checklist. Centered body, with an
- * optional `note` rendered below in the primary color.
+ * The outcome / result lead statement above the checklist. Start-aligned for a
+ * calm reading entry, with an optional muted `note`.
  */
 export function ResultLine({
   children,
@@ -85,11 +78,9 @@ export function ResultLine({
 }) {
   return (
     <QuoteBox className="mt-5">
-      <p className="text-center text-[14px] font-black leading-7 text-ink">
-        {children}
-      </p>
+      <p className="text-[13.5px] font-bold leading-7 text-ink">{children}</p>
       {note && (
-        <p className="mt-1.5 text-center text-[13px] font-black leading-6 text-primary">
+        <p className="mt-1 text-[12.5px] font-bold leading-6 text-primary/70">
           {note}
         </p>
       )}

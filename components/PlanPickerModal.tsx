@@ -73,41 +73,39 @@ function PlanCard({ plan, source }: { plan: Plan; source: string }) {
       {/* checklist */}
       <div className="mt-4 space-y-0.5">
         {plan.includes.map((t) => (
-          <div key={t} className="flex items-start justify-between gap-3 py-1.5">
-            <span className="text-[13.5px] font-bold leading-6 text-ink">
-              {t}
-            </span>
-            <span
+          <div key={t} className="flex items-start gap-2.5 py-1.5">
+            <Check
               aria-hidden
-              className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-emerald-100 text-emerald-600"
-            >
-              <Check className="h-3.5 w-3.5" strokeWidth={3} />
+              className="mt-1 h-[17px] w-[17px] shrink-0 text-primary"
+              strokeWidth={2.5}
+            />
+            <span className="text-[13.5px] font-semibold leading-6 text-ink">
+              {t}
             </span>
           </div>
         ))}
         {plan.extras?.map((t) => (
-          <div key={t} className="flex items-start justify-between gap-3 py-1.5">
-            <span className="text-[13.5px] font-black leading-6 text-ink">
-              {t}
-            </span>
+          <div key={t} className="flex items-start gap-2.5 py-1.5">
             <span
               aria-hidden
-              className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent text-ink"
+              className="mt-0.5 grid h-[17px] w-[17px] shrink-0 place-items-center rounded-full bg-accent text-ink"
             >
-              <Plus className="h-3.5 w-3.5" strokeWidth={3} />
+              <Plus className="h-3 w-3" strokeWidth={3} />
+            </span>
+            <span className="text-[13.5px] font-black leading-6 text-ink">
+              {t}
             </span>
           </div>
         ))}
         {plan.excludes?.map((t) => (
-          <div key={t} className="flex items-start justify-between gap-3 py-1.5">
-            <span className="text-[13.5px] font-bold leading-6 text-ink/40">
-              {t}
-            </span>
-            <span
+          <div key={t} className="flex items-start gap-2.5 py-1.5">
+            <X
               aria-hidden
-              className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-ink/[0.06] text-ink/35"
-            >
-              <X className="h-3.5 w-3.5" strokeWidth={3} />
+              className="mt-1 h-[17px] w-[17px] shrink-0 text-ink/30"
+              strokeWidth={2.5}
+            />
+            <span className="text-[13.5px] font-semibold leading-6 text-ink/45">
+              {t}
             </span>
           </div>
         ))}

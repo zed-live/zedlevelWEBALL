@@ -351,7 +351,7 @@ export default function LevelsPage() {
           {/* the full details card — tracks + course shape + two-tier pricing */}
           <Reveal delay={200}>
             <div className="mt-12">
-              <LevelsCard variant="details" />
+              <LevelsCard />
             </div>
           </Reveal>
         </div>

@@ -118,17 +118,17 @@ export function CoursesTabs() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ type: "spring", stiffness: 200, damping: 24 }}
-          className={`mx-auto mt-10 grid max-w-4xl gap-6 ${
+          className={`mx-auto mt-10 grid max-w-5xl items-stretch gap-6 ${
             items.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-3"
           }`}
         >
           {items.map((c) => {
             // A0 + levels + conversation use dedicated checklist cards
             if (c.cover === "a0") {
-              return <A0Card key={c.title} variant="home" />;
+              return <A0Card key={c.title} />;
             }
             if (c.cover === "levels") {
-              return <LevelsCard key={c.title} variant="home" />;
+              return <LevelsCard key={c.title} />;
             }
             if (c.cover === "conversation") {
               return <ConversationCard key={c.title} />;
