@@ -27,11 +27,12 @@ export function CheckRow({
         isNew ? "animate-[fadeInRow_0.3s_ease]" : ""
       }`}
     >
-      <Check
+      <span
         aria-hidden
-        className="mt-1 h-[18px] w-[18px] shrink-0 text-primary"
-        strokeWidth={2.5}
-      />
+        className="mt-1 grid h-[19px] w-[19px] shrink-0 place-items-center rounded-full bg-primary/10 text-primary"
+      >
+        <Check className="h-[13px] w-[13px]" strokeWidth={3} />
+      </span>
       <span className="text-[14px] font-semibold leading-7 text-ink">
         {body}
         {hasTag && (
@@ -82,7 +83,7 @@ export function ResultLine({
       </p>
       <p className="text-[13.5px] font-bold leading-7 text-ink">{children}</p>
       {note && (
-        <p className="mt-1.5 text-[12.5px] font-bold leading-6 text-primary/70">
+        <p className="mt-1.5 text-[12.5px] font-bold leading-6 text-ink/70">
           {note}
         </p>
       )}

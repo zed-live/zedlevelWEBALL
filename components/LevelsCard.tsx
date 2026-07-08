@@ -23,7 +23,7 @@ const SUBTITLE = "مهما كان مستواك";
 const LEVELS_SEQ = "A1 - A2 - B1 - B2";
 
 const RESULT_LINE =
-  "ترتفع مستوى بعد مستوى حتى تفهم وتتكلم وتكتب بثقة، وتوصل للطلاقة اللي تبيها.";
+  "ترتقي مستوى بعد مستوى..\nفيزيد فهمك وثقتك وطلاقتك، خطوة بخطوة";
 const STATS_LINE = "١٢ دورة متدرّجة · ٤ مسارات متكاملة";
 
 const TRACKS: { icon: string; label: string; tail: string }[] = [
@@ -38,7 +38,7 @@ const CHECKLIST = [
   "١٢ برنامج متدرّج، تتقدّم دورة دورة",
   "فلاش كاردز وتمارين تثبّت الجديد",
   "دروس مباشرة تمارس فيها (بالباقة الكاملة)",
-  "مزيد من الدروس والتمارين العملية للكتابة (بالباقة الكاملة)",
+  "دروس وتمارين عملية لمهارة الكتابة (بالباقة الكاملة)",
   "اختبار لكل دورة + شهادة لكل مستوى (بالباقة الكاملة)",
 ];
 
@@ -57,7 +57,7 @@ export function LevelsCard() {
         <p className="mt-1.5 text-center text-[13.5px] font-bold leading-6 text-ink/55">
           {SUBTITLE}
           {" · "}
-          <bdi dir="ltr" className="font-black text-primary">
+          <bdi dir="ltr" className="font-black text-ink">
             {LEVELS_SEQ}
           </bdi>
         </p>
@@ -67,7 +67,7 @@ export function LevelsCard() {
           <p className="mb-1.5 text-[12px] font-black text-accent-dark">
             مخرجات الدورة
           </p>
-          <p className="text-[13.5px] font-bold leading-7 text-ink">
+          <p className="whitespace-pre-line text-[13.5px] font-bold leading-7 text-ink">
             {RESULT_LINE}
           </p>
 
@@ -87,7 +87,7 @@ export function LevelsCard() {
               }`}
               aria-hidden
             />
-            {open ? "إخفاء" : "شوف المسارات الأربعة"}
+            {open ? "إخفاء" : "انقر لمعرفة المسارات"}
           </button>
 
           {/* collapsible 4 tracks */}
@@ -143,7 +143,7 @@ export function LevelsCard() {
               variant="solid"
               className="w-full justify-center sm:!w-full"
             >
-              استفسر الآن واحجز مقعدك
+              استفسر أو احجز مقعدك
             </WhatsAppButton>
           </div>
         </div>

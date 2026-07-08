@@ -21,7 +21,7 @@ const HEADLINE = "طوّر لغتك من الصفر بالطريقة الصح";
 const SUBTITLE = "الأساس المتين يبني ثقتك ويسرّع تطورك";
 const RESULT_LINE =
   "تقرأ وتنطق صح، تعرّف عن نفسك، وتتكلم عن عائلتك وحياتك، وتكوّن جملك بثقة.";
-const RESULT_NOTE = "الدورة تغطي أجزاء من A1 و A2";
+const RESULT_NOTE = "ملاحظة: الدورة تغطي أجزاء من A1 و A2";
 
 const CHECKLIST = [
   "26 درس فيديو مسجّل، مرتّبة وواضحة، تشوفها بأي وقت",
@@ -84,7 +84,7 @@ export function A0Card() {
               variant="solid"
               className="w-full justify-center sm:!w-full"
             >
-              استفسر الآن واحجز مقعدك
+              استفسر أو احجز مقعدك
             </WhatsAppButton>
           </div>
         </div>

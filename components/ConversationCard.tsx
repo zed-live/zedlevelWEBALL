@@ -81,7 +81,7 @@ export function ConversationCard() {
               variant="solid"
               className="w-full justify-center sm:!w-full"
             >
-              استفسر الآن واحجز مقعدك
+              استفسر أو احجز مقعدك
             </WhatsAppButton>
           </div>
         </div>
