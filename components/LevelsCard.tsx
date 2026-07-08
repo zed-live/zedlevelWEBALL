@@ -18,8 +18,9 @@ import { LEVELS_PLANS, PLAN_PICKER_TITLE, PLAN_PICKER_SUB } from "@/config/plans
  * The two-tier pricing lives in the plan-picker popup, not stacked here.
  */
 
-const HEADLINE = "اطلع بمستواك من A1 إلى الاحتراف";
-const SUBTITLE = "من مستواك الحالي إلى الطلاقة، مستوى بعد مستوى";
+const HEADLINE = "ارتقِ بمستواك نحو الاحتراف";
+const SUBTITLE = "مهما كان مستواك";
+const LEVELS_SEQ = "A1 - A2 - B1 - B2";
 
 const TRACKS: { icon: LucideIcon; label: string; tail: string }[] = [
   { icon: BookText, label: "مفردات", tail: "تطوّر حصيلتك فتفهم أكثر" },
@@ -54,6 +55,10 @@ export function LevelsCard() {
         </h3>
         <p className="mt-1.5 text-center text-[13.5px] font-bold leading-6 text-ink/55">
           {SUBTITLE}
+          {" · "}
+          <bdi dir="ltr" className="font-black text-primary">
+            {LEVELS_SEQ}
+          </bdi>
         </p>
 
         {/* course outcome */}

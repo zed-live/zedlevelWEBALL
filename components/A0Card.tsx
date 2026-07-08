@@ -16,8 +16,8 @@ import { A0_PLANS, A0_PICKER_TITLE, A0_PICKER_SUB } from "@/config/plans";
  * Equal-height via h-full + mt-auto so columns align.
  */
 
-const HEADLINE = "ابنِ إنجليزيتك من الصفر بالطريقة الصحيحة";
-const SUBTITLE = "أساس متين بلا ثغرات، يخدمك طول رحلتك";
+const HEADLINE = "طوّر لغتك من الصفر بالطريقة الصح";
+const SUBTITLE = "الأساس المتين يبني ثقتك ويسرّع تطورك";
 const RESULT_LINE =
   "تقرأ وتنطق صح، تعرّف عن نفسك، وتتكلم عن عائلتك وحياتك، وتكوّن جملك بثقة.";
 const RESULT_NOTE = "الدورة تغطي أجزاء من A1 و A2";
