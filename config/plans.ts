@@ -17,7 +17,7 @@ function fullPlan(key: string): Plan {
     key,
     name: "الباقة الكاملة",
     price: "499",
-    priceUnit: "ريال / دورة",
+    priceUnit: "/ دورة",
     tagline: "كل شي في التعلّم الذاتي + التطبيق المباشر والشهادة",
     // everything the self-paced plan has (green ✓)…
     includes: [
@@ -41,7 +41,7 @@ function selfPlan(key: string): Plan {
     key,
     name: "التعلّم الذاتي",
     price: "199",
-    priceUnit: "ريال / دورة",
+    priceUnit: "/ دورة",
     tagline: "المسارات الأربعة بالكامل",
     includes: [
       "المسارات الأربعة كاملة",

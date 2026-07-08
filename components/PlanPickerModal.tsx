@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { m, AnimatePresence } from "framer-motion";
 import { Check, X, Plus } from "lucide-react";
+import { RiyalIcon } from "./RiyalIcon";
 import { site } from "@/config/site";
 import { track } from "@/lib/track";
 
@@ -61,8 +62,11 @@ function PlanCard({ plan, source }: { plan: Plan; source: string }) {
           </p>
         </div>
         <p className="shrink-0 text-start">
-          <span dir="ltr" className="text-[26px] font-black tabular-nums text-ink">
-            {plan.price}
+          <span className="inline-flex items-center gap-1">
+            <span className="text-[26px] font-black tabular-nums text-ink">
+              {plan.price}
+            </span>
+            <RiyalIcon className="h-5 w-5 text-ink" />
           </span>
           <span className="block text-[11px] font-bold text-ink/50">
             {plan.priceUnit}

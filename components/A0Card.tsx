@@ -5,6 +5,7 @@ import { StoreCtaButton } from "./StoreCtaButton";
 import { CourseCardBanner } from "./CourseCardBanner";
 import { CheckRow, ResultLine } from "./CheckRow";
 import { PriceBlock } from "./PriceBlock";
+import { RiyalIcon } from "./RiyalIcon";
 import { ScarcityStrip } from "./ScarcityStrip";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
@@ -63,8 +64,13 @@ export function A0Card() {
         <div className="mt-auto pt-6">
           <PriceBlock
             amount="199"
-            unit="ريال / دورة"
-            detail="أو الباقة الكاملة بالحصص المباشرة 499"
+            period="دورة"
+            detail={
+              <>
+                أو الباقة الكاملة بالحصص المباشرة 499{" "}
+                <RiyalIcon className="h-[13px] w-[13px] text-ink/50" />
+              </>
+            }
           />
 
           <div className="mt-4">

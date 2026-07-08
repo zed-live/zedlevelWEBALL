@@ -59,7 +59,7 @@ export function ConversationCard() {
 
         {/* foot — aligned across columns */}
         <div className="mt-auto pt-6">
-          <PriceBlock amount="249" unit="ريال / شهر" />
+          <PriceBlock amount="249" period="شهر" />
 
           <div className="mt-4">
             <ScarcityStrip text="المجموعات تُفتح بأعداد محدودة خلال السنة" />
