@@ -4,7 +4,7 @@ import { BookText, Puzzle, MessagesSquare, Headphones } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { StoreCtaButton } from "./StoreCtaButton";
-import { CourseCardHeader } from "./CourseCardHeader";
+import { CourseCardBanner } from "./CourseCardBanner";
 import { CheckRow, QuoteBox } from "./CheckRow";
 import { ScarcityStrip } from "./ScarcityStrip";
 import { courses } from "@/config/courses";
@@ -42,9 +42,9 @@ export function LevelsCard() {
 
   return (
     <article className="mx-auto flex h-full w-full max-w-sm flex-col overflow-hidden rounded-3xl bg-white shadow-[0_20px_60px_-24px_rgba(2,17,80,0.35)] ring-1 ring-ink/[0.06]">
-      <CourseCardHeader course={course} />
+      <CourseCardBanner course={course} />
 
-      <div className="flex flex-1 flex-col px-6 pb-6 pt-14">
+      <div className="flex flex-1 flex-col px-6 pb-6 pt-2">
         <p className="text-center text-[14px] font-bold leading-7 text-ink/65">
           {SUBTITLE}
         </p>

@@ -2,7 +2,7 @@
 
 import { WhatsAppButton } from "./WhatsAppButton";
 import { StoreCtaButton } from "./StoreCtaButton";
-import { CourseCardHeader } from "./CourseCardHeader";
+import { CourseCardBanner } from "./CourseCardBanner";
 import { CheckRow, ResultLine } from "./CheckRow";
 import { ScarcityStrip } from "./ScarcityStrip";
 import { courses } from "@/config/courses";
@@ -16,6 +16,7 @@ import { A0_PLANS, A0_PICKER_TITLE, A0_PICKER_SUB } from "@/config/plans";
  * Equal-height via h-full + mt-auto so columns align.
  */
 
+const SUBTITLE = "إنجليزي من الصفر… تبنيه صح وتسدّ ثغراتك";
 const RESULT_LINE =
   "بعد الدورة: تقرأ وتنطق صح، تعرّف عن نفسك، وتتكلم عن عائلتك وحياتك، وتكوّن جملك بثقة.";
 const RESULT_NOTE = "الدورة تغطي أجزاء من A1 و A2";
@@ -36,10 +37,14 @@ export function A0Card() {
 
   return (
     <article className="mx-auto flex h-full w-full max-w-sm flex-col overflow-hidden rounded-3xl bg-white shadow-[0_20px_60px_-24px_rgba(2,17,80,0.35)] ring-1 ring-ink/[0.06]">
-      <CourseCardHeader course={course} />
+      <CourseCardBanner course={course} />
 
-      {/* generous top padding leaves room for the overhanging medallion */}
-      <div className="flex flex-1 flex-col px-6 pb-6 pt-14">
+      <div className="flex flex-1 flex-col px-6 pb-6 pt-2">
+        {/* subtitle */}
+        <p className="text-center text-[14px] font-bold leading-7 text-ink/65">
+          {SUBTITLE}
+        </p>
+
         {/* one outcome statement */}
         <ResultLine note={RESULT_NOTE}>{RESULT_LINE}</ResultLine>
 

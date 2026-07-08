@@ -58,7 +58,7 @@ export function QuoteBox({
 }) {
   return (
     <div
-      className={`rounded-xl border-e-[3px] border-primary/70 bg-primary-light px-4 py-3.5 ${className}`}
+      className={`rounded-xl border-s-[3px] border-primary/70 bg-primary-light px-4 py-3.5 ${className}`}
     >
       {children}
     </div>
