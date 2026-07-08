@@ -4,6 +4,7 @@ import { WhatsAppButton } from "./WhatsAppButton";
 import { SallaButton } from "./SallaButton";
 import { CourseCardBanner } from "./CourseCardBanner";
 import { CheckRow } from "./CheckRow";
+import { ScarcityStrip } from "./ScarcityStrip";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
 
@@ -99,8 +100,13 @@ export function ConversationCard() {
           <span className="text-[13px] font-bold text-ink/55">/ شهر</span>
         </p>
 
+        {/* scarcity strip — directly above the CTAs */}
+        <div className="mt-4">
+          <ScarcityStrip text="المجموعات تُفتح بأعداد محدودة، احجز مكانك في مجموعة مستواك" />
+        </div>
+
         {/* CTAs */}
-        <div className="mt-4 flex flex-col gap-2.5">
+        <div className="mt-3 flex flex-col gap-2.5">
           <SallaButton
             course="conversation"
             source="conversation-card-details"

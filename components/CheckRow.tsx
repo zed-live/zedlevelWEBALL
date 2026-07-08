@@ -44,10 +44,35 @@ export function CheckRow({
 }
 
 /**
- * The "result line" callout used above the checklist — a clean white rounded
- * card with a soft shadow and a thick rounded GOLD accent bar hugging the
- * START (right, RTL) edge. An optional `note` renders below the body in the
- * primary color.
+ * A quote-style callout — a clean white rounded card sitting on a rounded GOLD
+ * backing that peeks out on the START (right, RTL) edge. Reused by the result
+ * line and the tracks intro.
+ */
+export function QuoteBox({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`relative ${className}`}>
+      {/* gold rounded backing peeking out on the right (start) edge */}
+      <span
+        aria-hidden
+        className="absolute inset-0 -start-1.5 rounded-[20px] bg-accent"
+      />
+      {/* white card on top */}
+      <div className="relative rounded-[20px] bg-white px-5 py-4 shadow-[0_8px_24px_-12px_rgba(15,23,41,0.25)]">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/**
+ * The "result line" callout used above the checklist. Centered body, with an
+ * optional `note` rendered below in the primary color.
  */
 export function ResultLine({
   children,
@@ -57,21 +82,15 @@ export function ResultLine({
   note?: React.ReactNode;
 }) {
   return (
-    <div className="relative mt-5">
-      {/* gold rounded backing peeking out on the right (start) edge */}
-      <span
-        aria-hidden
-        className="absolute inset-0 -start-1.5 rounded-[20px] bg-accent"
-      />
-      {/* white card on top */}
-      <div className="relative rounded-[20px] bg-white px-5 py-4 text-center shadow-[0_8px_24px_-12px_rgba(15,23,41,0.25)]">
-        <p className="text-[14px] font-black leading-7 text-ink">{children}</p>
-        {note && (
-          <p className="mt-1.5 text-[13px] font-black leading-6 text-primary">
-            {note}
-          </p>
-        )}
-      </div>
-    </div>
+    <QuoteBox className="mt-5">
+      <p className="text-center text-[14px] font-black leading-7 text-ink">
+        {children}
+      </p>
+      {note && (
+        <p className="mt-1.5 text-center text-[13px] font-black leading-6 text-primary">
+          {note}
+        </p>
+      )}
+    </QuoteBox>
   );
 }

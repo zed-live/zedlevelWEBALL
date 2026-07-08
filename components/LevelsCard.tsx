@@ -3,7 +3,8 @@
 import { WhatsAppButton } from "./WhatsAppButton";
 import { StoreCtaButton } from "./StoreCtaButton";
 import { CourseCardBanner } from "./CourseCardBanner";
-import { CheckRow } from "./CheckRow";
+import { CheckRow, QuoteBox } from "./CheckRow";
+import { ScarcityStrip } from "./ScarcityStrip";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
 import { LEVELS_PLANS, PLAN_PICKER_TITLE, PLAN_PICKER_SUB } from "@/config/plans";
@@ -69,6 +70,8 @@ function GroupHeading({ children }: { children: React.ReactNode }) {
 function Ctas({ variant }: { variant: "home" | "details" }) {
   return (
     <div className="mt-4 flex flex-col gap-2.5">
+      {/* scarcity strip — directly above the CTAs */}
+      <ScarcityStrip text="الدورات تُفتح بدفعات محدودة خلال السنة، احجز مكانك الآن" />
       <StoreCtaButton
         title={PLAN_PICKER_TITLE}
         sub={PLAN_PICKER_SUB}
@@ -181,26 +184,28 @@ export function LevelsCard({ variant = "home" }: { variant?: "home" | "details" 
               {SUBTITLE}
             </p>
 
-            {/* tracks intro (shown once) */}
-            <p className="mt-4 text-center text-[13.5px] font-bold leading-7 text-ink/65">
-              برنامج من ١٢ دورة يوصلك لأعلى المستويات عبر ٤ مسارات:
-            </p>
-            <div className="mt-3 space-y-2.5">
-              {TRACKS_INTRO.map((t) => (
-                <p
-                  key={t.label}
-                  className="flex items-start gap-2 text-[13.5px] leading-7 text-ink"
-                >
-                  <span aria-hidden className="shrink-0">
-                    {t.icon}
-                  </span>
-                  <span>
-                    <span className="font-black">{t.label}</span>
-                    <span className="font-bold text-ink/60">، {t.tail}</span>
-                  </span>
-                </p>
-              ))}
-            </div>
+            {/* tracks intro (shown once) — inside a quote callout */}
+            <QuoteBox className="mt-4">
+              <p className="text-center text-[13.5px] font-black leading-7 text-ink">
+                برنامج من ١٢ دورة يوصلك لأعلى المستويات عبر ٤ مسارات:
+              </p>
+              <div className="mt-3 space-y-2.5">
+                {TRACKS_INTRO.map((t) => (
+                  <p
+                    key={t.label}
+                    className="flex items-start gap-2 text-[13.5px] leading-7 text-ink"
+                  >
+                    <span aria-hidden className="shrink-0">
+                      {t.icon}
+                    </span>
+                    <span>
+                      <span className="font-black">{t.label}</span>
+                      <span className="font-bold text-ink/60">، {t.tail}</span>
+                    </span>
+                  </p>
+                ))}
+              </div>
+            </QuoteBox>
 
             {/* checklist */}
             <div className="mt-4 divide-y divide-[#eceef5]">

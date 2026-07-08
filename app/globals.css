@@ -117,6 +117,18 @@
   animation: marquee-rtl 24s linear infinite;
   will-change: transform;
 }
+/* scarcity strip: pulsing "act now" dot */
+@keyframes scarcity-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(240, 160, 32, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(240, 160, 32, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(240, 160, 32, 0);
+  }
+}
 /* testimonials: swipeable on mobile, auto-marquee from md up */
 @media (min-width: 768px) {
   .marquee-md {

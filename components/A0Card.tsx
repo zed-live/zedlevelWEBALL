@@ -6,6 +6,7 @@ import { WhatsAppButton } from "./WhatsAppButton";
 import { StoreCtaButton } from "./StoreCtaButton";
 import { CourseCardBanner } from "./CourseCardBanner";
 import { CheckRow, ResultLine } from "./CheckRow";
+import { ScarcityStrip } from "./ScarcityStrip";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
 import { A0_PLANS, A0_PICKER_TITLE, A0_PICKER_SUB } from "@/config/plans";
@@ -101,8 +102,13 @@ export function A0Card({ variant = "home" }: { variant?: "home" | "details" }) {
           {PRICE_LINE}
         </p>
 
+        {/* scarcity strip — directly above the CTAs */}
+        <div className="mt-4">
+          <ScarcityStrip text="الأماكن محدودة، الدورة تُفتح بدفعات خلال السنة" />
+        </div>
+
         {/* CTAs */}
-        <div className="mt-4 flex flex-col gap-2.5">
+        <div className="mt-3 flex flex-col gap-2.5">
           <StoreCtaButton
             title={A0_PICKER_TITLE}
             sub={A0_PICKER_SUB}

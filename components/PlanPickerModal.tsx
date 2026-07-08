@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { m, AnimatePresence } from "framer-motion";
-import { Check, X } from "lucide-react";
+import { Check, X, Plus } from "lucide-react";
 import { site } from "@/config/site";
 import { track } from "@/lib/track";
 
@@ -26,6 +26,8 @@ export interface Plan {
   tagline: string;
   /** included lines (green ✓) */
   includes: string[];
+  /** premium-only additions, rendered after `includes` with a gold "+" mark */
+  extras?: string[];
   /** excluded lines (grey ✕) — self-paced only */
   excludes?: string[];
   cta: string;
@@ -80,6 +82,19 @@ function PlanCard({ plan, source }: { plan: Plan; source: string }) {
               className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-emerald-100 text-emerald-600"
             >
               <Check className="h-3.5 w-3.5" strokeWidth={3} />
+            </span>
+          </div>
+        ))}
+        {plan.extras?.map((t) => (
+          <div key={t} className="flex items-start justify-between gap-3 py-1.5">
+            <span className="text-[13.5px] font-black leading-6 text-ink">
+              {t}
+            </span>
+            <span
+              aria-hidden
+              className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent text-ink"
+            >
+              <Plus className="h-3.5 w-3.5" strokeWidth={3} />
             </span>
           </div>
         ))}
