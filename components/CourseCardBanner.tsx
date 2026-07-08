@@ -35,13 +35,8 @@ export function CourseCardBanner({ course }: { course: CourseMeta }) {
         </div>
       )}
 
-      {/* status / featured badges */}
+      {/* status badge only — the "ابدأ من هنا" featured label was removed */}
       <div className="relative z-[2] mb-3 flex flex-wrap items-center justify-center gap-2">
-        {course.featured && (
-          <span className="rounded-full bg-accent px-3 py-1 text-xs font-black text-ink shadow-sm">
-            ابدأ من هنا ⭐
-          </span>
-        )}
         <span className="rounded-full bg-white px-3 py-1 text-xs font-black text-primary shadow-sm">
           {ready ? "متاح الآن" : "قريبًا"}
         </span>

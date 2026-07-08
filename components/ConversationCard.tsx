@@ -3,7 +3,7 @@
 import { WhatsAppButton } from "./WhatsAppButton";
 import { StoreButtonLink } from "./StoreButton";
 import { CourseCardBanner } from "./CourseCardBanner";
-import { CheckRow } from "./CheckRow";
+import { CheckRow, ResultLine } from "./CheckRow";
 import { ScarcityStrip } from "./ScarcityStrip";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
@@ -17,7 +17,10 @@ import { track } from "@/lib/track";
  */
 
 const SUBTITLE =
-  "جلسات مباشرة مع معلم ومجموعة صغيرة، تمارس اللغة بصوتك وتطور المحادثة بثقة";
+  "جلسات مباشرة مع معلم ومجموعة صغيرة، تتكلم بصوتك من أول حصة";
+
+const RESULT_LINE =
+  "بعد الدورة: تتكلم في مواقف يومك بطلاقة وثقة، وتفهم وترد بسرعة، بنطق أقرب للأصلي.";
 
 const CHECKLIST = [
   "حصتان مباشرتان أسبوعيًا (~ساعة)، مجموعة صغيرة تبدأ من ٢-٨",
@@ -42,6 +45,9 @@ export function ConversationCard() {
         <p className="mt-1.5 text-center text-[14px] font-bold leading-7 text-ink/65">
           {SUBTITLE}
         </p>
+
+        {/* outcome */}
+        <ResultLine>{RESULT_LINE}</ResultLine>
 
         {/* checklist */}
         <div className="mt-5">
@@ -77,7 +83,7 @@ export function ConversationCard() {
               variant="solid"
               className="w-full justify-center sm:!w-full"
             >
-              استفسر بالواتساب
+              استفسر عن الدورة واحجز مقعدك
             </WhatsAppButton>
           </div>
         </div>

@@ -16,7 +16,7 @@ import { A0_PLANS, A0_PICKER_TITLE, A0_PICKER_SUB } from "@/config/plans";
  * Equal-height via h-full + mt-auto so columns align.
  */
 
-const SUBTITLE = "إنجليزي من الصفر… تبنيه صح وتسدّ ثغراتك";
+const SUBTITLE = "تبدأ من الصفر وتبني أساس إنجليزي متين، بدون ثغرات";
 const RESULT_LINE =
   "بعد الدورة: تقرأ وتنطق صح، تعرّف عن نفسك، وتتكلم عن عائلتك وحياتك، وتكوّن جملك بثقة.";
 const RESULT_NOTE = "الدورة تغطي أجزاء من A1 و A2";
@@ -78,7 +78,7 @@ export function A0Card() {
               variant="solid"
               className="w-full justify-center sm:!w-full"
             >
-              ابدأ بالواتساب
+              استفسر عن الدورة واحجز مقعدك
             </WhatsAppButton>
           </div>
         </div>

@@ -18,7 +18,7 @@ import { LEVELS_PLANS, PLAN_PICKER_TITLE, PLAN_PICKER_SUB } from "@/config/plans
  * The two-tier pricing lives in the plan-picker popup, not stacked here.
  */
 
-const SUBTITLE = "ارفع مستواك مستوى بعد مستوى، مهما كان مستواك";
+const SUBTITLE = "نبدأك من مستواك ونوصلك للي بعده، خطوة خطوة حتى الاحتراف";
 
 const TRACKS: { icon: LucideIcon; label: string; tail: string }[] = [
   { icon: BookText, label: "مفردات", tail: "تطوّر حصيلتك فتفهم أكثر" },
@@ -101,7 +101,7 @@ export function LevelsCard() {
               variant="solid"
               className="w-full justify-center sm:!w-full"
             >
-              ابدأ بالواتساب
+              استفسر عن الدورة واحجز مقعدك
             </WhatsAppButton>
           </div>
         </div>

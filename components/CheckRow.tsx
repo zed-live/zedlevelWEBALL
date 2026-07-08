@@ -45,9 +45,8 @@ export function CheckRow({
 }
 
 /**
- * A quiet lead-statement block — a subtle primary-tinted panel with a thin
- * primary hairline on the START (right, RTL) edge. No gold, no heavy shadow;
- * one calm box, not a stack of them.
+ * A quiet lead-statement block — a soft panel with a GOLD (brand) hairline on
+ * the START (right, RTL) edge. One calm box, not a stack of them.
  */
 export function QuoteBox({
   children,
@@ -58,7 +57,7 @@ export function QuoteBox({
 }) {
   return (
     <div
-      className={`rounded-xl border-s-[3px] border-primary/70 bg-primary-light px-4 py-3.5 ${className}`}
+      className={`rounded-xl border-s-[3px] border-accent bg-primary-light/70 px-4 py-3.5 ${className}`}
     >
       {children}
     </div>
