@@ -1,13 +1,15 @@
 import { Check } from "lucide-react";
 
+const FULL_PACKAGE_TAG = "(بالباقة الكاملة)";
+
 /**
  * A single checklist row — shared by the course product cards
  * (A0Card / LevelsCard / ConversationCard).
  *
- * Style (per approved design):
- *  - text on the right (RTL), a green ✓ badge on the LEFT (end side)
- *  - rows tagged «(بالباقة الكاملة)» render DIMMED (muted text + grey check),
- *    since that content is gated behind the full package.
+ * Style: text on the right (RTL), a green ✓ badge on the LEFT (end side).
+ * Every row is fully legible (dark text + green check). When a row carries the
+ * «(بالباقة الكاملة)» tag, that tag is pulled out and shown as a distinct gold
+ * pill so it clearly reads as a full-package feature — without dimming the row.
  */
 export function CheckRow({
   text,
@@ -16,7 +18,8 @@ export function CheckRow({
   text: string;
   isNew?: boolean;
 }) {
-  const gated = text.includes("(بالباقة الكاملة)");
+  const hasTag = text.includes(FULL_PACKAGE_TAG);
+  const body = hasTag ? text.replace(FULL_PACKAGE_TAG, "").trim() : text;
 
   return (
     <div
@@ -24,18 +27,17 @@ export function CheckRow({
         isNew ? "animate-[fadeInRow_0.3s_ease]" : ""
       }`}
     >
-      <span
-        className={`text-[14px] font-bold leading-7 ${
-          gated ? "text-ink/40" : "text-ink"
-        }`}
-      >
-        {text}
+      <span className="text-[14px] font-bold leading-7 text-ink">
+        {body}
+        {hasTag && (
+          <span className="ms-1.5 inline-block whitespace-nowrap rounded-md bg-[#fff2d6] px-1.5 py-0.5 text-[11px] font-black text-[#8a5a10] align-[1px]">
+            بالباقة الكاملة
+          </span>
+        )}
       </span>
       <span
         aria-hidden
-        className={`mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full ${
-          gated ? "bg-ink/[0.06] text-ink/35" : "bg-emerald-100 text-emerald-600"
-        }`}
+        className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-emerald-100 text-emerald-600"
       >
         <Check className="h-3.5 w-3.5" strokeWidth={3} />
       </span>
