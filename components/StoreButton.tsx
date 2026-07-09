@@ -1,4 +1,5 @@
-import { ShoppingBag, Lock } from "lucide-react";
+import { Lock } from "lucide-react";
+import { SallaIcon } from "./SallaIcon";
 
 /**
  * The primary "buy via Salla" CTA look — a light rounded button with a bold
@@ -28,7 +29,7 @@ function Inner({ title, note }: { title: string; note: string }) {
         aria-hidden
         className="my-2 me-2 flex shrink-0 items-center gap-1.5 rounded-xl bg-gradient-to-br from-[#0f3d47] to-[#1c5e63] px-4 font-black text-white"
       >
-        <ShoppingBag className="h-[18px] w-[18px]" />
+        <SallaIcon className="h-[18px] w-[18px]" />
         <span className="text-[15px]">سلة</span>
       </span>
     </>
