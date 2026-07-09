@@ -21,7 +21,7 @@ function Inner({ title, note }: { title: string; note: string }) {
           {title}
         </span>
         <span className="mt-1 inline-flex items-center gap-1 text-[11.5px] font-bold text-ink/45">
-          <Lock className="h-3 w-3" aria-hidden />
+          <Lock className="h-3 w-3 text-emerald-500" aria-hidden />
           {note}
         </span>
       </span>
