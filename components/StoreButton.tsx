@@ -1,4 +1,4 @@
-import { ShoppingBag } from "lucide-react";
+import { ShoppingBag, Lock } from "lucide-react";
 
 /**
  * The primary "buy via Salla" CTA look — a light rounded button with a bold
@@ -18,15 +18,16 @@ function Inner({ title, note }: { title: string; note: string }) {
       <span className="flex flex-1 flex-col items-center justify-center py-3 pe-4 ps-2 text-center">
         <span className="text-[16px] font-black text-navy">{title}</span>
         <span className="mt-0.5 inline-flex items-center gap-1 text-[11.5px] font-bold text-navy/55">
-          <span aria-hidden>🔒</span>
+          <Lock className="h-3 w-3" aria-hidden />
           {note}
         </span>
       </span>
       <span
         aria-hidden
-        className="grid w-14 shrink-0 place-items-center bg-gradient-to-b from-navy to-primary-deep text-white"
+        className="flex shrink-0 items-center gap-1.5 bg-gradient-to-b from-navy to-primary-deep px-4 font-black text-white"
       >
-        <ShoppingBag className="h-6 w-6" />
+        <ShoppingBag className="h-[18px] w-[18px]" />
+        <span className="text-[15px]">سلة</span>
       </span>
     </>
   );
@@ -34,7 +35,7 @@ function Inner({ title, note }: { title: string; note: string }) {
 
 export function StoreButtonLink({
   href,
-  title = "سجّل الآن عبر سلة",
+  title = "اشترك مباشرة عبر سلة",
   note = "دفع آمن ومضمون",
   onClick,
 }: {
@@ -58,7 +59,7 @@ export function StoreButtonLink({
 
 export function StoreButtonTrigger({
   onClick,
-  title = "سجّل الآن عبر سلة",
+  title = "اختر باقتك واشترك مباشرة",
   note = "دفع آمن ومضمون",
 }: {
   onClick: () => void;
