@@ -70,14 +70,29 @@ export function TypedPhrases({
     };
   }, [phrases, typeSpeed, backSpeed, backDelay, startDelay]);
 
+  // Reserve the footprint of the LONGEST phrase so the animated text never
+  // changes the layout as it types/wraps (prevents the page from shifting).
+  const longest = phrases.reduce((a, b) => (b.length > a.length ? b : a), "");
+
   return (
-    <span className={className}>
-      {text}
-      {!reduced && (
-        <span className="ms-0.5 inline-block w-[0.06em] animate-pulse align-baseline" aria-hidden>
-          |
-        </span>
-      )}
+    <span className="relative inline-grid align-baseline">
+      {/* invisible sizer: holds the max space, never changes */}
+      <span aria-hidden className="invisible col-start-1 row-start-1">
+        {longest}
+        <span className="ms-0.5 inline-block w-[0.06em]">|</span>
+      </span>
+      {/* visible animated text, laid over the sizer */}
+      <span className={`col-start-1 row-start-1 ${className}`}>
+        {text}
+        {!reduced && (
+          <span
+            className="ms-0.5 inline-block w-[0.06em] animate-pulse align-baseline"
+            aria-hidden
+          >
+            |
+          </span>
+        )}
+      </span>
     </span>
   );
 }

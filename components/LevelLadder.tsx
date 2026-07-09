@@ -75,17 +75,20 @@ export function LevelLadder({
   const [open, setOpen] = useState<number | null>(null);
   const dark = variant === "dark";
 
+  // Progress runs 0 → 1 as the ladder scrolls through the viewport: 0 when the
+  // ladder's BOTTOM first enters (mascot starts at A0), 1 when its TOP reaches
+  // the upper viewport (mascot has climbed to C1). This mapping behaves the
+  // same on laptop and phone regardless of the ladder's on-screen size.
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.9", "center 0.42"],
+    offset: ["start end", "end start"],
   });
-  // the character walks the whole ascent: from the A0 edge (bottom-right,
-  // short) up to the C1 edge (top-left, tall). `insetInlineEnd` runs from the
-  // start (right) edge, so it grows as the mascot moves left toward C1;
-  // `bottom` rises with the step heights. Values keep it perched just above
-  // each step's top rather than overlapping the labels.
-  const climbEnd = useTransform(scrollYProgress, [0, 1], ["4%", "80%"]);
-  const climbBottom = useTransform(scrollYProgress, [0, 1], ["20%", "76%"]);
+  // The character rides the dotted A0→C1 diagonal: from the A0 edge
+  // (bottom-right, short) up to the C1 edge (top-left, tall). `insetInlineEnd`
+  // grows (moves left) and `bottom` rises together, in lockstep with the path.
+  // We only use the middle band of scroll (0.15–0.85) so it settles at each end.
+  const climbEnd = useTransform(scrollYProgress, [0.15, 0.85], ["6%", "84%"]);
+  const climbBottom = useTransform(scrollYProgress, [0.15, 0.85], ["24%", "80%"]);
 
   /* ascending blue ramp — the higher the level, the deeper the blue */
   const stepClasses = (code: string) => {
@@ -205,7 +208,7 @@ export function LevelLadder({
           className="absolute z-10 w-[11%] min-w-12 max-w-24 drop-shadow-lg"
           style={
             reduceMotion
-              ? { insetInlineEnd: "80%", bottom: "76%" }
+              ? { insetInlineEnd: "6%", bottom: "24%" }
               : { insetInlineEnd: climbEnd, bottom: climbBottom }
           }
         >
