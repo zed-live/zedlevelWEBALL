@@ -10,21 +10,23 @@ import { ShoppingBag, Lock } from "lucide-react";
  */
 
 const PANEL =
-  "relative flex w-full items-stretch overflow-hidden rounded-2xl bg-white ring-1 ring-navy/15 shadow-[0_10px_24px_-12px_rgba(2,17,80,0.45)] transition-transform hover:-translate-y-0.5";
+  "relative flex w-full items-stretch overflow-hidden rounded-2xl bg-white ring-1 ring-ink/10 shadow-[0_10px_24px_-12px_rgba(2,17,80,0.45)] transition-transform hover:-translate-y-0.5";
 
 function Inner({ title, note }: { title: string; note: string }) {
   return (
     <>
-      <span className="flex flex-1 flex-col items-center justify-center py-3 pe-4 ps-2 text-center">
-        <span className="text-[16px] font-black text-navy">{title}</span>
-        <span className="mt-0.5 inline-flex items-center gap-1 text-[11.5px] font-bold text-navy/55">
+      <span className="flex flex-1 flex-col items-center justify-center py-3.5 pe-4 ps-2 text-center">
+        <span className="bg-gradient-to-l from-primary to-purple-600 bg-clip-text text-[16px] font-black text-transparent">
+          {title}
+        </span>
+        <span className="mt-1 inline-flex items-center gap-1 text-[11.5px] font-bold text-ink/45">
           <Lock className="h-3 w-3" aria-hidden />
           {note}
         </span>
       </span>
       <span
         aria-hidden
-        className="flex shrink-0 items-center gap-1.5 bg-gradient-to-b from-navy to-primary-deep px-4 font-black text-white"
+        className="my-2 me-2 flex shrink-0 items-center gap-1.5 rounded-xl bg-gradient-to-br from-[#0f3d47] to-[#1c5e63] px-4 font-black text-white"
       >
         <ShoppingBag className="h-[18px] w-[18px]" />
         <span className="text-[15px]">سلة</span>
