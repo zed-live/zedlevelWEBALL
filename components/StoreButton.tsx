@@ -35,7 +35,7 @@ function Inner({ title, note }: { title: string; note: string }) {
 
 export function StoreButtonLink({
   href,
-  title = "اشترك مباشرة عبر سلة",
+  title = "اختر باقتك واشترك مباشرة",
   note = "دفع آمن ومضمون",
   onClick,
 }: {
