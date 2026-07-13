@@ -33,10 +33,10 @@ export const site = {
    */
   salla: {
     a0: "https://salla.sa/zedlevel/payment/p260738461?quantity=1&options%5B1665408955%5D=1591509895",
-    a1: "https://salla.sa/zedlevel/payment/p1758387820?quantity=1&options%5B828948443%5D=76556154",
-    a2: "https://salla.sa/zedlevel/payment/p1758387820?quantity=1&options%5B828948443%5D=76556154",
-    b1: "https://salla.sa/zedlevel/payment/p1758387820?quantity=1&options%5B828948443%5D=76556154",
-    b2: "https://salla.sa/zedlevel/payment/p1758387820?quantity=1&options%5B828948443%5D=76556154",
+    a1: "https://salla.sa/zedlevel/payment/p1758387820?quantity=1&options%5B828948443%5D=717953145",
+    a2: "https://salla.sa/zedlevel/payment/p1758387820?quantity=1&options%5B828948443%5D=717953145",
+    b1: "https://salla.sa/zedlevel/payment/p1758387820?quantity=1&options%5B828948443%5D=717953145",
+    b2: "https://salla.sa/zedlevel/payment/p1758387820?quantity=1&options%5B828948443%5D=717953145",
     conversation:
       "https://salla.sa/zedlevel/payment/p1774097412?quantity=1&options%5B879809035%5D=1935164633&options%5B106819860%5D=35736609",
   },

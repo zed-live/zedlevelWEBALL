@@ -70,9 +70,11 @@ function selfPlan(key: string, href: string): Plan {
   };
 }
 
+// Levels: the الكاملة/499 link is the "…Self" URL slot and the ذاتي/199 link is
+// the "…Full" URL slot (the two Salla variants were reversed vs. their names).
 export const LEVELS_PLANS: Plan[] = [
-  fullPlan("levels-full", CHECKOUT.levelsFull),
-  selfPlan("levels-self", CHECKOUT.levelsSelf),
+  fullPlan("levels-full", CHECKOUT.levelsSelf),
+  selfPlan("levels-self", CHECKOUT.levelsFull),
 ];
 export const A0_PLANS: Plan[] = [
   fullPlan("a0-full", CHECKOUT.a0Full),
