@@ -26,13 +26,17 @@ export const site = {
     /** the unified level-check mechanism — every حدّد مستواك button */
     msgLevel: "مرحبًا! أبغى أحدد مستواي في الإنجليزية وتقترحون لي الدورة المناسبة 👋",
   },
-  /** Store link for all courses for now — swap to per-product URLs when ready */
+  /**
+   * Per-course Salla checkout links. The graded courses (a0, a1–b2) land on
+   * their FULL package by default here (used by the sticky bar / generic CTAs);
+   * the plan-picker popup has both the ذاتي and الكاملة links in config/plans.ts.
+   */
   salla: {
-    a0: "https://salla.sa/zedlevel",
-    a1: "https://salla.sa/zedlevel",
-    a2: "https://salla.sa/zedlevel",
-    b1: "https://salla.sa/zedlevel",
-    b2: "https://salla.sa/zedlevel",
+    a0: "https://salla.sa/zedlevel/payment/p260738461?quantity=1&options%5B1665408955%5D=1591509895",
+    a1: "https://salla.sa/zedlevel/payment/p1758387820?quantity=1&options%5B828948443%5D=76556154",
+    a2: "https://salla.sa/zedlevel/payment/p1758387820?quantity=1&options%5B828948443%5D=76556154",
+    b1: "https://salla.sa/zedlevel/payment/p1758387820?quantity=1&options%5B828948443%5D=76556154",
+    b2: "https://salla.sa/zedlevel/payment/p1758387820?quantity=1&options%5B828948443%5D=76556154",
     conversation:
       "https://salla.sa/zedlevel/payment/p1774097412?quantity=1&options%5B879809035%5D=1935164633&options%5B106819860%5D=35736609",
   },
