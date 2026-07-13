@@ -27,7 +27,7 @@ function Inner({ title, note }: { title: string; note: string }) {
       </span>
       <span
         aria-hidden
-        className="flex shrink-0 items-center gap-1.5 self-stretch bg-gradient-to-br from-[#0f3d47] to-[#1c5e63] px-4 font-black text-white"
+        className="flex shrink-0 items-center gap-1 self-stretch bg-gradient-to-br from-[#0f3d47] to-[#1c5e63] px-2.5 font-black text-white"
       >
         <SallaIcon className="h-[18px] w-[18px]" />
         <span className="text-[15px]">سلة</span>
