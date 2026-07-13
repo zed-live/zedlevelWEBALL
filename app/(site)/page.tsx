@@ -91,7 +91,7 @@ export default function HomePage() {
           <Stagger>
             <StaggerItem>
               <h1 className="text-[clamp(2.2rem,5.8vw,3.7rem)] font-black leading-[1.3]">
-                فرصتك الذهبية لإتقان الإنجليزية —{" "}
+                فرصتك الذهبية لإتقان الإنجليزية،{" "}
                 <Underline className="text-primary">مهما كان مستواك</Underline>
               </h1>
             </StaggerItem>
