@@ -1,7 +1,7 @@
 "use client";
 
-import { WhatsAppButton } from "./WhatsAppButton";
 import { StoreButtonLink } from "./StoreButton";
+import { LearnMoreButton } from "./LearnMoreButton";
 import { CourseCardBanner } from "./CourseCardBanner";
 import { CheckRow, ResultLine } from "./CheckRow";
 import { CollapsibleFeatures } from "./CollapsibleFeatures";
@@ -74,14 +74,7 @@ export function ConversationCard() {
                 })
               }
             />
-            <WhatsAppButton
-              message={site.whatsapp.msgCourseInquiry("المحادثة")}
-              source="conversation-card"
-              variant="solid"
-              className="w-full justify-center sm:!w-full"
-            >
-              استفسر أو احجز مقعدك
-            </WhatsAppButton>
+            <LearnMoreButton href={course.href} />
           </div>
 
           <div className="mt-4">

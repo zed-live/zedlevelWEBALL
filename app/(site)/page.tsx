@@ -280,6 +280,18 @@ export default function HomePage() {
           <Reveal>
             <SectionHeading eyebrow="الأهم" title="دوراتنا" />
           </Reveal>
+          {/* one general-inquiry WhatsApp button above the whole section */}
+          <Reveal delay={80}>
+            <div className="mt-6 flex justify-center">
+              <WhatsAppButton
+                message={site.whatsapp.msgGeneral}
+                source="courses-section-inquiry"
+                variant="solid"
+              >
+                عندك استفسار؟ راسلنا على الواتساب
+              </WhatsAppButton>
+            </div>
+          </Reveal>
           <div className="mt-10">
             <CoursesTabs />
           </div>

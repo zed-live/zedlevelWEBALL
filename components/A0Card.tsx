@@ -1,7 +1,7 @@
 "use client";
 
-import { WhatsAppButton } from "./WhatsAppButton";
 import { StoreCtaButton } from "./StoreCtaButton";
+import { LearnMoreButton } from "./LearnMoreButton";
 import { CourseCardBanner } from "./CourseCardBanner";
 import { CheckRow, ResultLine } from "./CheckRow";
 import { CollapsibleFeatures } from "./CollapsibleFeatures";
@@ -9,7 +9,6 @@ import { PriceBlock } from "./PriceBlock";
 import { RiyalIcon } from "./RiyalIcon";
 import { ScarcityStrip } from "./ScarcityStrip";
 import { courses } from "@/config/courses";
-import { site } from "@/config/site";
 import { A0_PLANS, A0_PICKER_TITLE, A0_PICKER_SUB } from "@/config/plans";
 
 /**
@@ -84,14 +83,7 @@ export function A0Card() {
               plans={A0_PLANS}
               source="a0-card"
             />
-            <WhatsAppButton
-              message={site.whatsapp.msgCourseInquiry("التأسيس الصحيح A0")}
-              source="a0-card"
-              variant="solid"
-              className="w-full justify-center sm:!w-full"
-            >
-              استفسر أو احجز مقعدك
-            </WhatsAppButton>
+            <LearnMoreButton href={course.href} />
           </div>
 
           <div className="mt-4">

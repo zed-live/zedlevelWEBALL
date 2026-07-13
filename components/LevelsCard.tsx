@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { WhatsAppButton } from "./WhatsAppButton";
 import { StoreCtaButton } from "./StoreCtaButton";
+import { LearnMoreButton } from "./LearnMoreButton";
 import { CourseCardBanner } from "./CourseCardBanner";
 import { CheckRow, QuoteBox } from "./CheckRow";
 import { CollapsibleFeatures } from "./CollapsibleFeatures";
@@ -11,7 +11,6 @@ import { PriceBlock } from "./PriceBlock";
 import { RiyalIcon } from "./RiyalIcon";
 import { ScarcityStrip } from "./ScarcityStrip";
 import { courses } from "@/config/courses";
-import { site } from "@/config/site";
 import { LEVELS_PLANS, PLAN_PICKER_TITLE, PLAN_PICKER_SUB } from "@/config/plans";
 
 /**
@@ -143,14 +142,7 @@ export function LevelsCard() {
               plans={LEVELS_PLANS}
               source="levels-card"
             />
-            <WhatsAppButton
-              message={site.whatsapp.msgCourseInquiry("برنامج المستويات A1–B2")}
-              source="levels-card"
-              variant="solid"
-              className="w-full justify-center sm:!w-full"
-            >
-              استفسر أو احجز مقعدك
-            </WhatsAppButton>
+            <LearnMoreButton href={course.href} />
           </div>
 
           <div className="mt-4">
