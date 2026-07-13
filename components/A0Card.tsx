@@ -63,6 +63,7 @@ export function A0Card() {
         {/* everything below sits at the card's foot so columns align */}
         <div className="mt-auto pt-6">
           <PriceBlock
+            startsFrom
             amount="199"
             period="دورة"
             detail={

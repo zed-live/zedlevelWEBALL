@@ -9,6 +9,7 @@ export function PriceBlock({
   amount,
   period,
   detail,
+  startsFrom = false,
 }: {
   /** the headline number, e.g. "199" or "249" */
   amount: string;
@@ -16,10 +17,15 @@ export function PriceBlock({
   period?: string;
   /** one short line beneath, e.g. "أو الباقة الكاملة 499" */
   detail?: React.ReactNode;
+  /** show a "تبدأ بـ" prefix (for tiered pricing) */
+  startsFrom?: boolean;
 }) {
   return (
     <div className="text-center">
       <p className="flex items-center justify-center gap-1.5">
+        {startsFrom && (
+          <span className="text-[13px] font-bold text-ink/55">تبدأ بـ</span>
+        )}
         <span
           dir="rtl"
           className="text-[34px] font-black leading-none tracking-tight text-ink"

@@ -122,6 +122,7 @@ export function LevelsCard() {
         {/* foot — aligned across columns */}
         <div className="mt-auto pt-6">
           <PriceBlock
+            startsFrom
             amount="199"
             period="دورة"
             detail={
