@@ -275,10 +275,7 @@ export default function A0Page() {
         <div className="container-site relative grid items-center gap-12 lg:grid-cols-[1fr_auto]">
           <div>
             <Reveal>
-              <h2 className="text-[clamp(1.9rem,4.5vw,2.9rem)] font-black leading-[1.4]">
-                تخيّل بعد{" "}
-                <Underline className="text-primary">الدورة…</Underline>
-              </h2>
+              <SectionHeading align="start" title="تخيّل بعد الدورة…" />
             </Reveal>
             <div className="mt-8 space-y-4">
               {imagine.map((line, i) => (
@@ -291,8 +288,9 @@ export default function A0Page() {
               ))}
             </div>
             <Reveal delay={400}>
-              <p className="mt-8 text-2xl font-black text-primary">
-                هنا نقطة بدايتك.
+              <p className="mt-8 text-[clamp(1.6rem,3.5vw,2.2rem)] font-black leading-[1.5] text-ink">
+                هنا نقطة{" "}
+                <Underline className="text-primary">بدايتك.</Underline>
               </p>
             </Reveal>
           </div>
