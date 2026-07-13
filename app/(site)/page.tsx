@@ -288,7 +288,7 @@ export default function HomePage() {
                 source="courses-section-inquiry"
                 variant="solid"
               >
-                عندك استفسار؟ راسلنا على الواتساب
+                أسأل عن أي دورة واحجز مقعدك الآن
               </WhatsAppButton>
             </div>
           </Reveal>

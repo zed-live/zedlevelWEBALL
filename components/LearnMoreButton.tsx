@@ -2,9 +2,9 @@ import Link from "next/link";
 import { ShoppingBag } from "lucide-react";
 
 /**
- * "اعرف اكثر عن الدورة" CTA on a course card — a dark navy button with a gold
- * border + gold text and a store-bag icon (matches the shared brand look).
- * Links to the course's detail page.
+ * "اعرف اكثر عن الدورة" CTA on a course card — the brand's solid GOLD button
+ * (gold gradient, dark ink text, store-bag icon). Links to the course's detail
+ * page.
  */
 export function LearnMoreButton({
   href,
@@ -16,7 +16,7 @@ export function LearnMoreButton({
   return (
     <Link
       href={href}
-      className="flex w-full items-center justify-center gap-2 rounded-2xl border-[1.5px] border-accent bg-navy px-4 py-3.5 text-[15px] font-black text-accent transition-colors hover:bg-primary-deep"
+      className="flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-b from-accent to-accent-dark px-4 py-3.5 text-[15px] font-black text-ink shadow-[0_8px_20px_rgba(229,168,63,0.4)] transition-transform hover:-translate-y-0.5"
     >
       <ShoppingBag className="h-[18px] w-[18px]" aria-hidden />
       {label}
