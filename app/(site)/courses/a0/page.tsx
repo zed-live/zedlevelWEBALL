@@ -275,7 +275,10 @@ export default function A0Page() {
         <div className="container-site relative grid items-center gap-12 lg:grid-cols-[1fr_auto]">
           <div>
             <Reveal>
-              <SectionHeading align="start" title="تخيّل بعد الدورة…" />
+              <h2 className="text-[clamp(1.9rem,4.5vw,2.9rem)] font-black leading-[1.4]">
+                تخيّل بعد{" "}
+                <Underline className="text-primary">الدورة…</Underline>
+              </h2>
             </Reveal>
             <div className="mt-8 space-y-4">
               {imagine.map((line, i) => (
