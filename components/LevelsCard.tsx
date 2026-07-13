@@ -6,6 +6,7 @@ import { WhatsAppButton } from "./WhatsAppButton";
 import { StoreCtaButton } from "./StoreCtaButton";
 import { CourseCardBanner } from "./CourseCardBanner";
 import { CheckRow, QuoteBox } from "./CheckRow";
+import { CollapsibleFeatures } from "./CollapsibleFeatures";
 import { PriceBlock } from "./PriceBlock";
 import { RiyalIcon } from "./RiyalIcon";
 import { ScarcityStrip } from "./ScarcityStrip";
@@ -112,11 +113,13 @@ export function LevelsCard() {
           )}
         </QuoteBox>
 
-        {/* checklist */}
+        {/* checklist — first 3 shown, rest fade behind read-more */}
         <div className="mt-5">
-          {CHECKLIST.map((t) => (
-            <CheckRow key={t} text={t} />
-          ))}
+          <CollapsibleFeatures>
+            {CHECKLIST.map((t) => (
+              <CheckRow key={t} text={t} />
+            ))}
+          </CollapsibleFeatures>
         </div>
 
         {/* foot — aligned across columns */}

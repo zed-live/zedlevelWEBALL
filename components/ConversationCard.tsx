@@ -4,6 +4,7 @@ import { WhatsAppButton } from "./WhatsAppButton";
 import { StoreButtonLink } from "./StoreButton";
 import { CourseCardBanner } from "./CourseCardBanner";
 import { CheckRow, ResultLine } from "./CheckRow";
+import { CollapsibleFeatures } from "./CollapsibleFeatures";
 import { PriceBlock } from "./PriceBlock";
 import { ScarcityStrip } from "./ScarcityStrip";
 import { courses } from "@/config/courses";
@@ -50,11 +51,13 @@ export function ConversationCard() {
         {/* outcome */}
         <ResultLine>{RESULT_LINE}</ResultLine>
 
-        {/* checklist */}
+        {/* checklist — first 3 shown, rest fade behind read-more */}
         <div className="mt-5">
-          {CHECKLIST.map((t) => (
-            <CheckRow key={t} text={t} />
-          ))}
+          <CollapsibleFeatures>
+            {CHECKLIST.map((t) => (
+              <CheckRow key={t} text={t} />
+            ))}
+          </CollapsibleFeatures>
         </div>
 
         {/* foot — aligned across columns */}

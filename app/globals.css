@@ -152,6 +152,16 @@
     animation: none;
   }
 }
+/* read-more "عرض جميع المميزات" button: gentle downward nudge */
+@keyframes zl-nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
 /* testimonials: swipeable on mobile, auto-marquee from md up */
 @media (min-width: 768px) {
   .marquee-md {

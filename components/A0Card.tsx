@@ -4,6 +4,7 @@ import { WhatsAppButton } from "./WhatsAppButton";
 import { StoreCtaButton } from "./StoreCtaButton";
 import { CourseCardBanner } from "./CourseCardBanner";
 import { CheckRow, ResultLine } from "./CheckRow";
+import { CollapsibleFeatures } from "./CollapsibleFeatures";
 import { PriceBlock } from "./PriceBlock";
 import { RiyalIcon } from "./RiyalIcon";
 import { ScarcityStrip } from "./ScarcityStrip";
@@ -53,11 +54,13 @@ export function A0Card() {
         {/* one outcome statement */}
         <ResultLine note={RESULT_NOTE}>{RESULT_LINE}</ResultLine>
 
-        {/* one clean checklist */}
+        {/* one clean checklist — first 3 shown, rest fade behind read-more */}
         <div className="mt-5">
-          {CHECKLIST.map((t) => (
-            <CheckRow key={t} text={t} />
-          ))}
+          <CollapsibleFeatures>
+            {CHECKLIST.map((t) => (
+              <CheckRow key={t} text={t} />
+            ))}
+          </CollapsibleFeatures>
         </div>
 
         {/* everything below sits at the card's foot so columns align */}
