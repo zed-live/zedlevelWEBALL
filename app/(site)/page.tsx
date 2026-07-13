@@ -165,16 +165,22 @@ export default function HomePage() {
               className="mx-auto -mt-3 h-5 w-3/5 rounded-[100%] bg-navy/10 blur-md"
             />
             <span
-              className="absolute top-[16%] hidden animate-float items-center gap-2 rounded-2xl border border-primary/10 bg-white/95 px-4 py-2.5 text-sm font-black shadow-lifted md:inline-flex"
-              style={{ insetInlineEnd: "70%" }}
+              className="absolute top-[12%] hidden animate-float items-center gap-2 rounded-2xl border border-primary/10 bg-white/95 px-4 py-2.5 text-sm font-black shadow-lifted md:inline-flex"
+              style={{ insetInlineEnd: "-4%" }}
             >
-              ⏱️ 15–30 دقيقة يوميًا
+              🗣️ حصص مباشرة مع معلمين أجانب
             </span>
             <span
-              className="absolute bottom-[18%] hidden animate-float-slow items-center gap-2 rounded-2xl border border-primary/10 bg-white/95 px-4 py-2.5 text-sm font-black shadow-lifted md:inline-flex"
+              className="absolute top-[46%] hidden animate-float-slow items-center gap-2 rounded-2xl border border-primary/10 bg-white/95 px-4 py-2.5 text-sm font-black shadow-lifted md:inline-flex"
+              style={{ insetInlineEnd: "76%" }}
+            >
+              🌟 متابعة وتحفيز مستمر
+            </span>
+            <span
+              className="absolute bottom-[16%] hidden animate-float items-center gap-2 rounded-2xl border border-primary/10 bg-white/95 px-4 py-2.5 text-sm font-black shadow-lifted md:inline-flex"
               style={{ insetInlineEnd: "-2%" }}
             >
-              🎓 شهادة لكل مستوى
+              ⏱️ تعليم ذاتي ٢٠ دقيقة
             </span>
           </div>
         </div>
