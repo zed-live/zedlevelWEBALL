@@ -9,6 +9,8 @@ import { PriceBlock } from "./PriceBlock";
 import { RiyalIcon } from "./RiyalIcon";
 import { ScarcityStrip } from "./ScarcityStrip";
 import { courses } from "@/config/courses";
+import { site } from "@/config/site";
+import { waLink } from "@/lib/whatsapp";
 import { A0_PLANS, A0_PICKER_TITLE, A0_PICKER_SUB } from "@/config/plans";
 
 /**
@@ -83,7 +85,10 @@ export function A0Card() {
               plans={A0_PLANS}
               source="a0-card"
             />
-            <LearnMoreButton href={course.href} />
+            <LearnMoreButton
+              href={course.href}
+              waHref={waLink(site.whatsapp.msgCourseInquiry("التأسيس الصحيح A0"))}
+            />
           </div>
 
           <div className="mt-4">

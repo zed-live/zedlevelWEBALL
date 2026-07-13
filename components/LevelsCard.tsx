@@ -11,6 +11,8 @@ import { PriceBlock } from "./PriceBlock";
 import { RiyalIcon } from "./RiyalIcon";
 import { ScarcityStrip } from "./ScarcityStrip";
 import { courses } from "@/config/courses";
+import { site } from "@/config/site";
+import { waLink } from "@/lib/whatsapp";
 import { LEVELS_PLANS, PLAN_PICKER_TITLE, PLAN_PICKER_SUB } from "@/config/plans";
 
 /**
@@ -142,7 +144,12 @@ export function LevelsCard() {
               plans={LEVELS_PLANS}
               source="levels-card"
             />
-            <LearnMoreButton href={course.href} />
+            <LearnMoreButton
+              href={course.href}
+              waHref={waLink(
+                site.whatsapp.msgCourseInquiry("برنامج المستويات A1–B2"),
+              )}
+            />
           </div>
 
           <div className="mt-4">

@@ -10,6 +10,7 @@ import { ScarcityStrip } from "./ScarcityStrip";
 import { courses } from "@/config/courses";
 import { site } from "@/config/site";
 import { track } from "@/lib/track";
+import { waLink } from "@/lib/whatsapp";
 
 /**
  * The "دورة المحادثة" card — one disciplined layout matching A0/Levels:
@@ -74,7 +75,10 @@ export function ConversationCard() {
                 })
               }
             />
-            <LearnMoreButton href={course.href} />
+            <LearnMoreButton
+              href={course.href}
+              waHref={waLink(site.whatsapp.msgCourseInquiry("المحادثة"))}
+            />
           </div>
 
           <div className="mt-4">
