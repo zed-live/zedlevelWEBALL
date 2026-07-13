@@ -61,11 +61,7 @@ export function ConversationCard() {
         <div className="mt-auto pt-6">
           <PriceBlock amount="249" period="شهر" />
 
-          <div className="mt-4">
-            <ScarcityStrip text="المجموعات تُفتح بأعداد محدودة خلال السنة" />
-          </div>
-
-          <div className="mt-3 flex flex-col gap-2.5">
+          <div className="mt-4 flex flex-col gap-2.5">
             <StoreButtonLink
               href={site.salla.conversation}
               onClick={() =>
@@ -83,6 +79,10 @@ export function ConversationCard() {
             >
               استفسر أو احجز مقعدك
             </WhatsAppButton>
+          </div>
+
+          <div className="mt-4">
+            <ScarcityStrip text="المجموعات تُفتح بأعداد محدودة خلال السنة" />
           </div>
         </div>
       </div>

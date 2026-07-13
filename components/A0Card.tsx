@@ -74,11 +74,7 @@ export function A0Card() {
             }
           />
 
-          <div className="mt-4">
-            <ScarcityStrip text="الأماكن محدودة، الدورة تُفتح بدفعات خلال السنة" />
-          </div>
-
-          <div className="mt-3 flex flex-col gap-2.5">
+          <div className="mt-4 flex flex-col gap-2.5">
             <StoreCtaButton
               title={A0_PICKER_TITLE}
               sub={A0_PICKER_SUB}
@@ -93,6 +89,10 @@ export function A0Card() {
             >
               استفسر أو احجز مقعدك
             </WhatsAppButton>
+          </div>
+
+          <div className="mt-4">
+            <ScarcityStrip text="الأماكن محدودة، الدورة تُفتح بدفعات خلال السنة" />
           </div>
         </div>
       </div>

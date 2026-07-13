@@ -133,11 +133,7 @@ export function LevelsCard() {
             }
           />
 
-          <div className="mt-4">
-            <ScarcityStrip text="الدورات تُفتح بدفعات محدودة خلال السنة" />
-          </div>
-
-          <div className="mt-3 flex flex-col gap-2.5">
+          <div className="mt-4 flex flex-col gap-2.5">
             <StoreCtaButton
               title={PLAN_PICKER_TITLE}
               sub={PLAN_PICKER_SUB}
@@ -152,6 +148,10 @@ export function LevelsCard() {
             >
               استفسر أو احجز مقعدك
             </WhatsAppButton>
+          </div>
+
+          <div className="mt-4">
+            <ScarcityStrip text="الدورات تُفتح بدفعات محدودة خلال السنة" />
           </div>
         </div>
       </div>
