@@ -27,10 +27,10 @@ function Inner({ title, note }: { title: string; note: string }) {
       </span>
       <span
         aria-hidden
-        className="my-2 me-2 flex shrink-0 items-center gap-1 rounded-xl bg-gradient-to-br from-[#0f3d47] to-[#1c5e63] px-2 py-1 font-black text-white"
+        className="my-auto me-2.5 flex shrink-0 items-center gap-1 rounded-lg bg-gradient-to-br from-[#0f3d47] to-[#1c5e63] px-2 py-1 text-[13px] font-black text-white"
       >
-        <SallaIcon className="h-[18px] w-[18px]" />
-        <span className="text-[15px]">سلة</span>
+        <span className="text-[13px]">سلة</span>
+        <SallaIcon className="h-[15px] w-[15px]" />
       </span>
     </>
   );
