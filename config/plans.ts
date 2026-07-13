@@ -4,15 +4,29 @@
  *
  * الكاملة (499) is always the featured plan; التعلّم الذاتي (199) lists the
  * live-session + certificate items as EXCLUDED (grey ✕).
- * Both plans open the Salla checkout (swap `href` per-product when ready).
+ *
+ * ── Salla checkout links ──────────────────────────────────────────────────
+ * Each package points to its exact Salla payment URL below. The two links per
+ * course differ ONLY by their `options[...]` variant value. If a price ends up
+ * mismatched at checkout, just swap the SELF/FULL URL for that course here.
+ * Assumed mapping (per the order the links were provided): first = ذاتي 199,
+ * second = كاملة 499. TODO_VERIFY on Salla.
  */
-import { site } from "./site";
 import type { Plan } from "@/components/PlanPickerModal";
 
-const SALLA_URL = site.salla.a1; // shared store link for now
+const CHECKOUT = {
+  a0Self:
+    "https://salla.sa/zedlevel/payment/p260738461?quantity=1&options%5B1665408955%5D=217474182",
+  a0Full:
+    "https://salla.sa/zedlevel/payment/p260738461?quantity=1&options%5B1665408955%5D=1591509895",
+  levelsSelf:
+    "https://salla.sa/zedlevel/payment/p1758387820?quantity=1&options%5B828948443%5D=717953145",
+  levelsFull:
+    "https://salla.sa/zedlevel/payment/p1758387820?quantity=1&options%5B828948443%5D=76556154",
+};
 
-/** الباقة الكاملة — the featured plan (same for both graded courses) */
-function fullPlan(key: string): Plan {
+/** الباقة الكاملة — the featured plan (same copy for both graded courses) */
+function fullPlan(key: string, href: string): Plan {
   return {
     key,
     name: "الباقة الكاملة",
@@ -30,13 +44,13 @@ function fullPlan(key: string): Plan {
       "اختبار لكل دورة + شهادة المستوى 🏆",
     ],
     cta: "اشترك بالكاملة — 499",
-    href: SALLA_URL,
+    href,
     featured: true,
   };
 }
 
 /** التعلّم الذاتي — self-paced plan */
-function selfPlan(key: string): Plan {
+function selfPlan(key: string, href: string): Plan {
   return {
     key,
     name: "التعلّم الذاتي",
@@ -52,12 +66,18 @@ function selfPlan(key: string): Plan {
       "بدون شهادة المستوى",
     ],
     cta: "اشترك بالذاتي — 199",
-    href: SALLA_URL,
+    href,
   };
 }
 
-export const LEVELS_PLANS: Plan[] = [fullPlan("levels-full"), selfPlan("levels-self")];
-export const A0_PLANS: Plan[] = [fullPlan("a0-full"), selfPlan("a0-self")];
+export const LEVELS_PLANS: Plan[] = [
+  fullPlan("levels-full", CHECKOUT.levelsFull),
+  selfPlan("levels-self", CHECKOUT.levelsSelf),
+];
+export const A0_PLANS: Plan[] = [
+  fullPlan("a0-full", CHECKOUT.a0Full),
+  selfPlan("a0-self", CHECKOUT.a0Self),
+];
 
 export const PLAN_PICKER_TITLE = "اختر باقتك — المستويات";
 export const PLAN_PICKER_SUB = "السعر لكل دورة — نحدّد مستواك ونبدأك من مكانك";

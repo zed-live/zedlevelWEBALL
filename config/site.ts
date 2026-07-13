@@ -33,7 +33,8 @@ export const site = {
     a2: "https://salla.sa/zedlevel",
     b1: "https://salla.sa/zedlevel",
     b2: "https://salla.sa/zedlevel",
-    conversation: "https://salla.sa/zedlevel",
+    conversation:
+      "https://salla.sa/zedlevel/payment/p1774097412?quantity=1&options%5B879809035%5D=1935164633&options%5B106819860%5D=35736609",
   },
   /** Prices in SAR (digits only, e.g. "299"). TODO_ = "يُعلن مع فتح الدفعة". */
   pricing: {
