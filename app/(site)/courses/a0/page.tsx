@@ -7,6 +7,7 @@ import { StoreCtaButton } from "@/components/StoreCtaButton";
 import { A0_PLANS, A0_PICKER_TITLE, A0_PICKER_SUB } from "@/config/plans";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { A0Card } from "@/components/A0Card";
+import { FaqAccordion, type FaqItem } from "@/components/FaqAccordion";
 import { StickyBuyBar } from "@/components/StickyBuyBar";
 import { Reveal } from "@/components/Reveal";
 import { CurriculumOrbit } from "@/components/course/CurriculumOrbit";
@@ -128,6 +129,46 @@ const included = [
   },
 ];
 
+/* سؤالك وجوابنا */
+const faq: FaqItem[] = [
+  {
+    q: "هل الدورة مناسبة للمبتدئين تمامًا؟",
+    a: "نعم، الدورة مخصصة للمبتدئين من الصفر أو المبتدئين بشكل عام أيضًا، ولا تتطلب أي معرفة مسبقة باللغة الإنجليزية.",
+  },
+  {
+    q: "كم مدة الدورة؟",
+    a: "مدة الدورة من أسبوعين إلى ٤ أسابيع حسب التزامك في جانب التعليم الذاتي. أما الأسبوع المباشر المكثف فيكون عادةً آخر أسبوع بعد الدورة أو الأسبوع الذي يليه.",
+  },
+  {
+    q: "ما هي أنواع الباقات؟",
+    a: (
+      <ul className="list-disc space-y-1.5 pe-5">
+        <li>باقة التعليم الذاتي فقط، سعرها 199 ريال.</li>
+        <li>الباقة الكاملة (تشمل حصص مباشرة في أسبوع مكثف).</li>
+      </ul>
+    ),
+  },
+  {
+    q: "الدروس مباشرة أم تعليم ذاتي (مسجلة)؟",
+    a: "باقة التعليم الذاتي بدون حصص مباشرة. أما الباقة الشاملة فتشمل حصص مباشرة في الأسبوع المكثف.",
+  },
+  {
+    q: "ما هو الأسبوع المكثف؟",
+    a: "للمشتركين بالباقة الكاملة، ينتظرك في آخر أسبوع عددٌ من الحصص المباشرة المكثفة بهدف تطبيق وممارسة ما تعلمته خلال الدورة، وتشمل تركيزًا على مهارة الكتابة.",
+  },
+  {
+    q: "عدد الحصص المباشرة ومدتها؟",
+    a: "في الأسبوع المكثف تُقدَّم ٤ حصص للتركيز على الحوار والتطبيق المباشر بمعدّل ساعة تقريبًا لكل حصة، وحصتان لمهارة الكتابة بمعدّل نصف ساعة تقريبًا.",
+  },
+  {
+    q: "هل أحصل على شهادة بعد الانتهاء؟",
+    a: "نعم، بعد اجتياز الاختبار النهائي تحصل على شهادة إتمام المحتوى من الأكاديمية. 🏅",
+  },
+  {
+    q: "هل يوجد دعم أثناء الدراسة؟",
+    a: "نعم، يوجد قروب خاص مع المعلم للإجابة على الاستفسارات خلال فترة الدراسة، ودعمٌ من مشرف يتأكد من استمراريتك وعدم تراكم الدروس عليك. 👨‍🏫",
+  },
+];
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -512,6 +553,25 @@ export default function A0Page() {
                 className="h-72 w-auto animate-breathe drop-shadow-xl"
               />
             </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ═══ سؤالك وجوابنا (FAQ) ═══ */}
+      <section className="bg-section py-20 lg:py-28">
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading eyebrow="الأسئلة الشائعة" title="سؤالك وجوابنا" />
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="mt-12">
+              <FaqAccordion items={faq} />
+            </div>
+          </Reveal>
+          <Reveal delay={220}>
+            <p className="mt-10 text-center text-lg font-black text-primary">
+              بادر بحجز مقعدك قبل اكتمال العدد!
+            </p>
           </Reveal>
         </div>
       </section>
