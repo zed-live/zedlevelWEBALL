@@ -164,21 +164,22 @@ export default function HomePage() {
               aria-hidden
               className="mx-auto -mt-3 h-5 w-3/5 rounded-[100%] bg-navy/10 blur-md"
             />
+            {/* floating proof badges — one line each, hugging the mascot */}
             <span
-              className="absolute top-[12%] hidden animate-float items-center gap-2 rounded-2xl border border-primary/10 bg-white/95 px-4 py-2.5 text-sm font-black shadow-lifted md:inline-flex"
-              style={{ insetInlineEnd: "-4%" }}
+              className="absolute top-[10%] hidden animate-float items-center gap-2 whitespace-nowrap rounded-2xl border border-primary/10 bg-white/95 px-4 py-2.5 text-sm font-black shadow-lifted md:inline-flex"
+              style={{ insetInlineEnd: "62%" }}
             >
               🗣️ حصص مباشرة مع معلمين أجانب
             </span>
             <span
-              className="absolute top-[46%] hidden animate-float-slow items-center gap-2 rounded-2xl border border-primary/10 bg-white/95 px-4 py-2.5 text-sm font-black shadow-lifted md:inline-flex"
-              style={{ insetInlineEnd: "76%" }}
+              className="absolute top-[44%] hidden animate-float-slow items-center gap-2 whitespace-nowrap rounded-2xl border border-primary/10 bg-white/95 px-4 py-2.5 text-sm font-black shadow-lifted md:inline-flex"
+              style={{ insetInlineEnd: "-8%" }}
             >
               🌟 متابعة وتحفيز مستمر
             </span>
             <span
-              className="absolute bottom-[16%] hidden animate-float items-center gap-2 rounded-2xl border border-primary/10 bg-white/95 px-4 py-2.5 text-sm font-black shadow-lifted md:inline-flex"
-              style={{ insetInlineEnd: "-2%" }}
+              className="absolute bottom-[14%] hidden animate-float items-center gap-2 whitespace-nowrap rounded-2xl border border-primary/10 bg-white/95 px-4 py-2.5 text-sm font-black shadow-lifted md:inline-flex"
+              style={{ insetInlineEnd: "58%" }}
             >
               ⏱️ تعليم ذاتي ٢٠ دقيقة
             </span>
