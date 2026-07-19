@@ -1,6 +1,6 @@
 /**
  * Course catalog metadata — shared by the homepage grid and /courses.
- * Copy per CONTENT.md §6/§9. Detailed sales pages: /courses/a0 (M3), /courses/levels (M5).
+ * Copy per CONTENT.md §6/§9. Detailed sales pages: /courses/foundation (M3), /courses/levels (M5).
  */
 
 export type CourseStatus = "ready" | "soon";
@@ -44,7 +44,7 @@ export interface CourseMeta {
 export const courses: CourseMeta[] = [
   {
     slug: "a0",
-    href: "/courses/a0",
+    href: "/courses/foundation",
     title: "دورة التأسيس الصحيح",
     tagline: "ابدأ من الصفر بالطريقة الصحيحة — أساس يخدمك طول رحلتك",
     stats: "3 مراحل · 26 درسًا · +460 كلمة",

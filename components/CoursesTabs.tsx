@@ -31,7 +31,7 @@ const AVAILABLE: CourseItem[] = [
     title: "دورة التأسيس الصحيح",
     desc: "ابدأ من الصفر وابنِ أساس يثبت معك",
     details: "26 درس · 4 أسابيع + أسبوع تطبيق · شهادة",
-    href: "/courses/a0",
+    href: "/courses/foundation",
     salla: "a0",
   },
   {

@@ -21,7 +21,7 @@ const STEPS = [
     code: "A0",
     label: "التأسيسي",
     learn: "تقرأ وتنطق صح وتبني جملك الأولى — ويغطي أجزاء من A1 وA2",
-    course: { title: "دورة التأسيس الصحيح", href: "/courses/a0" },
+    course: { title: "دورة التأسيس الصحيح", href: "/courses/foundation" },
   },
   {
     code: "A1",
