@@ -530,7 +530,7 @@ export default function A0Page() {
           </Reveal>
           <Reveal delay={120}>
             <div className="mt-10">
-              <A0Card />
+              <A0Card hideLearnMore />
             </div>
           </Reveal>
         </div>

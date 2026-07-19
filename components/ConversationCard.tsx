@@ -34,7 +34,12 @@ const CHECKLIST = [
   "وللمبتدئين جدًا… مجموعات بمدرّسين عرب",
 ];
 
-export function ConversationCard() {
+export function ConversationCard({
+  hideLearnMore = false,
+}: {
+  /** hide the self-link when the card sits on its own course page */
+  hideLearnMore?: boolean;
+} = {}) {
   const course = courses.find((c) => c.slug === "conversation")!;
 
   return (
@@ -76,7 +81,7 @@ export function ConversationCard() {
               }
             />
             <LearnMoreButton
-              href={course.href}
+              href={hideLearnMore ? undefined : course.href}
               waHref={waLink(site.whatsapp.msgCourseInquiry("المحادثة"))}
             />
           </div>

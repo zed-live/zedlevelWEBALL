@@ -107,7 +107,7 @@ export default function ConversationPage() {
       <section className="py-16 lg:py-24">
         <div className="container-site">
           <Reveal>
-            <ConversationCard />
+            <ConversationCard hideLearnMore />
           </Reveal>
         </div>
       </section>

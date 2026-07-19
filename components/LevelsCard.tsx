@@ -45,7 +45,12 @@ const CHECKLIST = [
   "اختبار لكل دورة + شهادة لكل مستوى (بالباقة الكاملة)",
 ];
 
-export function LevelsCard() {
+export function LevelsCard({
+  hideLearnMore = false,
+}: {
+  /** hide the self-link when the card sits on its own course page */
+  hideLearnMore?: boolean;
+} = {}) {
   const course = courses.find((c) => c.slug === "levels")!;
   const [open, setOpen] = useState(false);
 
@@ -145,7 +150,7 @@ export function LevelsCard() {
               source="levels-card"
             />
             <LearnMoreButton
-              href={course.href}
+              href={hideLearnMore ? undefined : course.href}
               waHref={waLink(
                 site.whatsapp.msgCourseInquiry("برنامج المستويات A1–B2"),
               )}

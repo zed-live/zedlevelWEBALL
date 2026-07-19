@@ -36,7 +36,12 @@ const CHECKLIST = [
 ];
 
 
-export function A0Card() {
+export function A0Card({
+  hideLearnMore = false,
+}: {
+  /** hide the self-link when the card sits on its own course page */
+  hideLearnMore?: boolean;
+} = {}) {
   const course = courses.find((c) => c.slug === "a0")!;
 
   return (
@@ -86,7 +91,7 @@ export function A0Card() {
               source="a0-card"
             />
             <LearnMoreButton
-              href={course.href}
+              href={hideLearnMore ? undefined : course.href}
               waHref={waLink(site.whatsapp.msgCourseInquiry("التأسيس الصحيح A0"))}
             />
           </div>
