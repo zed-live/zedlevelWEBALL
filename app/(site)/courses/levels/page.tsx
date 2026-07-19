@@ -14,6 +14,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { StatStrip } from "@/components/StatStrip";
 import { LevelLadder } from "@/components/LevelLadder";
 import { LevelsCard } from "@/components/LevelsCard";
+import { FaqAccordion, type FaqItem } from "@/components/FaqAccordion";
 import { Reveal } from "@/components/Reveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { Underline } from "@/components/motion/Underline";
@@ -87,6 +88,49 @@ const tiers: {
   { code: "A2", name: "أساسي", words: "869", duration: "≈3.4 أشهر", salla: "a2" },
   { code: "B1", name: "متوسط", words: "809", duration: "≈3.2 أشهر", salla: "b1" },
   { code: "B2", name: "متقدم", words: "730", duration: "≈2.8 أشهر", salla: "b2" },
+];
+
+/* سؤالك وجوابنا */
+const faq: FaqItem[] = [
+  {
+    q: "ما أعرف مستواي، كيف ببدأ؟",
+    a: "بعد الاشتراك بنقيّم مستواك وتبدأ من المستوى المناسب لك، مهما كان مستواك. وإذا كنت مبتدئ من الصفر أو أساسك ضعيف ننصحك تبدأ بدورة التأسيس.",
+  },
+  {
+    q: "كم مدة الدورة الواحدة وكم يوميًا؟",
+    a: "الطبيعي 20 دقيقة بيومك، تقدر تنجز الدورة خلال خمس أسابيع، وبعدها تبدأ الأسبوع المكثف المباشر. وإذا حاب تسرّع وتيرة التعلم نساعدك تتقدم أسرع بالدورة.",
+  },
+  {
+    q: "وش بالضبط أتعلم فيها؟",
+    a: (
+      <div className="space-y-2">
+        <p>كل دورة فيها ٤ مسارات أساسية:</p>
+        <ul className="list-disc space-y-1.5 pe-5">
+          <li>
+            حصيلة مفردات معتمدة Oxford 3000 (~١٠ كلمات يوميًا بجمل وصوتيات).
+          </li>
+          <li>قواعد عملية بفيديوهات واختبارات قياس.</li>
+          <li>
+            محادثات بسيناريوهات من حياتك مع توجيه لتدريب بالذكاء الاصطناعي.
+          </li>
+          <li>مسار استماع بمقترح يومي يناسب مستواك.</li>
+        </ul>
+        <p>ومهارة الكتابة لها تركيز خاص بالأسبوع المكثف.</p>
+      </div>
+    ),
+  },
+  {
+    q: "الدروس مباشرة أو مسجلة؟",
+    a: "البرنامج يعتمد على التعليم الذاتي بشكل متدرّج: حصص مسجلة بجودة عالية، تشوفها بأي وقت بيومك وبروتين سهل يساعدك تستمر، والدرس الجديد يوصلك بعد إنجازك للي قبله عشان ما يصير عندك تراكم، مع متابعة من الإشراف تحفّزك تستمر وما توقف. وضمن الباقة الكاملة تمارس وتطبّق أكثر بشكل مباشر مع معلم وقروب صغير.",
+  },
+  {
+    q: "وش هو أسبوع الممارسة العملي المكثف؟",
+    a: "أسبوع ختامي للمشتركين بالباقة الكاملة: ٦ حصص مباشرة مع معلمك بمجموعة صغيرة (١–٧ متعلمين)، تطبّق فيها كل اللي تعلمته مع تركيز خاص على مهارة الكتابة، ومدة الحصص من ٣٠ دقيقة إلى ساعة. وتختم الدورة باختبار يقيس تقدمك، وشهادة نهاية كل مستوى تحتفل فيها بإنجازك.",
+  },
+  {
+    q: "الأسعار والفرق بين الباقات؟",
+    a: "تبدأ بـ١٩٩ ريال للدورة بباقة التعليم الذاتي. وتزيد عليها الباقة الكاملة بالأسبوع العملي المكثف، بسعر ٤٩٩ ريال للدورة. الاشتراك عبر متجرنا بسلة أو من خلال التواصل على الواتساب.",
+  },
 ];
 
 const jsonLd = {
@@ -353,6 +397,25 @@ export default function LevelsPage() {
             <div className="mt-12">
               <LevelsCard />
             </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ═══ سؤالك وجوابنا (FAQ) ═══ */}
+      <section className="bg-section py-20 lg:py-28">
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading eyebrow="الأسئلة الشائعة" title="سؤالك وجوابنا" />
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="mt-12">
+              <FaqAccordion items={faq} />
+            </div>
+          </Reveal>
+          <Reveal delay={220}>
+            <p className="mt-10 text-center text-lg font-black text-primary">
+              اشترك وإحنا نحدّد مستواك ومن وين تبدأ.
+            </p>
           </Reveal>
         </div>
       </section>
