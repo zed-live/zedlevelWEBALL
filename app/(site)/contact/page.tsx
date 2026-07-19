@@ -61,7 +61,7 @@ export default function ContactPage() {
               <Underline className="text-primary">وبنرد عليك</Underline>
             </h1>
             <p className="mx-auto mt-4 max-w-[40ch] text-lg leading-9 text-ink/65">
-              فريقنا كله ينتظر سؤالك، لا تردد أرسل الآن.
+              فريقنا ينتظر سؤالك، لا تردد بأي سؤال.
             </p>
           </StaggerItem>
           <StaggerItem>
