@@ -3,7 +3,12 @@
 import { useState, type ReactNode } from "react";
 import { ChevronDown } from "lucide-react";
 
-export type FaqItem = { q: string; a: ReactNode };
+export type FaqItem = {
+  q: string;
+  a: ReactNode;
+  /** plain-text version of a JSX answer — used for FAQPage structured data */
+  plain?: string;
+};
 
 /**
  * A simple RTL FAQ accordion — one item open at a time, smooth reveal.

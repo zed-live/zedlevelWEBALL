@@ -17,7 +17,7 @@ const sourceSans = Source_Sans_3({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://zedlevel.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -27,6 +27,33 @@ export const metadata: Metadata = {
   },
   description:
     "أكاديمية زد لفل لتعليم الإنجليزية — دورات مدرجة من التأسيس A0 حتى B2، اختبار مستوى مجاني، ومتابعة حقيقية خطوة بخطوة. +5,000 مستفيد.",
+  // self-referencing canonical per page (resolved against metadataBase)
+  alternates: { canonical: "./" },
+  openGraph: {
+    type: "website",
+    siteName: "زد لفل ZEDLEVEL",
+    locale: "ar_SA",
+  },
+  twitter: { card: "summary" },
+};
+
+/* Organization + WebSite structured data — brand entity for Google */
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  name: "أكاديمية زد لفل لتعليم الإنجليزية",
+  alternateName: "ZEDLEVEL",
+  url: "https://zedlevel.com",
+  logo: "https://zedlevel.com/icon.png",
+  sameAs: ["https://www.tiktok.com/@zedlevel.official"],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "زد لفل ZEDLEVEL",
+  url: "https://zedlevel.com",
+  inLanguage: "ar",
 };
 
 export default function RootLayout({
@@ -41,6 +68,14 @@ export default function RootLayout({
       className={`${cairo.variable} ${sourceSans.variable}`}
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         <MotionProvider>{children}</MotionProvider>
       </body>
     </html>

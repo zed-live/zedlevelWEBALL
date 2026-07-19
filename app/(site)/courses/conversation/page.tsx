@@ -4,6 +4,7 @@ import { ArrowMotif } from "@/components/ArrowMotif";
 import { ConversationCard } from "@/components/ConversationCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { FaqAccordion, type FaqItem } from "@/components/FaqAccordion";
+import { faqJsonLd } from "@/lib/faqSchema";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Reveal } from "@/components/Reveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
@@ -44,9 +45,32 @@ const faq: FaqItem[] = [
   },
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: "دورة المحادثة — ممارسة مباشرة مع مدرسين أجانب — زد لفل",
+  description:
+    "جلسات محادثة مباشرة مع معلم ومجموعة صغيرة — حصتان أسبوعيًا، سيناريوهات من حياتك، وتركيز على النطق والطلاقة. متاحة الآن باشتراك شهري.",
+  provider: {
+    "@type": "Organization",
+    name: "ZEDLEVEL — أكاديمية زد لفل لتعليم الإنجليزية",
+  },
+  inLanguage: "ar",
+  teaches: "المحادثة باللغة الإنجليزية",
+};
+
 export default function ConversationPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(faq)) }}
+      />
+
       {/* ═══ Hero ═══ */}
       <section className="relative overflow-hidden bg-hero-glow">
         <div

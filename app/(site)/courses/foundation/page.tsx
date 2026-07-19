@@ -8,6 +8,7 @@ import { A0_PLANS, A0_PICKER_TITLE, A0_PICKER_SUB } from "@/config/plans";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { A0Card } from "@/components/A0Card";
 import { FaqAccordion, type FaqItem } from "@/components/FaqAccordion";
+import { faqJsonLd } from "@/lib/faqSchema";
 import { StickyBuyBar } from "@/components/StickyBuyBar";
 import { Reveal } from "@/components/Reveal";
 import { CurriculumOrbit } from "@/components/course/CurriculumOrbit";
@@ -145,6 +146,8 @@ const faq: FaqItem[] = [
   },
   {
     q: "وش الأسعار وطرق الدفع؟",
+    plain:
+      "باقة التعليم الذاتي بـ١٩٩ ريال، تعطيك الدروس المسجّلة + كتيّب التمارين والملخصات والفلاش كاردز. والباقة الكاملة بـ٤٩٩ ريال: كل اللي بباقة التعليم الذاتي + أسبوع ممارسة مكثف مع المعلم + الاختبار النهائي + الشهادة. الدفع آمن عبر سلة، وتقدر تتواصل واتساب ويخلّصونك.",
     a: (
       <div className="space-y-3">
         <p>
@@ -193,6 +196,10 @@ export default function A0Page() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(faq)) }}
       />
 
       {/* ═══ §1 الهيرو ═══ */}

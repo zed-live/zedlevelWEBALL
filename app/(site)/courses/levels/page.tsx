@@ -15,6 +15,7 @@ import { StatStrip } from "@/components/StatStrip";
 import { LevelLadder } from "@/components/LevelLadder";
 import { LevelsCard } from "@/components/LevelsCard";
 import { FaqAccordion, type FaqItem } from "@/components/FaqAccordion";
+import { faqJsonLd } from "@/lib/faqSchema";
 import { Reveal } from "@/components/Reveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { Underline } from "@/components/motion/Underline";
@@ -102,6 +103,8 @@ const faq: FaqItem[] = [
   },
   {
     q: "وش بالضبط أتعلم فيها؟",
+    plain:
+      "كل دورة فيها ٤ مسارات أساسية: حصيلة مفردات معتمدة Oxford 3000 (~١٠ كلمات يوميًا بجمل وصوتيات)، وقواعد عملية بفيديوهات واختبارات قياس، ومحادثات بسيناريوهات من حياتك مع توجيه لتدريب بالذكاء الاصطناعي، ومسار استماع بمقترح يومي يناسب مستواك. ومهارة الكتابة لها تركيز خاص بالأسبوع المكثف.",
     a: (
       <div className="space-y-2">
         <p>كل دورة فيها ٤ مسارات أساسية:</p>
@@ -153,6 +156,10 @@ export default function LevelsPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(faq)) }}
       />
 
       {/* ═══ Hero ═══ */}
