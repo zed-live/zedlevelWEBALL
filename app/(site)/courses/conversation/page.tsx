@@ -2,15 +2,47 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowMotif } from "@/components/ArrowMotif";
 import { ConversationCard } from "@/components/ConversationCard";
+import { SectionHeading } from "@/components/SectionHeading";
+import { FaqAccordion, type FaqItem } from "@/components/FaqAccordion";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Reveal } from "@/components/Reveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { Underline } from "@/components/motion/Underline";
+import { site } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "دورة المحادثة — ممارسة مباشرة مع مدرسين أجانب",
   description:
     "جلسات محادثة مباشرة مع معلم ومجموعة صغيرة — حصتان أسبوعيًا، سيناريوهات من حياتك، وتركيز على النطق والطلاقة. متاحة الآن باشتراك شهري.",
 };
+
+/* عندك سؤال؟ عندنا جواب */
+const faq: FaqItem[] = [
+  {
+    q: "أخاف أغلط وأستحي أتكلم قدام ناس، كيف أتجاوزها؟",
+    a: "طبيعي، وأغلب المنضمين جو بنفس الشعور. الكل بمجموعتك قريبين من مستواك وجايين لنفس السبب، والمعلم متعوّد يتعامل مع التوتر ويعطيك مساحتك. بعد أول حصتين يبدأ الحاجز يروح.",
+  },
+  {
+    q: "كيف تحددون أي مجموعة أنضم لها؟",
+    a: "تسوّي اختبار المستوى المجاني، وعلى أساسه نضمّك لمجموعة على قد مستواك بالضبط، فما تحس إنك أقل ولا أعلى من الباقين.",
+  },
+  {
+    q: "متى تكون الحصص؟",
+    a: "المواعيد تُحدّد لكل مجموعة عند فتحها، وبتحصل مواعيد تناسبك بإذن الله. تواصل معنا على الواتساب ونعطيك مواعيد المجموعات المتاحة الآن.",
+  },
+  {
+    q: "هل أقدر أزيد عدد الحصص؟",
+    a: "إي، تقدر تضيف حصص حسب حاجتك: الحصة الجماعية الإضافية بـ٣٣ ريال، والفردية مع معلم لك وحدك بـ١٠٠ ريال، مفيدة لو حاب تكثّف ممارستك أو تجهّز لموقف معين زي مقابلة أو سفر. كلّمنا على الواتساب ونرتّبها لك.",
+  },
+  {
+    q: "كم أحتاج شهر عشان أشوف فرق؟",
+    a: "يعتمد على مستواك والتزامك بالممارسة بين الحصص، بس الأغلب بيحسون بفرق واضح بالثقة من الشهر الأول، والطلاقة تتراكم شهر بعد شهر.",
+  },
+  {
+    q: "كم السعر وكيف الاشتراك؟",
+    a: "٢٤٩ ريال بالشهر، اشتراك شهري متجدد عبر سلة بدفع آمن (مدى وSTC Pay)، أو تواصل واتساب ويخلّصونك.",
+  },
+];
 
 export default function ConversationPage() {
   return (
@@ -52,6 +84,35 @@ export default function ConversationPage() {
         <div className="container-site">
           <Reveal>
             <ConversationCard />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ═══ عندك سؤال؟ عندنا جواب (FAQ) ═══ */}
+      <section className="bg-section py-20 lg:py-28">
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading
+              eyebrow="الأسئلة الشائعة"
+              title="عندك سؤال؟ عندنا جواب"
+            />
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="mt-12">
+              <FaqAccordion items={faq} />
+            </div>
+          </Reveal>
+          <Reveal delay={220}>
+            <div className="mt-10 flex flex-col items-center gap-3 text-center">
+              <p className="font-black text-ink/70">باقي عندك سؤال؟ تواصل معنا</p>
+              <WhatsAppButton
+                message={site.whatsapp.msgCourseInquiry("المحادثة")}
+                source="conversation-faq"
+                variant="solid"
+              >
+                راسلنا على الواتساب
+              </WhatsAppButton>
+            </div>
           </Reveal>
         </div>
       </section>
