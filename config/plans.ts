@@ -25,60 +25,95 @@ const CHECKOUT = {
     "https://salla.sa/zedlevel/payment/p1758387820?quantity=1&options%5B828948443%5D=76556154",
 };
 
-/** الباقة الكاملة — the featured plan (same copy for both graded courses) */
-function fullPlan(key: string, href: string): Plan {
+/** per-course copy that differs between the two graded courses */
+type PlanCopy = {
+  /** the "التعلّم الذاتي" green ✓ items (also shown as included in الكاملة) */
+  selfIncludes: string[];
+  /** the "الكاملة" extras (gold +) — what the full package adds */
+  fullExtras: string[];
+  /** what the self plan does NOT include (grey ✕) */
+  selfExcludes: string[];
+  /** the الكاملة tagline */
+  fullTagline: string;
+  /** the التعلّم الذاتي tagline */
+  selfTagline: string;
+};
+
+function fullPlan(key: string, href: string, copy: PlanCopy): Plan {
   return {
     key,
     name: "الباقة الكاملة",
     price: "499",
     priceUnit: "/ دورة",
-    tagline: "كل شي في التعلّم الذاتي + التطبيق المباشر والشهادة",
-    // everything the self-paced plan has (green ✓)…
-    includes: [
-      "المسارات الأربعة كاملة (مفردات · قواعد · محادثة · استماع)",
-      "فلاش كاردز وتمارين تثبّت الجديد",
-    ],
-    // …plus the full-package extras (gold +)
-    extras: [
-      "الأسبوع المكثف (حصص مباشرة + تركيز على الكتابة)",
-      "اختبار لكل دورة + شهادة المستوى 🏆",
-    ],
+    tagline: copy.fullTagline,
+    includes: copy.selfIncludes, // green ✓ (everything the self plan has)…
+    extras: copy.fullExtras, // …plus the full-package extras (gold +)
     cta: "اشترك بالكاملة — 499",
     href,
     featured: true,
   };
 }
 
-/** التعلّم الذاتي — self-paced plan */
-function selfPlan(key: string, href: string): Plan {
+function selfPlan(key: string, href: string, copy: PlanCopy): Plan {
   return {
     key,
     name: "التعلّم الذاتي",
     price: "199",
     priceUnit: "/ دورة",
-    tagline: "المسارات الأربعة بالكامل",
-    includes: [
-      "المسارات الأربعة كاملة",
-      "فلاش كاردز وتمارين تثبّت الجديد",
-    ],
-    excludes: [
-      "بدون الأسبوع المكثف (حصص مباشرة + تركيز على الكتابة)",
-      "بدون شهادة المستوى",
-    ],
+    tagline: copy.selfTagline,
+    includes: copy.selfIncludes,
+    excludes: copy.selfExcludes,
     cta: "اشترك بالذاتي — 199",
     href,
   };
 }
 
+/* ── المستويات copy ── */
+const LEVELS_COPY: PlanCopy = {
+  fullTagline: "كل شي في التعلّم الذاتي + التطبيق المباشر والشهادة",
+  selfTagline: "المسارات الأربعة بالكامل",
+  selfIncludes: [
+    "المسارات الأربعة كاملة (مفردات · قواعد · محادثة · استماع)",
+    "فلاش كاردز وتمارين تثبّت الجديد",
+  ],
+  fullExtras: [
+    "الأسبوع المكثف (حصص مباشرة + تركيز على الكتابة)",
+    "اختبار لكل دورة + شهادة المستوى 🏆",
+  ],
+  selfExcludes: [
+    "بدون الأسبوع المكثف (حصص مباشرة + تركيز على الكتابة)",
+    "بدون شهادة المستوى",
+  ],
+};
+
+/* ── التأسيس copy ── */
+const FOUNDATION_COPY: PlanCopy = {
+  fullTagline: "كل شي في التعلّم الذاتي + الأسبوع المكثف والشهادة",
+  selfTagline: "الدروس المسجّلة والتمارين والفلاش كاردز",
+  selfIncludes: [
+    "٢٦ درس فيديو مسجّل، مرتّبة وواضحة",
+    "أكثر من 460 مفردة + قواعد أساسية",
+    "كتيّب تمارين + ملخصات مراجعة + فلاش كاردز",
+  ],
+  fullExtras: [
+    "الأسبوع المكثف (حصص مباشرة + تركيز على الكتابة)",
+    "الاختبار النهائي + شهادة الإتمام 🏆",
+  ],
+  selfExcludes: [
+    "بدون الأسبوع المكثف (حصص مباشرة + تركيز على الكتابة)",
+    "بدون الاختبار النهائي والشهادة",
+  ],
+};
+
 // Levels: the الكاملة/499 link is the "…Self" URL slot and the ذاتي/199 link is
 // the "…Full" URL slot (the two Salla variants were reversed vs. their names).
 export const LEVELS_PLANS: Plan[] = [
-  fullPlan("levels-full", CHECKOUT.levelsSelf),
-  selfPlan("levels-self", CHECKOUT.levelsFull),
+  fullPlan("levels-full", CHECKOUT.levelsSelf, LEVELS_COPY),
+  selfPlan("levels-self", CHECKOUT.levelsFull, LEVELS_COPY),
 ];
 export const A0_PLANS: Plan[] = [
-  fullPlan("a0-full", CHECKOUT.a0Full),
-  selfPlan("a0-self", CHECKOUT.a0Self),
+  fullPlan("a0-full", CHECKOUT.a0Full, FOUNDATION_COPY),
+  selfPlan("a0-self", CHECKOUT.a0Self, FOUNDATION_COPY),
 ];
 
 export const PLAN_PICKER_TITLE = "اختر باقتك — المستويات";
